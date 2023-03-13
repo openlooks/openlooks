@@ -16,4 +16,5 @@ module.exports = {
       typescript: true,
     },
   },
+  exclude: ['../**/main.tsx', '../**/vite-env.d.ts'],
 };
