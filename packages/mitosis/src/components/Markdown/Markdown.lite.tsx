@@ -5,14 +5,14 @@ export interface MarkdownProps {
 }
 
 export default function Markdown(props: MarkdownProps) {
-  console.log(props.children);
   return (
     <div
+      class="openlooks text"
       innerHTML={props.children
         ?.toString()
-        .replace(/^### (.*)\x0A+/gi, '<h3>$1</h3>')
-        .replace(/^## (.*)\x0A+/gi, '<h2>$1</h2>')
-        .replace(/^# (.*)\x0A+/gi, '<h1>$1</h1>')
+        .replace(/^### (.*)\x0A+/gi, '<h3 class="openlooks title">$1</h3>')
+        .replace(/^## (.*)\x0A+/gi, '<h2 class="openlooks title">$1</h2>')
+        .replace(/^# (.*)\x0A+/gi, '<h1 class="openlooks title">$1</h1>')
         .replace(/^\> (.*)\x0A+/gi, '<blockquote>$1</blockquote>')
         .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
         .replace(/\*(.*)\*/gim, '<i>$1</i>')
@@ -23,6 +23,3 @@ export default function Markdown(props: MarkdownProps) {
     />
   );
 }
-
-// Mitosis cannot parse:
-// .replace(/\n$/gim, '<br />')

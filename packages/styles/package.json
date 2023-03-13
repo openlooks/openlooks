@@ -10,6 +10,13 @@
   "files": [
     "dist"
   ],
+  "main": "dist/index.css",
+  "exports": {
+    ".": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
+  },
   "scripts": {
     "build": "postcss src/index.css -o dist/index.css",
     "dev": "postcss src --dir dist --watch"

@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@builder.io/mitosis": "0.0.92",
-    "@builder.io/mitosis-cli": "0.0.51"
+    "@builder.io/mitosis-cli": "0.0.51",
+    "@openlooks/styles": "*"
   }
 }

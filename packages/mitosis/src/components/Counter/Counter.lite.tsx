@@ -6,5 +6,10 @@ export default function Counter() {
     count: 0,
   });
 
-  return <Button onClick={() => (state.count = state.count + 1)}>Count: {state.count}</Button>;
+  return (
+    <Button onClick={() => (state.count = state.count + 1)}>
+      {`Count: `}
+      {state.count}
+    </Button>
+  );
 }

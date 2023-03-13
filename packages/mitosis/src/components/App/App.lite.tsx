@@ -1,10 +1,11 @@
 import Counter from '../Counter/Counter.lite';
 import Markdown from '../Markdown/Markdown.lite';
+import Title from '../Title/Title.lite';
 
 export default function App() {
   return (
     <div>
-      <h1>OpenLooks</h1>
+      <Title order={1}>OpenLooks</Title>
       <Counter />
       <Markdown>{`# Hello World
 
