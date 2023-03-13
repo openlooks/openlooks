@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenLooks Loader</title>
+    <link rel="stylesheet" href="../dist/index.css" />
+    <link rel="stylesheet" href="demos.css" />
+  </head>
+  <body>
+    <div class="component-header">
+      <div class="openlooks container px-xl py-md">
+        <h1 class="openlooks title">Loader</h1>
+        <p class="openlooks text">Indicate loading state</p>
+      </div>
+    </div>
+    <div class="openlooks container p-xl">
+      <h2 class="openlooks title">Usage</h2>
+      <div class="configurator-wrapper">
+        <div class="configurator-main">
+          <div id="configurator-element" role="progressbar" aria-busy="true" class="openlooks loader">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" />
+            </svg>
+          </div>
+        </div>
+        <div class="configurator-controls">
+          <div class="openlooks stack">
+            <div class="openlooks inputwrapper">
+              <label for="color" class="label">Color</label>
+              <div class="openlooks colorpicker">
+                <div>
+                  <input type="radio" id="color-black" name="color" value="black" />
+                  <label for="color-black" class="openlooks color-black">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-gray" name="color" value="gray" />
+                  <label for="color-gray" class="openlooks color-gray">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-red" name="color" value="red" />
+                  <label for="color-red" class="openlooks color-red">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-pink" name="color" value="pink" />
+                  <label for="color-pink" class="openlooks color-pink">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-grape" name="color" value="grape" />
+                  <label for="color-grape" class="openlooks color-grape">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-violet" name="color" value="violet" />
+                  <label for="color-violet" class="openlooks color-violet">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-indigo" name="color" value="indigo" />
+                  <label for="color-indigo" class="openlooks color-indigo">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-blue" name="color" value="blue" />
+                  <label for="color-blue" class="openlooks color-blue">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-cyan" name="color" value="cyan" />
+                  <label for="color-cyan" class="openlooks color-cyan">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-teal" name="color" value="teal" />
+                  <label for="color-teal" class="openlooks color-teal">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-green" name="color" value="green" />
+                  <label for="color-green" class="openlooks color-green">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-lime" name="color" value="lime" />
+                  <label for="color-lime" class="openlooks color-lime">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-yellow" name="color" value="yellow" />
+                  <label for="color-yellow" class="openlooks color-yellow">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-orange" name="color" value="orange" />
+                  <label for="color-orange" class="openlooks color-orange">✓</label>
+                </div>
+              </div>
+            </div>
+            <div class="openlooks inputwrapper">
+              <label for="size" class="label">Size</label
+              ><select id="size" class="openlooks nativeselect" aria-invalid="false" name="size">
+                <option value="xs">xs</option>
+                <option value="sm">sm</option>
+                <option value="md" selected>md</option>
+                <option value="lg">lg</option>
+                <option value="xl">xl</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre id="configurator-code" class="openlooks code"></pre>
+    </div>
+  </body>
+  <script>
+    const props = {
+      color: 'blue',
+      size: 'md',
+    };
+
+    function applyProps() {
+      const className =
+        'openlooks loader ' +
+        Object.entries(props)
+          .map(([key, value]) => `${key}-${value}`)
+          .join(' ');
+
+      const el = document.getElementById('configurator-element');
+      if (el) {
+        el.className = className;
+      }
+
+      document.getElementById(
+        'configurator-code'
+      ).innerText = `<div role="progressbar" aria-busy="true" class="${className}">
+  <svg viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="40" />
+  </svg>
+</div>`;
+    }
+
+    function handleChange(e) {
+      const name = e.target.name;
+      if (name) {
+        const value = e.target.value;
+        props[name] = value;
+        applyProps();
+      }
+    }
+
+    document.addEventListener('change', handleChange, false);
+    document.addEventListener('input', handleChange, false);
+
+    applyProps();
+  </script>
+</html>

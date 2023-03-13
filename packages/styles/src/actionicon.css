@@ -1,0 +1,88 @@
+/*
+ * Base styles
+ */
+
+.actionicon {
+  align-items: center;
+  border: 0.0625rem solid transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  user-select: none;
+}
+
+.actionicon:active {
+  transform: translateY(0.0625rem);
+}
+
+/*
+ * Variants
+ */
+
+.actionicon.variant-filled {
+  color: var(--oc-white);
+  background-color: var(--color-6);
+}
+
+.actionicon.variant-filled:hover {
+  background-color: var(--color-8);
+}
+
+.actionicon.variant-light {
+  color: var(--color-6);
+  background-color: var(--color-0);
+}
+
+.actionicon.variant-light:hover {
+  background-color: var(--color-1);
+}
+
+.actionicon.variant-outline {
+  color: var(--color-6);
+  background-color: var(--oc-white);
+  border-color: var(--color-6);
+}
+
+.actionicon.variant-outline:hover {
+  background-color: var(--color-0);
+}
+
+.actionicon.variant-subtle {
+  color: var(--color-6);
+  background-color: var(--oc-white);
+}
+
+.actionicon.variant-subtle:hover {
+  background-color: var(--color-0);
+}
+
+/*
+ * Sizes
+ */
+
+.actionicon.size-xs {
+  height: 1.125rem;
+  width: 1.125rem;
+}
+
+.actionicon.size-sm {
+  height: 1.375rem;
+  width: 1.375rem;
+}
+
+.actionicon.size-md {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.actionicon.size-lg {
+  height: 2.125rem;
+  width: 2.125rem;
+}
+
+.actionicon.size-xl {
+  height: 2.75rem;
+  width: 2.75rem;
+}

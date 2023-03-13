@@ -1,0 +1,19 @@
+.slider {
+  accent-color: var(--color-6, var(--oc-blue-6));
+  width: 100%;
+}
+
+datalist {
+  display: flex;
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  justify-content: space-between;
+  color: var(--oc-gray-6);
+  width: 100%;
+  padding: 0 1rem;
+}
+
+datalist.openlooks > option {
+  width: 0.1rem;
+  margin-left: -1rem;
+}

@@ -1,0 +1,54 @@
+/*
+ * Base styles
+ */
+
+.group {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+ * Position
+ */
+
+.group.position-left {
+  justify-content: flex-start;
+}
+
+.group.position-center {
+  justify-content: center;
+}
+
+.group.position-right {
+  justify-content: flex-end;
+}
+
+.group.position-apart {
+  justify-content: space-between;
+}
+
+/*
+ * Spacing
+ */
+
+.group.spacing-xs {
+  gap: 0.625rem;
+}
+
+.group.spacing-sm {
+  gap: 0.75rem;
+}
+
+.group.spacing-md {
+  gap: 1rem;
+}
+
+.group.spacing-lg {
+  gap: 1.25rem;
+}
+
+.group.spacing-xl {
+  gap: 1.5rem;
+}

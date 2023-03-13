@@ -1,0 +1,22 @@
+.textinput {
+  display: block;
+  height: 2.25rem;
+  line-height: 2.125rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: var(--medplum-font-family);
+  width: 100%;
+  padding: 0 0.75rem;
+  margin-top: 0.1250rem;
+}
+
+.textinput:focus {
+  outline: none;
+  border-color: var(--oc-blue-5);
+}
+
+.textinput[aria-invalid='true'] {
+  border-color: var(--oc-red-5);
+  color: var(--oc-red-5);
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenLooks ActionIcon</title>
+    <link rel="stylesheet" href="../dist/index.css" />
+    <link rel="stylesheet" href="demos.css" />
+    <script src="icons.js"></script>
+  </head>
+  <body>
+    <div class="component-header">
+      <div class="openlooks container px-xl py-md">
+        <h1 class="openlooks title">ActionIcon</h1>
+        <p class="openlooks text">Icon button</p>
+      </div>
+    </div>
+    <div class="openlooks container p-xl">
+      <h2 class="openlooks title">Usage</h2>
+      <div class="configurator-wrapper">
+        <div class="configurator-main">
+          <button id="configurator-element">
+            <icon-adjustments id="configurator-icon" size="0.875rem" />
+          </button>
+        </div>
+        <div class="configurator-controls">
+          <div class="openlooks stack">
+            <div class="openlooks inputwrapper">
+              <label for="variant" class="label">Variant</label
+              ><select id="variant" class="openlooks nativeselect" aria-invalid="false" name="variant">
+                <option value="filled">filled</option>
+                <option value="light">light</option>
+                <option value="outline">outline</option>
+                <option value="subtle">subtle</option>
+              </select>
+            </div>
+            <div class="openlooks inputwrapper">
+              <label for="color" class="label">Color</label>
+              <div class="openlooks colorpicker">
+                <div>
+                  <input type="radio" id="color-black" name="color" value="black" />
+                  <label for="color-black" class="openlooks color-black">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-gray" name="color" value="gray" />
+                  <label for="color-gray" class="openlooks color-gray">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-red" name="color" value="red" />
+                  <label for="color-red" class="openlooks color-red">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-pink" name="color" value="pink" />
+                  <label for="color-pink" class="openlooks color-pink">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-grape" name="color" value="grape" />
+                  <label for="color-grape" class="openlooks color-grape">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-violet" name="color" value="violet" />
+                  <label for="color-violet" class="openlooks color-violet">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-indigo" name="color" value="indigo" />
+                  <label for="color-indigo" class="openlooks color-indigo">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-blue" name="color" value="blue" />
+                  <label for="color-blue" class="openlooks color-blue">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-cyan" name="color" value="cyan" />
+                  <label for="color-cyan" class="openlooks color-cyan">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-teal" name="color" value="teal" />
+                  <label for="color-teal" class="openlooks color-teal">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-green" name="color" value="green" />
+                  <label for="color-green" class="openlooks color-green">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-lime" name="color" value="lime" />
+                  <label for="color-lime" class="openlooks color-lime">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-yellow" name="color" value="yellow" />
+                  <label for="color-yellow" class="openlooks color-yellow">✓</label>
+                </div>
+                <div>
+                  <input type="radio" id="color-orange" name="color" value="orange" />
+                  <label for="color-orange" class="openlooks color-orange">✓</label>
+                </div>
+              </div>
+            </div>
+            <div class="openlooks inputwrapper">
+              <label for="radius" class="label">Radius</label
+              ><select id="radius" class="openlooks nativeselect" aria-invalid="false" name="radius">
+                <option value="xs">xs</option>
+                <option value="sm" selected>sm</option>
+                <option value="md">md</option>
+                <option value="lg">lg</option>
+                <option value="xl">xl</option>
+              </select>
+            </div>
+            <div class="openlooks inputwrapper">
+              <label for="size" class="label">Size</label
+              ><select id="size" class="openlooks nativeselect" aria-invalid="false" name="size">
+                <option value="xs">xs</option>
+                <option value="sm" selected>sm</option>
+                <option value="md">md</option>
+                <option value="lg">lg</option>
+                <option value="xl">xl</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre id="configurator-code" class="openlooks code"></pre>
+    </div>
+  </body>
+  <script>
+    const props = {
+      variant: 'filled',
+      size: 'sm',
+      color: 'blue',
+      radius: 'sm',
+    };
+
+    const iconSize = {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      md: '1.125rem',
+      lg: '1.625rem',
+      xl: '2.125rem',
+    };
+
+    function applyProps() {
+      const el = document.getElementById('configurator-element');
+      const icon = document.getElementById('configurator-icon');
+      const { children, ...rest } = props;
+      const className =
+        'openlooks actionicon ' +
+        Object.entries(rest)
+          .map(([key, value]) => `${key}-${value}`)
+          .join(' ');
+
+      el.className = className;
+      icon.setAttribute('size', iconSize[props.size]);
+      document.getElementById('configurator-code').innerText = `<button class="${className}">
+  <icon-adjustments size="${iconSize[props.size]}" />
+</button>`;
+    }
+
+    function handleChange(e) {
+      const name = e.target.name;
+      const value = e.target.value;
+      props[name] = value;
+      applyProps();
+    }
+
+    document.addEventListener('change', handleChange, false);
+    document.addEventListener('input', handleChange, false);
+
+    applyProps();
+  </script>
+</html>

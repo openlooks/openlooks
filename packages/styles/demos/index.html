@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenLooks Demos</title>
+    <link rel="stylesheet" href="../dist/index.css" />
+    <link rel="stylesheet" href="demos.css" />
+    <script src="theme.js"></script>
+  </head>
+  <body>
+    <div class="openlooks header text group position-apart spacing-xs">
+      <a href="home.html" target="content">OpenLooks</a>
+      <div>
+        <input id="theme-auto" type="radio" name="theme" value="auto" checked />
+        <label for="theme-auto">Auto</label>
+        <input id="theme-light" type="radio" name="theme" value="light" />
+        <label for="theme-light">Light</label>
+        <input id="theme-dark" type="radio" name="theme" value="dark" />
+        <label for="theme-dark">Dark</label>
+      </div>
+    </div>
+    <div class="openlooks scrollarea navbar">
+      <div class="navlinks">
+        <div class="section">Layout</div>
+        <a href="appshell.html" target="content">AppShell</a>
+        <a href="aspectratio.html" target="content">AspectRatio</a>
+        <a href="center.html" target="content">Center</a>
+        <a href="container.html" target="content">Container</a>
+        <a href="flex.html" target="content">Flex</a>
+        <a href="grid.html" target="content">Grid</a>
+        <a href="group.html" target="content">Group</a>
+        <a href="mediaquery.html" target="content">MediaQuery</a>
+        <a href="simplegrid.html" target="content">SimpleGrid</a>
+        <a href="space.html" target="content">Space</a>
+        <a href="stack.html" target="content">Stack</a>
+        <div class="section">Buttons</div>
+        <a href="actionicon.html" target="content">ActionIcon</a>
+        <a href="button.html" target="content">Button</a>
+        <a href="closebutton.html" target="content">CloseButton</a>
+        <a href="copybutton.html" target="content">CopyButton</a>
+        <a href="filebutton.html" target="content">FileButton</a>
+        <a href="unstyledbutton.html" target="content">UnstyledButton</a>
+        <div class="section">Inputs</div>
+        <a href="nativeselect.html" target="content">NativeSelect</a>
+        <a href="slider.html" target="content">Slider</a>
+        <a href="textinput.html" target="content">TextInput</a>
+        <div class="section">Navigation</div>
+        <a href="anchor.html" target="content">Anchor</a>
+        <a href="burger.html" target="content">Burger</a>
+        <a href="tabs.html" target="content">Tabs</a>
+        <div class="section">Data display</div>
+        <a href="accordion.html" target="content">Accordion</a>
+        <a href="avatar.html" target="content">Avatar</a>
+        <a href="backgroundimage.html" target="content">BackgroundImage</a>
+        <a href="badge.html" target="content">Badge</a>
+        <a href="card.html" target="content">Card</a>
+        <a href="colorswatch.html" target="content">ColorSwatch</a>
+        <a href="image.html" target="content">Image</a>
+        <a href="indicator.html" target="content">Indicator</a>
+        <a href="kbd.html" target="content">Kbd</a>
+        <a href="spoiler.html" target="content">Spoiler</a>
+        <a href="themeicon.html" target="content">ThemeIcon</a>
+        <a href="timeline.html" target="content">Timeline</a>
+        <div class="section">Overlays</div>
+        <a href="affix.html" target="content">Affix</a>
+        <a href="dialog.html" target="content">Dialog</a>
+        <a href="drawer.html" target="content">Drawer</a>
+        <a href="hovercard.html" target="content">HoverCard</a>
+        <a href="loadingoverlay.html" target="content">LoadingOverlay</a>
+        <a href="menu.html" target="content">Menu</a>
+        <a href="modal.html" target="content">Modal</a>
+        <a href="overlay.html" target="content">Overlay</a>
+        <a href="popover.html" target="content">Popover</a>
+        <a href="tooltip.html" target="content">Tooltip</a>
+        <div class="section">Typography</div>
+        <a href="blockquote.html" target="content">Blockquote</a>
+        <a href="code.html" target="content">Code</a>
+        <a href="highlight.html" target="content">Highlight</a>
+        <a href="list.html" target="content">List</a>
+        <a href="mark.html" target="content">Mark</a>
+        <a href="table.html" target="content">Table</a>
+        <a href="text.html" target="content">Text</a>
+        <a href="title.html" target="content">Title</a>
+        <div class="section">Feedback</div>
+        <a href="alert.html" target="content">Alert</a>
+        <a href="loader.html" target="content">Loader</a>
+        <a href="notification.html" target="content">Notification</a>
+        <a href="progress.html" target="content">Progress</a>
+        <a href="ringprogress.html" target="content">RingProgress</a>
+        <a href="skeleton.html" target="content">Skeleton</a>
+        <div class="section">Miscellaneous</div>
+        <a href="box.html" target="content">Box</a>
+        <a href="collapse.html" target="content">Collapse</a>
+        <a href="divider.html" target="content">Divider</a>
+        <a href="focustrap.html" target="content">FocusTrap</a>
+        <a href="paper.html" target="content">Paper</a>
+        <a href="portal.html" target="content">Portal</a>
+        <a href="scrollarea.html" target="content">ScrollArea</a>
+        <a href="transition.html" target="content">Transition</a>
+      </div>
+    </div>
+    <div class="main"><iframe name="content" frameborder="0"></iframe></div>
+  </body>
+  <script>
+    const iframe = document.querySelector('iframe');
+
+    function initIframe() {
+      const hash = window.location.hash;
+      const initialPage = hash ? hash.substring(1) + '.html' : 'home.html';
+      iframe.src = initialPage;
+      setCurrentNav(initialPage);
+    }
+
+    function setCurrentNav(href) {
+      const existing = document.querySelector('[aria-current="page"]');
+      if (existing) {
+        existing.removeAttribute('aria-current');
+      }
+      const nav = document.querySelector(`[href="${href}"]`);
+      if (nav) {
+        nav.setAttribute('aria-current', 'page');
+      }
+    }
+
+    document.addEventListener(
+      'click',
+      (e) => {
+        if (e.target.tagName === 'A') {
+          e.preventDefault();
+          const filename = e.target.href.split('/').pop();
+          if (filename === 'home.html') {
+            window.location.hash = '';
+            iframe.src = 'home.html';
+          } else {
+            window.location.hash = filename.replace('.html', '');
+            iframe.src = filename;
+          }
+          setCurrentNav(filename);
+        }
+      },
+      false
+    );
+
+    document.addEventListener(
+      'change',
+      (e) => {
+        if (e.target.name === 'theme') {
+          setTheme(e.target.value);
+        }
+      },
+      false
+    );
+
+    initIframe();
+  </script>
+</html>

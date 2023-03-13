@@ -1,0 +1,9 @@
+.anchor {
+  color: var(--oc-blue-6);
+  font-family: var(--font-family);
+  text-decoration: none;
+}
+
+.anchor:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,32 @@
+.colorpicker {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colorpicker > div {
+  width: 14%;
+}
+
+.colorpicker input[type='radio'] {
+  display: none;
+}
+
+.colorpicker label {
+  border-radius: 0.25rem;
+  color: rgb(0 0 0 / 0%);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  height: 1.5rem;
+  margin: 0.0625rem;
+  padding: 0.1875rem 0;
+  text-align: center;
+  user-select: none;
+  width: 1.75rem;
+  background-color: var(--color-6);
+}
+
+.colorpicker input[type='radio']:checked + label {
+  color: white;
+}

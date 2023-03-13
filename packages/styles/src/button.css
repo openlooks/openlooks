@@ -1,0 +1,91 @@
+/*
+ * Base styles
+ */
+
+.button {
+  line-height: 1;
+  font-family: var(--font-family);
+  user-select: none;
+  cursor: pointer;
+  font-weight: 600;
+  border: 0.0625rem solid transparent;
+}
+
+.button:active {
+  transform: translateY(0.0625rem);
+}
+
+/*
+ * Variants
+ */
+
+.button.variant-filled {
+  color: var(--oc-white);
+  background-color: var(--color-6);
+}
+
+.button.variant-filled:hover {
+  background-color: var(--color-8);
+}
+
+.button.variant-light {
+  color: var(--color-6);
+  background-color: var(--color-0);
+}
+
+.button.variant-light:hover {
+  background-color: var(--color-1);
+}
+
+.button.variant-outline {
+  color: var(--color-6);
+  background-color: var(--oc-white);
+  border-color: var(--color-6);
+}
+
+.button.variant-outline:hover {
+  background-color: var(--color-0);
+}
+
+.button.variant-subtle {
+  color: var(--color-6);
+  background-color: var(--oc-white);
+}
+
+.button.variant-subtle:hover {
+  background-color: var(--color-0);
+}
+
+/*
+ * Sizes
+ */
+
+.button.size-xs {
+  height: 1.875rem;
+  padding: 0 0.875rem;
+  font-size: 0.75rem;
+}
+
+.button.size-sm {
+  height: 2.25rem;
+  padding: 0 1.125rem;
+  font-size: 0.875rem;
+}
+
+.button.size-md {
+  height: 2.625rem;
+  padding: 0 1.375rem;
+  font-size: 1rem;
+}
+
+.button.size-lg {
+  height: 3.125rem;
+  padding: 0 1.625rem;
+  font-size: 1.125rem;
+}
+
+.button.size-xl {
+  height: 3.75rem;
+  padding: 0 2rem;
+  font-size: 1.25rem;
+}

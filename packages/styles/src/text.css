@@ -1,0 +1,57 @@
+/*
+ * Base styles
+ */
+
+.text {
+  line-height: 1.5;
+  font-family: var(--font-family);
+  color: var(--color-6, var(--oc-gray-8));
+}
+
+.dark .text {
+  color: var(--color-6, var(--oc-gray-1));
+}
+
+div.text,
+p.text,
+span.text {
+  font-size: var(--font-size-md);
+}
+
+p.text {
+  line-height: 1.55;
+}
+
+/*
+ * Sizes
+ */
+
+.text.size-xs {
+  font-size: 0.75rem;
+}
+
+.text.size-sm {
+  font-size: 0.875rem;
+}
+
+.text.size-md {
+  font-size: 1rem;
+}
+
+.text.size-lg {
+  font-size: 1.125rem;
+}
+
+.text.size-xl {
+  font-size: 1.25rem;
+}
+
+/*
+ * Weights
+ */
+
+@each $weight in (xs, sm, md, lg, xl) {
+  .text.weight-$(weight) {
+    font-weight: $weight;
+  }
+}

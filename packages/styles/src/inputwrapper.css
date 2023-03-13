@@ -1,0 +1,25 @@
+.inputwrapper {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.inputwrapper .label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.inputwrapper .description {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--oc-gray-6);
+}
+
+.inputwrapper .error {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--oc-red-6);
+}

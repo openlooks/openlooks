@@ -1,0 +1,95 @@
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji;
+  --code-font-family: source-code-pro, 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 0.9375rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 2rem;
+
+  --spacing-xs: 0.625rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.25rem;
+  --spacing-xl: 1.5rem;
+
+  --breakpoint-xs: 36rem;
+  --breakpoint-sm: 48rem;
+  --breakpoint-md: 62rem;
+  --breakpoint-lg: 75rem;
+  --breakpoint-xl: 90rem;
+}
+
+@each $size in (xs, sm, md, lg, xl) {
+  .radius-$(size) {
+    border-radius: var(--radius-$(size));
+  }
+
+  .m-$(size) {
+    margin: var(--spacing-$(size));
+  }
+
+  .my-$(size) {
+    margin-top: var(--spacing-$(size));
+    margin-bottom: var(--spacing-$(size));
+  }
+
+  .mx-$(size) {
+    margin-left: var(--spacing-$(size));
+    margin-right: var(--spacing-$(size));
+  }
+
+  .mt-$(size) {
+    margin-top: var(--spacing-$(size));
+  }
+
+  .mb-$(size) {
+    margin-bottom: var(--spacing-$(size));
+  }
+
+  .ml-$(size) {
+    margin-left: var(--spacing-$(size));
+  }
+
+  .mr-$(size) {
+    margin-right: var(--spacing-$(size));
+  }
+
+  .p-$(size) {
+    padding: var(--spacing-$(size));
+  }
+
+  .py-$(size) {
+    padding-top: var(--spacing-$(size));
+    padding-bottom: var(--spacing-$(size));
+  }
+
+  .px-$(size) {
+    padding-left: var(--spacing-$(size));
+    padding-right: var(--spacing-$(size));
+  }
+
+  .pt-$(size) {
+    padding-top: var(--spacing-$(size));
+  }
+
+  .pb-$(size) {
+    padding-bottom: var(--spacing-$(size));
+  }
+
+  .pl-$(size) {
+    padding-left: var(--spacing-$(size));
+  }
+
+  .pr-$(size) {
+    padding-right: var(--spacing-$(size));
+  }
+}

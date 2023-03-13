@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenLooks Stack</title>
+    <link rel="stylesheet" href="../dist/index.css" />
+    <link rel="stylesheet" href="demos.css" />
+  </head>
+  <body>
+    <div class="component-header">
+      <div class="openlooks container px-xl py-md">
+        <h1 class="openlooks title">Stack</h1>
+        <p class="openlooks text">Compose elements and components in vertical flex container</p>
+      </div>
+    </div>
+    <div class="openlooks container p-xl">
+      <h2 class="openlooks title">Usage</h2>
+      <div class="configurator-wrapper">
+        <div class="configurator-main">
+          <div
+            id="configurator-element"
+            class="openlooks stack"
+            style="background-color: var(--oc-gray-0); height: 300px; width: 100%"
+          >
+            <button class="openlooks button size-sm variant-outline color-blue radius-sm">1</button>
+            <button class="openlooks button size-sm variant-outline color-blue radius-sm">2</button>
+            <button class="openlooks button size-sm variant-outline color-blue radius-sm">3</button>
+          </div>
+        </div>
+        <div class="configurator-controls">
+          <div class="openlooks stack">
+            <div class="openlooks inputwrapper">
+              <label for="align" class="label">Align</label
+              ><select id="align" class="openlooks nativeselect" aria-invalid="false" name="align">
+                <option value="streth" selected>stretch</option>
+                <option value="center">center</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+              </select>
+            </div>
+            <div class="openlooks inputwrapper">
+              <label for="justify" class="label">Justify</label
+              ><select id="justify" class="openlooks nativeselect" aria-invalid="false" name="justify">
+                <option value="center" selected>center</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+              </select>
+            </div>
+            <div class="openlooks inputwrapper">
+              <label for="spacing" class="label">Spacing</label
+              ><select id="spacing" class="openlooks nativeselect" aria-invalid="false" name="spacing">
+                <option value="xs">xs</option>
+                <option value="sm">sm</option>
+                <option value="md" selected>md</option>
+                <option value="lg">lg</option>
+                <option value="xl">xl</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre id="configurator-code" class="openlooks code"></pre>
+    </div>
+  </body>
+  <script>
+    const props = {
+      align: 'stretch',
+      justify: 'center',
+      spacing: 'md',
+    };
+
+    function applyProps() {
+      const el = document.getElementById('configurator-element');
+      const className =
+        'openlooks stack ' +
+        Object.entries(props)
+          .map(([key, value]) => `${key}-${value}`)
+          .join(' ');
+
+      el.className = className;
+
+      document.getElementById('configurator-code').innerText = `<div class="${className}">
+  <button class="openlooks button size-sm variant-outline color-blue radius-sm">1</button>
+  <button class="openlooks button size-sm variant-outline color-blue radius-sm">2</button>
+  <button class="openlooks button size-sm variant-outline color-blue radius-sm">3</button>
+</div>`;
+    }
+
+    function handleChange(e) {
+      const name = e.target.name;
+      const value = e.target.value;
+      props[name] = value;
+      applyProps();
+    }
+
+    document.addEventListener('change', handleChange, false);
+    document.addEventListener('input', handleChange, false);
+
+    applyProps();
+  </script>
+</html>

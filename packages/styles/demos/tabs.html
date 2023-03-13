@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenLooks Tabs</title>
+    <link rel="stylesheet" href="../dist/index.css" />
+    <link rel="stylesheet" href="demos.css" />
+  </head>
+  <body>
+    <h1 class="openlooks title">Tabs</h1>
+    <div>
+      <div class="openlooks tablist" role="tablist">
+        <button class="openlooks tab" role="tab" aria-controls="gallery-tab">Gallery</button>
+        <button class="openlooks tab" role="tab" aria-controls="messages-tab">Messages</button>
+        <button class="openlooks tab" role="tab" aria-controls="settings-tab">Settings</button>
+      </div>
+      <div id="gallery-tab" role="tabpanel">Gallery</div>
+      <div id="messages-tab" role="tabpanel">Messages</div>
+      <div id="settings-tab" role="tabpanel">Settings</div>
+    </div>
+  </body>
+  <script>
+    const tabs = document.querySelectorAll('[role="tab"]');
+    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+    function handleClick(e) {
+      const el = e.target;
+      const role = el.getAttribute('role');
+      if (role === 'tab') {
+        setTab(el.getAttribute('aria-controls'));
+      }
+    }
+
+    function setTab(tabId) {
+      for (const tab of tabs) {
+        if (tab.getAttribute('aria-controls') === tabId) {
+          tab.setAttribute('aria-selected', true);
+        } else {
+          tab.setAttribute('aria-selected', false);
+        }
+      }
+      for (const tabPanel of tabPanels) {
+        if (tabPanel.id === tabId) {
+          tabPanel.setAttribute('aria-expanded', true);
+          tabPanel.hidden = false;
+        } else {
+          tabPanel.setAttribute('aria-expanded', false);
+          tabPanel.hidden = true;
+        }
+      }
+    }
+
+    document.addEventListener('click', handleClick, false);
+    setTab('gallery-tab');
+  </script>
+</html>

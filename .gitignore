@@ -6,6 +6,8 @@ packages/react/src/components
 packages/solid/dist
 packages/solid/src/components
 
+packages/styles/dist
+
 packages/svelte/dist
 packages/svelte/src/components
 

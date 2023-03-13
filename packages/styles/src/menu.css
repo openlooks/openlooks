@@ -1,0 +1,34 @@
+.menu-label {
+  color: var(--oc-gray-6);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  padding: 0.3125rem 0.75rem;
+}
+
+.menu-item {
+  align-items: center;
+  border-radius: 0.25rem;
+  color: var(--color-7, var(--oc-gray-9));
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+  margin: 0;
+  padding: 0.625rem 0.75rem;
+  white-space: nowrap;
+}
+
+.menu-item .icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 0.625rem;
+}
+
+.menu-item .label {
+  flex: 1 1 0%;
+}
+
+.menu-item:hover {
+  background-color: var(--color-0, var(--oc-gray-1));
+}

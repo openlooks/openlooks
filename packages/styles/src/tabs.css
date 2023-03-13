@@ -1,0 +1,37 @@
+.tablist {
+  position: relative;
+  height: 2.25rem;
+  min-height: 2.25rem;
+  user-select: none;
+  white-space: nowrap;
+  border-bottom: 0.1250rem solid var(--oc-gray-4);
+}
+
+.tab {
+  display: inline-block;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  line-height: 2.25rem;
+  margin: 0;
+  padding: 0 1.0rem;
+  min-width: 4.75rem;
+  height: 2.25rem;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  color: var(--oc-gray-6);
+  text-decoration: none;
+  outline: 0;
+  background: none;
+  border: 0;
+  border-bottom: 0.1250rem solid var(--oc-gray-4);
+}
+
+.tab:hover {
+  background-color: var(--oc-gray-1);
+}
+
+.tab[aria-selected='true'] {
+  border-bottom: 0.1250rem solid var(--oc-blue-5);
+  color: var(--oc-gray-8);
+}

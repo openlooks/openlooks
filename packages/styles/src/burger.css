@@ -1,0 +1,50 @@
+.burger-button {
+  --size: 34px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.burger {
+  position: relative;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.burger,
+.burger::before,
+.burger::after {
+  display: block;
+  width: var(--size);
+  height: calc(var(--size) / 12);
+  background-color: var(--oc-black);
+  outline: 1px solid transparent;
+  transition-property: background-color, transform;
+  transition-duration: 100ms;
+}
+
+.burger::before,
+.burger::after {
+  position: absolute;
+  content: '';
+  left: 0;
+}
+
+.burger::before {
+  top: calc(var(--size) / -3);
+}
+
+.burger::after {
+  top: calc(var(--size) / 3);
+}
+
+.burger[data-opened='true'] {
+  background-color: transparent;
+}
+
+.burger[data-opened='true']::before {
+  transform: translateY(calc(var(--size) / 3)) rotate(45deg);
+}
+
+.burger[data-opened='true']::after {
+  transform: translateY(calc(var(--size) / -3)) rotate(-45deg);
+}

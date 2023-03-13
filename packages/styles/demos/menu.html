@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenLooks Menu</title>
+    <link rel="stylesheet" href="../dist/index.css" />
+    <link rel="stylesheet" href="demos.css" />
+  </head>
+  <body>
+    <div class="component-header">
+      <div class="openlooks container px-xl py-md">
+        <h1 class="openlooks title">Menu</h1>
+        <p class="openlooks text">Combine a list of secondary actions into single interactive area</p>
+      </div>
+    </div>
+    <div class="openlooks container p-xl">
+      <h2 class="openlooks title">Usage</h2>
+      <button id="toggle" class="openlooks button color-blue variant-filled size-sm radius-sm">Toggle menu</button>
+      <div id="menu" class="openlooks popover size-sm radius-sm" style="opacity: 0; width: 12.5rem">
+        <div class="openlooks menu-label">Application</div>
+        <div class="openlooks menu-item">
+          <div class="icon"><icon-settings size="0.875rem" /></div>
+          <div class="label">Settings</div>
+        </div>
+        <div class="openlooks menu-item">
+          <div class="icon"><icon-message-circle size="0.875rem" /></div>
+          <div class="label">Messages</div>
+        </div>
+        <div class="openlooks menu-item">
+          <div class="icon"><icon-photo size="0.875rem" /></div>
+          <div class="label">Gallery</div>
+        </div>
+        <div class="openlooks menu-item">
+          <div class="icon"><icon-search size="0.875rem" /></div>
+          <div class="label">Search</div>
+        </div>
+        <div class="openlooks menu-divider"></div>
+        <div class="openlooks menu-label">Danger zone</div>
+        <div class="openlooks menu-item">
+          <div class="icon"><icon-arrows-left-right size="0.875rem" /></div>
+          <div class="label">Transfer my data</div>
+        </div>
+        <div class="openlooks menu-item color-red">
+          <div class="icon"><icon-trash size="0.875rem" /></div>
+          <div class="label">Delete my account</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="icons.js"></script>
+  <script>
+    const toggleBtn = document.getElementById('toggle');
+    const menu = document.getElementById('menu');
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (menu.style.opacity === '0') {
+        const buttonBounds = toggleBtn.getBoundingClientRect();
+        menu.style.top = `${buttonBounds.bottom + 8}px`;
+        menu.style.left = `${buttonBounds.left}px`;
+        menu.style.opacity = '1';
+      } else {
+        menu.style.opacity = '0';
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target !== toggleBtn) {
+        menu.style.opacity = '0';
+      }
+    });
+  </script>
+</html>
