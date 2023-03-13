@@ -1,5 +1,19 @@
 module.exports = {
   files: 'src/**',
   dest: '..',
-  targets: ['vue3', 'solid', 'svelte', 'react'],
+  targets: ['react', 'solid', 'svelte', 'vue3'],
+  options: {
+    react: {
+      typescript: true,
+    },
+    solid: {
+      typescript: true,
+    },
+    svelte: {
+      typescript: true,
+    },
+    vue3: {
+      typescript: true,
+    },
+  },
 };
