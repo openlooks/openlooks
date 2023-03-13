@@ -15,6 +15,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@builder.io/eslint-plugin-mitosis": "0.0.14",
     "@typescript-eslint/eslint-plugin": "5.54.1",
     "@typescript-eslint/parser": "5.54.1",
     "eslint": "8.36.0",
@@ -34,6 +35,12 @@
   "eslintConfig": {
     "root": true,
     "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.base.json",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
     "plugins": [
       "@typescript-eslint"
     ],
@@ -41,15 +48,10 @@
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
       "plugin:prettier/recommended",
-      "plugin:react-hooks/recommended"
+      "plugin:react-hooks/recommended",
+      "plugin:@builder.io/mitosis/recommended"
     ],
     "rules": {
-      "@typescript-eslint/explicit-function-return-type": [
-        "error",
-        {
-          "allowExpressions": true
-        }
-      ],
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-floating-promises": "error",
@@ -60,12 +62,14 @@
           "varsIgnorePattern": "^_"
         }
       ],
+      "no-control-regex": "off",
       "prefer-promise-reject-errors": "error"
     },
     "ignorePatterns": [
       "dist",
       "node_modules",
       "packages/**/dist/",
+      "packages/styles/**/*.js",
       "package-lock.json",
       "mitosis.config.js"
     ]

@@ -4,7 +4,7 @@
   min-height: 2.25rem;
   user-select: none;
   white-space: nowrap;
-  border-bottom: 0.1250rem solid var(--oc-gray-4);
+  border-bottom: 0.125rem solid var(--oc-gray-4);
 }
 
 .tab {
@@ -13,7 +13,7 @@
   font-size: 0.875rem;
   line-height: 2.25rem;
   margin: 0;
-  padding: 0 1.0rem;
+  padding: 0 1rem;
   min-width: 4.75rem;
   height: 2.25rem;
   text-align: center;
@@ -24,7 +24,7 @@
   outline: 0;
   background: none;
   border: 0;
-  border-bottom: 0.1250rem solid var(--oc-gray-4);
+  border-bottom: 0.125rem solid var(--oc-gray-4);
 }
 
 .tab:hover {
@@ -32,6 +32,6 @@
 }
 
 .tab[aria-selected='true'] {
-  border-bottom: 0.1250rem solid var(--oc-blue-5);
+  border-bottom: 0.125rem solid var(--oc-blue-5);
   color: var(--oc-gray-8);
 }

@@ -5,7 +5,10 @@ export interface ButtonProps {
 
 export default function Button(props: ButtonProps) {
   return (
-    <button class="openlooks button color-blue size-sm radius-sm variant-filled" onClick={(e) => props.onClick?.(e)}>
+    <button
+      class="openlooks button color-blue size-sm radius-sm variant-filled"
+      onClick={(event) => props.onClick?.(event)}
+    >
       {props.children}
     </button>
   );
