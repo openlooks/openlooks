@@ -1,5 +1,13 @@
 node_modules
+
+packages/react/dist
 packages/react/src/components
+
+packages/solid/dist
 packages/solid/src/components
+
+packages/svelte/dist
 packages/svelte/src/components
+
+packages/vue/vue3/dist
 packages/vue/vue3/src/components
