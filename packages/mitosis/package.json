@@ -1,0 +1,12 @@
+{
+  "name": "@openlooks/mitosis",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "mitosis build"
+  },
+  "devDependencies": {
+    "@builder.io/mitosis": "0.0.92",
+    "@builder.io/mitosis-cli": "0.0.51"
+  }
+}
