@@ -1,8 +1,8 @@
 export interface ButtonProps {
   children: any;
-  onClick?: (e: Event) => void;
+  onClick?: (e: any) => void;
 }
 
 export default function Button(props: ButtonProps) {
-  return <button onClick={props.onClick}>{props.children}</button>;
+  return <button onClick={(e) => props.onClick?.(e)}>{props.children}</button>;
 }
