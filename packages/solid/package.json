@@ -5,10 +5,11 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "serve": "vite preview"
   },
   "devDependencies": {
+    "@openlooks/mitosis": "*",
     "@openlooks/styles": "*",
     "solid-js": "^1.6.14",
     "typescript": "^4.9.5",

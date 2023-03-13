@@ -1,9 +1,9 @@
 {
   "name": "@openlooks/mitosis",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "mitosis build"
+    "build": "mitosis build --config=mitosis.config.cjs"
   },
   "devDependencies": {
     "@builder.io/mitosis": "0.0.92",
