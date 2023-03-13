@@ -1,17 +1,8 @@
-import { useStore } from '@builder.io/mitosis';
+export interface ButtonProps {
+  children: any;
+  onClick?: (e: Event) => void;
+}
 
-type Props = {
-  message: string;
-};
-
-export default function Button(props: Props) {
-  const state = useStore({
-    name: 'Foo',
-  });
-
-  return (
-    <div>
-      {props.message || 'Hello'} {state.name}! I can run in React, Vue, Solid or Svelte!
-    </div>
-  );
+export default function Button(props: ButtonProps) {
+  return <button onClick={props.onClick}>{props.children}</button>;
 }
