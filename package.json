@@ -69,6 +69,8 @@
       "dist",
       "node_modules",
       "packages/**/dist/",
+      "packages/react/src/components/",
+      "packages/solid/src/components/",
       "packages/styles/**/*.js",
       "package-lock.json",
       "mitosis.config.js"
