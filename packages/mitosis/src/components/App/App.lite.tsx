@@ -3,27 +3,38 @@ import Counter from '../Counter/Counter.lite';
 import Markdown from '../Markdown/Markdown.lite';
 import Route from '../Route/Route.lite';
 import Router from '../Router/Router.lite';
+import RouterLink from '../RouterLink/RouterLink.lite';
 import Title from '../Title/Title.lite';
 
 export default function App() {
   return (
     <div>
       <Title order={1}>OpenLooks</Title>
+      <div>
+        <Anchor href="https://openlooks.dev">OpenLooks</Anchor>
+      </div>
+      <hr />
+      <Title order={2}>Counter Test</Title>
       <Counter />
+      <hr />
+      <Title order={2}>Markdown Test</Title>
       <Markdown>{`# Hello World
 
       This is a Markdown test.
 
       *Foo* **bar** _bang_ bop.
       `}</Markdown>
+      <hr />
+      <Title order={2}>Router Test</Title>
       <Router>
         <div>
-          <Anchor href="/">home</Anchor>
+          <RouterLink href="/">home</RouterLink>
           &nbsp;&middot;&nbsp;
-          <Anchor href="/x">x</Anchor>
+          <RouterLink href="/x">x</RouterLink>
           &nbsp;&middot;&nbsp;
-          <Anchor href="/y">y</Anchor>
+          <RouterLink href="/y">y</RouterLink>
         </div>
+        <Route path="/">This is the home component</Route>
         <Route path="/x">This is the X component</Route>
         <Route path="/y">This is the Y component</Route>
       </Router>
