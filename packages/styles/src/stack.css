@@ -54,6 +54,10 @@
  * Spacing
  */
 
+.stack.spacing-0 {
+  gap: 0;
+}
+
 .stack.spacing-xs {
   gap: 0.625rem;
 }

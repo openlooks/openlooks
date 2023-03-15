@@ -1,0 +1,21 @@
+.appshell {
+  position: relative;
+}
+
+.appshell .header {
+  position: static;
+}
+
+.appshell .body {
+  display: flex;
+  position: relative;
+}
+
+.appshell .nav {
+  position: static;
+}
+
+.appshell .main {
+  flex: 1 1 0%;
+  width: 100vw;
+}

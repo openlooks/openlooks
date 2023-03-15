@@ -3,10 +3,10 @@
  * Note that order matters - later styles override earlier ones
  */
 
+@import 'unstyledbutton.css';
 @import 'system.css';
 @import 'colors.css';
 @import 'text.css';
-@import 'unstyledbutton.css';
 
 /*
  * Component styles
@@ -14,6 +14,7 @@
 
 @import 'actionicon.css';
 @import 'anchor.css';
+@import 'appshell.css';
 @import 'burger.css';
 @import 'button.css';
 @import 'center.css';
