@@ -1,6 +1,9 @@
 import Anchor from '../Anchor/Anchor.lite';
+import AppShell from '../AppShell/AppShell.lite';
 import Counter from '../Counter/Counter.lite';
+import Header from '../Header/Header.lite';
 import Markdown from '../Markdown/Markdown.lite';
+import Navbar from '../Navbar/Navbar.lite';
 import Route from '../Route/Route.lite';
 import Router from '../Router/Router.lite';
 import RouterLink from '../RouterLink/RouterLink.lite';
@@ -8,7 +11,14 @@ import Title from '../Title/Title.lite';
 
 export default function App() {
   return (
-    <div>
+    <AppShell
+      slotHeader={
+        <Header>
+          <Anchor href="/">OpenLooks</Anchor>
+        </Header>
+      }
+      slotNavbar={<Navbar>nav</Navbar>}
+    >
       <Title order={1}>OpenLooks</Title>
       <div>
         <Anchor href="https://openlooks.dev">OpenLooks</Anchor>
@@ -38,6 +48,6 @@ export default function App() {
         <Route path="/x">This is the X component</Route>
         <Route path="/y">This is the Y component</Route>
       </Router>
-    </div>
+    </AppShell>
   );
 }
