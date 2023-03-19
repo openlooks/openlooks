@@ -1,4 +1,4 @@
-import { useStore } from '@builder.io/mitosis';
+import { onMount, useStore } from '@builder.io/mitosis';
 import Context from './Router.context.lite';
 
 export interface RouterProps {
@@ -8,6 +8,13 @@ export interface RouterProps {
 export default function Router(props: RouterProps) {
   const state = useStore({
     currentUrl: window.location.pathname,
+  });
+
+  onMount(() => {
+    // Listen for URL changes
+    window.addEventListener('popstate', () => {
+      state.currentUrl = window.location.pathname;
+    });
   });
 
   return (
