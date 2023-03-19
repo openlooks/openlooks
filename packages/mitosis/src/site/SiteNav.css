@@ -17,7 +17,7 @@
   background-color: var(--oc-gray-0);
 }
 
-.navlinks a {
+.navlinks a.openlooks.anchor {
   display: block;
   text-decoration: none;
   outline: 0;
@@ -31,12 +31,12 @@
   color: var(--oc-gray-7);
 }
 
-.navlinks a:hover {
+.navlinks a.openlooks.anchor:hover {
   background-color: var(--oc-gray-0);
 }
 
-.navlinks a[aria-current],
-.navlinks a[aria-current]:hover {
+.navlinks a.openlooks.anchor[aria-current],
+.navlinks a.openlooks.anchor[aria-current]:hover {
   background-color: var(--oc-blue-0);
   color: var(--oc-blue-6);
   border-left: 0.0625rem solid var(--oc-blue-4);

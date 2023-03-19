@@ -17,8 +17,11 @@ export default function Router(props: RouterProps) {
           return state.currentUrl;
         },
         navigate: (newUrl: string) => {
-          state.currentUrl = newUrl;
+          // Update the URL without reloading the page
           window.history.pushState(null, '', newUrl);
+
+          // Use window.location.pathname to get the resolved URL
+          state.currentUrl = window.location.pathname;
         },
       }}
     >

@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/">
           <HomePage />
         </Route>
-        <Route path="appshell">
+        <Route path="/appshell">
           <AppShellPage />
         </Route>
       </AppShell>
