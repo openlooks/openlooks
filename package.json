@@ -68,14 +68,12 @@
     "ignorePatterns": [
       "dist",
       "node_modules",
+      "package-lock.json",
       "packages/**/dist/",
       "packages/react/src/components/",
       "packages/solid/src/components/",
       "packages/styles/**/*.js",
-      "package-lock.json",
-      "copyfiles.cjs",
-      "mitosis.config.cjs",
-      "watch.cjs"
+      "packages/**/*.cjs"
     ]
   }
 }
