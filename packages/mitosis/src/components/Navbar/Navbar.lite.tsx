@@ -4,7 +4,7 @@ export interface NavbarProps {
 
 export default function Navbar(props: NavbarProps) {
   return (
-    <nav class="openlooks header" style={{ width: '16rem' }}>
+    <nav class="openlooks navbar scrollarea" style={{ width: '16rem' }}>
       {props.children}
     </nav>
   );

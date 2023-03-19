@@ -73,7 +73,8 @@
       "packages/solid/src/components/",
       "packages/styles/**/*.js",
       "package-lock.json",
-      "mitosis.config.js"
+      "copyfiles.cjs",
+      "mitosis.config.cjs"
     ]
   }
 }

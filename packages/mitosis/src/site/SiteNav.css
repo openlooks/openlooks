@@ -1,0 +1,44 @@
+.navlinks {
+  font-family: var(--font-family);
+  padding: 0.5rem;
+}
+
+.navlinks .section {
+  border-left: 0.0625rem solid var(--oc-gray-4);
+  border-top: 0.0625rem solid var(--oc-gray-4);
+  border-radius: 0.25rem 0 0;
+  padding: 0 1rem 0 1.5rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.75rem;
+  color: var(--oc-gray-5);
+  background-color: var(--oc-gray-0);
+}
+
+.navlinks a {
+  display: block;
+  text-decoration: none;
+  outline: 0;
+  border-left: 0.0625rem solid var(--oc-gray-4);
+  border-radius: 0 0.25rem 0.25rem 0;
+  padding: 0 0 0 1.5rem;
+  margin-left: 0.5rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.875rem;
+  color: var(--oc-gray-7);
+}
+
+.navlinks a:hover {
+  background-color: var(--oc-gray-0);
+}
+
+.navlinks a[aria-current],
+.navlinks a[aria-current]:hover {
+  background-color: var(--oc-blue-0);
+  color: var(--oc-blue-6);
+  border-left: 0.0625rem solid var(--oc-blue-4);
+  font-weight: 500;
+}

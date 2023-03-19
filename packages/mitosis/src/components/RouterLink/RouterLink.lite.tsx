@@ -12,6 +12,7 @@ export default function RouterLink(props: RouterLinkProps) {
     <a
       class="openlooks anchor"
       href={props.href}
+      aria-current={router.url() === props.href ? 'page' : undefined}
       onClick={(event) => {
         event.preventDefault();
         router.navigate(props.href);

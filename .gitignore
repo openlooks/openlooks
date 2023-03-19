@@ -3,14 +3,18 @@ node_modules
 
 packages/react/dist
 packages/react/src/components
+packages/react/src/site
 
 packages/solid/dist
 packages/solid/src/components
+packages/solid/src/site
 
 packages/styles/dist
 
 packages/svelte/dist
 packages/svelte/src/components
+packages/svelte/src/site
 
 packages/vue/vue3/dist
 packages/vue/vue3/src/components
+packages/vue/vue3/src/site

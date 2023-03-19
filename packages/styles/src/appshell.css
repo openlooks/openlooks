@@ -12,6 +12,7 @@
 }
 
 .appshell .navbar {
+  overflow: auto;
   position: static;
 }
 

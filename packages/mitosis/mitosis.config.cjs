@@ -10,11 +10,12 @@ module.exports = {
       typescript: true,
     },
     svelte: {
+      prettier: false,
       typescript: true,
     },
     vue3: {
       typescript: true,
     },
   },
-  exclude: ['../**/index.css', '../**/main.ts', '../**/main.tsx', '../**/vite-env.d.ts'],
+  exclude: ['../**/*.css', '../**/main.*', '../**/vite-env.d.ts'],
 };
