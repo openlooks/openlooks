@@ -3,3 +3,9 @@
   max-width: var(--breakpoint-md);
   width: 100%;
 }
+
+@each $size in (xs, sm, md, lg, xl) {
+  .container.size-$(size) {
+    max-width: var(--breakpoint-$(size));
+  }
+}
