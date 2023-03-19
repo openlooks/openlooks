@@ -10,6 +10,16 @@ async function main() {
     mkdirSync(resolve(outputDir));
   }
 
+  // Create icon props
+  writeFileSync(
+    resolve(outputDir, 'IconProps.ts'),
+    `export interface IconProps {
+  size?: string;
+}
+  `,
+    'utf8'
+  );
+
   const files = readdirSync(inputDir);
   for (const file of files) {
     let svg = readFileSync(resolve(inputDir, file), 'utf8');
@@ -20,10 +30,18 @@ async function main() {
     // Remove class="icon icon-tabler icon-tabler-adjustments"
     svg = svg.replace(/class="[^"]*"/g, '');
 
+    // Replace width="24" height="24"
+    // with
+    // width={props.size || '24'}
+    // height={props.size || '24'}
+    svg = svg.replace(/\swidth="([^"]*)"/g, " width={props.size || '$1'}");
+    svg = svg.replace(/\sheight="([^"]*)"/g, " height={props.size || '$1'}");
+
     const iconName = getIconName(file);
     writeFileSync(
       resolve(outputDir, `${iconName}.lite.tsx`),
-      `export default function ${iconName}() {
+      `import { IconProps } from './IconProps';
+export default function ${iconName}(props: IconProps) {
   return (${svg.trim()});
 }
 `,
