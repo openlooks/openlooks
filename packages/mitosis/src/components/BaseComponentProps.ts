@@ -1,5 +1,3 @@
-import { JSX } from '@builder.io/mitosis/jsx-runtime';
-
 export type Color =
   | 'black'
   | 'gray'
@@ -24,7 +22,8 @@ export interface BaseComponentProps {
   // Note that we cannot use the "css" prop name because it is reserved by Mitosis.
   // See: https://github.com/BuilderIO/mitosis/blob/main/docs/components.md#css
   // Instead we use "sx" based on Mantine: https://mantine.dev/styles/sx/
-  sx?: JSX.CSS | undefined;
+  // Ideally we could use "JSX.CSS" or "CSSProperties" but we cannot use those in Mitosis helpers currently
+  sx?: Record<string, string | number>;
 
   // Custom class names appended to the end of system generated class names
   // See: https://github.com/BuilderIO/mitosis/blob/main/docs/components.md#class-vs-classname

@@ -1,5 +1,5 @@
 import { Show, useContext } from '@builder.io/mitosis';
-import Context from '../Router/Router.context.lite';
+import Context from './Router.context.lite';
 
 export interface RouteProps {
   path: string;

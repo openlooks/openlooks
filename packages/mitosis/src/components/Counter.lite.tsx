@@ -1,5 +1,5 @@
 import { useStore } from '@builder.io/mitosis';
-import Button from '../Button/Button.lite';
+import Button from './Button.lite';
 
 export default function Counter() {
   const state = useStore({

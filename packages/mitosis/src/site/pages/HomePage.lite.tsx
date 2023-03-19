@@ -1,9 +1,9 @@
-import Anchor from '../../components/Anchor/Anchor.lite';
-import Counter from '../../components/Counter/Counter.lite';
-import Markdown from '../../components/Markdown/Markdown.lite';
-import Route from '../../components/Route/Route.lite';
-import RouterLink from '../../components/RouterLink/RouterLink.lite';
-import Title from '../../components/Title/Title.lite';
+import Anchor from '../../components/Anchor.lite';
+import Counter from '../../components/Counter.lite';
+import Markdown from '../../components/Markdown.lite';
+import Route from '../../components/Route.lite';
+import RouterLink from '../../components/RouterLink.lite';
+import Title from '../../components/Title.lite';
 
 export default function HomePage() {
   return (

@@ -1,4 +1,4 @@
-import Group from '../../components/Group/Group.lite';
+import Group from '../../components/Group.lite';
 
 export default function GroupPage() {
   return (

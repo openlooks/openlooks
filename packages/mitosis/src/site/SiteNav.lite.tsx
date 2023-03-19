@@ -1,5 +1,5 @@
-import Navbar from '../components/Navbar/Navbar.lite';
-import RouterLink from '../components/RouterLink/RouterLink.lite';
+import Navbar from '../components/Navbar.lite';
+import RouterLink from '../components/RouterLink.lite';
 
 import './SiteNav.css';
 

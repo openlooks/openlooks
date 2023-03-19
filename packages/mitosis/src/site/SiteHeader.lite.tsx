@@ -1,6 +1,6 @@
-import Group from '../components/Group/Group.lite';
-import Header from '../components/Header/Header.lite';
-import RouterLink from '../components/RouterLink/RouterLink.lite';
+import Group from '../components/Group.lite';
+import Header from '../components/Header.lite';
+import RouterLink from '../components/RouterLink.lite';
 
 export default function SiteHeader() {
   return (
