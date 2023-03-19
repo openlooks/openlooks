@@ -1,4 +1,5 @@
 import Anchor from '../../components/Anchor.lite';
+import Code from '../../components/Code.lite';
 import Container from '../../components/Container.lite';
 import Markdown from '../../components/Markdown.lite';
 import Title from '../../components/Title.lite';
@@ -22,6 +23,9 @@ export default function HomePage() {
 
       *Foo* **bar** _bang_ bop.
       `}</Markdown>
+      <hr />
+      <Title order={2}>Code Block</Title>
+      <Code block class="language-css">{`p { color: red }`}</Code>
     </Container>
   );
 }
