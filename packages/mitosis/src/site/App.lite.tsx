@@ -2,6 +2,7 @@ import AppShell from '../components/AppShell.lite';
 import Route from '../components/Route.lite';
 import Router from '../components/Router.lite';
 import AppShellPage from './pages/AppShellPage.lite';
+import ButtonPage from './pages/ButtonPage.lite';
 import GroupPage from './pages/GroupPage.lite';
 import HomePage from './pages/HomePage.lite';
 import SiteHeader from './SiteHeader.lite';
@@ -18,6 +19,9 @@ export default function App() {
         </Route>
         <Route path="/appshell">
           <AppShellPage />
+        </Route>
+        <Route path="/button">
+          <ButtonPage />
         </Route>
         <Route path="/group">
           <GroupPage />

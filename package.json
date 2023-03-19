@@ -74,7 +74,8 @@
       "packages/styles/**/*.js",
       "package-lock.json",
       "copyfiles.cjs",
-      "mitosis.config.cjs"
+      "mitosis.config.cjs",
+      "watch.cjs"
     ]
   }
 }

@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "mitosis build --config=mitosis.config.cjs && node copyfiles.cjs"
+    "build": "mitosis build --config=mitosis.config.cjs && node copyfiles.cjs",
+    "dev": "node watch.cjs"
   },
   "devDependencies": {
     "@builder.io/mitosis": "0.0.92",
     "@builder.io/mitosis-cli": "0.0.51",
-    "@openlooks/styles": "*"
+    "@openlooks/styles": "*",
+    "chokidar": "3.5.3"
   }
 }

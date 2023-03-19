@@ -18,7 +18,7 @@ export function buildOpenLooksClassName(baseName: string, props: any): string {
     .join(' ');
 }
 
-const ignoredProps = ['children', 'class', 'className'];
+const ignoredProps = ['children', 'class', 'className', 'label', 'description', 'error', 'required'];
 const valueTypes = ['boolean', 'number', 'string'];
 
 function isClassSystemProp(entry: [string, unknown]): boolean {
