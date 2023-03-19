@@ -8,7 +8,7 @@ export interface NativeSelectProps extends BaseComponentProps, InputWrapperProps
   variant?: 'filled' | 'light' | 'outline' | 'subtle';
   size?: Size;
   data: string[];
-  onClick?: (e: any) => void;
+  defaultValue?: string;
   onChange?: (e: any) => void;
 }
 
@@ -25,7 +25,7 @@ export default function NativeSelect(props: NativeSelectProps) {
         id={props.id}
         class={buildOpenLooksClassName('nativeselect', props)}
         style={props.sx as JSX.CSS | undefined}
-        onClick={(event) => props.onClick?.(event)}
+        value={props.defaultValue}
         onChange={(event) => props.onChange?.(event)}
       >
         <For each={props.data}>{(item) => <option value={item}>{item}</option>}</For>

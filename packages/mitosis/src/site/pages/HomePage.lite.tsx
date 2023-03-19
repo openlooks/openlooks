@@ -1,8 +1,8 @@
 import Anchor from '../../components/Anchor.lite';
 import Container from '../../components/Container.lite';
-import Counter from '../../components/Counter.lite';
 import Markdown from '../../components/Markdown.lite';
 import Title from '../../components/Title.lite';
+import Counter from '..//Counter.lite';
 
 export default function HomePage() {
   return (
@@ -16,7 +16,7 @@ export default function HomePage() {
       <Counter />
       <hr />
       <Title order={2}>Markdown Test</Title>
-      <Markdown>{`# Hello World
+      <Markdown>{`### Hello World
 
       This is a Markdown test.
 
