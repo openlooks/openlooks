@@ -1,7 +1,15 @@
+const targets = {
+  react: 'react',
+  solid: 'solid',
+  svelte: 'svelte',
+  vue3: 'vue',
+};
+
 module.exports = {
   files: 'src/**',
   dest: '..',
-  targets: ['react', 'solid', 'svelte', 'vue3'],
+  targets: Object.keys(targets),
+  getTargetPath: (target) => targets[target.target],
   options: {
     react: {
       typescript: true,

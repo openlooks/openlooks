@@ -18,7 +18,7 @@ packages/svelte/src/components
 packages/svelte/src/site
 packages/svelte/src/utils
 
-packages/vue/vue3/dist
-packages/vue/vue3/src/components
-packages/vue/vue3/src/site
-packages/vue/vue3/src/utils
+packages/vue/dist
+packages/vue/src/components
+packages/vue/src/site
+packages/vue/src/utils
