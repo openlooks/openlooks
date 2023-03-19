@@ -3,7 +3,7 @@ import Code from '../../components/Code.lite';
 import Container from '../../components/Container.lite';
 import Markdown from '../../components/Markdown.lite';
 import Title from '../../components/Title.lite';
-import Counter from '..//Counter.lite';
+import Counter from '../components/Counter.lite';
 
 export default function HomePage() {
   return (

@@ -8,9 +8,9 @@ import ConfiguratorStage from '../../components/ConfiguratorStage.lite';
 import Container from '../../components/Container.lite';
 import NativeSelect from '../../components/NativeSelect.lite';
 import Stack from '../../components/Stack.lite';
-import Text from '../../components/Text.lite';
 import TextInput from '../../components/TextInput.lite';
 import Title from '../../components/Title.lite';
+import DocHeader from '../components/DocHeader.lite';
 
 export interface ButtonConfiguratorProps {
   variant: 'filled' | 'light' | 'outline' | 'subtle';
@@ -30,65 +30,66 @@ export default function ButtonPage() {
   });
 
   return (
-    <Container size="sm">
-      <Title order={1}>Button</Title>
-      <Text>Render button or link with button styles from mantine theme</Text>
-      <Title order={2}>Usage</Title>
-      <Configurator>
-        <ConfiguratorStage>
-          <Button variant={state.variant} color={state.color} radius={state.radius} size={state.size}>
-            {state.text}
-          </Button>
-        </ConfiguratorStage>
-        <ConfiguratorControls>
-          <Stack>
-            <NativeSelect
-              id="variant"
-              label="Variant"
-              data={['filled', 'light', 'outline', 'subtle']}
-              defaultValue={state.variant}
-              onChange={(event) => {
-                state.variant = event.target.value;
-              }}
-            />
-            <ColorPicker
-              id="color"
-              name="color"
-              label="Color"
-              defaultValue={state.color}
-              onChange={(event) => {
-                state.color = event.target.value;
-              }}
-            />
-            <NativeSelect
-              id="radius"
-              label="Radius"
-              data={['xs', 'sm', 'md', 'lg', 'xl']}
-              defaultValue={state.radius}
-              onChange={(event) => {
-                state.radius = event.target.value;
-              }}
-            />
-            <NativeSelect
-              id="size"
-              label="size"
-              data={['xs', 'sm', 'md', 'lg', 'xl']}
-              defaultValue={state.size}
-              onChange={(event) => {
-                state.size = event.target.value;
-              }}
-            />
-            <TextInput
-              id="size"
-              label="size"
-              defaultValue={state.text}
-              onChange={(event) => {
-                state.text = event.target.value;
-              }}
-            />
-          </Stack>
-        </ConfiguratorControls>
-      </Configurator>
-    </Container>
+    <>
+      <DocHeader title="Button" description="Render button or link with button styles from mantine theme" />
+      <Container size="sm">
+        <Title order={2}>Usage</Title>
+        <Configurator>
+          <ConfiguratorStage>
+            <Button variant={state.variant} color={state.color} radius={state.radius} size={state.size}>
+              {state.text}
+            </Button>
+          </ConfiguratorStage>
+          <ConfiguratorControls>
+            <Stack>
+              <NativeSelect
+                id="variant"
+                label="Variant"
+                data={['filled', 'light', 'outline', 'subtle']}
+                defaultValue={state.variant}
+                onChange={(event) => {
+                  state.variant = event.target.value;
+                }}
+              />
+              <ColorPicker
+                id="color"
+                name="color"
+                label="Color"
+                defaultValue={state.color}
+                onChange={(event) => {
+                  state.color = event.target.value;
+                }}
+              />
+              <NativeSelect
+                id="radius"
+                label="Radius"
+                data={['xs', 'sm', 'md', 'lg', 'xl']}
+                defaultValue={state.radius}
+                onChange={(event) => {
+                  state.radius = event.target.value;
+                }}
+              />
+              <NativeSelect
+                id="size"
+                label="size"
+                data={['xs', 'sm', 'md', 'lg', 'xl']}
+                defaultValue={state.size}
+                onChange={(event) => {
+                  state.size = event.target.value;
+                }}
+              />
+              <TextInput
+                id="size"
+                label="size"
+                defaultValue={state.text}
+                onChange={(event) => {
+                  state.text = event.target.value;
+                }}
+              />
+            </Stack>
+          </ConfiguratorControls>
+        </Configurator>
+      </Container>
+    </>
   );
 }
