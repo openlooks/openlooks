@@ -8,7 +8,7 @@ const { resolve } = require('path');
 const targets = ['react', 'solid', 'svelte', 'vue/vue3'];
 
 async function main() {
-  const entries = await fg(['./src/**/*.css']);
+  const entries = await fg(['./src/**/*.css', './src/**/*.ts']);
   for (const target of targets) {
     for (const entry of entries) {
       copyFileSync(resolve(entry), resolve('..', target, entry));

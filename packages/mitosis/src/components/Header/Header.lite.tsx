@@ -1,10 +1,9 @@
-export interface HeaderProps {
-  children: any;
-}
+import { buildOpenLooksClassName } from '../../utils/classname';
+import { BaseComponentProps } from '../BaseComponentProps';
 
-export default function Header(props: HeaderProps) {
+export default function Header(props: BaseComponentProps) {
   return (
-    <header class="openlooks header" style={{ height: '3.75rem' }}>
+    <header class={buildOpenLooksClassName('header', props)} style={props.sx}>
       {props.children}
     </header>
   );
