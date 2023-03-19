@@ -3,34 +3,28 @@ node_modules
 
 packages/styles/dist
 
+packages/mitosis/src/icons
+
 packages/react/dist
 packages/react/src/components
+packages/react/src/icons
 packages/react/src/site
 packages/react/src/utils
 
-packages/react-icons/dist
-packages/react-icons/src/icons
-
 packages/solid/dist
 packages/solid/src/components
+packages/solid/src/icons
 packages/solid/src/site
 packages/solid/src/utils
 
-packages/solid-icons/dist
-packages/solid-icons/src/icons
-
 packages/svelte/dist
 packages/svelte/src/components
+packages/svelte/src/icons
 packages/svelte/src/site
 packages/svelte/src/utils
 
-packages/svelte-icons/dist
-packages/svelte-icons/src/icons
-
 packages/vue/dist
 packages/vue/src/components
+packages/vue/src/icons
 packages/vue/src/site
 packages/vue/src/utils
-
-packages/vue-icons/dist
-packages/vue-icons/src/icons
