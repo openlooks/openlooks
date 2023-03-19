@@ -5,22 +5,20 @@ const { copyStaticFile } = require('./copyfiles.cjs');
 chokidar.watch('./src/').on('change', (path) => {
   if (path.endsWith('.lite.tsx')) {
     // If the file is ".lite.tsx" then run mitosis
-    // mitosis compile --to=<format> [options] [files]
-    // npx mitosis build --config=mitosis.config.cjs
     const target = 'solid';
     const inputFile = path.replaceAll('\\', '/');
     const outputFile = `../${target}/${inputFile.replace('.lite.tsx', '.tsx')}`;
     const cmd = `npx mitosis compile --config=mitosis.config.cjs --force --to=${target} --out=${outputFile} ${inputFile}`;
     exec(cmd, (error, stdout, stderr) => {
       if (error) {
-        console.log(`error: ${error.message}`);
+        console.log(`Error: ${error.message.trim()}`);
         return;
       }
       if (stderr) {
-        console.log(`stderr: ${stderr}`);
+        console.log(`Error: ${stderr.trim()}`);
         return;
       }
-      console.log(`stdout: ${stdout}`);
+      console.log(`Success: ${stdout.trim()}`);
     });
   } else {
     // Otherwise, copy the file to the destination directories
