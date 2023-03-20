@@ -71,7 +71,7 @@ export default function ButtonPage() {
               />
               <NativeSelect
                 id="size"
-                label="size"
+                label="Size"
                 data={['xs', 'sm', 'md', 'lg', 'xl']}
                 defaultValue={state.size}
                 onChange={(event) => {
@@ -79,8 +79,8 @@ export default function ButtonPage() {
                 }}
               />
               <TextInput
-                id="size"
-                label="size"
+                id="text"
+                label="Text"
                 defaultValue={state.text}
                 onChange={(event) => {
                   state.text = event.target.value;
