@@ -1,4 +1,5 @@
 .appshell {
+  overflow: hidden;
   position: relative;
 }
 
@@ -8,15 +9,17 @@
 
 .appshell .body {
   display: flex;
+  overflow: hidden;
   position: relative;
 }
 
 .appshell .navbar {
   overflow: auto;
   position: static;
+  width: 16rem;
 }
 
 .appshell .main {
   flex: 1 1 0%;
-  width: 100vw;
+  min-height: 100%;
 }

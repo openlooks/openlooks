@@ -34,3 +34,7 @@ body {
   font-weight: 400;
   margin-top: 0.5rem;
 }
+
+.demo-nav-button:hover {
+  background-color: var(--oc-gray-0);
+}
