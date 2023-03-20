@@ -13,7 +13,7 @@ export default function AppShell(props: AppShellProps) {
       {props.slotHeader}
       <div class="openlooks body" style={{ height: 'calc(100vh - 3.75rem)', overflow: 'hidden' }}>
         {props.slotNavbar}
-        <main class="openlooks main">{props.children}</main>
+        <main class="openlooks main scrollarea">{props.children}</main>
       </div>
     </div>
   );
