@@ -1,6 +1,8 @@
 // Create Mitosis icons from Tabler icons
-const { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } = require('fs');
+const { existsSync, mkdirSync, readFileSync, writeFileSync } = require('fs');
 const { resolve } = require('path');
+
+const iconList = ['adjustments.svg', 'alert-circle.svg', 'database.svg', 'messages.svg'];
 
 async function main() {
   const inputDir = '../../node_modules/@tabler/icons/icons/';
@@ -20,8 +22,7 @@ async function main() {
     'utf8'
   );
 
-  const files = readdirSync(inputDir);
-  for (const file of files) {
+  for (const file of iconList) {
     let svg = readFileSync(resolve(inputDir, file), 'utf8');
 
     // Remove xmlns="http://www.w3.org/2000/svg"
