@@ -12,6 +12,11 @@ body {
   margin: 0;
 }
 
+header.openlooks.header {
+  border-bottom: 1px solid var(--oc-gray-2);
+  height: 3.75rem;
+}
+
 .doc-header {
   background-color: var(--oc-gray-0);
   padding: 0.75rem 1rem 2rem 1rem;
@@ -37,4 +42,16 @@ body {
 
 .demo-nav-button:hover {
   background-color: var(--oc-gray-0);
+}
+
+.blue0 {
+  background-color: var(--oc-blue-0);
+}
+
+.blue1 {
+  background-color: var(--oc-blue-1);
+}
+
+.blue2 {
+  background-color: var(--oc-blue-2);
 }

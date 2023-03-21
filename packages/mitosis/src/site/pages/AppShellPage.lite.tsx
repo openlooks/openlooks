@@ -5,6 +5,7 @@ import Group from '../../components/Group.lite';
 import Header from '../../components/Header.lite';
 import Navbar from '../../components/Navbar.lite';
 import Stack from '../../components/Stack.lite';
+import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
 import UnstyledButton from '../../components/UnstyledButton.lite';
 import IconAdjustments from '../../icons/IconAdjustments.lite';
@@ -19,6 +20,11 @@ export default function AppShellPage() {
       <DocHeader title="AppShell" description="Responsive shell for your application with header and navbar" />
       <Container size="sm">
         <Title order={2}>Usage</Title>
+        <Text>
+          AppShell is a layout component that can be used to create a common Header - Navbar - Footer - Aside - Content
+          layout pattern. AppShell, Header, Footer, Aside and Navbar components include bare minimum default styles to
+          simplify customization.
+        </Text>
         <AppShell
           sx={{ width: '44rem', height: '32rem', border: '1px solid var(--oc-gray-2)' }}
           slotHeader={

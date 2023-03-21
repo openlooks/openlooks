@@ -9,7 +9,16 @@ export default function ContainerPage() {
       <DocHeader title="Container" description="Center content horizontally with predefined max-width" />
       <Container size="sm">
         <Title order={2}>Usage</Title>
-        <Text>TODO</Text>
+        <Text>
+          Container is the most basic layout element, it centers content horizontally and adds horizontal padding from
+          theme.
+        </Text>
+        <Container class="blue0">
+          <Text>Default container</Text>
+        </Container>
+        <Container size="xs" px="xs" class="blue0">
+          <Text>xs container with xs horizontal padding</Text>
+        </Container>
       </Container>
     </>
   );
