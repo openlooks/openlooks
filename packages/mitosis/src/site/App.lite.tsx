@@ -96,288 +96,296 @@ import UnstyledButtonPage from './pages/UnstyledButtonPage.lite';
 import SiteHeader from './SiteHeader.lite';
 import SiteNav from './SiteNav.lite';
 
+import AppShellBody from '../components/AppShellBody.lite';
+import AppShellMain from '../components/AppShellMain.lite';
 import './index.css';
 
 export default function App() {
   return (
     <Router>
-      <AppShell slotHeader={<SiteHeader />} slotNavbar={<SiteNav />}>
-        <Route path="/">
-          <HomePage />
-        </Route>
-        <Route path="/accordion">
-          <AccordionPage />
-        </Route>
-        <Route path="/action-icon">
-          <ActionIconPage />
-        </Route>
-        <Route path="/affix">
-          <AffixPage />
-        </Route>
-        <Route path="/alert">
-          <AlertPage />
-        </Route>
-        <Route path="/anchor">
-          <AnchorPage />
-        </Route>
-        <Route path="/app-shell">
-          <AppShellPage />
-        </Route>
-        <Route path="/aspect-ratio">
-          <AspectRatioPage />
-        </Route>
-        <Route path="/autocomplete">
-          <AutocompletePage />
-        </Route>
-        <Route path="/avatar">
-          <AvatarPage />
-        </Route>
-        <Route path="/background-image">
-          <BackgroundImagePage />
-        </Route>
-        <Route path="/badge">
-          <BadgePage />
-        </Route>
-        <Route path="/blockquote">
-          <BlockquotePage />
-        </Route>
-        <Route path="/box">
-          <BoxPage />
-        </Route>
-        <Route path="/breadcrumbs">
-          <BreadcrumbsPage />
-        </Route>
-        <Route path="/burger">
-          <BurgerPage />
-        </Route>
-        <Route path="/button">
-          <ButtonPage />
-        </Route>
-        <Route path="/card">
-          <CardPage />
-        </Route>
-        <Route path="/center">
-          <CenterPage />
-        </Route>
-        <Route path="/checkbox">
-          <CheckboxPage />
-        </Route>
-        <Route path="/chip">
-          <ChipPage />
-        </Route>
-        <Route path="/close-button">
-          <CloseButtonPage />
-        </Route>
-        <Route path="/code">
-          <CodePage />
-        </Route>
-        <Route path="/collapse">
-          <CollapsePage />
-        </Route>
-        <Route path="/color-input">
-          <ColorInputPage />
-        </Route>
-        <Route path="/color-picker">
-          <ColorPickerPage />
-        </Route>
-        <Route path="/color-swatch">
-          <ColorSwatchPage />
-        </Route>
-        <Route path="/container">
-          <ContainerPage />
-        </Route>
-        <Route path="/copy-button">
-          <CopyButtonPage />
-        </Route>
-        <Route path="/dialog">
-          <DialogPage />
-        </Route>
-        <Route path="/divider">
-          <DividerPage />
-        </Route>
-        <Route path="/drawer">
-          <DrawerPage />
-        </Route>
-        <Route path="/file-button">
-          <FileButtonPage />
-        </Route>
-        <Route path="/file-input">
-          <FileInputPage />
-        </Route>
-        <Route path="/flex">
-          <FlexPage />
-        </Route>
-        <Route path="/focus-trap">
-          <FocusTrapPage />
-        </Route>
-        <Route path="/grid">
-          <GridPage />
-        </Route>
-        <Route path="/group">
-          <GroupPage />
-        </Route>
-        <Route path="/highlight">
-          <HighlightPage />
-        </Route>
-        <Route path="/hover-card">
-          <HoverCardPage />
-        </Route>
-        <Route path="/image">
-          <ImagePage />
-        </Route>
-        <Route path="/indicator">
-          <IndicatorPage />
-        </Route>
-        <Route path="/input">
-          <InputPage />
-        </Route>
-        <Route path="/json-input">
-          <JsonInputPage />
-        </Route>
-        <Route path="/kbd">
-          <KbdPage />
-        </Route>
-        <Route path="/list">
-          <ListPage />
-        </Route>
-        <Route path="/loader">
-          <LoaderPage />
-        </Route>
-        <Route path="/loading-overlay">
-          <LoadingOverlayPage />
-        </Route>
-        <Route path="/mark">
-          <MarkPage />
-        </Route>
-        <Route path="/media-query">
-          <MediaQueryPage />
-        </Route>
-        <Route path="/menu">
-          <MenuPage />
-        </Route>
-        <Route path="/modal">
-          <ModalPage />
-        </Route>
-        <Route path="/multi-select">
-          <MultiSelectPage />
-        </Route>
-        <Route path="/native-select">
-          <NativeSelectPage />
-        </Route>
-        <Route path="/nav-link">
-          <NavLinkPage />
-        </Route>
-        <Route path="/notification">
-          <NotificationPage />
-        </Route>
-        <Route path="/number-input">
-          <NumberInputPage />
-        </Route>
-        <Route path="/overlay">
-          <OverlayPage />
-        </Route>
-        <Route path="/pagination">
-          <PaginationPage />
-        </Route>
-        <Route path="/paper">
-          <PaperPage />
-        </Route>
-        <Route path="/password-input">
-          <PasswordInputPage />
-        </Route>
-        <Route path="/pin-input">
-          <PinInputPage />
-        </Route>
-        <Route path="/popover">
-          <PopoverPage />
-        </Route>
-        <Route path="/portal">
-          <PortalPage />
-        </Route>
-        <Route path="/progress">
-          <ProgressPage />
-        </Route>
-        <Route path="/radio">
-          <RadioPage />
-        </Route>
-        <Route path="/rating">
-          <RatingPage />
-        </Route>
-        <Route path="/ring-progress">
-          <RingProgressPage />
-        </Route>
-        <Route path="/scroll-area">
-          <ScrollAreaPage />
-        </Route>
-        <Route path="/segmented-control">
-          <SegmentedControlPage />
-        </Route>
-        <Route path="/select">
-          <SelectPage />
-        </Route>
-        <Route path="/simple-grid">
-          <SimpleGridPage />
-        </Route>
-        <Route path="/skeleton">
-          <SkeletonPage />
-        </Route>
-        <Route path="/slider">
-          <SliderPage />
-        </Route>
-        <Route path="/space">
-          <SpacePage />
-        </Route>
-        <Route path="/spoiler">
-          <SpoilerPage />
-        </Route>
-        <Route path="/stack">
-          <StackPage />
-        </Route>
-        <Route path="/stepper">
-          <StepperPage />
-        </Route>
-        <Route path="/switch">
-          <SwitchPage />
-        </Route>
-        <Route path="/table">
-          <TablePage />
-        </Route>
-        <Route path="/tabs">
-          <TabsPage />
-        </Route>
-        <Route path="/text">
-          <TextPage />
-        </Route>
-        <Route path="/text-input">
-          <TextInputPage />
-        </Route>
-        <Route path="/textarea">
-          <TextareaPage />
-        </Route>
-        <Route path="/theme-icon">
-          <ThemeIconPage />
-        </Route>
-        <Route path="/timeline">
-          <TimelinePage />
-        </Route>
-        <Route path="/title">
-          <TitlePage />
-        </Route>
-        <Route path="/tooltip">
-          <TooltipPage />
-        </Route>
-        <Route path="/transfer-list">
-          <TransferListPage />
-        </Route>
-        <Route path="/transition">
-          <TransitionPage />
-        </Route>
-        <Route path="/typography-styles-provider">
-          <TypographyStylesProviderPage />
-        </Route>
-        <Route path="/unstyled-button">
-          <UnstyledButtonPage />
-        </Route>
+      <AppShell>
+        <SiteHeader />
+        <AppShellBody>
+          <SiteNav />
+          <AppShellMain>
+            <Route path="/">
+              <HomePage />
+            </Route>
+            <Route path="/accordion">
+              <AccordionPage />
+            </Route>
+            <Route path="/action-icon">
+              <ActionIconPage />
+            </Route>
+            <Route path="/affix">
+              <AffixPage />
+            </Route>
+            <Route path="/alert">
+              <AlertPage />
+            </Route>
+            <Route path="/anchor">
+              <AnchorPage />
+            </Route>
+            <Route path="/app-shell">
+              <AppShellPage />
+            </Route>
+            <Route path="/aspect-ratio">
+              <AspectRatioPage />
+            </Route>
+            <Route path="/autocomplete">
+              <AutocompletePage />
+            </Route>
+            <Route path="/avatar">
+              <AvatarPage />
+            </Route>
+            <Route path="/background-image">
+              <BackgroundImagePage />
+            </Route>
+            <Route path="/badge">
+              <BadgePage />
+            </Route>
+            <Route path="/blockquote">
+              <BlockquotePage />
+            </Route>
+            <Route path="/box">
+              <BoxPage />
+            </Route>
+            <Route path="/breadcrumbs">
+              <BreadcrumbsPage />
+            </Route>
+            <Route path="/burger">
+              <BurgerPage />
+            </Route>
+            <Route path="/button">
+              <ButtonPage />
+            </Route>
+            <Route path="/card">
+              <CardPage />
+            </Route>
+            <Route path="/center">
+              <CenterPage />
+            </Route>
+            <Route path="/checkbox">
+              <CheckboxPage />
+            </Route>
+            <Route path="/chip">
+              <ChipPage />
+            </Route>
+            <Route path="/close-button">
+              <CloseButtonPage />
+            </Route>
+            <Route path="/code">
+              <CodePage />
+            </Route>
+            <Route path="/collapse">
+              <CollapsePage />
+            </Route>
+            <Route path="/color-input">
+              <ColorInputPage />
+            </Route>
+            <Route path="/color-picker">
+              <ColorPickerPage />
+            </Route>
+            <Route path="/color-swatch">
+              <ColorSwatchPage />
+            </Route>
+            <Route path="/container">
+              <ContainerPage />
+            </Route>
+            <Route path="/copy-button">
+              <CopyButtonPage />
+            </Route>
+            <Route path="/dialog">
+              <DialogPage />
+            </Route>
+            <Route path="/divider">
+              <DividerPage />
+            </Route>
+            <Route path="/drawer">
+              <DrawerPage />
+            </Route>
+            <Route path="/file-button">
+              <FileButtonPage />
+            </Route>
+            <Route path="/file-input">
+              <FileInputPage />
+            </Route>
+            <Route path="/flex">
+              <FlexPage />
+            </Route>
+            <Route path="/focus-trap">
+              <FocusTrapPage />
+            </Route>
+            <Route path="/grid">
+              <GridPage />
+            </Route>
+            <Route path="/group">
+              <GroupPage />
+            </Route>
+            <Route path="/highlight">
+              <HighlightPage />
+            </Route>
+            <Route path="/hover-card">
+              <HoverCardPage />
+            </Route>
+            <Route path="/image">
+              <ImagePage />
+            </Route>
+            <Route path="/indicator">
+              <IndicatorPage />
+            </Route>
+            <Route path="/input">
+              <InputPage />
+            </Route>
+            <Route path="/json-input">
+              <JsonInputPage />
+            </Route>
+            <Route path="/kbd">
+              <KbdPage />
+            </Route>
+            <Route path="/list">
+              <ListPage />
+            </Route>
+            <Route path="/loader">
+              <LoaderPage />
+            </Route>
+            <Route path="/loading-overlay">
+              <LoadingOverlayPage />
+            </Route>
+            <Route path="/mark">
+              <MarkPage />
+            </Route>
+            <Route path="/media-query">
+              <MediaQueryPage />
+            </Route>
+            <Route path="/menu">
+              <MenuPage />
+            </Route>
+            <Route path="/modal">
+              <ModalPage />
+            </Route>
+            <Route path="/multi-select">
+              <MultiSelectPage />
+            </Route>
+            <Route path="/native-select">
+              <NativeSelectPage />
+            </Route>
+            <Route path="/nav-link">
+              <NavLinkPage />
+            </Route>
+            <Route path="/notification">
+              <NotificationPage />
+            </Route>
+            <Route path="/number-input">
+              <NumberInputPage />
+            </Route>
+            <Route path="/overlay">
+              <OverlayPage />
+            </Route>
+            <Route path="/pagination">
+              <PaginationPage />
+            </Route>
+            <Route path="/paper">
+              <PaperPage />
+            </Route>
+            <Route path="/password-input">
+              <PasswordInputPage />
+            </Route>
+            <Route path="/pin-input">
+              <PinInputPage />
+            </Route>
+            <Route path="/popover">
+              <PopoverPage />
+            </Route>
+            <Route path="/portal">
+              <PortalPage />
+            </Route>
+            <Route path="/progress">
+              <ProgressPage />
+            </Route>
+            <Route path="/radio">
+              <RadioPage />
+            </Route>
+            <Route path="/rating">
+              <RatingPage />
+            </Route>
+            <Route path="/ring-progress">
+              <RingProgressPage />
+            </Route>
+            <Route path="/scroll-area">
+              <ScrollAreaPage />
+            </Route>
+            <Route path="/segmented-control">
+              <SegmentedControlPage />
+            </Route>
+            <Route path="/select">
+              <SelectPage />
+            </Route>
+            <Route path="/simple-grid">
+              <SimpleGridPage />
+            </Route>
+            <Route path="/skeleton">
+              <SkeletonPage />
+            </Route>
+            <Route path="/slider">
+              <SliderPage />
+            </Route>
+            <Route path="/space">
+              <SpacePage />
+            </Route>
+            <Route path="/spoiler">
+              <SpoilerPage />
+            </Route>
+            <Route path="/stack">
+              <StackPage />
+            </Route>
+            <Route path="/stepper">
+              <StepperPage />
+            </Route>
+            <Route path="/switch">
+              <SwitchPage />
+            </Route>
+            <Route path="/table">
+              <TablePage />
+            </Route>
+            <Route path="/tabs">
+              <TabsPage />
+            </Route>
+            <Route path="/text">
+              <TextPage />
+            </Route>
+            <Route path="/text-input">
+              <TextInputPage />
+            </Route>
+            <Route path="/textarea">
+              <TextareaPage />
+            </Route>
+            <Route path="/theme-icon">
+              <ThemeIconPage />
+            </Route>
+            <Route path="/timeline">
+              <TimelinePage />
+            </Route>
+            <Route path="/title">
+              <TitlePage />
+            </Route>
+            <Route path="/tooltip">
+              <TooltipPage />
+            </Route>
+            <Route path="/transfer-list">
+              <TransferListPage />
+            </Route>
+            <Route path="/transition">
+              <TransitionPage />
+            </Route>
+            <Route path="/typography-styles-provider">
+              <TypographyStylesProviderPage />
+            </Route>
+            <Route path="/unstyled-button">
+              <UnstyledButtonPage />
+            </Route>
+          </AppShellMain>
+        </AppShellBody>
       </AppShell>
     </Router>
   );

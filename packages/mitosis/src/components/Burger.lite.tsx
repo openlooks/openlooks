@@ -10,18 +10,18 @@ export interface BurgerProps extends BaseComponentProps {
 
 export default function Burger(props: BurgerProps) {
   const state = useStore({
-    opened: !!props.opened,
+    open: !!props.opened,
   });
   return (
     <button
       class={buildOpenLooksClassName('unstyled-button burger-button', props)}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => {
-        state.opened = !state.opened;
+        state.open = !state.open;
         props.onClick?.(event);
       }}
     >
-      <div class="openlooks burger" data-opened={state.opened}></div>
+      <div class="openlooks burger" data-open={state.open}></div>
     </button>
   );
 }

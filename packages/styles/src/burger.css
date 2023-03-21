@@ -37,14 +37,14 @@
   top: calc(var(--size) / 3);
 }
 
-.burger[data-opened='true'] {
+.burger[data-open='true'] {
   background-color: transparent;
 }
 
-.burger[data-opened='true']::before {
+.burger[data-open='true']::before {
   transform: translateY(calc(var(--size) / 3)) rotate(45deg);
 }
 
-.burger[data-opened='true']::after {
+.burger[data-open='true']::after {
   transform: translateY(calc(var(--size) / -3)) rotate(-45deg);
 }

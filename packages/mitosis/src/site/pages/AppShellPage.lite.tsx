@@ -1,5 +1,8 @@
 import ActionIcon from '../../components/ActionIcon.lite';
+import Anchor from '../../components/Anchor.lite';
 import AppShell from '../../components/AppShell.lite';
+import AppShellBody from '../../components/AppShellBody.lite';
+import AppShellMain from '../../components/AppShellMain.lite';
 import Container from '../../components/Container.lite';
 import Group from '../../components/Group.lite';
 import Header from '../../components/Header.lite';
@@ -25,16 +28,11 @@ export default function AppShellPage() {
           layout pattern. AppShell, Header, Footer, Aside and Navbar components include bare minimum default styles to
           simplify customization.
         </Text>
-        <AppShell
-          sx={{ width: '44rem', height: '32rem', border: '1px solid var(--oc-gray-2)' }}
-          slotHeader={
-            <Header p="md" sx={{ height: '3.75rem', 'border-bottom': '1px solid var(--oc-gray-2)' }}>
-              <a href="#" class="openlooks anchor">
-                OpenLooks
-              </a>
-            </Header>
-          }
-          slotNavbar={
+        <AppShell sx={{ width: '44rem', height: '32rem', border: '1px solid var(--oc-gray-2)' }}>
+          <Header p="md" sx={{ height: '3.75rem', 'border-bottom': '1px solid var(--oc-gray-2)' }}>
+            <Anchor href="https://openlooks.dev">OpenLooks</Anchor>
+          </Header>
+          <AppShellBody>
             <Navbar p="sm">
               <Stack justify="flex-start" spacing="xs">
                 <UnstyledButton radius="sm" p="sm" class="demo-nav-button">
@@ -71,11 +69,10 @@ export default function AppShellPage() {
                 </UnstyledButton>
               </Stack>
             </Navbar>
-          }
-        >
-          <main class="openlooks main p-xs" style={{ 'background-color': 'var(--oc-gray-0)' }}>
-            <p class="openlooks text">Your application goes here</p>
-          </main>
+            <AppShellMain p="xs" sx={{ 'background-color': 'var(--oc-gray-0)' }}>
+              <Text>Your application goes here</Text>
+            </AppShellMain>
+          </AppShellBody>
         </AppShell>
       </Container>
     </>

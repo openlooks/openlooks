@@ -19,7 +19,7 @@ module.exports = {
     },
     svelte: {
       prettier: false,
-      typescript: true,
+      typescript: false,
     },
     vue3: {
       typescript: true,
