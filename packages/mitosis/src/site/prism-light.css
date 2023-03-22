@@ -1,0 +1,83 @@
+/*
+ * Based on Mantine prism theme:
+ * https://github.com/mantinedev/mantine/blob/master/src/mantine-prism/src/Prism/prism-theme.ts
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: rgb(33, 37, 41);
+  background-color: rgba(248, 249, 250, 0.65);
+}
+
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.token.comment {
+  color: var(--oc-gray-6);
+}
+
+.token.string,
+.token.inserted {
+  color: var(--oc-indigo-9);
+}
+
+.token.builtin,
+.token.char,
+.token.constant,
+.token.function,
+.token.selector,
+.token.atrule {
+  color: var(--oc-lime-9);
+}
+
+.token.punctuation {
+  color: var(--oc-gray-7);
+}
+
+.token.variable {
+  color: var(--oc-violet-9);
+}
+
+.token.attr-name {
+  color: var(--oc-green-9);
+}
+
+.token.class-name {
+  color: var(--oc-red-9);
+}
+
+.token.tag,
+.token.deleted {
+  color: var(--oc-violet-9);
+}
+
+.token.operator {
+  color: var(--oc-red-9);
+}
+
+.token.boolean {
+  color: var(--oc-red-9);
+}
+
+.token.keyword {
+  color: var(--oc-red-9);
+}
+
+.token.doctype {
+  color: var(--oc-gray-7);
+}
+
+.token.url {
+  color: var(--oc-gray-7);
+}

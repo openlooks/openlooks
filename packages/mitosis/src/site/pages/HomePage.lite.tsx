@@ -1,9 +1,9 @@
 import Anchor from '../../components/Anchor.lite';
-import Code from '../../components/Code.lite';
 import Container from '../../components/Container.lite';
 import Markdown from '../../components/Markdown.lite';
 import Title from '../../components/Title.lite';
 import Counter from '../components/Counter.lite';
+import Prism from '../components/Prism.lite';
 
 export default function HomePage() {
   return (
@@ -25,7 +25,15 @@ export default function HomePage() {
       `}</Markdown>
       <hr />
       <Title order={2}>Code Block</Title>
-      <Code block class="language-css">{`p { color: red }`}</Code>
+      <Prism language="jsx">{`import { Button } from '@mantine/core';
+
+function Demo() {
+  return (
+    <Button>
+      Settings
+    </Button>
+  );
+}`}</Prism>
     </Container>
   );
 }

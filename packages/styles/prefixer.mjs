@@ -19,7 +19,7 @@ function processRule(rule) {
 }
 
 function addPrefix(selector) {
-  if (selector === ':root' || selector === 'to' || /\d%/.test(selector)) {
+  if (selector === ':root' || selector === 'to' || /\d%/.test(selector) || selector.includes('openlooks')) {
     return selector;
   }
 
