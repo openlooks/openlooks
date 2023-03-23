@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "mitosis build --config=mitosis.config.cjs && node copyfiles.cjs",
+    "build": "node createicons.cjs && mitosis build --config=mitosis.config.cjs && node copyfiles.cjs",
     "dev": "node watch.cjs"
   },
   "devDependencies": {
