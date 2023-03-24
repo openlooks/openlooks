@@ -33,7 +33,7 @@ header.openlooks.header {
   margin-bottom: 0.25rem;
 }
 
-.doc-header p.openlooks.text {
+.doc-header div.openlooks.text {
   color: var(--oc-gray-6);
   font-size: 1.125rem;
   font-weight: 400;

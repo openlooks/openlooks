@@ -41,6 +41,9 @@ export interface BaseComponentProps {
   // Border radius
   radius?: Size;
 
+  // Font weight
+  weight?: number;
+
   m?: Size;
   my?: Size;
   mx?: Size;

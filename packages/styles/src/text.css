@@ -5,21 +5,12 @@
 .text {
   line-height: 1.5;
   font-family: var(--font-family);
+  font-size: var(--font-size-md);
   color: var(--color-6, var(--oc-black));
 }
 
 .dark .text {
   color: var(--color-6, var(--oc-white));
-}
-
-div.text,
-p.text,
-span.text {
-  font-size: var(--font-size-md);
-}
-
-p.text {
-  line-height: 1.55;
 }
 
 /*

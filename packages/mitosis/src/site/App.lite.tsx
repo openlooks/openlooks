@@ -1,4 +1,7 @@
 import AppShell from '../components/AppShell.lite';
+import AppShellBody from '../components/AppShellBody.lite';
+import AppShellMain from '../components/AppShellMain.lite';
+import Notifications from '../components/Notifications.lite';
 import Route from '../components/Route.lite';
 import Router from '../components/Router.lite';
 import AccordionPage from './pages/AccordionPage.lite';
@@ -57,6 +60,7 @@ import MultiSelectPage from './pages/MultiSelectPage.lite';
 import NativeSelectPage from './pages/NativeSelectPage.lite';
 import NavLinkPage from './pages/NavLinkPage.lite';
 import NotificationPage from './pages/NotificationPage.lite';
+import NotificationsPage from './pages/NotificationsPage.lite';
 import NumberInputPage from './pages/NumberInputPage.lite';
 import OverlayPage from './pages/OverlayPage.lite';
 import PaginationPage from './pages/PaginationPage.lite';
@@ -96,8 +100,6 @@ import UnstyledButtonPage from './pages/UnstyledButtonPage.lite';
 import SiteHeader from './SiteHeader.lite';
 import SiteNav from './SiteNav.lite';
 
-import AppShellBody from '../components/AppShellBody.lite';
-import AppShellMain from '../components/AppShellMain.lite';
 import './index.css';
 
 export default function App() {
@@ -276,6 +278,9 @@ export default function App() {
             <Route path="/notification">
               <NotificationPage />
             </Route>
+            <Route path="/notifications">
+              <NotificationsPage />
+            </Route>
             <Route path="/number-input">
               <NumberInputPage />
             </Route>
@@ -384,6 +389,7 @@ export default function App() {
             <Route path="/unstyled-button">
               <UnstyledButtonPage />
             </Route>
+            <Notifications />
           </AppShellMain>
         </AppShellBody>
       </AppShell>

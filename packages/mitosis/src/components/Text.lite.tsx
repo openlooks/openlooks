@@ -8,8 +8,8 @@ export interface TextProps extends BaseComponentProps {
 
 export default function Text(props: TextProps) {
   return (
-    <p class={buildOpenLooksClassName('text', props)} style={props.sx as JSX.CSS | undefined}>
+    <div class={buildOpenLooksClassName('text', props)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
-    </p>
+    </div>
   );
 }

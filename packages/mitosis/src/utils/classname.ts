@@ -5,12 +5,13 @@
  * @returns The filtered and joined class names.
  */
 export function buildOpenLooksClassName(baseName: string, props: any): string {
+  // Important to use `Object.keys` rather than `Object.entries` to avoid issues with Solid Proxy.
   return [
     'openlooks',
     baseName,
-    ...Object.entries(props)
+    ...Object.keys(props)
       .filter(isClassSystemProp)
-      .map(([key, value]) => `${key}-${value}`),
+      .map((key) => `${key}-${props[key]}`),
     props.class,
     props.className,
   ]
@@ -18,11 +19,8 @@ export function buildOpenLooksClassName(baseName: string, props: any): string {
     .join(' ');
 }
 
-const ignoredProps = ['children', 'class', 'className', 'label', 'description', 'error', 'required'];
-const valueTypes = ['boolean', 'number', 'string'];
+const ignoredProps = ['children', 'class', 'className', 'sx', 'label', 'description', 'error', 'required'];
 
-function isClassSystemProp(entry: [string, unknown]): boolean {
-  const [key, value] = entry;
-  const valueType = typeof value;
-  return value !== undefined && value !== null && !ignoredProps.includes(key) && valueTypes.includes(valueType);
+function isClassSystemProp(key: string): boolean {
+  return !ignoredProps.includes(key) && !/^on[A-Z]/.test(key);
 }

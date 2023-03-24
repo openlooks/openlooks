@@ -95,6 +95,7 @@ export default function SiteNav() {
         <RouterLink href="/alert">Alert</RouterLink>
         <RouterLink href="/loader">Loader</RouterLink>
         <RouterLink href="/notification">Notification</RouterLink>
+        <RouterLink href="/notifications">Notifications</RouterLink>
         <RouterLink href="/progress">Progress</RouterLink>
         <RouterLink href="/ring-progress">RingProgress</RouterLink>
         <RouterLink href="/skeleton">Skeleton</RouterLink>

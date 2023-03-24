@@ -1,0 +1,42 @@
+.notification {
+  font-family: var(--font-family);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 440px;
+  margin: 12px auto;
+  padding: 0;
+  background: var(--oc-white);
+  border: 1px solid var(--oc-gray-3);
+  border-radius: 4px;
+  box-shadow: 0 8px 10px rgb(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.notification .prefix {
+  padding: 4px;
+}
+
+.notification .bar {
+  background-color: var(--color-6);
+  border-radius: 4px;
+  width: 6px;
+  height: 100%;
+  margin-right: 8px;
+}
+
+.notification .content {
+  flex: 1;
+  padding: 12px 0;
+}
+
+.notification .content div {
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.notification .close {
+  display: flex;
+  align-items: center;
+  width: 40px;
+}
