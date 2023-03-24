@@ -29,17 +29,19 @@ export default function GroupPage() {
         <Title order={2}>Usage</Title>
         <Configurator>
           <ConfiguratorStage>
-            <Group position={state.position} spacing={state.spacing}>
-              <Button size="sm" variant="outline" color="blue" radius="sm">
-                1
-              </Button>
-              <Button size="sm" variant="outline" color="blue" radius="sm">
-                2
-              </Button>
-              <Button size="sm" variant="outline" color="blue" radius="sm">
-                3
-              </Button>
-            </Group>
+            <div style={{ width: '100%' }}>
+              <Group position={state.position} spacing={state.spacing}>
+                <Button size="sm" variant="outline" color="blue" radius="sm">
+                  1
+                </Button>
+                <Button size="sm" variant="outline" color="blue" radius="sm">
+                  2
+                </Button>
+                <Button size="sm" variant="outline" color="blue" radius="sm">
+                  3
+                </Button>
+              </Group>
+            </div>
           </ConfiguratorStage>
           <ConfiguratorControls>
             <Stack>
