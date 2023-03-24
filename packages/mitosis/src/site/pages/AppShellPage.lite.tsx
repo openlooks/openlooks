@@ -23,7 +23,7 @@ export default function AppShellPage() {
       <DocHeader title="AppShell" description="Responsive shell for your application with header and navbar" />
       <Container size="sm">
         <Title order={2}>Usage</Title>
-        <Text>
+        <Text mb="xl">
           AppShell is a layout component that can be used to create a common Header - Navbar - Footer - Aside - Content
           layout pattern. AppShell, Header, Footer, Aside and Navbar components include bare minimum default styles to
           simplify customization.
