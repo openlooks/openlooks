@@ -34,7 +34,7 @@ header.openlooks.header {
 }
 
 .doc-header div.openlooks.text {
-  color: var(--oc-gray-6);
+  color: var(--oc-gray-7);
   font-size: 1.125rem;
   font-weight: 400;
   margin-top: 0.5rem;
