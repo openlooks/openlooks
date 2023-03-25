@@ -7,24 +7,28 @@ packages/styles/dist
 packages/mitosis/src/icons
 
 packages/react/dist
+packages/react/public
 packages/react/src/components
 packages/react/src/icons
 packages/react/src/site
 packages/react/src/utils
 
 packages/solid/dist
+packages/solid/public
 packages/solid/src/components
 packages/solid/src/icons
 packages/solid/src/site
 packages/solid/src/utils
 
 packages/svelte/dist
+packages/svelte/public
 packages/svelte/src/components
 packages/svelte/src/icons
 packages/svelte/src/site
 packages/svelte/src/utils
 
 packages/vue/dist
+packages/vue/public
 packages/vue/src/components
 packages/vue/src/icons
 packages/vue/src/site
