@@ -2,7 +2,15 @@
 const { existsSync, mkdirSync, readFileSync, writeFileSync } = require('fs');
 const { resolve } = require('path');
 
-const iconList = ['adjustments.svg', 'alert-circle.svg', 'database.svg', 'messages.svg'];
+const iconList = [
+  'adjustments.svg',
+  'alert-circle.svg',
+  'database.svg',
+  'message-circle.svg',
+  'messages.svg',
+  'photo.svg',
+  'settings.svg',
+];
 
 async function main() {
   const inputDir = '../../node_modules/@tabler/icons/icons/';

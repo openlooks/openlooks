@@ -8,10 +8,15 @@ import Container from '../../components/Container.lite';
 import NativeSelect from '../../components/NativeSelect.lite';
 import Stack from '../../components/Stack.lite';
 import Tab from '../../components/Tab.lite';
+import TabIcon from '../../components/TabIcon.lite';
+import TabLabel from '../../components/TabLabel.lite';
 import TabList from '../../components/TabList.lite';
 import TabPanel from '../../components/TabPanel.lite';
 import Tabs from '../../components/Tabs.lite';
 import Title from '../../components/Title.lite';
+import IconMessageCircle from '../../icons/IconMessageCircle.lite';
+import IconPhoto from '../../icons/IconPhoto.lite';
+import IconSettings from '../../icons/IconSettings.lite';
 import DocHeader from '../components/DocHeader.lite';
 
 export interface TabsConfiguratorProps {
@@ -40,10 +45,25 @@ export default function TabsPage() {
           <ConfiguratorStage>
             <div>
               <Tabs defaultValue="gallery">
-                <TabList>
-                  <Tab value="gallery">Gallery</Tab>
-                  <Tab value="messages">Messages</Tab>
-                  <Tab value="settings">Settings</Tab>
+                <TabList color={state.color}>
+                  <Tab value="gallery">
+                    <TabIcon>
+                      <IconPhoto size="0.8rem" />
+                    </TabIcon>
+                    <TabLabel>Gallery</TabLabel>
+                  </Tab>
+                  <Tab value="messages">
+                    <TabIcon>
+                      <IconMessageCircle size="0.8rem" />
+                    </TabIcon>
+                    <TabLabel>Messages</TabLabel>
+                  </Tab>
+                  <Tab value="settings">
+                    <TabIcon>
+                      <IconSettings size="0.8rem" />
+                    </TabIcon>
+                    <TabLabel>Settings</TabLabel>
+                  </Tab>
                 </TabList>
                 <TabPanel value="gallery" pt="xs">
                   Gallery tab content

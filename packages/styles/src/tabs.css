@@ -1,37 +1,57 @@
 .tablist {
-  position: relative;
-  height: 2.25rem;
-  min-height: 2.25rem;
-  user-select: none;
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
   border-bottom: 0.125rem solid var(--oc-gray-4);
 }
 
 .tab {
-  display: inline-block;
+  display: flex;
   font-family: var(--font-family);
   font-size: 0.875rem;
   line-height: 2.25rem;
   margin: 0;
-  padding: 0 1rem;
   min-width: 4.75rem;
   height: 2.25rem;
   text-align: center;
   cursor: pointer;
   user-select: none;
-  color: var(--oc-gray-6);
+  color: var(--oc-black);
   text-decoration: none;
   outline: 0;
-  background: none;
-  border: 0;
-  border-bottom: 0.125rem solid var(--oc-gray-4);
+  border-width: 0 0 0.125rem 0;
+  appearance: none;
+  background-color: transparent;
+  position: relative;
+  padding: 0.625rem 1rem 0.625rem 0.625rem;
+  white-space: nowrap;
+  z-index: 0;
+  align-items: flex-end;
+  justify-content: center;
+  line-height: 1;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  margin-bottom: -0.125rem;
+  border-radius: 0.5rem 0.5rem 0px 0px;
 }
 
 .tab:hover {
-  background-color: var(--oc-gray-1);
+  background-color: var(--oc-gray-0);
+  border-color: var(--oc-gray-4);
 }
 
 .tab[aria-selected='true'] {
-  border-bottom: 0.125rem solid var(--oc-blue-5);
-  color: var(--oc-gray-8);
+  border-color: var(--color-5, var(--oc-blue-5));
+}
+
+.tab-icon {
+  line-height: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.4375rem;
+}
+
+.tab-label {
+  line-height: 0.875rem;
+  height: 0.875rem;
 }
