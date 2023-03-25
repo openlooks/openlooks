@@ -4,12 +4,11 @@ import Button from '../../components/Button.lite';
 import Configurator from '../../components/Configurator.lite';
 import ConfiguratorControls from '../../components/ConfiguratorControls.lite';
 import ConfiguratorStage from '../../components/ConfiguratorStage.lite';
-import Container from '../../components/Container.lite';
 import Group from '../../components/Group.lite';
 import NativeSelect from '../../components/NativeSelect.lite';
 import Stack from '../../components/Stack.lite';
 import Title from '../../components/Title.lite';
-import DocHeader from '../components/DocHeader.lite';
+import DocPage from '../components/DocPage.lite';
 import SizeInput from '../components/SizeInput.lite';
 
 export interface GroupConfiguratorProps {
@@ -24,49 +23,46 @@ export default function GroupPage() {
   });
 
   return (
-    <>
-      <DocHeader title="Group" description="Compose elements and components in a horizontal flex container" />
-      <Container size="sm">
-        <Title order={2}>Usage</Title>
-        <Configurator>
-          <ConfiguratorStage>
-            <div style={{ width: '100%' }}>
-              <Group position={state.position} spacing={state.spacing}>
-                <Button size="sm" variant="outline" color="blue" radius="sm">
-                  1
-                </Button>
-                <Button size="sm" variant="outline" color="blue" radius="sm">
-                  2
-                </Button>
-                <Button size="sm" variant="outline" color="blue" radius="sm">
-                  3
-                </Button>
-              </Group>
-            </div>
-          </ConfiguratorStage>
-          <ConfiguratorControls>
-            <Stack>
-              <NativeSelect
-                id="position"
-                label="Position"
-                data={['left', 'center', 'right', 'apart']}
-                defaultValue={state.position}
-                onChange={(event) => {
-                  state.position = event.target.value;
-                }}
-              />
-              <SizeInput
-                id="spacing"
-                label="Spacing"
-                defaultValue={state.spacing as Size}
-                onChange={(event) => {
-                  state.spacing = event.target.value;
-                }}
-              />
-            </Stack>
-          </ConfiguratorControls>
-        </Configurator>
-      </Container>
-    </>
+    <DocPage title="Group" description="Compose elements and components in a horizontal flex container">
+      <Title order={2}>Usage</Title>
+      <Configurator>
+        <ConfiguratorStage>
+          <div style={{ width: '100%' }}>
+            <Group position={state.position} spacing={state.spacing}>
+              <Button size="sm" variant="outline" color="blue" radius="sm">
+                1
+              </Button>
+              <Button size="sm" variant="outline" color="blue" radius="sm">
+                2
+              </Button>
+              <Button size="sm" variant="outline" color="blue" radius="sm">
+                3
+              </Button>
+            </Group>
+          </div>
+        </ConfiguratorStage>
+        <ConfiguratorControls>
+          <Stack>
+            <NativeSelect
+              id="position"
+              label="Position"
+              data={['left', 'center', 'right', 'apart']}
+              defaultValue={state.position}
+              onChange={(event) => {
+                state.position = event.target.value;
+              }}
+            />
+            <SizeInput
+              id="spacing"
+              label="Spacing"
+              defaultValue={state.spacing as Size}
+              onChange={(event) => {
+                state.spacing = event.target.value;
+              }}
+            />
+          </Stack>
+        </ConfiguratorControls>
+      </Configurator>
+    </DocPage>
   );
 }

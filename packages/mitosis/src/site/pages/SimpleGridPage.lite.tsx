@@ -1,16 +1,12 @@
-import Container from '../../components/Container.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
-import DocHeader from '../components/DocHeader.lite';
+import DocPage from '../components/DocPage.lite';
 
 export default function SimpleGridPage() {
   return (
-    <>
-      <DocHeader title="SimpleGrid" description="Responsive grid where each item takes equal amount of space" />
-      <Container size="sm">
-        <Title order={2}>Usage</Title>
-        <Text>TODO</Text>
-      </Container>
-    </>
+    <DocPage title="SimpleGrid" description="Responsive grid where each item takes equal amount of space">
+      <Title order={2}>Usage</Title>
+      <Text>TODO</Text>
+    </DocPage>
   );
 }

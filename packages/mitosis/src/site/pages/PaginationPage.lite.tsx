@@ -1,16 +1,12 @@
-import Container from '../../components/Container.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
-import DocHeader from '../components/DocHeader.lite';
+import DocPage from '../components/DocPage.lite';
 
 export default function PaginationPage() {
   return (
-    <>
-      <DocHeader title="Pagination" description="Display active page and navigate between multiple pages" />
-      <Container size="sm">
-        <Title order={2}>Usage</Title>
-        <Text>TODO</Text>
-      </Container>
-    </>
+    <DocPage title="Pagination" description="Display active page and navigate between multiple pages">
+      <Title order={2}>Usage</Title>
+      <Text>TODO</Text>
+    </DocPage>
   );
 }
