@@ -21,11 +21,13 @@
 @import 'colorpicker.css';
 @import 'configurator.css';
 @import 'container.css';
+@import 'dark.css';
 @import 'group.css';
 @import 'inputwrapper.css';
 @import 'loader.css';
 @import 'menu.css';
 @import 'nativeselect.css';
+@import 'navbar.css';
 @import 'notification.css';
 @import 'notifications.css';
 @import 'paper.css';

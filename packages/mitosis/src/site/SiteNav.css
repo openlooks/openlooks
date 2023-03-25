@@ -42,3 +42,30 @@
   border-left: 0.0625rem solid var(--oc-blue-4);
   font-weight: 500;
 }
+
+/*
+ * Dark theme
+ */
+
+.dark .navlinks .section {
+  border-left: 0.0625rem solid var(--oc-dark-6);
+  border-top: 0.0625rem solid var(--oc-dark-6);
+  background-color: var(--oc-dark-6);
+  color: var(--oc-dark-2);
+}
+
+.dark .navlinks a.openlooks.anchor {
+  border-left: 0.0625rem solid var(--oc-dark-6);
+  color: var(--oc-dark-1);
+}
+
+.dark .navlinks a.openlooks.anchor:hover {
+  background-color: var(--oc-dark-5);
+}
+
+.dark .navlinks a.openlooks.anchor[aria-current],
+.dark .navlinks a.openlooks.anchor[aria-current]:hover {
+  background-color: var(--oc-blue-9);
+  color: var(--oc-blue-0);
+  border-left: 0.0625rem solid var(--oc-blue-4);
+}

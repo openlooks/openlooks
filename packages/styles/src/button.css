@@ -37,6 +37,15 @@
   background-color: var(--color-1);
 }
 
+.dark .button.variant-light {
+  color: var(--color-3);
+  background-color: var(--color-9);
+}
+
+.dark .button.variant-light:hover {
+  background-color: var(--color-8);
+}
+
 .button.variant-outline {
   color: var(--color-6);
   background-color: var(--oc-white);
@@ -45,6 +54,16 @@
 
 .button.variant-outline:hover {
   background-color: var(--color-0);
+}
+
+.dark .button.variant-outline {
+  color: var(--color-6);
+  background-color: var(--oc-dark-7);
+  border-color: var(--color-6);
+}
+
+.dark .button.variant-outline:hover {
+  background-color: var(--color-9);
 }
 
 .button.variant-subtle {

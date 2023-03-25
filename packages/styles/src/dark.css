@@ -1,0 +1,4 @@
+.openlooks.dark body {
+  background-color: var(--oc-dark-7);
+  color: var(--oc-dark-0);
+}

@@ -22,3 +22,8 @@
   border-left: 0.0625rem solid var(--oc-gray-2);
   padding: 1rem;
 }
+
+.dark .configurator,
+.dark .configurator .configurator-controls {
+  border-color: var(--oc-dark-5);
+}

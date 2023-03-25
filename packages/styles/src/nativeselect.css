@@ -21,3 +21,13 @@
   border-color: var(--oc-red-5);
   color: var(--oc-red-5);
 }
+
+.dark .nativeselect {
+  background-color: var(--oc-dark-6);
+  border-color: var(--oc-dark-4);
+  color: var(--oc-dark-0);
+}
+
+.dark .nativeselect:focus {
+  border-color: var(--oc-blue-5);
+}

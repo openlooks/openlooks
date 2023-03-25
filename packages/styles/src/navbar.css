@@ -1,0 +1,4 @@
+.dark .navbar {
+  background-color: var(--oc-dark-8);
+  border-color: var(--oc-dark-7);
+}

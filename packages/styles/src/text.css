@@ -10,7 +10,7 @@
 }
 
 .dark .text {
-  color: var(--color-6, var(--oc-white));
+  color: var(--color-6, var(--oc-dark-0));
 }
 
 /*
