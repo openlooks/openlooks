@@ -17,22 +17,27 @@
  * Sizes
  */
 
+.text.fz-xs,
 .text.size-xs {
   font-size: 0.75rem;
 }
 
+.text.fz-sm,
 .text.size-sm {
   font-size: 0.875rem;
 }
 
+.text.fz-md,
 .text.size-md {
   font-size: 1rem;
 }
 
+.text.fz-lg,
 .text.size-lg {
   font-size: 1.125rem;
 }
 
+.text.fz-xl,
 .text.size-xl {
   font-size: 1.25rem;
 }
@@ -41,8 +46,45 @@
  * Weights
  */
 
-@each $weight in (xs, sm, md, lg, xl) {
+@each $weight in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
+  .text.fw-$(weight),
   .text.weight-$(weight) {
     font-weight: $weight;
   }
+}
+
+/*
+ * Utilities
+ */
+
+.text.fs-italic {
+  font-style: italic;
+}
+
+.text.td-underlined {
+  text-decoration: underline;
+}
+
+.text.td-line-through {
+  text-decoration: line-through;
+}
+
+.text.tt-uppercase {
+  text-transform: uppercase;
+}
+
+.text.tt-lowercase {
+  text-transform: lowercase;
+}
+
+.text.tt-capitalize {
+  text-transform: capitalize;
+}
+
+.text.ta-center {
+  text-align: center;
+}
+
+.text.ta-right {
+  text-align: right;
 }

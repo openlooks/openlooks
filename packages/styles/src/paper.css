@@ -1,0 +1,40 @@
+.paper {
+  background-color: var(--oc-white);
+  margin: auto;
+  max-width: var(--breakpoint-md);
+  width: 100%;
+}
+
+@each $size in (xs, sm, md, lg, xl) {
+  .paper.size-$(size) {
+    max-width: var(--breakpoint-$(size));
+  }
+}
+
+.paper.shadow-xs {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.0625rem 0.1875rem, rgba(0, 0, 0, 0.1) 0px 0.0625rem 0.125rem;
+}
+
+.paper.shadow-sm {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.0625rem 0.1875rem, rgba(0, 0, 0, 0.05) 0px 0.625rem 0.9375rem -0.3125rem,
+    rgba(0, 0, 0, 0.04) 0px 0.4375rem 0.4375rem -0.3125rem;
+}
+
+.paper.shadow-md {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.0625rem 0.1875rem, rgba(0, 0, 0, 0.05) 0px 1.25rem 1.5625rem -0.3125rem,
+    rgba(0, 0, 0, 0.04) 0px 0.625rem 0.625rem -0.3125rem;
+}
+
+.paper.shadow-lg {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.0625rem 0.1875rem, rgba(0, 0, 0, 0.05) 0px 1.75rem 1.4375rem -0.4375rem,
+    rgba(0, 0, 0, 0.04) 0px 0.75rem 0.75rem -0.4375rem;
+}
+
+.paper.shadow-xl {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.0625rem 0.1875rem, rgba(0, 0, 0, 0.05) 0px 2.25rem 1.75rem -0.4375rem,
+    rgba(0, 0, 0, 0.04) 0px 1.0625rem 1.0625rem -0.4375rem;
+}
+
+.paper.withBorder-true {
+  border: 0.0625rem solid var(--oc-gray-3);
+}
