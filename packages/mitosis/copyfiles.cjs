@@ -8,7 +8,13 @@ const { resolve } = require('path');
 const targets = ['react', 'solid', 'svelte', 'vue'];
 
 async function main() {
-  const entries = await fg(['./src/**/*.css', './src/**/*.ts', '!./src/**/*.lite.ts', '!./src/**/*.lite.tsx']);
+  const entries = await fg([
+    './src/**/*.css',
+    './src/**/*.ts',
+    '!./src/**/*.lite.ts',
+    '!./src/**/*.lite.tsx',
+    './public/**/*',
+  ]);
   for (const entry of entries) {
     copyStaticFile(entry);
   }
