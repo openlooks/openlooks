@@ -7,3 +7,9 @@
 .anchor:hover {
   text-decoration: underline;
 }
+
+@media (prefers-contrast: more) {
+  .anchor {
+    color: blue;
+  }
+}
