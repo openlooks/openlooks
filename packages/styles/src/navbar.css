@@ -1,3 +1,7 @@
+.navbar {
+  border-right: 0.0625rem solid var(--oc-gray-2);
+}
+
 .dark .navbar {
   background-color: var(--oc-dark-8);
   border-color: var(--oc-dark-7);

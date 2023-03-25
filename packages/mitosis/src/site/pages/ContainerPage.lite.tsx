@@ -1,3 +1,4 @@
+import Container from '../../components/Container.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';

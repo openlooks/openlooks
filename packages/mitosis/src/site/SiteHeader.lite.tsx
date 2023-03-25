@@ -5,6 +5,7 @@ import Header from '../components/Header.lite';
 import RouterLink from '../components/RouterLink.lite';
 import IconSun from '../icons/IconSun.lite';
 import { toggleTheme } from '../utils/theme';
+import Logo from './components/Logo.lite';
 import './SiteHeader.css';
 
 export interface SiteHeaderProps {
@@ -17,7 +18,9 @@ export default function SiteHeader(props: SiteHeaderProps) {
       <Group position="apart" spacing="xs" p="md">
         <Group spacing="md">
           <Burger id="nav-burger" sx={{ '--size': '1rem' }} onClick={() => props.onBurgerClick()} />
-          <RouterLink href="/">OpenLooks</RouterLink>
+          <RouterLink href="/">
+            <Logo />
+          </RouterLink>
         </Group>
         <Group>
           <ActionIcon variant="outline" radius="sm" size="md" color="gray" onClick={() => toggleTheme()}>
