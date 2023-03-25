@@ -18,12 +18,19 @@ export default function SiteHeader(props: SiteHeaderProps) {
       <Group position="apart" spacing="xs" p="md">
         <Group spacing="md">
           <Burger id="nav-burger" sx={{ '--size': '1rem' }} onClick={() => props.onBurgerClick()} />
-          <RouterLink href="/">
+          <RouterLink href="/" label="OpenLooks">
             <Logo />
           </RouterLink>
         </Group>
         <Group>
-          <ActionIcon variant="outline" radius="sm" size="md" color="gray" onClick={() => toggleTheme()}>
+          <ActionIcon
+            title="Toggle dark mode"
+            variant="outline"
+            radius="sm"
+            size="md"
+            color="gray"
+            onClick={() => toggleTheme()}
+          >
             <IconSun size="1rem" />
           </ActionIcon>
         </Group>
