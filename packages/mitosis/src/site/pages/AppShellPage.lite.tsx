@@ -3,14 +3,13 @@ import Anchor from '../../components/Anchor.lite';
 import AppShell from '../../components/AppShell.lite';
 import AppShellBody from '../../components/AppShellBody.lite';
 import AppShellMain from '../../components/AppShellMain.lite';
-import Container from '../../components/Container.lite';
+import Button from '../../components/Button.lite';
 import Group from '../../components/Group.lite';
 import Header from '../../components/Header.lite';
 import Navbar from '../../components/Navbar.lite';
 import Stack from '../../components/Stack.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
-import UnstyledButton from '../../components/UnstyledButton.lite';
 import IconAdjustments from '../../icons/IconAdjustments.lite';
 import IconAlertCircle from '../../icons/IconAlertCircle.lite';
 import IconDatabase from '../../icons/IconDatabase.lite';
@@ -33,38 +32,38 @@ export default function AppShellPage() {
         <AppShellBody>
           <Navbar p="sm">
             <Stack justify="flex-start" spacing="xs">
-              <UnstyledButton radius="sm" p="sm" class="demo-nav-button">
+              <Button variant="subtle" color="gray" radius="sm" p="sm">
                 <Group position="left" spacing="xs">
                   <ActionIcon variant="light" size="sm" color="blue" radius="sm">
                     <IconAdjustments size="0.875rem" />
                   </ActionIcon>
                   Pull Requests
                 </Group>
-              </UnstyledButton>
-              <UnstyledButton radius="sm" p="sm" class="demo-nav-button">
+              </Button>
+              <Button variant="subtle" color="gray" radius="sm" p="sm">
                 <Group position="left" spacing="xs">
                   <ActionIcon variant="light" size="sm" color="cyan" radius="sm">
                     <IconAlertCircle size="0.875rem" />
                   </ActionIcon>
                   Open Issues
                 </Group>
-              </UnstyledButton>
-              <UnstyledButton radius="sm" p="sm" class="demo-nav-button">
+              </Button>
+              <Button variant="subtle" color="gray" radius="sm" p="sm">
                 <Group position="left" spacing="xs">
                   <ActionIcon variant="light" size="sm" color="violet" radius="sm">
                     <IconMessages size="0.875rem" />
                   </ActionIcon>
                   Discussions
                 </Group>
-              </UnstyledButton>
-              <UnstyledButton radius="sm" p="sm" class="demo-nav-button">
+              </Button>
+              <Button variant="subtle" color="gray" radius="sm" p="sm">
                 <Group position="left" spacing="xs">
                   <ActionIcon variant="light" size="sm" color="grape" radius="sm">
                     <IconDatabase size="0.875rem" />
                   </ActionIcon>
                   Databases
                 </Group>
-              </UnstyledButton>
+              </Button>
             </Stack>
           </Navbar>
           <AppShellMain p="xs" sx={{ 'background-color': 'var(--oc-gray-0)' }}>

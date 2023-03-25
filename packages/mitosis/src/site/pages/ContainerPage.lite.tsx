@@ -11,10 +11,10 @@ export default function ContainerPage() {
         Container is the most basic layout element, it centers content horizontally and adds horizontal padding from
         theme.
       </Text>
-      <Container class="blue0">
+      <Container my="xl" sx={{ background: 'var(--oc-blue-0)' }}>
         <Text>Default container</Text>
       </Container>
-      <Container size="xs" px="xs" class="blue0">
+      <Container my="xl" size="xs" px="xs" sx={{ background: 'var(--oc-blue-0)' }}>
         <Text>xs container with xs horizontal padding</Text>
       </Container>
     </DocPage>
