@@ -5,7 +5,6 @@ import { initApp } from './utils/init';
 
 import '@openlooks/styles';
 import './site/index.css';
-import './site/prism-light.css';
 
 initApp();
 

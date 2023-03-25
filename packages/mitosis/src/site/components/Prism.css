@@ -23,6 +23,10 @@ pre[class*='language-'] {
   border-radius: 0.3em;
 }
 
+/*
+ * Light mode
+ */
+
 .token.comment {
   color: var(--oc-gray-6);
 }
@@ -80,4 +84,74 @@ pre[class*='language-'] {
 
 .token.url {
   color: var(--oc-gray-7);
+}
+
+/*
+ * Dark mode
+ */
+
+.dark code[class*='language-'],
+.dark pre[class*='language-'] {
+  color: var(--oc-gray-4);
+  background-color: var(--oc-dark-8);
+}
+
+.dark .token.comment {
+  color: var(--oc-gray-6);
+}
+
+.dark .token.string,
+.dark .token.inserted,
+.dark .token.selector,
+.dark .token.atrule {
+  color: var(--oc-teal-4);
+}
+
+.dark .token.number {
+  color: var(--oc-blue-4);
+}
+
+.dark .token.builtin,
+.dark .token.char,
+.dark .token.constant,
+.dark .token.function {
+  color: var(--oc-orange-5);
+}
+
+.dark .token.punctuation {
+  color: var(--oc-gray-5);
+}
+
+.dark .token.variable {
+  color: var(--oc-gray-5);
+}
+
+.dark .token.class-name,
+.dark .token.attr-name {
+  color: var(--oc-yellow-5);
+}
+
+.dark .token.tag,
+.dark .token.deleted {
+  color: var(--oc-red-6);
+}
+
+.dark .token.operator {
+  color: var(--oc-gray-5);
+}
+
+.dark .token.boolean {
+  color: var(--oc-red-6);
+}
+
+.dark .token.keyword {
+  color: var(--oc-indigo-3);
+}
+
+.dark .token.doctype {
+  color: var(--oc-gray-5);
+}
+
+.dark .token.url {
+  color: var(--oc-gray-5);
 }

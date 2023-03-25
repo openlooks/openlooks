@@ -1,6 +1,7 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { BaseComponentProps } from '../../components/BaseComponentProps';
 import { buildOpenLooksClassName } from '../../utils/classname';
+import './Prism.css';
 
 export interface PrismProps extends BaseComponentProps {
   language: string;
