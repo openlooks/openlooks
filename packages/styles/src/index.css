@@ -1,10 +1,12 @@
 /*
- * Base styles for all components
  * Note that order matters - later styles override earlier ones
  */
 
+/*
+ * Reset
+ */
+
 @import 'unstyledbutton.css';
-@import 'system.css';
 @import 'colors.css';
 @import 'text.css';
 
@@ -13,6 +15,7 @@
  */
 
 @import 'actionicon.css';
+@import 'alert.css';
 @import 'anchor.css';
 @import 'appshell.css';
 @import 'burger.css';
@@ -39,3 +42,9 @@
 @import 'tabs.css';
 @import 'textinput.css';
 @import 'title.css';
+
+/*
+ * Overrides
+ */
+
+@import 'system.css';

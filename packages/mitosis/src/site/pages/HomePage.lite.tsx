@@ -1,7 +1,9 @@
+import Alert from '../../components/Alert.lite';
 import Anchor from '../../components/Anchor.lite';
 import Center from '../../components/Center.lite';
 import Paper from '../../components/Paper.lite';
 import Title from '../../components/Title.lite';
+import IconAlertCircle from '../../icons/IconAlertCircle.lite';
 import Counter from '../components/Counter.lite';
 import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
@@ -12,6 +14,12 @@ export default function HomePage() {
       title="OpenLooks"
       description="Cross-framework components and utilities for building modern web applications."
     >
+      <Alert icon={<IconAlertCircle size="1rem" />} title="Project Status" color="blue" variant="filled" mb="xl">
+        This is a pre alpha release of OpenLooks. Many components are unfinished. Expect breaking changes.
+      </Alert>
+      <Alert icon={<IconAlertCircle size="1rem" />} title="Framework Support" color="orange" variant="filled" mb="xl">
+        In theory, OpenLooks should work with all Mitosis target frameworks. However, only React and Solid are tested.
+      </Alert>
       <Title order={2}>What is this?</Title>
       <ul class="openlooks text">
         <li>

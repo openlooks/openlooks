@@ -28,7 +28,20 @@ function getKeys(props: any, defaultProps?: any): string[] {
   return keys;
 }
 
-const ignoredProps = ['children', 'class', 'className', 'sx', 'label', 'description', 'error', 'required'];
+const ignoredProps = [
+  'children',
+  'class',
+  'className',
+  'sx',
+  'label',
+  'description',
+  'error',
+  'required',
+  'value',
+  'defaultValue',
+  'icon',
+  'title',
+];
 
 function isClassSystemProp(key: string): boolean {
   return !ignoredProps.includes(key) && !/^on[A-Z]/.test(key);
