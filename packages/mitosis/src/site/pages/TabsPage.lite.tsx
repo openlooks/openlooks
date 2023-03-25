@@ -18,6 +18,7 @@ import IconMessageCircle from '../../icons/IconMessageCircle.lite';
 import IconPhoto from '../../icons/IconPhoto.lite';
 import IconSettings from '../../icons/IconSettings.lite';
 import DocHeader from '../components/DocHeader.lite';
+import SizeInput from '../components/SizeInput.lite';
 
 export interface TabsConfiguratorProps {
   variant: 'filled' | 'light' | 'outline' | 'subtle';
@@ -97,11 +98,10 @@ export default function TabsPage() {
                   state.variant = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="radius"
                 label="Radius"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
-                defaultValue={state.radius}
+                defaultValue={state.radius as Size}
                 onChange={(event) => {
                   state.radius = event.target.value;
                 }}

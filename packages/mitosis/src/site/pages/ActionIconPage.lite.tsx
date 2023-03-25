@@ -11,6 +11,7 @@ import Stack from '../../components/Stack.lite';
 import Title from '../../components/Title.lite';
 import IconAdjustments from '../../icons/IconAdjustments.lite';
 import DocHeader from '../components/DocHeader.lite';
+import SizeInput from '../components/SizeInput.lite';
 
 export interface ActionIconConfiguratorProps {
   variant: 'filled' | 'light' | 'outline' | 'subtle';
@@ -70,20 +71,18 @@ export default function ActionIconPage() {
                   state.color = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="radius"
                 label="Radius"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
-                defaultValue={state.radius}
+                defaultValue={state.radius as Size}
                 onChange={(event) => {
                   state.radius = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="size"
-                label="size"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
-                defaultValue={state.size}
+                label="Size"
+                defaultValue={state.size as Size}
                 onChange={(event) => {
                   state.size = event.target.value;
                 }}

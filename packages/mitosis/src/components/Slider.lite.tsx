@@ -15,7 +15,7 @@ export interface SliderProps extends BaseComponentProps, InputWrapperProps {
   step?: number;
   marks?: SliderMark[];
   size?: Size;
-  defaultValue?: string;
+  defaultValue?: string | number;
   onChange?: (e: any) => void;
 }
 

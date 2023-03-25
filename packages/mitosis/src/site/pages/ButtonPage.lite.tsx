@@ -11,6 +11,7 @@ import Stack from '../../components/Stack.lite';
 import TextInput from '../../components/TextInput.lite';
 import Title from '../../components/Title.lite';
 import DocHeader from '../components/DocHeader.lite';
+import SizeInput from '../components/SizeInput.lite';
 
 export interface ButtonConfiguratorProps {
   variant: 'filled' | 'light' | 'outline' | 'subtle';
@@ -60,19 +61,17 @@ export default function ButtonPage() {
                   state.color = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="radius"
                 label="Radius"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
                 defaultValue={state.radius}
                 onChange={(event) => {
                   state.radius = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="size"
                 label="Size"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
                 defaultValue={state.size}
                 onChange={(event) => {
                   state.size = event.target.value;

@@ -10,6 +10,7 @@ import NativeSelect from '../../components/NativeSelect.lite';
 import Stack from '../../components/Stack.lite';
 import Title from '../../components/Title.lite';
 import DocHeader from '../components/DocHeader.lite';
+import SizeInput from '../components/SizeInput.lite';
 
 export interface GroupConfiguratorProps {
   position?: 'left' | 'center' | 'right' | 'apart';
@@ -54,11 +55,10 @@ export default function GroupPage() {
                   state.position = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="spacing"
                 label="Spacing"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
-                defaultValue={state.spacing}
+                defaultValue={state.spacing as Size}
                 onChange={(event) => {
                   state.spacing = event.target.value;
                 }}

@@ -16,6 +16,8 @@ export type Color =
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
+export const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+
 export interface BaseComponentProps {
   // Mitosis CSS styles
   // Note that we cannot use the "style" prop name because it is reserved by Vue.

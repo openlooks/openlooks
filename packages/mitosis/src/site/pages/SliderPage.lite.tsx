@@ -5,11 +5,11 @@ import Configurator from '../../components/Configurator.lite';
 import ConfiguratorControls from '../../components/ConfiguratorControls.lite';
 import ConfiguratorStage from '../../components/ConfiguratorStage.lite';
 import Container from '../../components/Container.lite';
-import NativeSelect from '../../components/NativeSelect.lite';
 import Slider from '../../components/Slider.lite';
 import Stack from '../../components/Stack.lite';
 import Title from '../../components/Title.lite';
 import DocHeader from '../components/DocHeader.lite';
+import SizeInput from '../components/SizeInput.lite';
 
 export interface SliderConfiguratorProps {
   color: Color;
@@ -56,20 +56,18 @@ export default function SliderPage() {
                   state.color = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="radius"
                 label="Radius"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
-                defaultValue={state.radius}
+                defaultValue={state.radius as Size}
                 onChange={(event) => {
                   state.radius = event.target.value;
                 }}
               />
-              <NativeSelect
+              <SizeInput
                 id="size"
-                label="size"
-                data={['xs', 'sm', 'md', 'lg', 'xl']}
-                defaultValue={state.size}
+                label="Size"
+                defaultValue={state.size as Size}
                 onChange={(event) => {
                   state.size = event.target.value;
                 }}
