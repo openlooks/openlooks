@@ -48,3 +48,13 @@
 .burger[data-open='true']::after {
   transform: translateY(calc(var(--size) / -3)) rotate(-45deg);
 }
+
+.dark .burger,
+.dark .burger::before,
+.dark .burger::after {
+  background-color: var(--oc-white);
+}
+
+.dark .burger[data-open='true'] {
+  background-color: transparent;
+}
