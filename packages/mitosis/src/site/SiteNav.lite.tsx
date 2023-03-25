@@ -3,9 +3,13 @@ import RouterLink from '../components/RouterLink.lite';
 
 import './SiteNav.css';
 
-export default function SiteNav() {
+export interface SiteNavProps {
+  forceOpen?: boolean;
+}
+
+export default function SiteNav(props: SiteNavProps) {
   return (
-    <Navbar>
+    <Navbar class={props.forceOpen ? 'open' : undefined}>
       <div class="navlinks">
         <div class="section">Layout</div>
         <RouterLink href="/app-shell">AppShell</RouterLink>

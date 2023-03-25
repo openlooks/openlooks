@@ -1,3 +1,12 @@
+.appshell .navbar.open {
+  display: block !important;
+  position: absolute !important;
+  background: var(--oc-white) !important;
+  width: 100% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+}
+
 .navlinks {
   font-family: var(--font-family);
   padding: 0.5rem;

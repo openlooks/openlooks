@@ -14,6 +14,7 @@ export default function Burger(props: BurgerProps) {
   });
   return (
     <button
+      id={props.id}
       class={buildOpenLooksClassName('unstyled-button burger-button', props)}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => {

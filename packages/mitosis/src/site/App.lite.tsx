@@ -100,15 +100,25 @@ import UnstyledButtonPage from './pages/UnstyledButtonPage.lite';
 import SiteHeader from './SiteHeader.lite';
 import SiteNav from './SiteNav.lite';
 
+import { useStore } from '@builder.io/mitosis';
 import './index.css';
 
 export default function App() {
+  const state = useStore({
+    navOpen: false,
+  });
+
   return (
     <Router>
       <AppShell>
-        <SiteHeader />
+        <SiteHeader
+          onBurgerClick={() => {
+            console.log('CODY onBurgerClick');
+            state.navOpen = !state.navOpen;
+          }}
+        />
         <AppShellBody>
-          <SiteNav />
+          <SiteNav forceOpen={state.navOpen} />
           <AppShellMain>
             <Route path="/">
               <HomePage />

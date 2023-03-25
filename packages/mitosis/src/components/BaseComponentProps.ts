@@ -19,6 +19,9 @@ export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 export interface BaseComponentProps {
+  // All components can optionally specify id
+  id?: string;
+
   // Mitosis CSS styles
   // Note that we cannot use the "style" prop name because it is reserved by Vue.
   // Note that we cannot use the "css" prop name because it is reserved by Mitosis.

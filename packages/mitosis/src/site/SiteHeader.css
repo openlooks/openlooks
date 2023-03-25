@@ -1,0 +1,9 @@
+#nav-burger {
+  display: none;
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  #nav-burger {
+    display: block;
+  }
+}
