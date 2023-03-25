@@ -2,8 +2,8 @@
 // const config = require('./mitosis.config.cjs');
 
 const fg = require('fast-glob');
-const { copyFileSync } = require('fs');
-const { resolve } = require('path');
+const { copyFileSync, existsSync, mkdirSync } = require('fs');
+const { resolve, dirname } = require('path');
 
 const targets = ['react', 'solid', 'svelte', 'vue'];
 
@@ -21,8 +21,14 @@ async function main() {
 }
 
 function copyStaticFile(fileName) {
+  const sourceFileName = resolve(fileName);
   for (const target of targets) {
-    copyFileSync(resolve(fileName), resolve('..', target, fileName));
+    const targetFileName = resolve('..', target, fileName);
+    const targetDir = dirname(targetFileName);
+    if (!existsSync(targetDir)) {
+      mkdirSync(targetDir, { recursive: true });
+    }
+    copyFileSync(sourceFileName, targetFileName);
   }
 }
 
