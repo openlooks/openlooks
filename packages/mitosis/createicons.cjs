@@ -10,6 +10,7 @@ const iconList = [
   'messages.svg',
   'photo.svg',
   'settings.svg',
+  'sun.svg',
 ];
 
 async function main() {

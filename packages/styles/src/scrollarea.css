@@ -2,8 +2,6 @@
   -ms-overflow-style: auto;
   scrollbar-color: rgba(0, 0, 0, 0) transparent;
   scrollbar-width: thin;
-  transition: all 2s;
-  -webkit-transition: all 2s;
 }
 
 .scrollarea::-webkit-scrollbar {
@@ -22,8 +20,6 @@
 .scrollarea::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0);
   border-radius: 0.75rem;
-  transition: all 2s;
-  -webkit-transition: all 2s;
 }
 
 /*
