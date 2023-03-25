@@ -22,13 +22,13 @@ export default function HomePage() {
           </li>
           <li>
             Uses{` `}
-            <Anchor href="https://react.dev">Mitosis</Anchor>
+            <Anchor href="https://github.com/BuilderIO/mitosis">Mitosis</Anchor>
             {` `}to support popular frameworks such as{` `}
-            <Anchor href="https://react.dev">React</Anchor>,{` `}
-            <Anchor href="https://react.dev">Angular</Anchor>,{` `}
-            <Anchor href="https://react.dev">Vue</Anchor>,{` `}
-            <Anchor href="https://react.dev">Svelte</Anchor>,{` `}
-            <Anchor href="https://react.dev">Solid</Anchor>,{` `}and more.
+            <Anchor href="https://react.dev/">React</Anchor>,{` `}
+            <Anchor href="https://angular.io/">Angular</Anchor>,{` `}
+            <Anchor href="https://vuejs.org/">Vue</Anchor>,{` `}
+            <Anchor href="https://svelte.dev/">Svelte</Anchor>,{` `}
+            <Anchor href="https://www.solidjs.com/">Solid</Anchor>,{` `}and more.
           </li>
           <li>Zero dependencies and minimal footprint -- this whole site is only X kb!</li>
           <li>100% TypeScript</li>
