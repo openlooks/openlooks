@@ -1,5 +1,4 @@
 import Anchor from '../../components/Anchor.lite';
-import Markdown from '../../components/Markdown.lite';
 import Title from '../../components/Title.lite';
 import Counter from '../components/Counter.lite';
 import DocPage from '../components/DocPage.lite';
@@ -46,16 +45,10 @@ export default function HomePage() {
       <Title order={2} mt="xl">
         Markdown Test
       </Title>
-      <Markdown>{`### Hello World
-
-      This is a Markdown test.
-
-      *Foo* **bar** ***baz***.
-      `}</Markdown>
       <Title order={2} mt="xl">
         Code Block
       </Title>
-      <Prism language="jsx">{`import { Button } from '@mantine/core';
+      <Prism language="jsx">{`import { Button } from '@openlooks/react';
 
 function Demo() {
   return (
