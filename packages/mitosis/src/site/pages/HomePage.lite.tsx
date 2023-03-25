@@ -13,7 +13,7 @@ export default function HomePage() {
         title="OpenLooks"
         description="Cross-framework components and utilities for building modern web applications."
       />
-      <Container size="sm">
+      <Container size="sm" pb="xl">
         <Title order={2}>What is this?</Title>
         <ul class="openlooks text">
           <li>
@@ -30,9 +30,17 @@ export default function HomePage() {
             <Anchor href="https://react.dev">Svelte</Anchor>,{` `}
             <Anchor href="https://react.dev">Solid</Anchor>,{` `}and more.
           </li>
-          <li>Zero dependencies and minimal footprint -- this whole site is only 20kb!</li>
+          <li>Zero dependencies and minimal footprint -- this whole site is only X kb!</li>
           <li>100% TypeScript</li>
           <li>MIT license</li>
+        </ul>
+        <Title order={2} mt="xl">
+          Why?
+        </Title>
+        <ul class="openlooks text">
+          <li>Consistent look and feel across frameworks reduces platform risk</li>
+          <li>No dependency on Emotion or CSS-in-JS for fast and lightweight user experience</li>
+          <li>Preference for styled native controls rather than rebuilding with divs</li>
         </ul>
         <Title order={2} mt="xl">
           Counter Test
