@@ -20,8 +20,6 @@ export default function NotificationsPage() {
         <Button
           color="blue"
           variant="outline"
-          size="sm"
-          radius="sm"
           onClick={() =>
             showNotification({
               color: 'blue',
@@ -35,8 +33,6 @@ export default function NotificationsPage() {
         <Button
           color="teal"
           variant="outline"
-          size="sm"
-          radius="sm"
           onClick={() =>
             showNotification({
               color: 'teal',
@@ -50,8 +46,6 @@ export default function NotificationsPage() {
         <Button
           color="red"
           variant="outline"
-          size="sm"
-          radius="sm"
           onClick={() =>
             showNotification({
               color: 'red',
@@ -65,8 +59,6 @@ export default function NotificationsPage() {
         <Button
           color="grape"
           variant="outline"
-          size="sm"
-          radius="sm"
           onClick={() =>
             showNotification({
               color: 'grape',
@@ -81,8 +73,6 @@ export default function NotificationsPage() {
         <Button
           color="indigo"
           variant="outline"
-          size="sm"
-          radius="sm"
           onClick={() =>
             showNotification({
               color: 'indigo',
@@ -96,8 +86,6 @@ export default function NotificationsPage() {
         <Button
           color="cyan"
           variant="outline"
-          size="sm"
-          radius="sm"
           onClick={() =>
             showNotification({
               color: 'cyan',

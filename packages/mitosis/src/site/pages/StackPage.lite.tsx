@@ -34,15 +34,9 @@ export default function StackPage() {
             spacing={state.spacing}
             sx={{ 'background-color': 'var(--oc-gray-0)', height: '300px', width: '100%' }}
           >
-            <Button size="sm" variant="outline" color="blue" radius="sm">
-              1
-            </Button>
-            <Button size="sm" variant="outline" color="blue" radius="sm">
-              2
-            </Button>
-            <Button size="sm" variant="outline" color="blue" radius="sm">
-              3
-            </Button>
+            <Button variant="outline">1</Button>
+            <Button variant="outline">2</Button>
+            <Button variant="outline">3</Button>
           </Stack>
         </ConfiguratorStage>
         <ConfiguratorControls>

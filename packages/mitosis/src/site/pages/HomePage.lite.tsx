@@ -1,4 +1,6 @@
 import Anchor from '../../components/Anchor.lite';
+import Center from '../../components/Center.lite';
+import Paper from '../../components/Paper.lite';
 import Title from '../../components/Title.lite';
 import Counter from '../components/Counter.lite';
 import DocPage from '../components/DocPage.lite';
@@ -39,21 +41,24 @@ export default function HomePage() {
         <li>Preference for styled native controls rather than rebuilding with divs</li>
       </ul>
       <Title order={2} mt="xl">
-        Counter Test
+        Demo
       </Title>
-      <Counter />
-      <Title order={2} mt="xl">
-        Markdown Test
-      </Title>
-      <Title order={2} mt="xl">
-        Code Block
-      </Title>
-      <Prism language="jsx">{`import { Button } from '@openlooks/react';
+      <Paper withBorder p="xl">
+        <Center>
+          <Counter />
+        </Center>
+      </Paper>
+      <Prism language="jsx">{`import { useStore } from '@builder.io/mitosis';
+import { Button } from '@openlooks/react';
 
-function Demo() {
+function Counter() {
+  const state = useStore({
+    count: 0,
+  });
+
   return (
-    <Button>
-      Settings
+    <Button onClick={() => (state.count = state.count + 1)}>
+      Count: {state.count}
     </Button>
   );
 }`}</Prism>

@@ -7,7 +7,7 @@ export default function Counter() {
   });
 
   return (
-    <Button variant="filled" color="blue" size="sm" radius="sm" onClick={() => (state.count = state.count + 1)}>
+    <Button onClick={() => (state.count = state.count + 1)}>
       {`Count: `}
       {state.count}
     </Button>

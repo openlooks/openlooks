@@ -11,7 +11,7 @@ export interface ButtonProps extends BaseComponentProps {
 export default function Button(props: ButtonProps) {
   return (
     <button
-      class={buildOpenLooksClassName('button', props)}
+      class={buildOpenLooksClassName('button', props, { variant: 'filled', color: 'blue', size: 'sm', radius: 'sm' })}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => props.onClick?.(event)}
     >
