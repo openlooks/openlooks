@@ -1,5 +1,4 @@
 // Copy all non-mitosis files from the source directory to the destination directories
-// const config = require('./mitosis.config.cjs');
 
 const fg = require('fast-glob');
 const { copyFileSync, existsSync, mkdirSync } = require('fs');
@@ -23,6 +22,12 @@ async function main() {
 function copyStaticFile(fileName) {
   const sourceFileName = resolve(fileName);
   for (const target of targets) {
+    if (target === 'svelte' && target.endsWith('.ts')) {
+      // Apparently Mitosis builds .ts files for Svelte,
+      // and copies them automatically.
+      // Do not copy the source .ts files for Svelte.
+      continue;
+    }
     const targetFileName = resolve('..', target, fileName);
     const targetDir = dirname(targetFileName);
     if (!existsSync(targetDir)) {
