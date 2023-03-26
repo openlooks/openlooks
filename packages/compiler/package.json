@@ -1,0 +1,14 @@
+{
+  "name": "@openlooks/compiler",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "compile": "node --experimental-specifier-resolution=node --loader ts-node/esm src/main.ts"
+  },
+  "devDependencies": {
+    "@types/prettier": "2.7.2",
+    "prettier": "2.8.7",
+    "ts-node": "10.9.1"
+  }
+}
