@@ -39,7 +39,7 @@ export default function FlexPage() {
             align={state.align}
             direction={state.direction}
             wrap={state.wrap}
-            sx={{ 'background-color': 'var(--oc-gray-0)', height: '300px', width: '100%' }}
+            sx={{ 'background-color': 'var(--oc-gray-2)', height: '150px', width: '100%' }}
           >
             <Button>Button 1</Button>
             <Button>Button 2</Button>
