@@ -20,7 +20,8 @@ export default function HomePage() {
         This is a pre alpha release of OpenLooks. Many components are unfinished. Expect breaking changes.
       </Alert>
       <Alert icon={<IconAlertCircle size="1rem" />} title="Framework Support" color="teal" variant="filled" mb="xl">
-        In theory, OpenLooks should work with all Mitosis target frameworks. However, only React and Solid are tested.
+        In theory, OpenLooks should work with all Mitosis target frameworks. However, only React and Solid are actively
+        tested.
       </Alert>
       <Title order={2}>What is this?</Title>
       <List>
@@ -46,17 +47,22 @@ export default function HomePage() {
         Why?
       </Title>
       <List>
-        <li>Consistent look and feel across frameworks to reduce platform risk</li>
+        <li>Consistent look and feel across front-end frameworks to reduce platform risk</li>
         <li>Pure CSS (no Emotion or CSS-in-JS) for fast and lightweight user experience</li>
         <li>Preference for styled native controls rather than rebuilding with divs</li>
+        <li>
+          I have chronic{` `}
+          <Anchor href="https://en.wikipedia.org/wiki/Not_invented_here">NIH</Anchor>
+          {` `}and want to rewrite everything
+        </li>
       </List>
       <Title order={2} mt="xl">
         Project Name
       </Title>
       <Text>
         The name "OpenLooks" is a nod to{` `}
-        <Anchor href="https://www.gnome-look.org/p/1080192">ClearLooks</Anchor>, the GTK theme often known as "the theme
-        for grown-ups".
+        <Anchor href="https://www.gnome-look.org/p/1080192">ClearLooks</Anchor>, the GTK theme often known as "the GTK
+        theme for grown-ups".
       </Text>
       <Title order={2} mt="xl">
         Demo
