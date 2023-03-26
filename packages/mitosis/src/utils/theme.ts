@@ -23,8 +23,10 @@ export function toggleTheme(): void {
 export function applyTheme(): void {
   if (getTheme() === 'dark') {
     document.documentElement.classList.add('dark');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', 'black');
   } else {
     document.documentElement.classList.remove('dark');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#228be6');
   }
 }
 
