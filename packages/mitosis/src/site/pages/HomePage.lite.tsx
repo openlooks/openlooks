@@ -54,8 +54,9 @@ export default function HomePage() {
         Project Name
       </Title>
       <Text>
-        The name "OpenLooks" is a nod to <Anchor href="https://www.gnome-look.org/p/1080192">ClearLooks</Anchor>, the
-        GTK theme often known as "the theme for grown-ups".
+        The name "OpenLooks" is a nod to{` `}
+        <Anchor href="https://www.gnome-look.org/p/1080192">ClearLooks</Anchor>, the GTK theme often known as "the theme
+        for grown-ups".
       </Text>
       <Title order={2} mt="xl">
         Demo

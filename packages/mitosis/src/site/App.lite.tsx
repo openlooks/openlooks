@@ -113,7 +113,6 @@ export default function App() {
       <AppShell>
         <SiteHeader
           onBurgerClick={() => {
-            console.log('CODY onBurgerClick');
             state.navOpen = !state.navOpen;
           }}
         />
