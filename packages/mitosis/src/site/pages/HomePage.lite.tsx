@@ -1,7 +1,9 @@
 import Alert from '../../components/Alert.lite';
 import Anchor from '../../components/Anchor.lite';
 import Center from '../../components/Center.lite';
+import List from '../../components/List.lite';
 import Paper from '../../components/Paper.lite';
+import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
 import IconAlertCircle from '../../icons/IconAlertCircle.lite';
 import Counter from '../components/Counter.lite';
@@ -17,11 +19,11 @@ export default function HomePage() {
       <Alert icon={<IconAlertCircle size="1rem" />} title="Project Status" color="blue" variant="filled" mb="xl">
         This is a pre alpha release of OpenLooks. Many components are unfinished. Expect breaking changes.
       </Alert>
-      <Alert icon={<IconAlertCircle size="1rem" />} title="Framework Support" color="orange" variant="filled" mb="xl">
+      <Alert icon={<IconAlertCircle size="1rem" />} title="Framework Support" color="teal" variant="filled" mb="xl">
         In theory, OpenLooks should work with all Mitosis target frameworks. However, only React and Solid are tested.
       </Alert>
       <Title order={2}>What is this?</Title>
-      <ul class="openlooks text">
+      <List>
         <li>
           Component library based on the look and feel of{` `}
           <Anchor href="https://mantine.dev">Mantine</Anchor>
@@ -39,15 +41,22 @@ export default function HomePage() {
         <li>Zero dependencies and minimal footprint -- this whole site is only X kb!</li>
         <li>100% TypeScript</li>
         <li>MIT license</li>
-      </ul>
+      </List>
       <Title order={2} mt="xl">
         Why?
       </Title>
-      <ul class="openlooks text">
-        <li>Consistent look and feel across frameworks reduces platform risk</li>
-        <li>No dependency on Emotion or CSS-in-JS for fast and lightweight user experience</li>
+      <List>
+        <li>Consistent look and feel across frameworks to reduce platform risk</li>
+        <li>Pure CSS (no Emotion or CSS-in-JS) for fast and lightweight user experience</li>
         <li>Preference for styled native controls rather than rebuilding with divs</li>
-      </ul>
+      </List>
+      <Title order={2} mt="xl">
+        Project Name
+      </Title>
+      <Text>
+        The name "OpenLooks" is a nod to "<Anchor href="https://www.gnome-look.org/p/1080192">ClearLooks</Anchor>", the
+        GTK theme often known as "the theme for grown-ups".
+      </Text>
       <Title order={2} mt="xl">
         Demo
       </Title>

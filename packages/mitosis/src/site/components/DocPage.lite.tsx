@@ -18,7 +18,7 @@ export default function DocPage(props: DocPageProps) {
           <Text mb="xl">{props.description}</Text>
         </Container>
       </div>
-      <Container size="sm" p="sm">
+      <Container size="sm" px="sm" py="xl">
         {props.children}
       </Container>
     </>
