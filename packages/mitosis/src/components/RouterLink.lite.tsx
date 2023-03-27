@@ -1,17 +1,15 @@
 import { useContext } from '@builder.io/mitosis';
+import { JSX } from '@builder.io/mitosis/jsx-runtime';
+import { buildOpenLooksClassName } from '../utils/classname';
+import { AnchorProps } from './Anchor.lite';
 import Context from './Router.context.lite';
 
-export interface RouterLinkProps {
-  href: string;
-  label?: string;
-  children: any;
-}
-
-export default function RouterLink(props: RouterLinkProps) {
+export default function RouterLink(props: AnchorProps) {
   const router = useContext(Context);
   return (
     <a
-      class="openlooks anchor"
+      class={buildOpenLooksClassName('anchor text', props)}
+      style={props.sx as JSX.CSS | undefined}
       href={props.href}
       aria-label={props.label}
       aria-current={router.url() === props.href ? 'page' : undefined}

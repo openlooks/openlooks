@@ -5,6 +5,8 @@ const { resolve } = require('path');
 const iconList = [
   'adjustments.svg',
   'alert-circle.svg',
+  'brand-discord-filled.svg',
+  'brand-github.svg',
   'database.svg',
   'message-circle.svg',
   'messages.svg',
