@@ -14,7 +14,7 @@ export type Color =
   | 'yellow'
   | 'orange';
 
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Size = 0 | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 

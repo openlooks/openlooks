@@ -1,5 +1,7 @@
 .doc-header {
   background-color: var(--oc-gray-0);
+  padding-top: var(--spacing-md);
+  padding-bottom: var(--spacing-xl);
 }
 
 .dark .doc-header {
@@ -13,11 +15,12 @@
   margin-bottom: 0.25rem;
 }
 
-.doc-header div.openlooks.text {
-  color: var(--oc-gray-7);
+.doc-header .openlooks.text.description {
+  color: var(--oc-gray-6);
   font-size: 1.125rem;
   font-weight: 400;
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .dark .doc-header div.openlooks.text {

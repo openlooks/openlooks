@@ -9,9 +9,9 @@ export interface PrismProps extends BaseComponentProps {
 
 export default function Prism(props: PrismProps) {
   return (
-    <pre class={`language-${props.language}`}>
+    <pre class={buildOpenLooksClassName(`code language-${props.language}`, props)}>
       <code
-        class={buildOpenLooksClassName('code', props)}
+        class={buildOpenLooksClassName(`code language-${props.language}`, props)}
         style={props.sx as JSX.CSS | undefined}
         innerHTML={(window as any).Prism.highlight(
           props.children,

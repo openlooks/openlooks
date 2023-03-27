@@ -9,12 +9,14 @@
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
 
+  --radius-0: 0;
   --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
   --radius-xl: 2rem;
 
+  --spacing-0: 0;
   --spacing-xs: 0.625rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1rem;
@@ -28,7 +30,7 @@
   --breakpoint-xl: 90rem;
 }
 
-@each $size in (xs, sm, md, lg, xl) {
+@each $size in (0, xs, sm, md, lg, xl) {
   .radius-$(size) {
     border-radius: var(--radius-$(size));
   }

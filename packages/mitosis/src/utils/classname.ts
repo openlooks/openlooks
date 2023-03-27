@@ -11,7 +11,7 @@ export function buildOpenLooksClassName(baseName: string, props: any, defaultPro
     baseName,
     ...getKeys(props, defaultProps)
       .filter(isClassSystemProp)
-      .map((key) => `${key}-${props[key] || defaultProps?.[key]}`),
+      .map((key) => getClassName(key, props, defaultProps)),
     props.class,
     props.className,
   ]
@@ -26,6 +26,17 @@ function getKeys(props: any, defaultProps?: any): string[] {
     return [...new Set([...keys, ...defaultKeys])];
   }
   return keys;
+}
+
+function getClassName(key: string, props: any, defaultProps?: any): string | undefined {
+  // Beware "0" in truthiness checks, because "0" is a valid value.
+  if (key in props) {
+    return `${key}-${props[key]}`;
+  }
+  if (defaultProps && key in defaultProps) {
+    return `${key}-${defaultProps[key]}`;
+  }
+  return undefined;
 }
 
 const ignoredProps = [
