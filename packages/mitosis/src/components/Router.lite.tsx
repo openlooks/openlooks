@@ -1,4 +1,5 @@
 import { onMount, useStore } from '@builder.io/mitosis';
+import { scrollToTop } from '../utils/scrolltop';
 import Context from './Router.context.lite';
 
 export interface RouterProps {
@@ -14,6 +15,7 @@ export default function Router(props: RouterProps) {
     // Listen for URL changes
     window.addEventListener('popstate', () => {
       state.currentUrl = window.location.pathname;
+      scrollToTop();
     });
   });
 
@@ -29,6 +31,9 @@ export default function Router(props: RouterProps) {
 
           // Use window.location.pathname to get the resolved URL
           state.currentUrl = window.location.pathname;
+
+          // Scroll to top
+          scrollToTop();
         },
       }}
     >
