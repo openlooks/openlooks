@@ -10,6 +10,7 @@ import Stack from '../../components/Stack.lite';
 import TextInput from '../../components/TextInput.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
+import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
 export interface ButtonConfiguratorProps {
@@ -85,6 +86,17 @@ export default function ButtonPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
+      <Prism language="jsx">
+        {`import { Button } from '@openlooks/react';
+
+function Demo() {
+  return (
+    <Button variant="${state.variant}" color="${state.color}" radius="${state.radius}" size="${state.size}">
+      ${state.text}
+    </Button>
+  );
+}`}
+      </Prism>
     </DocPage>
   );
 }

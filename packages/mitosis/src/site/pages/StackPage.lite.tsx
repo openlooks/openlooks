@@ -8,6 +8,7 @@ import NativeSelect from '../../components/NativeSelect.lite';
 import Stack from '../../components/Stack.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
+import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
 export interface StackConfiguratorProps {
@@ -70,6 +71,19 @@ export default function StackPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
+      <Prism language="jsx">
+        {`import { Stack, Button } from '@openlooks/react';
+
+function Demo() {
+  return (
+    <Stack align="${state.align}" justify="${state.justify}" spacing="${state.spacing}">
+      <Button variant="outline">1</Button>
+      <Button variant="outline">2</Button>
+      <Button variant="outline">3</Button>
+    </Stack>
+  );
+}`}
+      </Prism>
     </DocPage>
   );
 }

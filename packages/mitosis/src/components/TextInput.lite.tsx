@@ -8,6 +8,7 @@ export interface TextInputProps extends BaseComponentProps, InputWrapperProps {
   variant?: 'filled' | 'light' | 'outline' | 'subtle';
   size?: Size;
   defaultValue?: string;
+  placeholder?: string;
   onChange?: (e: any) => void;
 }
 
@@ -25,7 +26,9 @@ export default function TextInput(props: TextInputProps) {
         id={props.id}
         class={buildOpenLooksClassName('textinput', props)}
         style={props.sx as JSX.CSS | undefined}
-        value={props.defaultValue}
+        value={props.defaultValue || ''}
+        placeholder={props.placeholder}
+        aria-invalid={!!props.error}
         onChange={(event) => props.onChange?.(event)}
       />
     </InputWrapper>

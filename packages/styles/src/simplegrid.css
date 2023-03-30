@@ -1,0 +1,27 @@
+.simplegrid {
+  display: grid;
+}
+
+@each $cols in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .simplegrid.cols-$(cols) {
+    grid-template-columns: repeat($cols, 1fr);
+  }
+}
+
+.simplegrid.spacing-0 {
+  column-gap: 0;
+}
+
+.simplegrid.verticalSpacing-0 {
+  row-gap: 0;
+}
+
+@each $size in (xs, sm, md, lg, xl) {
+  .simplegrid.spacing-$(size) {
+    column-gap: var(--spacing-$(size));
+  }
+
+  .simplegrid.verticalSpacing-$(size) {
+    row-gap: var(--spacing-$(size));
+  }
+}

@@ -9,6 +9,7 @@ import NativeSelect from '../../components/NativeSelect.lite';
 import Stack from '../../components/Stack.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
+import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
 export interface FlexConfiguratorProps {
@@ -95,6 +96,25 @@ export default function FlexPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
+      <Prism language="jsx">
+        {`import { Flex, Button } from '@openlooks/react';
+
+function Demo() {
+  return (
+    <Flex
+      gap="${state.gap}"
+      justify="${state.justify}"
+      align="${state.align}"
+      direction="${state.direction}"
+      wrap="${state.wrap}"
+    >
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
+    </Flex>
+  );
+}`}
+      </Prism>
     </DocPage>
   );
 }

@@ -2,6 +2,7 @@ import Center from '../../components/Center.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
+import Prism from '../components/Prism.lite';
 
 export default function CenterPage() {
   return (
@@ -10,6 +11,17 @@ export default function CenterPage() {
       <Center p="xl" sx={{ background: 'var(--oc-blue-0)' }}>
         <Text sx={{ background: 'var(--oc-blue-1)' }}>All elements inside Center are centered</Text>
       </Center>
+      <Prism language="jsx">
+        {`import { Center } from '@openlooks/react';
+
+function Demo() {
+  return (
+    <Center p="xl" mx="auto">
+      <div>All elements inside Center are centered</div>
+    </Center>
+  );
+}`}
+      </Prism>
     </DocPage>
   );
 }

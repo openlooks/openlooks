@@ -15,6 +15,7 @@ import IconAlertCircle from '../../icons/IconAlertCircle.lite';
 import IconDatabase from '../../icons/IconDatabase.lite';
 import IconMessages from '../../icons/IconMessages.lite';
 import DocPage from '../components/DocPage.lite';
+import Prism from '../components/Prism.lite';
 
 export default function AppShellPage() {
   return (
@@ -71,6 +72,21 @@ export default function AppShellPage() {
           </AppShellMain>
         </AppShellBody>
       </AppShell>
+      <Prism language="jsx">
+        {`import { AppShell, Navbar, Header } from '@openlooks/react';
+
+function Demo() {
+  return (
+    <AppShell
+      padding="md"
+      navbar={<Navbar width={{ base: 300 }} p="xs">{/* Navbar content */}</Navbar>}
+      header={<Header height={60} p="xs">{/* Header content */}</Header>}
+    >
+      {/* Your application here */}
+    </AppShell>
+  );
+}`}
+      </Prism>
     </DocPage>
   );
 }

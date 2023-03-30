@@ -4,6 +4,7 @@ import Paper from '../../components/Paper.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
+import Prism from '../components/Prism.lite';
 
 export default function GridPage() {
   return (
@@ -38,6 +39,19 @@ export default function GridPage() {
           </GridCol>
         </Grid>
       </Paper>
+      <Prism language="jsx">
+        {`import { Grid } from '@openlooks/react';
+
+function Demo() {
+  return (
+    <Grid>
+      <Grid.Col span={4}>1</Grid.Col>
+      <Grid.Col span={4}>2</Grid.Col>
+      <Grid.Col span={4}>3</Grid.Col>
+    </Grid>
+  );
+}`}
+      </Prism>
     </DocPage>
   );
 }

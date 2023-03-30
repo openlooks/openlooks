@@ -43,15 +43,16 @@ const ignoredProps = [
   'children',
   'class',
   'className',
-  'sx',
-  'label',
+  'defaultValue',
   'description',
   'error',
-  'required',
-  'value',
-  'defaultValue',
+  'href',
   'icon',
+  'label',
+  'required',
+  'sx',
   'title',
+  'value',
 ];
 
 function isClassSystemProp(key: string): boolean {

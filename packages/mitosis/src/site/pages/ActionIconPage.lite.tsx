@@ -10,6 +10,7 @@ import Stack from '../../components/Stack.lite';
 import Title from '../../components/Title.lite';
 import IconAdjustments from '../../icons/IconAdjustments.lite';
 import DocPage from '../components/DocPage.lite';
+import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
 export interface ActionIconConfiguratorProps {
@@ -87,6 +88,18 @@ export default function ActionIconPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
+      <Prism language="jsx">
+        {`import { ActionIcon } from '@openlooks/react';
+import { IconAdjustments } from '@tabler/icons-react';
+
+function Demo() {
+  return (
+    <ActionIcon color="${state.color}" size="${state.size}" radius="${state.radius}" variant="${state.variant}">
+      <IconAdjustments size="1.625rem" />
+    </ActionIcon>
+  );
+}`}
+      </Prism>
     </DocPage>
   );
 }
