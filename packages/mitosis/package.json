@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "node createicons.cjs && mitosis build --config=mitosis.config.cjs && node copyfiles.cjs",
+    "build": "npm run build:icons && npm run build:index && npm run build:mitosis && npm run build:copyfiles",
+    "build:icons": "node buildicons.cjs",
+    "build:index": "node buildindex.cjs",
+    "build:mitosis": "mitosis build --config=mitosis.config.cjs",
+    "build:copyfiles": "node copyfiles.cjs",
     "dev": "node watch.cjs"
   },
   "devDependencies": {

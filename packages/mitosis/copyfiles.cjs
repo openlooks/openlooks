@@ -1,7 +1,7 @@
 // Copy all non-mitosis files from the source directory to the destination directories
 
 const fg = require('fast-glob');
-const { copyFileSync, existsSync, mkdirSync } = require('fs');
+const { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } = require('fs');
 const { resolve, dirname } = require('path');
 
 const targets = ['react', 'solid', 'svelte', 'vue'];
@@ -33,7 +33,15 @@ function copyStaticFile(fileName) {
     if (!existsSync(targetDir)) {
       mkdirSync(targetDir, { recursive: true });
     }
-    copyFileSync(sourceFileName, targetFileName);
+
+    // Read source
+    let content = readFileSync(sourceFileName, 'utf8');
+
+    // Replace imports
+    content = content.replace(/from '([^']+).lite'/g, "from '$1'");
+
+    // Write source
+    writeFileSync(targetFileName, content, 'utf8');
   }
 }
 
