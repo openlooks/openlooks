@@ -1,6 +1,6 @@
 {
   "name": "@openlooks/mitosis",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "build": "npm run build:icons && npm run build:index && npm run build:mitosis && npm run build:copyfiles",
