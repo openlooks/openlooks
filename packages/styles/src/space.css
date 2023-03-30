@@ -1,0 +1,11 @@
+@each $size in (0, xs, sm, md, lg, xl) {
+  .space.h-$(size) {
+    min-height: var(--spacing-$(size));
+    height: var(--spacing-$(size));
+  }
+
+  .space.w-$(size) {
+    min-width: var(--spacing-$(size));
+    width: var(--spacing-$(size));
+  }
+}

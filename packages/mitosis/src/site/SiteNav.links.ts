@@ -59,7 +59,7 @@ export const siteNavLinks = [
       { href: '/anchor', label: 'Anchor' },
       { href: '/breadcrumbs', label: 'Breadcrumbs', dimmed: true },
       { href: '/burger', label: 'Burger' },
-      { href: '/nav-link', label: 'NavLink' },
+      { href: '/nav-link', label: 'NavLink', dimmed: true },
       { href: '/pagination', label: 'Pagination', dimmed: true },
       { href: '/stepper', label: 'Stepper', dimmed: true },
       { href: '/tabs', label: 'Tabs' },
