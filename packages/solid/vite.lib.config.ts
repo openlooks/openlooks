@@ -1,9 +1,8 @@
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import solidPlugin from 'vite-plugin-solid';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [solidPlugin()],
   build: {
     target: 'esnext',
     modulePreload: {
@@ -16,7 +15,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime', 'react-dom'],
+      external: ['solid-js', 'solid-js/web'],
     },
   },
 });

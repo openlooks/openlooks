@@ -2,18 +2,30 @@
   "name": "@openlooks/solid",
   "version": "0.0.0",
   "type": "module",
+  "description": "OpenLooks Solid",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist/index.mjs"
+  ],
+  "main": "dist/index.mjs",
   "scripts": {
-    "start": "vite",
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:lib && npm run build:site",
+    "build:site": "vite build",
+    "build:lib": "vite build --config vite.lib.config.ts",
     "serve": "vite preview"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.14"
   },
   "devDependencies": {
     "@openlooks/mitosis": "*",
     "@openlooks/styles": "*",
-    "solid-js": "^1.6.14",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1",
     "vite-plugin-solid": "^2.6.1"
   }
 }
