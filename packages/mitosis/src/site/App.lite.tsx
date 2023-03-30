@@ -1,3 +1,4 @@
+import { useStore } from '@builder.io/mitosis';
 import AppShell from '../components/AppShell.lite';
 import AppShellBody from '../components/AppShellBody.lite';
 import AppShellMain from '../components/AppShellMain.lite';
@@ -100,7 +101,6 @@ import UnstyledButtonPage from './pages/UnstyledButtonPage.lite';
 import SiteHeader from './SiteHeader.lite';
 import SiteNav from './SiteNav.lite';
 
-import { useStore } from '@builder.io/mitosis';
 import './index.css';
 
 export default function App() {
@@ -112,12 +112,19 @@ export default function App() {
     <Router>
       <AppShell>
         <SiteHeader
+          burgerOpen={state.navOpen}
           onBurgerClick={() => {
             state.navOpen = !state.navOpen;
           }}
         />
         <AppShellBody>
-          <SiteNav forceOpen={state.navOpen} />
+          <SiteNav
+            forceOpen={state.navOpen}
+            onLinkClick={(event: MouseEvent) => {
+              event.preventDefault();
+              state.navOpen = false;
+            }}
+          />
           <AppShellMain>
             <Route path="/">
               <HomePage />

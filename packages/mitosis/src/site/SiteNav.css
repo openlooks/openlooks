@@ -4,6 +4,7 @@
   width: 100% !important;
   top: 0 !important;
   bottom: 0 !important;
+  z-index: 100;
 }
 
 .navlinks {
@@ -51,7 +52,7 @@
   font-weight: 500;
 }
 
-.navlinks a.openlooks.anchor.dimmed {
+.navlinks a.openlooks.anchor.dimmed-true {
   color: var(--oc-gray-4);
 }
 

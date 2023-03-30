@@ -11,6 +11,7 @@ import Logo from './components/Logo.lite';
 import './SiteHeader.css';
 
 export interface SiteHeaderProps {
+  burgerOpen: boolean;
   onBurgerClick: () => void;
 }
 
@@ -19,7 +20,12 @@ export default function SiteHeader(props: SiteHeaderProps) {
     <Header>
       <Group position="apart" spacing="xs" p="md">
         <Group spacing="md">
-          <Burger id="nav-burger" sx={{ '--size': '1rem' }} onClick={() => props.onBurgerClick()} />
+          <Burger
+            id="nav-burger"
+            sx={{ '--size': '1rem' }}
+            opened={props.burgerOpen}
+            onClick={() => props.onBurgerClick()}
+          />
           <RouterLink href="/" label="OpenLooks" sx={{ height: '1.75rem' }}>
             <Logo />
           </RouterLink>
