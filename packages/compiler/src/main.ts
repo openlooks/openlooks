@@ -1,29 +1,40 @@
+import fastGlob from 'fast-glob';
 import fs from 'fs';
-import { basename, resolve } from 'path';
+import { dirname, resolve } from 'path';
 import prettier from 'prettier';
 import ts from 'typescript';
 import { transformer } from './transformers';
 
 async function main(): Promise<void> {
   const outDir = './output';
-  const inputFiles = [
-    '../mitosis/src/components/Alert.lite.tsx',
-    '../mitosis/src/components/Button.lite.tsx',
-    '../mitosis/src/site/components/Counter.lite.tsx',
-  ];
-
   if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir);
   }
 
+  const inputFiles = await fastGlob(['../mitosis/src/**/*', '../mitosis/public/**/*']);
+
+  const program = ts.createProgram(
+    inputFiles.map((f) => resolve(f)),
+    {}
+  );
+
   for (const inputFile of inputFiles) {
-    const inputFilePath = resolve(inputFile);
-    const program = ts.createProgram([inputFilePath], {});
-    const source = program.getSourceFile(inputFilePath) as ts.SourceFile;
+    if (!inputFile.endsWith('.ts') && !inputFile.endsWith('.tsx')) {
+      continue;
+    }
+
+    const source = program.getSourceFile(inputFile) as ts.SourceFile;
     const result = ts.transform(source, [transformer(program)]);
     const printer = ts.createPrinter();
+
     for (const output of result.transformed) {
-      const outputFileName = resolve(outDir, basename(inputFilePath).replace('.lite.tsx', '.tsx'));
+      const targetFileName = resolve(outDir, inputFile.replace('../mitosis/', '').replace('.lite.tsx', '.tsx'));
+      const targetDir = dirname(targetFileName);
+      if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true });
+      }
+
+      const outputFileName = resolve(outDir, targetFileName);
       const transformerOutput = printer.printFile(output);
       const prettierOutput = prettier.format(transformerOutput, { filepath: outputFileName });
       fs.writeFileSync(outputFileName, prettierOutput, 'utf8');

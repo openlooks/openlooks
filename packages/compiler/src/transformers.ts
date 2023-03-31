@@ -37,7 +37,6 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
       if (ts.isTypeNode(node)) {
         const typeNode = node as ts.TypeNode;
         const typeStr = tryGetFullText(typeNode);
-        // console.log('typeStr', typeStr);
         if (typeStr === 'JSX.CSS') {
           return ts.factory.createTypeReferenceNode('React.CSSProperties');
         }
