@@ -5,22 +5,29 @@ import ts from 'typescript';
 import { transformer } from './transformers';
 
 async function main(): Promise<void> {
-  const inputFilePath = '../mitosis/src/components/Button.lite.tsx';
-  const outDirFilePath = './output';
+  const outDir = './output';
+  const inputFiles = [
+    '../mitosis/src/components/Alert.lite.tsx',
+    '../mitosis/src/components/Button.lite.tsx',
+    '../mitosis/src/site/components/Counter.lite.tsx',
+  ];
 
-  if (!fs.existsSync(outDirFilePath)) {
-    fs.mkdirSync(outDirFilePath);
+  if (!fs.existsSync(outDir)) {
+    fs.mkdirSync(outDir);
   }
 
-  const program = ts.createProgram([inputFilePath], {});
-  const source = program.getSourceFile(inputFilePath) as ts.SourceFile;
-  const result = ts.transform(source, [transformer(program)]);
-  const printer = ts.createPrinter();
-  for (const output of result.transformed) {
-    const outputFileName = resolve(outDirFilePath, basename(inputFilePath).replace('.lite.tsx', '.tsx'));
-    const transformerOutput = printer.printFile(output);
-    const prettierOutput = prettier.format(transformerOutput, { filepath: outputFileName });
-    fs.writeFileSync(outputFileName, prettierOutput, 'utf8');
+  for (const inputFile of inputFiles) {
+    const inputFilePath = resolve(inputFile);
+    const program = ts.createProgram([inputFilePath], {});
+    const source = program.getSourceFile(inputFilePath) as ts.SourceFile;
+    const result = ts.transform(source, [transformer(program)]);
+    const printer = ts.createPrinter();
+    for (const output of result.transformed) {
+      const outputFileName = resolve(outDir, basename(inputFilePath).replace('.lite.tsx', '.tsx'));
+      const transformerOutput = printer.printFile(output);
+      const prettierOutput = prettier.format(transformerOutput, { filepath: outputFileName });
+      fs.writeFileSync(outputFileName, prettierOutput, 'utf8');
+    }
   }
 }
 
