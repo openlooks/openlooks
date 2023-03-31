@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite';
-import solidPlugin from 'vite-plugin-solid';
+import dts from 'vite-plugin-dts';
+import solid from 'vite-plugin-solid';
 
 export default defineConfig({
-  plugins: [solidPlugin()],
+  plugins: [solid(), dts()],
   build: {
     target: 'esnext',
     modulePreload: {

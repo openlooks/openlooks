@@ -5,6 +5,7 @@ import { BaseComponentProps, Size } from './BaseComponentProps';
 import InputWrapper, { InputWrapperProps } from './InputWrapper.lite';
 
 export interface NativeSelectProps extends BaseComponentProps, InputWrapperProps {
+  id: string;
   variant?: 'filled' | 'light' | 'outline' | 'subtle';
   size?: Size;
   data: string[];

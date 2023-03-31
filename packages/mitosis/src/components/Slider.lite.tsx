@@ -10,6 +10,7 @@ export interface SliderMark {
 }
 
 export interface SliderProps extends BaseComponentProps, InputWrapperProps {
+  id: string;
   min?: number;
   max?: number;
   step?: number;

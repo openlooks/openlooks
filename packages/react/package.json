@@ -13,7 +13,7 @@
   "main": "dist/index.mjs",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:lib && npm run build:site",
+    "build": "npm run build:site",
     "build:site": "vite build",
     "build:lib": "vite build --config vite.lib.config.ts",
     "preview": "vite preview"
@@ -29,6 +29,7 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "typescript": "^5.0.2",
-    "vite": "^4.2.1"
+    "vite": "^4.2.1",
+    "vite-plugin-dts": "^2.1.0"
   }
 }

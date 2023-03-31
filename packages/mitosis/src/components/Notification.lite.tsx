@@ -30,7 +30,7 @@ export default function Notification(props: NotificationProps) {
       </div>
       <Show when={!props.disallowClose}>
         <div class="close">
-          <Button onClick={() => hideNotification(props.id as string)} variant="subtle" color="gray" size="xs">
+          <Button onClick={() => props.id && hideNotification(props.id)} variant="subtle" color="gray" size="xs">
             ✕
           </Button>
         </div>

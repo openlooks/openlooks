@@ -5,9 +5,13 @@ import { BaseComponentProps } from './BaseComponentProps';
 import Notification, { NotificationProps } from './Notification.lite';
 import { subscribeNotifications } from './NotificationsManager';
 
+export interface NotificationsState {
+  currentNotifications: NotificationProps[];
+}
+
 export default function Notifications(props: BaseComponentProps) {
-  const state = useStore({
-    currentNotifications: [] as NotificationProps[],
+  const state = useStore<NotificationsState>({
+    currentNotifications: [],
   });
 
   onMount(() => {
@@ -18,7 +22,9 @@ export default function Notifications(props: BaseComponentProps) {
 
   return (
     <div class={buildOpenLooksClassName('notifications', props)} style={props.sx as JSX.CSS | undefined}>
-      <For each={state.currentNotifications}>{(n) => <Notification {...n}>{n.children}</Notification>}</For>
+      <For each={state.currentNotifications}>
+        {(n: NotificationProps) => <Notification {...n}>{n.children}</Notification>}
+      </For>
     </div>
   );
 }

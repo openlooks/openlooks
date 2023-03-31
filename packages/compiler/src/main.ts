@@ -8,15 +8,14 @@ async function main(): Promise<void> {
   const inputFilePath = '../mitosis/src/components/Button.lite.tsx';
   const outDirFilePath = './output';
 
-  const program = ts.createProgram([inputFilePath], {});
-  const source = program.getSourceFile(inputFilePath) as ts.SourceFile;
-  const printer = ts.createPrinter();
-  const result = ts.transform(source, [transformer(program)]);
-
   if (!fs.existsSync(outDirFilePath)) {
     fs.mkdirSync(outDirFilePath);
   }
 
+  const program = ts.createProgram([inputFilePath], {});
+  const source = program.getSourceFile(inputFilePath) as ts.SourceFile;
+  const result = ts.transform(source, [transformer(program)]);
+  const printer = ts.createPrinter();
   for (const output of result.transformed) {
     const outputFileName = resolve(outDirFilePath, basename(inputFilePath).replace('.lite.tsx', '.tsx'));
     const transformerOutput = printer.printFile(output);

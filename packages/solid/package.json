@@ -13,7 +13,7 @@
   "main": "dist/index.mjs",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:lib && npm run build:site",
+    "build": "npm run build:site",
     "build:site": "vite build",
     "build:lib": "vite build --config vite.lib.config.ts",
     "serve": "vite preview"
@@ -24,8 +24,10 @@
   "devDependencies": {
     "@openlooks/mitosis": "*",
     "@openlooks/styles": "*",
+    "rollup-plugin-typescript2": "^0.34.1",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
+    "vite-plugin-dts": "^2.1.0",
     "vite-plugin-solid": "^2.6.1"
   }
 }
