@@ -28,7 +28,11 @@ async function main(): Promise<void> {
     const printer = ts.createPrinter();
 
     for (const output of result.transformed) {
-      const targetFileName = resolve(outDir, inputFile.replace('../mitosis/', '').replace('.lite.tsx', '.tsx'));
+      const targetFileName = resolve(
+        outDir,
+        inputFile.replace('../mitosis/', '').replace('.lite.ts', '.ts').replace('.lite.tsx', '.tsx')
+      );
+
       const targetDir = dirname(targetFileName);
       if (!fs.existsSync(targetDir)) {
         fs.mkdirSync(targetDir, { recursive: true });

@@ -1,36 +1,58 @@
 import ts from 'typescript';
 
 export function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> {
+  if (!program) {
+    throw new Error('Missing program');
+  }
+
   const checker = program.getTypeChecker();
-  console.log('program', !!program);
-  console.log('checker', !!checker);
+  if (!checker) {
+    throw new Error('Missing checker');
+  }
 
   return (context: ts.TransformationContext) => {
     const visitor: ts.Visitor = (node) => {
       node = ts.visitEachChild(node, visitor, context);
 
-      if (ts.isImportDeclaration(node)) {
-        const importDecl = node as ts.ImportDeclaration;
+      // Remove mitosis imports
+      if (
+        ts.isImportDeclaration(node) &&
+        ts.isStringLiteral(node.moduleSpecifier) &&
+        node.moduleSpecifier.text.startsWith('@builder.io/mitosis')
+      ) {
+        return undefined;
+      }
 
-        if (ts.isStringLiteral(importDecl.moduleSpecifier)) {
-          const fromString = importDecl.moduleSpecifier.text;
+      // Remove ".lite" suffixes from import file names
+      if (
+        ts.isImportDeclaration(node) &&
+        ts.isStringLiteral(node.moduleSpecifier) &&
+        node.moduleSpecifier.text.endsWith('.lite')
+      ) {
+        return ts.factory.updateImportDeclaration(
+          node,
+          node.modifiers,
+          node.importClause,
+          ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '')),
+          undefined
+        );
+      }
 
-          // Remove mitosis imports
-          if (fromString.startsWith('@builder.io/mitosis')) {
-            return undefined;
-          }
-
-          // Remove ".lite" suffixes from import file names
-          if (fromString.endsWith('.lite')) {
-            return ts.factory.updateImportDeclaration(
-              importDecl,
-              importDecl.modifiers,
-              importDecl.importClause,
-              ts.factory.createStringLiteral(fromString.replace('.lite', '')),
-              undefined
-            );
-          }
-        }
+      // Remove ".lite" suffixes from re-export file names
+      if (
+        ts.isExportDeclaration(node) &&
+        node.moduleSpecifier &&
+        ts.isStringLiteral(node.moduleSpecifier) &&
+        node.moduleSpecifier.text.endsWith('.lite')
+      ) {
+        return ts.factory.updateExportDeclaration(
+          node,
+          node.modifiers,
+          node.isTypeOnly,
+          node.exportClause,
+          ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '')),
+          undefined
+        );
       }
 
       // React: Rewrite "JSX.CSS" to "as CSSProperties"
@@ -40,96 +62,93 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
         if (typeStr === 'JSX.CSS') {
           return ts.factory.createTypeReferenceNode('React.CSSProperties');
         }
+
+        if (typeStr === 'MouseEvent') {
+          return ts.factory.createTypeReferenceNode('React.MouseEvent');
+        }
       }
 
       // React: Rewrite JSX "class" attribute to "className"
-      if (ts.isJsxAttribute(node)) {
-        const attr = node as ts.JsxAttribute;
-        const name = tryGetFullText(attr.name); //.getFullText().trim();
-        if (name === 'class') {
-          return ts.factory.createJsxAttribute(ts.factory.createIdentifier('className'), attr.initializer);
-        }
+      if (ts.isJsxAttribute(node) && node.name.text === 'class') {
+        return ts.factory.updateJsxAttribute(node, ts.factory.createIdentifier('className'), node.initializer);
       }
 
-      // React: Rewrite "useStore" to "useState" statements
-      if (ts.isVariableStatement(node)) {
-        const varStmt = node as ts.VariableStatement;
-        if (varStmt.declarationList.declarations.length === 1) {
-          const decl = varStmt.declarationList.declarations[0];
-          const declName = tryGetFullText(decl.name);
-          const declInitializer = decl.initializer;
-          if (
-            declName === 'state' &&
-            declInitializer &&
-            ts.isCallExpression(declInitializer) &&
-            tryGetFullText(declInitializer.expression) === 'useStore'
-          ) {
-            const callExpr = declInitializer as ts.CallExpression;
-            const arg0 = callExpr.arguments[0];
-            if (ts.isObjectLiteralExpression(arg0)) {
-              const objLiteral = arg0 as ts.ObjectLiteralExpression;
-              const useStateStmts: ts.Statement[] = [];
-              for (const prop of objLiteral.properties) {
-                if (ts.isPropertyAssignment(prop)) {
-                  const propName = tryGetFullText(prop.name);
-                  const propInitializer = prop.initializer;
-                  useStateStmts.push(
-                    ts.factory.createVariableStatement(
-                      undefined,
-                      ts.factory.createVariableDeclarationList(
-                        [
-                          ts.factory.createVariableDeclaration(
-                            ts.factory.createArrayBindingPattern([
-                              ts.factory.createBindingElement(undefined, undefined, propName, undefined),
-                              ts.factory.createBindingElement(undefined, undefined, getSetterName(propName), undefined),
-                            ]),
-                            undefined,
-                            undefined,
-                            ts.factory.createCallExpression(ts.factory.createIdentifier('React.useState'), undefined, [
-                              propInitializer,
-                            ])
-                          ),
-                        ],
-                        ts.NodeFlags.Const
-                      )
-                    )
-                  );
-                }
-              }
-              return useStateStmts;
-            }
-          }
+      // React: Rewrite "createContext" to "React.createContext"
+      if (isFunctionCall(node, 'createContext')) {
+        return ts.factory.updateCallExpression(
+          node,
+          ts.factory.createIdentifier('React.createContext'),
+          node.typeArguments,
+          node.arguments
+        );
+      }
+
+      // React: Rewrite "useStore" to "React.useState"
+      if (
+        ts.isVariableStatement(node) &&
+        node.declarationList.declarations.length === 1 &&
+        ts.isIdentifier(node.declarationList.declarations[0].name) &&
+        node.declarationList.declarations[0].name.text === 'state' &&
+        isFunctionCall(node.declarationList.declarations[0].initializer, 'useStore')
+      ) {
+        const callExpr = node.declarationList.declarations[0].initializer as ts.CallExpression;
+        const objLiteral = callExpr.arguments[0] as ts.ObjectLiteralExpression;
+        const useStateStmts: ts.Statement[] = [];
+        for (const prop of objLiteral.properties) {
+          const propAssignment = prop as ts.PropertyAssignment;
+          const propName = (propAssignment.name as ts.Identifier).text;
+          useStateStmts.push(
+            ts.factory.createVariableStatement(
+              undefined,
+              ts.factory.createVariableDeclarationList(
+                [
+                  ts.factory.createVariableDeclaration(
+                    ts.factory.createArrayBindingPattern([
+                      ts.factory.createBindingElement(undefined, undefined, propName, undefined),
+                      ts.factory.createBindingElement(undefined, undefined, getSetterName(propName), undefined),
+                    ]),
+                    undefined,
+                    undefined,
+                    ts.factory.createCallExpression(ts.factory.createIdentifier('React.useState'), undefined, [
+                      propAssignment.initializer,
+                    ])
+                  ),
+                ],
+                ts.NodeFlags.Const
+              )
+            )
+          );
         }
+        return useStateStmts;
       }
 
       // React: Replace state variable references with state variable getters
-      if (ts.isPropertyAccessExpression(node)) {
-        const propStr = tryGetFullText(node);
-        if (propStr.startsWith('state.')) {
-          // Don't replace setters - do that in the assignment below
-          if (
-            !(
-              ts.isBinaryExpression(node.parent) &&
-              node.parent.operatorToken.kind === ts.SyntaxKind.EqualsToken &&
-              node.parent.left === node
-            )
-          ) {
-            return ts.factory.createIdentifier(propStr.replace('state.', ''));
-          }
+      if (ts.isPropertyAccessExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === 'state') {
+        // Don't replace setters - do that in the assignment below
+        if (
+          !(
+            ts.isBinaryExpression(node.parent) &&
+            node.parent.operatorToken.kind === ts.SyntaxKind.EqualsToken &&
+            node.parent.left === node
+          )
+        ) {
+          return ts.factory.createIdentifier(node.name.text);
         }
       }
 
       // React: Replace state variable assignments with state variable setters
-      if (ts.isBinaryExpression(node) && node.operatorToken.kind === ts.SyntaxKind.EqualsToken) {
-        const lhs = node.left;
-        const lhsStr = tryGetFullText(lhs);
-        if (lhsStr.startsWith('state.')) {
-          return ts.factory.createCallExpression(
-            ts.factory.createIdentifier(getSetterName(lhsStr.replace('state.', ''))),
-            undefined,
-            [node.right]
-          );
-        }
+      if (
+        ts.isBinaryExpression(node) &&
+        node.operatorToken.kind === ts.SyntaxKind.EqualsToken &&
+        ts.isPropertyAccessExpression(node.left) &&
+        ts.isIdentifier(node.left.expression) &&
+        node.left.expression.text === 'state'
+      ) {
+        return ts.factory.createCallExpression(
+          ts.factory.createIdentifier(getSetterName(node.left.name.text)),
+          undefined,
+          [node.right]
+        );
       }
 
       return node;
@@ -159,6 +178,10 @@ function tryGetFullText(node: ts.Node): string {
   } catch (err) {
     return '';
   }
+}
+
+function isFunctionCall(node: ts.Node | undefined, name: string): node is ts.CallExpression {
+  return !!node && ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === name;
 }
 
 function getSetterName(name: string): string {
