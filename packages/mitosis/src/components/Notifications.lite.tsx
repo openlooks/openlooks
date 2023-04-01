@@ -5,13 +5,9 @@ import { BaseComponentProps } from './BaseComponentProps';
 import Notification, { NotificationProps } from './Notification.lite';
 import { subscribeNotifications } from './NotificationsManager';
 
-export interface NotificationsState {
-  currentNotifications: NotificationProps[];
-}
-
 export default function Notifications(props: BaseComponentProps) {
-  const state = useStore<NotificationsState>({
-    currentNotifications: [],
+  const state = useStore({
+    currentNotifications: [] as NotificationProps[],
   });
 
   onMount(() => {

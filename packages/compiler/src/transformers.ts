@@ -64,9 +64,14 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
           return ts.factory.createTypeReferenceNode('React.CSSProperties');
         }
 
-        // React: Rewrite "JSX.Event" to "as MouseEvent"
+        // React: Rewrite "MouseEvent" to "React.MouseEvent"
         if (typeStr === 'MouseEvent') {
           return ts.factory.createTypeReferenceNode('React.MouseEvent');
+        }
+
+        // React: Rewrite "Event" to "React.SyntheticEvent"
+        if (typeStr === 'Event') {
+          return ts.factory.createTypeReferenceNode('React.SyntheticEvent');
         }
       }
 
@@ -97,6 +102,17 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
             )
           );
         }
+      }
+
+      // React: Rewrite "class" interface member to "className"
+      if (ts.isPropertySignature(node) && node.name.getText() === 'class') {
+        return ts.factory.updatePropertySignature(
+          node,
+          node.modifiers,
+          ts.factory.createIdentifier('className'),
+          node.questionToken,
+          node.type
+        );
       }
 
       // React: Rewrite "createContext" to "React.createContext"
@@ -193,6 +209,80 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
           node.arguments[0],
           ts.factory.createArrayLiteralExpression(),
         ]);
+      }
+
+      // React: Rewrite <For each={...}> to <>{...}</>
+      if (
+        ts.isJsxElement(node) &&
+        ts.isJsxOpeningElement(node.openingElement) &&
+        ts.isIdentifier(node.openingElement.tagName) &&
+        node.openingElement.tagName.text === 'For'
+      ) {
+        const eachAttr = node.openingElement.attributes.properties.find(
+          (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'each'
+        ) as ts.JsxAttribute;
+        if (
+          eachAttr &&
+          eachAttr.initializer &&
+          ts.isJsxExpression(eachAttr.initializer) &&
+          eachAttr.initializer.expression
+        ) {
+          const childElement = node.children.find((child) => ts.isJsxExpression(child)) as ts.JsxExpression;
+          if (childElement) {
+            return ts.factory.createJsxFragment(
+              ts.factory.createJsxOpeningFragment(),
+              [
+                ts.factory.createJsxExpression(
+                  undefined,
+                  ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(eachAttr.initializer.expression, 'map'),
+                    undefined,
+                    [childElement.expression as ts.Expression]
+                  )
+                ),
+              ],
+              ts.factory.createJsxJsxClosingFragment()
+            );
+          }
+        }
+      }
+
+      // React: Rewrite <Show when={...}> to <>{...}</>
+      if (
+        ts.isJsxElement(node) &&
+        ts.isJsxOpeningElement(node.openingElement) &&
+        ts.isIdentifier(node.openingElement.tagName) &&
+        node.openingElement.tagName.text === 'Show'
+      ) {
+        const whenAttr = node.openingElement.attributes.properties.find(
+          (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'when'
+        ) as ts.JsxAttribute;
+        if (
+          whenAttr &&
+          whenAttr.initializer &&
+          ts.isJsxExpression(whenAttr.initializer) &&
+          whenAttr.initializer.expression
+        ) {
+          const childElement = node.children.find((child) => ts.isJsxElement(child) || ts.isJsxFragment(child)) as
+            | ts.JsxElement
+            | ts.JsxFragment;
+          if (childElement) {
+            return ts.factory.createJsxFragment(
+              ts.factory.createJsxOpeningFragment(),
+              [
+                ts.factory.createJsxExpression(
+                  undefined,
+                  ts.factory.createBinaryExpression(
+                    whenAttr.initializer.expression,
+                    ts.SyntaxKind.AmpersandAmpersandToken,
+                    childElement
+                  )
+                ),
+              ],
+              ts.factory.createJsxJsxClosingFragment()
+            );
+          }
+        }
       }
 
       return node;
