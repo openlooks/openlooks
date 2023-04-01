@@ -73,11 +73,26 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
         return ts.factory.updateJsxAttribute(node, ts.factory.createIdentifier('className'), node.initializer);
       }
 
+      // React: Rewrite JSX "for" attribute to "htmlFor"
+      if (ts.isJsxAttribute(node) && node.name.text === 'for') {
+        return ts.factory.updateJsxAttribute(node, ts.factory.createIdentifier('htmlFor'), node.initializer);
+      }
+
       // React: Rewrite "createContext" to "React.createContext"
       if (isFunctionCall(node, 'createContext')) {
         return ts.factory.updateCallExpression(
           node,
           ts.factory.createIdentifier('React.createContext'),
+          node.typeArguments,
+          node.arguments
+        );
+      }
+
+      // React: Rewrite "useContext" to "React.useContext"
+      if (isFunctionCall(node, 'useContext')) {
+        return ts.factory.updateCallExpression(
+          node,
+          ts.factory.createIdentifier('React.useContext'),
           node.typeArguments,
           node.arguments
         );
@@ -149,6 +164,14 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
           undefined,
           [node.right]
         );
+      }
+
+      // React: Rewrite "onMount" to "useEffect"
+      if (isFunctionCall(node, 'onMount')) {
+        return ts.factory.createCallExpression(ts.factory.createIdentifier('React.useEffect'), undefined, [
+          node.arguments[0],
+          ts.factory.createArrayLiteralExpression(),
+        ]);
       }
 
       return node;
