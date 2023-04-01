@@ -146,33 +146,14 @@ export function getJsxForElementChildExpression(node: ts.JsxElement): ts.Express
   return (node.children.find((child) => ts.isJsxExpression(child)) as ts.JsxExpression | undefined)?.expression;
 }
 
-// export function isJsxShowElement(node: ts.Node): node is ts.JsxElement & { openingElement: ts.JsxOpeningElement } {
-//   return (
-//     ts.isJsxElement(node) &&
-//     ts.isJsxOpeningElement(node.openingElement) &&
-//     ts.isIdentifier(node.openingElement.tagName) &&
-//     node.openingElement.tagName.text === 'Show'
-//   );
-// }
-
 export function getJsxShowElementWhenExpression(node: ts.JsxElement): ts.Expression | undefined {
   const whenAttr = node.openingElement.attributes.properties.find(
     (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'when'
   ) as ts.JsxAttribute;
-  // if (
-  //   whenAttr &&
-  //   whenAttr.initializer &&
-  //   ts.isJsxExpression(whenAttr.initializer) &&
-  //   whenAttr.initializer.expression
   return (whenAttr?.initializer as ts.JsxExpression | undefined)?.expression;
 }
 
 export function getJsxShowElementChildElement(node: ts.JsxElement): ts.JsxElement | ts.JsxFragment | undefined {
-  // return (node.children.find((child) => ts.isJsxExpression(child)) as ts.JsxExpression | undefined)?.expression;
-  //   const childElement = node.children.find((child) => ts.isJsxElement(child) || ts.isJsxFragment(child)) as
-  //   | ts.JsxElement
-  //   | ts.JsxFragment;
-  // if (childElement) {
   return node.children.find((child) => ts.isJsxElement(child) || ts.isJsxFragment(child)) as
     | ts.JsxElement
     | ts.JsxFragment
