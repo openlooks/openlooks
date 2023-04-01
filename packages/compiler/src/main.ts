@@ -6,10 +6,7 @@ import ts from 'typescript';
 import { transformer } from './transformers';
 
 async function main(): Promise<void> {
-  const outDir = './output';
-  if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir);
-  }
+  const outDir = '../react';
 
   const inputFiles = await fastGlob(['../mitosis/src/**/*', '../mitosis/public/**/*']);
 

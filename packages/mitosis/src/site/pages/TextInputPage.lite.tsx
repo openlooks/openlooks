@@ -10,23 +10,14 @@ import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface TextInputConfiguratorProps {
-  placeholder: string;
-  label: string;
-  description: string;
-  error: string;
-  radius: Size;
-  size: Size;
-}
-
 export default function TextInputPage() {
-  const state = useStore<TextInputConfiguratorProps>({
+  const state = useStore({
     placeholder: 'Your name',
     label: 'Full name',
     description: '',
     error: '',
-    radius: 'sm',
-    size: 'sm',
+    radius: 'sm' as Size,
+    size: 'sm' as Size,
   });
 
   return (

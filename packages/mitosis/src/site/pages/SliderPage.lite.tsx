@@ -10,18 +10,11 @@ import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface SliderConfiguratorProps {
-  color: Color;
-  radius: Size;
-  size: Size;
-  text: string;
-}
-
 export default function SliderPage() {
-  const state = useStore<SliderConfiguratorProps>({
-    color: 'blue',
-    radius: 'sm',
-    size: 'sm',
+  const state = useStore({
+    color: 'blue' as Color,
+    radius: 'sm' as Size,
+    size: 'sm' as Size,
     text: 'Settings',
   });
 

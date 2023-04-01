@@ -13,21 +13,13 @@ import IconAlertCircle from '../../icons/IconAlertCircle.lite';
 import DocPage from '../components/DocPage.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface ButtonConfiguratorProps {
-  title: string;
-  message: string;
-  color: Color;
-  radius: Size;
-  variant: 'light' | 'filled' | 'outline';
-}
-
 export default function AlertPage() {
-  const state = useStore<ButtonConfiguratorProps>({
+  const state = useStore({
     title: 'Bummer!',
     message: 'Something terrible happened! You made a mistake and there is no going back, your data was lost forever!',
-    color: 'blue',
-    radius: 'sm',
-    variant: 'filled',
+    color: 'blue' as Color,
+    radius: 'sm' as Size,
+    variant: 'filled' as 'light' | 'filled' | 'outline',
   });
 
   return (

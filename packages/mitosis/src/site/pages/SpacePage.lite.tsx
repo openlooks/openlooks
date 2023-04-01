@@ -11,15 +11,10 @@ import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface SpaceConfigurationProps {
-  h: Size;
-  w: Size;
-}
-
 export default function SpacePage() {
-  const state = useStore<SpaceConfigurationProps>({
-    h: 'md',
-    w: 'md',
+  const state = useStore({
+    h: 'md' as Size,
+    w: 'md' as Size,
   });
 
   return (

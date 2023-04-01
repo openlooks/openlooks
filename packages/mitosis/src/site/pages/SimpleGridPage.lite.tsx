@@ -12,17 +12,11 @@ import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface SimpleGridConfiguratorProps {
-  cols: number;
-  spacing: Size;
-  verticalSpacing: Size;
-}
-
 export default function SimpleGridPage() {
-  const state = useStore<SimpleGridConfiguratorProps>({
+  const state = useStore({
     cols: 3,
-    spacing: 'md',
-    verticalSpacing: 'md',
+    spacing: 'md' as Size,
+    verticalSpacing: 'md' as Size,
   });
 
   return (

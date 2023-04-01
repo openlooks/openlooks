@@ -5,7 +5,7 @@ import { TextProps } from './Text.lite';
 export interface AnchorProps extends TextProps {
   href: string;
   label?: string;
-  onClick?: (event: Event) => void;
+  onClick?: (event: MouseEvent) => void;
 }
 
 export default function Anchor(props: AnchorProps) {

@@ -12,15 +12,10 @@ import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface GroupConfiguratorProps {
-  position?: 'left' | 'center' | 'right' | 'apart';
-  spacing?: Size;
-}
-
 export default function GroupPage() {
-  const state = useStore<GroupConfiguratorProps>({
-    position: 'left',
-    spacing: 'md',
+  const state = useStore({
+    position: 'left' as 'left' | 'center' | 'right' | 'apart',
+    spacing: 'md' as Size,
   });
 
   return (

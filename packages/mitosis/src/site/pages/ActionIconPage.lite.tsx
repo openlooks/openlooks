@@ -13,19 +13,12 @@ import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface ActionIconConfiguratorProps {
-  variant: 'filled' | 'light' | 'outline' | 'subtle';
-  color: Color;
-  radius: Size;
-  size: Size;
-}
-
 export default function ActionIconPage() {
-  const state = useStore<ActionIconConfiguratorProps>({
-    variant: 'filled',
-    color: 'blue',
-    radius: 'sm',
-    size: 'sm',
+  const state = useStore({
+    variant: 'filled' as 'filled' | 'light' | 'outline' | 'subtle',
+    color: 'blue' as Color,
+    radius: 'sm' as Size,
+    size: 'sm' as Size,
   });
 
   return (

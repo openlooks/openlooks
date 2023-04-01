@@ -12,21 +12,13 @@ import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface FlexConfiguratorProps {
-  gap?: Size;
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around';
-  align?: 'stretch' | 'center' | 'flex-start' | 'flex-end';
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-  wrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
-}
-
 export default function FlexPage() {
-  const state = useStore<FlexConfiguratorProps>({
-    gap: 'md',
-    justify: 'flex-start',
-    align: 'flex-start',
-    direction: 'row',
-    wrap: 'wrap',
+  const state = useStore({
+    gap: 'md' as Size,
+    justify: 'flex-start' as 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around',
+    align: 'flex-start' as 'stretch' | 'center' | 'flex-start' | 'flex-end',
+    direction: 'row' as 'row' | 'column' | 'row-reverse' | 'column-reverse',
+    wrap: 'wrap' as 'wrap' | 'nowrap' | 'wrap-reverse',
   });
 
   return (

@@ -10,18 +10,11 @@ import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface PaperConfiguratorProps {
-  shadow: Size;
-  radius: Size;
-  padding: Size;
-  withBorder: boolean;
-}
-
 export default function PaperPage() {
-  const state = useStore<PaperConfiguratorProps>({
-    shadow: 'xs',
-    radius: 'sm',
-    padding: 'md',
+  const state = useStore({
+    shadow: 'xs' as Size,
+    radius: 'sm' as Size,
+    padding: 'md' as Size,
     withBorder: false,
   });
 

@@ -11,17 +11,11 @@ import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 import SizeInput from '../components/SizeInput.lite';
 
-export interface StackConfiguratorProps {
-  align?: 'stretch' | 'center' | 'flex-start' | 'flex-end';
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around';
-  spacing?: Size;
-}
-
 export default function StackPage() {
-  const state = useStore<StackConfiguratorProps>({
-    align: 'stretch',
-    justify: 'center',
-    spacing: 'md',
+  const state = useStore({
+    align: 'stretch' as 'stretch' | 'center' | 'flex-start' | 'flex-end',
+    justify: 'center' as 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around',
+    spacing: 'md' as Size,
   });
 
   return (

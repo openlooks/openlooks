@@ -55,27 +55,48 @@ export function transformer(program: ts.Program): ts.TransformerFactory<ts.Sourc
         );
       }
 
-      // React: Rewrite "JSX.CSS" to "as CSSProperties"
       if (ts.isTypeNode(node)) {
         const typeNode = node as ts.TypeNode;
         const typeStr = tryGetFullText(typeNode);
+
+        // React: Rewrite "JSX.CSS" to "as CSSProperties"
         if (typeStr === 'JSX.CSS') {
           return ts.factory.createTypeReferenceNode('React.CSSProperties');
         }
 
+        // React: Rewrite "JSX.Event" to "as MouseEvent"
         if (typeStr === 'MouseEvent') {
           return ts.factory.createTypeReferenceNode('React.MouseEvent');
         }
       }
 
-      // React: Rewrite JSX "class" attribute to "className"
-      if (ts.isJsxAttribute(node) && node.name.text === 'class') {
-        return ts.factory.updateJsxAttribute(node, ts.factory.createIdentifier('className'), node.initializer);
-      }
+      if (ts.isJsxAttribute(node)) {
+        // React: Rewrite JSX "class" attribute to "className"
+        if (node.name.text === 'class') {
+          return ts.factory.updateJsxAttribute(node, ts.factory.createIdentifier('className'), node.initializer);
+        }
 
-      // React: Rewrite JSX "for" attribute to "htmlFor"
-      if (ts.isJsxAttribute(node) && node.name.text === 'for') {
-        return ts.factory.updateJsxAttribute(node, ts.factory.createIdentifier('htmlFor'), node.initializer);
+        // React: Rewrite JSX "for" attribute to "htmlFor"
+        if (node.name.text === 'for') {
+          return ts.factory.updateJsxAttribute(node, ts.factory.createIdentifier('htmlFor'), node.initializer);
+        }
+
+        // Rewrite innerHTML to dangerouslySetInnerHTML
+        if (node.name.text === 'innerHTML') {
+          return ts.factory.updateJsxAttribute(
+            node,
+            ts.factory.createIdentifier('dangerouslySetInnerHTML'),
+            ts.factory.createJsxExpression(
+              undefined,
+              ts.factory.createObjectLiteralExpression([
+                ts.factory.createPropertyAssignment(
+                  '__html',
+                  (node.initializer as ts.JsxExpression).expression as ts.Expression
+                ),
+              ])
+            )
+          );
+        }
       }
 
       // React: Rewrite "createContext" to "React.createContext"
