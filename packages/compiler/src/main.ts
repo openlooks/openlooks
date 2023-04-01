@@ -20,6 +20,9 @@ async function main(): Promise<void> {
 
   for (const inputFile of inputFiles) {
     if (!inputFile.endsWith('.ts') && !inputFile.endsWith('.tsx')) {
+      const targetFileName = resolve(outDir, inputFile.replace('../mitosis/', ''));
+      ensureDirectoryExists(targetFileName);
+      fs.copyFileSync(inputFile, targetFileName);
       continue;
     }
 
@@ -33,16 +36,18 @@ async function main(): Promise<void> {
         inputFile.replace('../mitosis/', '').replace('.lite.ts', '.ts').replace('.lite.tsx', '.tsx')
       );
 
-      const targetDir = dirname(targetFileName);
-      if (!fs.existsSync(targetDir)) {
-        fs.mkdirSync(targetDir, { recursive: true });
-      }
-
-      const outputFileName = resolve(outDir, targetFileName);
       const transformerOutput = printer.printFile(output);
-      const prettierOutput = prettier.format(transformerOutput, { filepath: outputFileName });
-      fs.writeFileSync(outputFileName, prettierOutput, 'utf8');
+      const prettierOutput = prettier.format(transformerOutput, { filepath: targetFileName });
+      ensureDirectoryExists(targetFileName);
+      fs.writeFileSync(targetFileName, prettierOutput, 'utf8');
     }
+  }
+}
+
+function ensureDirectoryExists(targetFileName: string): void {
+  const targetDir = dirname(targetFileName);
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
   }
 }
 
