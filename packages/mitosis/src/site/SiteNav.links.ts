@@ -105,7 +105,7 @@ export const siteNavLinks = [
       { href: '/highlight', label: 'Highlight', dimmed: true },
       { href: '/list', label: 'List' },
       { href: '/mark', label: 'Mark', dimmed: true },
-      { href: '/table', label: 'Table', dimmed: true },
+      { href: '/table', label: 'Table' },
       { href: '/text', label: 'Text' },
       { href: '/title', label: 'Title' },
       { href: '/typography-styles-provider', label: 'TypographyStylesProvider', dimmed: true },
