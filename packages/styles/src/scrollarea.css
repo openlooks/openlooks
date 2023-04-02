@@ -1,4 +1,5 @@
 .scrollarea {
+  overflow: auto;
   -ms-overflow-style: auto;
   scrollbar-color: rgba(0, 0, 0, 0) transparent;
   scrollbar-width: thin;
@@ -19,7 +20,7 @@
 
 .scrollarea::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
 }
 
 /*
@@ -32,4 +33,57 @@
 
 .scrollarea:hover::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.25);
+}
+
+/*
+ * Never
+ */
+
+.scrollarea.variant-never:hover {
+  scrollbar-color: rgba(0, 0, 0, 0) transparent;
+}
+
+.scrollarea.variant-never:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0);
+}
+
+/*
+ * Always
+ */
+
+.scrollarea.variant-always {
+  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+}
+
+.scrollarea.variant-always::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/*
+ * Sizes
+ */
+
+.scrollarea.scrollbarSize-xs::-webkit-scrollbar {
+  width: 0.125rem;
+  height: 0.125rem;
+}
+
+.scrollarea.scrollbarSize-sm::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+.scrollarea.scrollbarSize-md::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.scrollarea.scrollbarSize-lg::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+}
+
+.scrollarea.scrollbarSize-xl::-webkit-scrollbar {
+  width: 2rem;
+  height: 2rem;
 }
