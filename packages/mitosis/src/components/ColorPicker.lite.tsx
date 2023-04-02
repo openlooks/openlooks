@@ -48,7 +48,11 @@ export default function ColorPicker(props: ColorPickerProps) {
                   }
                 }}
               />
-              <label for={`${props.id}-${color}`} style={{ background: `var(--oc-${color}-6)` }} title={color}>
+              <label
+                for={`${props.id}-${color}`}
+                style={{ background: color === 'black' ? 'black' : `var(--oc-${color}-6)` }}
+                title={color}
+              >
                 ✓
               </label>
             </>

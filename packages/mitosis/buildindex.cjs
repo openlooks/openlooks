@@ -1,20 +1,7 @@
 // Create index.ts from components list
 
-const { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } = require('fs');
+const { writeFileSync, readdirSync } = require('fs');
 const { resolve } = require('path');
-
-const iconList = [
-  'adjustments.svg',
-  'alert-circle.svg',
-  'brand-discord-filled.svg',
-  'brand-github.svg',
-  'database.svg',
-  'message-circle.svg',
-  'messages.svg',
-  'photo.svg',
-  'settings.svg',
-  'sun.svg',
-];
 
 async function main() {
   const components = [];
