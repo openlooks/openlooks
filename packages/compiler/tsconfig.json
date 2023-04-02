@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "strict": true,
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true
+    "forceConsistentCasingInFileNames": true
   },
   "ts-node": {
     "esm": true

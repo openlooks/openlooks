@@ -2,6 +2,9 @@
   "name": "@openlooks/compiler",
   "version": "0.0.1",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "compile": "node --experimental-specifier-resolution=node --loader ts-node/esm src/main.ts"

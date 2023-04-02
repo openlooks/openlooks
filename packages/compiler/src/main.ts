@@ -1,3 +1,5 @@
+#!/usr/bin/env
+
 import fastGlob from 'fast-glob';
 import { resolve } from 'path';
 import ts from 'typescript';
@@ -6,12 +8,67 @@ import { transformToSolid } from './solid';
 
 async function main(): Promise<void> {
   const inputFiles = await fastGlob(['../mitosis/src/**/*', '../mitosis/public/**/*']);
+  const rootNames = inputFiles.filter((f) => f.endsWith('.ts') || f.endsWith('.tsx')).map((f) => resolve(f));
+  if (process.argv.some((a) => a === '--watch')) {
+    await watch(inputFiles, rootNames);
+  } else {
+    buildAll(inputFiles, rootNames);
+  }
+}
 
-  const program = ts.createProgram(
-    inputFiles.map((f) => resolve(f)),
-    {}
+function buildAll(inputFiles: string[], rootNames: string[]): void {
+  transform(ts.createProgram(rootNames, {}), inputFiles);
+}
+
+async function watch(inputFiles: string[], rootNames: string[]): Promise<void> {
+  // Based on: https://github.com/microsoft/TypeScript-wiki/blob/main/Using-the-Compiler-API.md
+
+  const changedFiles = new Set<string>();
+
+  const host = ts.createWatchCompilerHost(
+    '../mitosis/tsconfig.json',
+    {},
+    {
+      ...ts.sys,
+      watchFile(
+        fileName: string,
+        callback: ts.FileWatcherCallback,
+        pollingInterval?: number,
+        options?: ts.WatchOptions
+      ) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return ts.sys.watchFile!(
+          fileName,
+          (fileName, eventKind) => {
+            changedFiles.add(fileName);
+            callback(fileName, eventKind);
+          },
+          pollingInterval,
+          options
+        );
+      },
+    },
+    ts.createSemanticDiagnosticsBuilderProgram
   );
 
+  const origCreateProgram = host.createProgram;
+  host.createProgram = (_rootNames: readonly string[] | undefined, options, host, oldProgram) => {
+    return origCreateProgram(rootNames, options, host, oldProgram);
+  };
+
+  const origPostProgramCreate = host.afterProgramCreate as (program: ts.SemanticDiagnosticsBuilderProgram) => void;
+  host.afterProgramCreate = (program) => {
+    origPostProgramCreate(program);
+    const changeArray = Array.from(changedFiles);
+    console.log('Changed files:', changeArray);
+    changedFiles.clear();
+    transform(program.getProgram(), changeArray);
+  };
+
+  ts.createWatchProgram(host);
+}
+
+function transform(program: ts.Program, inputFiles: string[]): void {
   transformToReact(program, inputFiles, '../react');
   transformToSolid(program, inputFiles, '../solid');
 }

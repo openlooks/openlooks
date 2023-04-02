@@ -2,6 +2,7 @@ node_modules
 .turbo
 .DS_Store
 
+packages/compiler/dist
 packages/compiler/output
 
 packages/styles/dist
