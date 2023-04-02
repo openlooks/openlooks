@@ -4,7 +4,7 @@ import { BaseComponentProps, Size } from './BaseComponentProps';
 
 export interface ActionIconProps extends BaseComponentProps {
   title?: string;
-  variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'xyzaaz';
+  variant?: 'filled' | 'light' | 'outline' | 'subtle';
   size?: Size;
   onClick?: (e: any) => void;
 }

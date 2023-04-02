@@ -6,9 +6,12 @@ import ts from 'typescript';
 import { transformToReact } from './react';
 import { transformToSolid } from './solid';
 
+const inputDir = '../mitosis';
+const resolvedInputDir = resolve(inputDir);
+
 async function main(): Promise<void> {
-  const inputFiles = await fastGlob(['../mitosis/src/**/*', '../mitosis/public/**/*']);
-  const rootNames = inputFiles.filter((f) => f.endsWith('.ts') || f.endsWith('.tsx')).map((f) => resolve(f));
+  const inputFiles = (await fastGlob([inputDir + '/src/**/*', inputDir + '/public/**/*'])).map((f) => resolve(f));
+  const rootNames = inputFiles.filter((f) => f.endsWith('.ts') || f.endsWith('.tsx'));
   if (process.argv.some((a) => a === '--watch')) {
     await watch(inputFiles, rootNames);
   } else {
@@ -59,7 +62,7 @@ async function watch(inputFiles: string[], rootNames: string[]): Promise<void> {
   const origPostProgramCreate = host.afterProgramCreate as (program: ts.SemanticDiagnosticsBuilderProgram) => void;
   host.afterProgramCreate = (program) => {
     origPostProgramCreate(program);
-    const changeArray = Array.from(changedFiles);
+    const changeArray = Array.from(changedFiles).map((f) => resolve(f));
     console.log('Changed files:', changeArray);
     changedFiles.clear();
     transform(program.getProgram(), changeArray);
@@ -69,8 +72,8 @@ async function watch(inputFiles: string[], rootNames: string[]): Promise<void> {
 }
 
 function transform(program: ts.Program, inputFiles: string[]): void {
-  transformToReact(program, inputFiles, '../react');
-  transformToSolid(program, inputFiles, '../solid');
+  transformToReact(program, resolvedInputDir, inputFiles, '../react');
+  transformToSolid(program, resolvedInputDir, inputFiles, '../solid');
 }
 
 main()

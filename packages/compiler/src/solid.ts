@@ -16,10 +16,15 @@ import {
   tryGetFullText,
 } from './utils';
 
-export function transformToSolid(program: ts.Program, inputFiles: string[], outDir: string): void {
+export function transformToSolid(
+  program: ts.Program,
+  rootInputDir: string,
+  inputFiles: string[],
+  outDir: string
+): void {
   for (const inputFile of inputFiles) {
     if (!inputFile.endsWith('.ts') && !inputFile.endsWith('.tsx')) {
-      const targetFileName = resolve(outDir, inputFile.replace('../mitosis/', ''));
+      const targetFileName = resolve(outDir, inputFile.replace(rootInputDir, '.'));
       ensureDirectoryExists(targetFileName);
       fs.copyFileSync(inputFile, targetFileName);
       continue;
@@ -32,7 +37,7 @@ export function transformToSolid(program: ts.Program, inputFiles: string[], outD
     for (const output of result.transformed) {
       const targetFileName = resolve(
         outDir,
-        inputFile.replace('../mitosis/', '').replace('.lite.ts', '.ts').replace('.lite.tsx', '.tsx')
+        inputFile.replace(rootInputDir, '.').replace('.lite.ts', '.ts').replace('.lite.tsx', '.tsx')
       );
 
       const transformerOutput = printer.printFile(output);
