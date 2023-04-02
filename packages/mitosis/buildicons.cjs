@@ -5,14 +5,17 @@ const { resolve } = require('path');
 const iconList = [
   'adjustments.svg',
   'alert-circle.svg',
+  'arrows-left-right.svg',
   'brand-discord-filled.svg',
   'brand-github.svg',
   'database.svg',
   'message-circle.svg',
   'messages.svg',
   'photo.svg',
+  'search.svg',
   'settings.svg',
   'sun.svg',
+  'trash.svg',
 ];
 
 async function main() {
