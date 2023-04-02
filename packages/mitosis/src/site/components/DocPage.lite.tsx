@@ -18,9 +18,7 @@ export default function DocPage(props: DocPageProps) {
     <>
       <div class="doc-header">
         <Container size="sm" px="sm">
-          <Title order={1} mt={0}>
-            {props.title}
-          </Title>
+          <Title mt={0}>{props.title}</Title>
           <Text class="description">{props.description}</Text>
           <Grid gutter="xs">
             <GridCol>
@@ -62,7 +60,7 @@ export default function DocPage(props: DocPageProps) {
           </Grid>
         </Container>
       </div>
-      <Container size="sm" px="sm" py="xl">
+      <Container class="doc-body" size="sm" px="sm" py="xl">
         {props.children}
       </Container>
     </>

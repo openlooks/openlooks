@@ -4,14 +4,14 @@ import { buildOpenLooksClassName } from '../utils/classname';
 import { BaseComponentProps } from './BaseComponentProps';
 
 export interface TitleProps extends BaseComponentProps {
-  order: 1 | 2 | 3 | 4 | 5 | 6;
+  order?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 export default function Title(props: TitleProps) {
   // TODO: Figure out how to use Solid "Dynamic" in Mitosis
   return (
     <>
-      <Show when={props.order === 1}>
+      <Show when={props.order === 1 || props.order === undefined}>
         <h1 class={buildOpenLooksClassName('title', props)} style={props.sx as JSX.CSS | undefined}>
           {props.children}
         </h1>
