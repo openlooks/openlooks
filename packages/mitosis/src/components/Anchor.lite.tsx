@@ -4,6 +4,7 @@ import { TextProps } from './Text.lite';
 
 export interface AnchorProps extends TextProps {
   href: string;
+  target?: string;
   label?: string;
   onClick?: (event: MouseEvent) => void;
 }
@@ -14,6 +15,7 @@ export default function Anchor(props: AnchorProps) {
       class={buildOpenLooksClassName('anchor text', props)}
       style={props.sx as JSX.CSS | undefined}
       href={props.href}
+      target={props.target}
       aria-label={props.label}
       onClick={(event) => props.onClick?.(event)}
     >
