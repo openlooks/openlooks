@@ -40,6 +40,7 @@ export default function Slider(props: SliderProps) {
         step={props.step}
         value={props.defaultValue}
         onChange={(event) => props.onChange?.(event)}
+        onInput={(event) => props.onChange?.(event)}
       />
       <Show when={props.marks}>
         <datalist id={props.id + '-marks'} class="openlooks">

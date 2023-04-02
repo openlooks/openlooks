@@ -30,6 +30,7 @@ export default function TextInput(props: TextInputProps) {
         placeholder={props.placeholder}
         aria-invalid={!!props.error}
         onChange={(event) => props.onChange?.(event)}
+        onInput={(event) => props.onChange?.(event)}
       />
     </InputWrapper>
   );
