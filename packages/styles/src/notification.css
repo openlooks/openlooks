@@ -3,7 +3,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  width: 440px;
   margin: 12px auto;
   padding: 0;
   background: var(--oc-white);

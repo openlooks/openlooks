@@ -1,5 +1,7 @@
 .notifications {
   position: fixed;
-  bottom: 0;
-  right: 8px;
+  bottom: 1rem;
+  right: 1rem;
+  width: calc(100% - 2rem);
+  max-width: 27.5rem;
 }
