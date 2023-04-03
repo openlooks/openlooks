@@ -40,22 +40,23 @@
   color: var(--oc-gray-7);
 }
 
+.navlinks a.openlooks.anchor.dimmed-true {
+  color: var(--oc-gray-4);
+}
+
 .navlinks a.openlooks.anchor:hover {
   background-color: var(--oc-gray-0);
 }
 
 .navlinks a.openlooks.anchor[aria-current],
-.navlinks a.openlooks.anchor[aria-current]:hover {
+.navlinks a.openlooks.anchor.dimmed-true[aria-current],
+.navlinks a.openlooks.anchor[aria-current]:hover,
+.navlinks a.openlooks.anchor.dimmed-true[aria-current]:hover {
   background-color: var(--oc-blue-0);
   color: var(--oc-blue-6);
   border-left: 0.0625rem solid var(--oc-blue-4);
   font-weight: 500;
 }
-
-.navlinks a.openlooks.anchor.dimmed-true {
-  color: var(--oc-gray-4);
-}
-
 /*
  * Dark theme
  */
