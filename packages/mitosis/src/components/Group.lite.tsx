@@ -9,7 +9,7 @@ export interface GroupProps extends BaseComponentProps {
 
 export default function Group(props: GroupProps) {
   return (
-    <div class={buildOpenLooksClassName('group', props)} style={props.sx as JSX.CSS | undefined}>
+    <div class={buildOpenLooksClassName('group', props, { spacing: 'sm' })} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );
