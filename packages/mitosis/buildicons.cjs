@@ -14,8 +14,10 @@ const iconList = [
   'photo.svg',
   'search.svg',
   'settings.svg',
+  'star.svg',
   'sun.svg',
   'trash.svg',
+  'user-circle.svg',
 ];
 
 async function main() {

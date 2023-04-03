@@ -29,7 +29,7 @@ export const siteNavLinks = [
   {
     title: 'Inputs',
     links: [
-      { href: '/autocomplete', label: 'Autocomplete', dimmed: true },
+      { href: '/autocomplete', label: 'Autocomplete' },
       { href: '/checkbox', label: 'Checkbox', dimmed: true },
       { href: '/chip', label: 'Chip', dimmed: true },
       { href: '/color-input', label: 'ColorInput', dimmed: true },
@@ -69,7 +69,7 @@ export const siteNavLinks = [
     title: 'Data display',
     links: [
       { href: '/accordion', label: 'Accordion', dimmed: true },
-      { href: '/avatar', label: 'Avatar', dimmed: true },
+      { href: '/avatar', label: 'Avatar' },
       { href: '/background-image', label: 'BackgroundImage', dimmed: true },
       { href: '/badge', label: 'Badge', dimmed: true },
       { href: '/card', label: 'Card', dimmed: true },

@@ -40,6 +40,7 @@ function getClassName(key: string, props: any, defaultProps?: any): string | und
 }
 
 const ignoredProps = [
+  'alt',
   'children',
   'class',
   'className',
@@ -50,6 +51,7 @@ const ignoredProps = [
   'icon',
   'label',
   'required',
+  'src',
   'sx',
   'title',
   'value',

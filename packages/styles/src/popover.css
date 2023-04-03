@@ -1,5 +1,5 @@
 .popover {
-  position: fixed;
+  position: absolute;
   background: var(--oc-white);
   cursor: default;
   outline: none;

@@ -3,22 +3,23 @@
   margin: 0;
   padding: 0;
   width: 100%;
+  position: relative;
 }
 
-.inputwrapper .label {
+.inputwrapper > label.label {
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.6;
 }
 
-.inputwrapper .description {
+.inputwrapper > div.description {
   font-size: 0.75rem;
   line-height: 1.2;
   color: var(--oc-gray-6);
 }
 
-.inputwrapper .error {
+.inputwrapper > div.error {
   font-size: 0.75rem;
   line-height: 1.2;
   color: var(--oc-red-6);
