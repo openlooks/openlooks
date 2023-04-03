@@ -35,7 +35,7 @@ export default function ColorPicker(props: ColorPickerProps) {
           ]}
         >
           {(color) => (
-            <>
+            <div>
               <input
                 type="radio"
                 id={`${props.id}-${color}`}
@@ -55,7 +55,7 @@ export default function ColorPicker(props: ColorPickerProps) {
               >
                 ✓
               </label>
-            </>
+            </div>
           )}
         </For>
       </div>

@@ -29,3 +29,23 @@
 .dark .configurator .configurator-controls {
   border-color: var(--oc-dark-5);
 }
+
+/*
+ * Mobile styles
+ */
+
+@media screen and (min-width: 0px) and (max-width: 36rem) {
+  .configurator {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .configurator .configurator-stage {
+    width: 100%;
+  }
+
+  .configurator .configurator-controls {
+    width: 100%;
+    border-top: 0.0625rem solid var(--oc-gray-2);
+  }
+}
