@@ -1,7 +1,7 @@
 .nativeselect {
   display: block;
   height: 2.25rem;
-  min-height: 2.25rem;
+  /* min-height: 2.25rem; */
   line-height: 2.125rem;
   border: 0.0625rem solid #ccc;
   border-radius: 0.25rem;
@@ -30,4 +30,38 @@
 
 .dark .nativeselect:focus {
   border-color: var(--oc-blue-5);
+}
+
+/*
+ * Sizes
+ */
+
+.nativeselect.size-xs {
+  height: 1.875rem;
+  padding: 0 0.625rem;
+  font-size: var(--font-size-xs);
+}
+
+.nativeselect.size-sm {
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  font-size: var(--font-size-sm);
+}
+
+.nativeselect.size-md {
+  height: 2.625rem;
+  padding: 0 0.875rem;
+  font-size: var(--font-size-md);
+}
+
+.nativeselect.size-lg {
+  height: 3.125rem;
+  padding: 0 1rem;
+  font-size: var(--font-size-lg);
+}
+
+.nativeselect.size-xl {
+  height: 3.75rem;
+  padding: 0 1.25rem;
+  font-size: var(--font-size-xl);
 }

@@ -23,6 +23,10 @@ export function transformToSolid(
   outDir: string
 ): void {
   for (const inputFile of inputFiles) {
+    if (inputFile.endsWith('tsconfig.json')) {
+      continue;
+    }
+
     if (!inputFile.endsWith('.ts') && !inputFile.endsWith('.tsx')) {
       const targetFileName = resolve(outDir, inputFile.replace(rootInputDir, '.'));
       ensureDirectoryExists(targetFileName);
