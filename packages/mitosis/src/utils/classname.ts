@@ -49,6 +49,7 @@ const ignoredProps = [
   'error',
   'href',
   'icon',
+  'id',
   'label',
   'required',
   'src',

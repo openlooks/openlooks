@@ -47,7 +47,7 @@ export const siteNavLinks = [
       { href: '/segmented-control', label: 'SegmentedControl', dimmed: true },
       { href: '/select', label: 'Select', dimmed: true },
       { href: '/slider', label: 'Slider', dimmed: true },
-      { href: '/switch', label: 'Switch', dimmed: true },
+      { href: '/switch', label: 'Switch' },
       { href: '/textarea', label: 'Textarea' },
       { href: '/text-input', label: 'TextInput' },
       { href: '/transfer-list', label: 'TransferList', dimmed: true },
