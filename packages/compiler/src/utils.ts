@@ -154,10 +154,9 @@ export function getJsxShowElementWhenExpression(node: ts.JsxElement): ts.Express
 }
 
 export function getJsxShowElementChildElement(node: ts.JsxElement): ts.JsxElement | ts.JsxFragment | undefined {
-  return node.children.find((child) => ts.isJsxElement(child) || ts.isJsxFragment(child)) as
-    | ts.JsxElement
-    | ts.JsxFragment
-    | undefined;
+  return node.children.find(
+    (child) => ts.isJsxElement(child) || ts.isJsxFragment(child) || ts.isJsxSelfClosingElement(child)
+  ) as ts.JsxElement | ts.JsxFragment | undefined;
 }
 
 export function getSetterName(name: string): string {
