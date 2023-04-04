@@ -46,7 +46,7 @@ export const siteNavLinks = [
       { href: '/rating', label: 'Rating', dimmed: true },
       { href: '/segmented-control', label: 'SegmentedControl', dimmed: true },
       { href: '/select', label: 'Select', dimmed: true },
-      { href: '/slider', label: 'Slider', dimmed: true },
+      { href: '/slider', label: 'Slider' },
       { href: '/switch', label: 'Switch' },
       { href: '/textarea', label: 'Textarea' },
       { href: '/text-input', label: 'TextInput' },
