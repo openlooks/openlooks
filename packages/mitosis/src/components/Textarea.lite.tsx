@@ -21,10 +21,9 @@ export default function TextInput(props: TextInputProps) {
       error={props.error}
       required={props.required}
     >
-      <input
-        type="text"
+      <textarea
         id={props.id}
-        class={buildOpenLooksClassName('textinput', props)}
+        class={buildOpenLooksClassName('textarea', props)}
         style={props.sx as JSX.CSS | undefined}
         value={props.defaultValue || ''}
         placeholder={props.placeholder}

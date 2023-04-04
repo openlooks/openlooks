@@ -5,7 +5,7 @@
   border: 0.0625rem solid #ccc;
   border-radius: 0.25rem;
   font-size: 0.875rem;
-  font-family: var(--medplum-font-family);
+  font-family: var(--font-family);
   width: 100%;
   padding: 0 0.75rem;
   margin-top: 0.125rem;
