@@ -48,6 +48,11 @@ export default function Autocomplete(props: AutocompleteProps) {
         style={props.sx as JSX.CSS | undefined}
         value={props.defaultValue || ''}
         placeholder={props.placeholder}
+        autocomplete="off"
+        aria-role="combobox"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        aria-expanded={state.display === 'block' ? 'true' : 'false'}
         aria-invalid={!!props.error}
         onChange={(event) => props.onChange?.(event)}
         onInput={(event) => props.onChange?.(event)}
