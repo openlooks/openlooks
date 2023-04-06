@@ -6,6 +6,7 @@ import { InputWrapperProps } from './InputWrapper.lite';
 export interface CheckboxProps extends BaseComponentProps, InputWrapperProps {
   id: string;
   size?: Size;
+  defaultChecked?: boolean;
 }
 
 export default function Checkbox(props: CheckboxProps) {
@@ -13,7 +14,12 @@ export default function Checkbox(props: CheckboxProps) {
     <>
       <div class={buildOpenLooksClassName('checkbox', props)} style={props.sx as JSX.CSS | undefined}>
         <div>
-          <input type="checkbox" />
+          <input
+            class={buildOpenLooksClassName('checkbox', props)}
+            type="checkbox"
+            value="on"
+            checked={props.defaultChecked}
+          />
         </div>
         <div class="openlooks inputwrapper">
           <label for={props.id}>{props.label}</label>

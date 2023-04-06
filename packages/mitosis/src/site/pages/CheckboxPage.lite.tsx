@@ -18,7 +18,7 @@ export default function CheckboxPage() {
     description: '',
     error: '',
     size: 'sm' as Size,
-    radius: 'xl' as Size,
+    radius: 'sm' as Size,
     color: 'blue' as Color,
   });
 
@@ -35,6 +35,7 @@ export default function CheckboxPage() {
             radius={state.radius}
             size={state.size}
             color={state.color}
+            defaultChecked={true}
           />
         </ConfiguratorStage>
         <ConfiguratorControls>
