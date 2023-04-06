@@ -27,6 +27,6 @@
   color: var(--oc-dark-2);
 }
 
-.doc-body h2.openlooks.title {
+.doc-body > h2.openlooks.title {
   margin-bottom: 1rem;
 }
