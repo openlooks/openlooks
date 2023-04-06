@@ -1,11 +1,13 @@
+import { onMount } from '@builder.io/mitosis';
 import Anchor from '../../components/Anchor.lite';
 import Container from '../../components/Container.lite';
 import Grid from '../../components/Grid.lite';
 import GridCol from '../../components/GridCol.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
-import './DocPage.css';
 import Prism from './Prism.lite';
+
+import './DocPage.css';
 
 export interface DocPageProps {
   title: string;
@@ -14,6 +16,10 @@ export interface DocPageProps {
 }
 
 export default function DocPage(props: DocPageProps) {
+  onMount(() => {
+    document.title = props.title + ' | Openlooks';
+  });
+
   return (
     <>
       <div class="doc-header">

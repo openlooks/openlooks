@@ -30,7 +30,7 @@ export const siteNavLinks = [
     title: 'Inputs',
     links: [
       { href: '/autocomplete', label: 'Autocomplete' },
-      { href: '/checkbox', label: 'Checkbox', dimmed: true },
+      { href: '/checkbox', label: 'Checkbox' },
       { href: '/chip', label: 'Chip', dimmed: true },
       { href: '/color-input', label: 'ColorInput', dimmed: true },
       { href: '/color-picker', label: 'ColorPicker', dimmed: true },
