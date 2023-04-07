@@ -17,7 +17,7 @@ export default function Tabs(props: TabsProps) {
         currentTab: () => {
           return state.currentValue;
         },
-        setCurrentTab: (newTab: string) => {
+        setCurrentTab: (newTab) => {
           state.currentValue = newTab;
         },
       }}

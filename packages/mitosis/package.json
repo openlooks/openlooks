@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "npm run build:icons && npm run build:index && npm run compile",
-    "build-old": "npm run build:icons && npm run build:index && npm run build:mitosis && npm run build:copyfiles",
+    "build-toy": "npm run build:icons && npm run build:index && npm run compile",
+    "build": "npm run build:icons && npm run build:index && npm run build:mitosis && npm run build:copyfiles",
     "build:icons": "node buildicons.cjs",
     "build:index": "node buildindex.cjs",
     "build:mitosis": "mitosis build",
@@ -13,11 +13,11 @@
     "compile": "node --experimental-specifier-resolution=node ../compiler/dist/main.js"
   },
   "devDependencies": {
-    "@builder.io/mitosis": "0.0.93",
-    "@builder.io/mitosis-cli": "0.0.52",
+    "@builder.io/mitosis": "0.0.96",
+    "@builder.io/mitosis-cli": "0.0.55",
     "@openlooks/compiler": "*",
     "@openlooks/styles": "*",
-    "@tabler/icons": "2.12.0",
+    "@tabler/icons": "2.14.0",
     "chokidar": "3.5.3",
     "fast-glob": "3.2.12"
   }

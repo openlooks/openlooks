@@ -17,18 +17,18 @@
   "devDependencies": {
     "@builder.io/eslint-plugin-mitosis": "0.0.14",
     "@types/node": "18.15.11",
-    "@typescript-eslint/eslint-plugin": "5.57.0",
-    "@typescript-eslint/parser": "5.57.0",
+    "@typescript-eslint/eslint-plugin": "5.57.1",
+    "@typescript-eslint/parser": "5.57.1",
     "eslint": "8.37.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react-hooks": "4.6.0",
-    "npm-check-updates": "16.9.0",
+    "npm-check-updates": "16.10.7",
     "nyc": "15.1.0",
     "prettier": "2.8.7",
     "rimraf": "4.4.1",
     "turbo": "1.8.8",
-    "typescript": "5.0.2"
+    "typescript": "5.0.3"
   },
   "prettier": {
     "printWidth": 120,

@@ -25,7 +25,7 @@ export default function Router(props: RouterProps) {
         url: () => {
           return state.currentUrl;
         },
-        navigate: (newUrl: string) => {
+        navigate: (newUrl) => {
           // Update the URL without reloading the page
           window.history.pushState(null, '', newUrl);
 
