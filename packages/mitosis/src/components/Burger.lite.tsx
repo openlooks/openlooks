@@ -4,6 +4,7 @@ import { BaseComponentProps } from './BaseComponentProps';
 
 export interface BurgerProps extends BaseComponentProps {
   opened?: boolean;
+  label?: string;
   onClick?: (e: any) => void;
 }
 
@@ -13,6 +14,7 @@ export default function Burger(props: BurgerProps) {
       id={props.id}
       class={buildOpenLooksClassName('unstyled-button burger-button', props)}
       style={props.sx as JSX.CSS | undefined}
+      aria-label={props.label}
       onClick={(event) => {
         props.onClick?.(event);
       }}

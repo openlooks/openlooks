@@ -22,6 +22,7 @@ export default function SiteHeader(props: SiteHeaderProps) {
         <Group spacing="md">
           <Burger
             id="nav-burger"
+            label="Toggle navbar"
             sx={{ '--size': '1rem' }}
             opened={props.burgerOpen}
             onClick={() => props.onBurgerClick()}
