@@ -29,6 +29,7 @@
   flex: 1 1 0%;
 }
 
-.menu-item:hover {
+.menu-item:hover,
+.menu-item.hover {
   background-color: var(--color-0, var(--oc-gray-1));
 }

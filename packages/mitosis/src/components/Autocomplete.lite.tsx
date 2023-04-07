@@ -22,6 +22,8 @@ export default function Autocomplete(props: AutocompleteProps) {
     opacity: '0',
     top: '0',
     left: '0',
+    filter: '',
+    hoverIndex: -1,
   });
 
   onMount(() => {
@@ -54,8 +56,6 @@ export default function Autocomplete(props: AutocompleteProps) {
         aria-autocomplete="list"
         aria-expanded={state.display === 'block' ? 'true' : 'false'}
         aria-invalid={!!props.error}
-        onChange={(event) => props.onChange?.(event)}
-        onInput={(event) => props.onChange?.(event)}
         onFocus={(event) => {
           event.preventDefault();
           const wrapperBounds = (event.target.parentNode as HTMLDivElement).getBoundingClientRect();
@@ -65,17 +65,68 @@ export default function Autocomplete(props: AutocompleteProps) {
           state.opacity = '1';
           state.display = 'block';
         }}
+        onInput={(event) => {
+          state.opacity = '1';
+          state.display = 'block';
+          state.filter = event.target.value.toLowerCase();
+        }}
+        onKeyDown={(event) => {
+          console.log('key down', event);
+          const filteredData = props.data.filter((str) => str.toLowerCase().includes(state.filter));
+          switch (event.key) {
+            case 'ArrowUp': {
+              event.preventDefault();
+              if (state.hoverIndex > 0) {
+                state.hoverIndex = state.hoverIndex - 1;
+              }
+              break;
+            }
+
+            case 'ArrowDown': {
+              event.preventDefault();
+              if (state.hoverIndex < filteredData.length - 1) {
+                state.hoverIndex = state.hoverIndex + 1;
+              }
+              break;
+            }
+
+            case 'Enter': {
+              if (state.opacity === '1') {
+                event.preventDefault();
+                if (state.hoverIndex >= 0 && state.hoverIndex < filteredData.length) {
+                  (document.getElementById(props.id) as HTMLInputElement).value = filteredData[state.hoverIndex];
+                  state.opacity = '0';
+                  window.setTimeout(() => (state.display = 'none'), 100);
+                }
+              }
+              break;
+            }
+
+            case 'Escape': {
+              if (state.opacity === '1') {
+                event.preventDefault();
+                state.opacity = '0';
+                window.setTimeout(() => (state.display = 'none'), 100);
+              }
+              break;
+            }
+          }
+        }}
       />
       <Menu
         size="sm"
         radius="sm"
         sx={{ display: state.display, opacity: state.opacity, top: state.top, left: state.left, width: '12.5rem' }}
       >
-        <For each={props.data}>
-          {(item) => (
+        <For each={props.data.filter((str) => str.toLowerCase().includes(state.filter))}>
+          {(item, index) => (
             <MenuItem
+              class={index === state.hoverIndex ? 'hover' : 'cody-' + index}
               onClick={() => {
                 (document.getElementById(props.id) as HTMLInputElement).value = item;
+              }}
+              onMouseOver={() => {
+                state.hoverIndex = index;
               }}
             >
               {item}

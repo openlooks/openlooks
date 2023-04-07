@@ -12,10 +12,9 @@ const resolvedInputDir = resolve(inputDir);
 async function main(): Promise<void> {
   const inputFiles = (await fastGlob([inputDir + '/src/**/*', inputDir + '/public/**/*'])).map((f) => resolve(f));
   const rootNames = inputFiles.filter((f) => f.endsWith('.ts') || f.endsWith('.tsx'));
+  buildAll(inputFiles, rootNames);
   if (process.argv.some((a) => a === '--watch')) {
     await watch(inputFiles, rootNames);
-  } else {
-    buildAll(inputFiles, rootNames);
   }
 }
 
