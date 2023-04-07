@@ -71,7 +71,6 @@ export default function Autocomplete(props: AutocompleteProps) {
           state.filter = event.target.value.toLowerCase();
         }}
         onKeyDown={(event) => {
-          console.log('key down', event);
           const filteredData = props.data.filter((str) => str.toLowerCase().includes(state.filter));
           switch (event.key) {
             case 'ArrowUp': {
