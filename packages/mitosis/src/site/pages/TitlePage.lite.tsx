@@ -8,12 +8,12 @@ export default function TitlePage() {
   return (
     <DocPage title="Title" description="h1-h6 headings">
       <Title order={2}>Usage</Title>
-      <Text mb="xl">
+      <Text c="mb-xl">
         Use Title component to render h1-h6 headings with Mantine theme styles. By default, Title has no margins and
         paddings. You can change headings font-size, font-weight and line-height properties in theme.headings.
       </Text>
-      <Text mb="xl">Set order prop to render specific element (h1-h6), default order is 1:</Text>
-      <Paper withBorder p="md">
+      <Text c="mb-xl">Set order prop to render specific element (h1-h6), default order is 1:</Text>
+      <Paper c="p-md withBorder">
         <Title order={1}>This is h1 title</Title>
         <Title order={2}>This is h2 title</Title>
         <Title order={3}>This is h3 title</Title>

@@ -12,7 +12,7 @@ export interface SiteNavProps {
 
 export default function SiteNav(props: SiteNavProps) {
   return (
-    <Navbar class={props.forceOpen ? 'open' : undefined}>
+    <Navbar c={props.forceOpen ? 'open' : undefined}>
       <div class="navlinks">
         <For each={siteNavLinks}>
           {(section) => (
@@ -20,7 +20,11 @@ export default function SiteNav(props: SiteNavProps) {
               <div class="section">{section.title}</div>
               <For each={section.links}>
                 {(link) => (
-                  <SiteNavLink href={link.href} onClick={(event) => props.onLinkClick(event)} dimmed={link.dimmed}>
+                  <SiteNavLink
+                    href={link.href}
+                    onClick={(event) => props.onLinkClick(event)}
+                    c={link.dimmed ? 'dimmed' : ''}
+                  >
                     {link.label}
                   </SiteNavLink>
                 )}

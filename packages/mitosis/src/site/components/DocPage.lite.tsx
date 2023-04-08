@@ -23,52 +23,42 @@ export default function DocPage(props: DocPageProps) {
   return (
     <>
       <div class="doc-header">
-        <Container size="sm" px="sm">
-          <Title mt={0}>{props.title}</Title>
-          <Text class="description">{props.description}</Text>
-          <Grid gutter="xs">
+        <Container c="size-sm px-sm">
+          <Title c="mt-0">{props.title}</Title>
+          <Text c="description">{props.description}</Text>
+          <Grid c="gutter-xs">
             <GridCol>
-              <Text color="gray" size="sm">
-                Import
-              </Text>
+              <Text c="color-gray size-sm">Import</Text>
             </GridCol>
-            <GridCol span={11}>
-              <Prism language="js" p={0} m={0}>{`import { ${props.title} } from '@openlooks/mitosis';`}</Prism>
+            <GridCol c="span-11">
+              <Prism language="js" c="p-0 m-0">{`import { ${props.title} } from '@openlooks/mitosis';`}</Prism>
             </GridCol>
             <GridCol>
-              <Text color="gray" size="sm">
-                Source
-              </Text>
+              <Text c="color-gray size-sm">Source</Text>
             </GridCol>
-            <GridCol span={11}>
-              <Anchor href="https://github.com" size="sm">
+            <GridCol c="span-11">
+              <Anchor href="https://github.com" c="size-sm">
                 View source code
               </Anchor>
             </GridCol>
             <GridCol>
-              <Text color="gray" size="sm">
-                Docs
-              </Text>
+              <Text c="color-gray size-sm">Docs</Text>
             </GridCol>
-            <GridCol span={11}>
-              <Anchor href="https://github.com" size="sm">
+            <GridCol c="span-11">
+              <Anchor href="https://github.com" c="size-sm">
                 Edit this page
               </Anchor>
             </GridCol>
             <GridCol>
-              <Text color="gray" size="sm">
-                Package
-              </Text>
+              <Text c="color-gray size-sm">Package</Text>
             </GridCol>
-            <GridCol span={11}>
+            <GridCol c="span-11">
               <code>{`@openlooks/mitosis`}</code>
             </GridCol>
           </Grid>
         </Container>
       </div>
-      <Container class="doc-body" size="sm" px="sm" py="xl">
-        {props.children}
-      </Container>
+      <Container c="doc-body size-sm p-sm py-xl">{props.children}</Container>
     </>
   );
 }

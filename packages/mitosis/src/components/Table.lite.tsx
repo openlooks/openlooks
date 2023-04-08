@@ -1,10 +1,16 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
 
-export default function Table(props: BaseComponentProps) {
+export interface TableProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
+  children?: any;
+}
+
+export default function Table(props: TableProps) {
   return (
-    <table class={buildOpenLooksClassName('table', props)} style={props.sx as JSX.CSS | undefined}>
+    <table class={buildOpenLooksClassName('table', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </table>
   );

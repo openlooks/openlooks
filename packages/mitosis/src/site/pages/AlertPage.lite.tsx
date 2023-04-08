@@ -28,11 +28,9 @@ export default function AlertPage() {
       <Configurator>
         <ConfiguratorStage>
           <Alert
-            icon={<IconAlertCircle size="1rem" />}
+            slotIcon={<IconAlertCircle size="1rem" />}
             title={state.title}
-            color={state.color}
-            radius={state.radius}
-            variant={state.variant}
+            c={`color-${state.color} radius-${state.radius} variant-${state.variant}`}
           >
             {state.message}
           </Alert>

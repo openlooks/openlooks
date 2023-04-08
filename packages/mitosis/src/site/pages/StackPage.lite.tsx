@@ -24,14 +24,12 @@ export default function StackPage() {
       <Configurator>
         <ConfiguratorStage>
           <Stack
-            align={state.align}
-            justify={state.justify}
-            spacing={state.spacing}
+            c={`align-${state.align} justify-${state.justify} spacing-${state.spacing}`}
             sx={{ 'background-color': 'var(--oc-gray-0)', height: '300px', width: '100%' }}
           >
-            <Button variant="outline">1</Button>
-            <Button variant="outline">2</Button>
-            <Button variant="outline">3</Button>
+            <Button c="variant-outline">1</Button>
+            <Button c="variant-outline">2</Button>
+            <Button c="variant-outline">3</Button>
           </Stack>
         </ConfiguratorStage>
         <ConfiguratorControls>
@@ -71,9 +69,9 @@ export default function StackPage() {
 function Demo() {
   return (
     <Stack align="${state.align}" justify="${state.justify}" spacing="${state.spacing}">
-      <Button variant="outline">1</Button>
-      <Button variant="outline">2</Button>
-      <Button variant="outline">3</Button>
+      <Button c="variant-outline">1</Button>
+      <Button c="variant-outline">2</Button>
+      <Button c="variant-outline">3</Button>
     </Stack>
   );
 }`}

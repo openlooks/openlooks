@@ -1,11 +1,17 @@
 import { For, onMount, useStore } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
 import Notification, { NotificationProps } from './Notification.lite';
 import { subscribeNotifications } from './NotificationsManager';
 
-export default function Notifications(props: BaseComponentProps) {
+export interface NotificationsProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
+  children?: any;
+}
+
+export default function Notifications(props: NotificationsProps) {
   const state = useStore({
     currentNotifications: [] as NotificationProps[],
   });
@@ -17,7 +23,7 @@ export default function Notifications(props: BaseComponentProps) {
   });
 
   return (
-    <div class={buildOpenLooksClassName('notifications', props)} style={props.sx as JSX.CSS | undefined}>
+    <div class={buildOpenLooksClassName('notifications', props.c)} style={props.sx as JSX.CSS | undefined}>
       <For each={state.currentNotifications}>
         {(n: NotificationProps) => <Notification {...n}>{n.children}</Notification>}
       </For>

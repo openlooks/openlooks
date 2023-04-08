@@ -33,7 +33,7 @@ export default function MenuPage() {
   return (
     <DocPage title="Menu" description="Combine a list of secondary actions into single interactive area">
       <Title order={2}>Usage</Title>
-      <Paper p="xl" withBorder>
+      <Paper c="p-xl withBorder">
         <Center>
           <Button
             onClick={(event) => {
@@ -51,8 +51,7 @@ export default function MenuPage() {
             Toggle menu
           </Button>
           <Menu
-            size="sm"
-            radius="sm"
+            c="size-sm radius-sm"
             sx={{ opacity: state.opacity, top: state.top, left: state.left, width: '12.5rem' }}
           >
             <MenuLabel>Application</MenuLabel>
@@ -63,7 +62,7 @@ export default function MenuPage() {
             <MenuDivider />
             <MenuLabel>Danger zone</MenuLabel>
             <MenuItem icon={<IconArrowsLeftRight size="0.875rem" />}>Transfer my data</MenuItem>
-            <MenuItem icon={<IconTrash size="0.875rem" />} color="red">
+            <MenuItem icon={<IconTrash size="0.875rem" />} c="color-red">
               Delete my account
             </MenuItem>
           </Menu>

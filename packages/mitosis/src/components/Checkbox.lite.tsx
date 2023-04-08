@@ -1,21 +1,24 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps, Size } from './BaseComponentProps';
-import { InputWrapperProps } from './InputWrapper.lite';
 
-export interface CheckboxProps extends BaseComponentProps, InputWrapperProps {
+export interface CheckboxProps {
   id: string;
-  size?: Size;
+  c?: string;
+  sx?: Record<string, any>;
+  label?: string;
+  description?: string;
+  error?: string;
+  required?: boolean;
   defaultChecked?: boolean;
 }
 
 export default function Checkbox(props: CheckboxProps) {
   return (
     <>
-      <div class={buildOpenLooksClassName('checkbox', props)} style={props.sx as JSX.CSS | undefined}>
+      <div class={buildOpenLooksClassName('checkbox', props.c)} style={props.sx as JSX.CSS | undefined}>
         <div>
           <input
-            class={buildOpenLooksClassName('checkbox', props)}
+            class={buildOpenLooksClassName('checkbox', props.c)}
             type="checkbox"
             value="on"
             checked={props.defaultChecked}

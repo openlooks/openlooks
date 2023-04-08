@@ -1,10 +1,16 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
 
-export default function Header(props: BaseComponentProps) {
+export interface HeaderProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
+  children?: any;
+}
+
+export default function Header(props: HeaderProps) {
   return (
-    <header class={buildOpenLooksClassName('header', props)} style={props.sx as JSX.CSS | undefined}>
+    <header class={buildOpenLooksClassName('header', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </header>
   );

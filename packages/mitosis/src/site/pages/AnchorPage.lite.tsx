@@ -15,7 +15,7 @@ export default function AnchorPage() {
         Anchor is a wrapper around <RouterLink href="/text">Text</RouterLink> component with component prop set to a by
         default. It supports the same props as Text component.
       </Text>
-      <Paper p="xl" withBorder>
+      <Paper c="p-xl withBorder">
         <Center>
           <Anchor href="https://openlooks.dev" target="_blank">
             OpenLooks docs

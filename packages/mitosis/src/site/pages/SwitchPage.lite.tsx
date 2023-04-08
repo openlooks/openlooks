@@ -32,9 +32,7 @@ export default function SwitchPage() {
             label={state.label}
             description={state.description}
             error={state.error}
-            radius={state.radius}
-            size={state.size}
-            color={state.color}
+            c={`radius-${state.radius} size-${state.size} color-${state.color}`}
           />
         </ConfiguratorStage>
         <ConfiguratorControls>

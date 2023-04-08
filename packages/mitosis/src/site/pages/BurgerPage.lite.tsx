@@ -17,7 +17,7 @@ export default function BurgerPage() {
         Burger component renders open/close menu button. Set opened and onClick props to control Burger state. If opened
         prop is set cross will be rendered, otherwise - burger:
       </Text>
-      <Paper p="xl" withBorder>
+      <Paper c="p-xl withBorder">
         <Center>
           <Burger
             sx={{ '--size': '2.125rem' }}

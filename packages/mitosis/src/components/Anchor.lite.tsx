@@ -1,8 +1,11 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { TextProps } from './Text.lite';
 
-export interface AnchorProps extends TextProps {
+export interface AnchorProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
+  children?: any;
   href: string;
   target?: string;
   label?: string;
@@ -12,7 +15,7 @@ export interface AnchorProps extends TextProps {
 export default function Anchor(props: AnchorProps) {
   return (
     <a
-      class={buildOpenLooksClassName('anchor text', props)}
+      class={buildOpenLooksClassName('anchor text', props.c)}
       style={props.sx as JSX.CSS | undefined}
       href={props.href}
       target={props.target}

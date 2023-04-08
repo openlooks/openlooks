@@ -1,22 +1,25 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps, Size } from './BaseComponentProps';
-import { InputWrapperProps } from './InputWrapper.lite';
 
-export interface SwitchProps extends BaseComponentProps, InputWrapperProps {
+export interface SwitchProps {
   id: string;
-  size?: Size;
+  c?: string;
+  sx?: Record<string, any>;
+  label?: string;
+  description?: string;
+  error?: string;
+  required?: boolean;
 }
 
 export default function Switch(props: SwitchProps) {
   return (
     <>
-      <div class={buildOpenLooksClassName('switch', props)} style={props.sx as JSX.CSS | undefined}>
+      <div class={buildOpenLooksClassName('switch', props.c)} style={props.sx as JSX.CSS | undefined}>
         <div>
           <label class="track">
             <input type="checkbox" />
-            <span class={buildOpenLooksClassName('slider', props)}>
-              <span class={buildOpenLooksClassName('thumb', props)} />
+            <span class={buildOpenLooksClassName('slider', props.c)}>
+              <span class={buildOpenLooksClassName('thumb', props.c)} />
             </span>
           </label>
         </div>

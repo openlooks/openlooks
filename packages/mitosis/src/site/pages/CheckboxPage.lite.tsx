@@ -32,10 +32,8 @@ export default function CheckboxPage() {
             label={state.label}
             description={state.description}
             error={state.error}
-            radius={state.radius}
-            size={state.size}
-            color={state.color}
             defaultChecked={true}
+            c={`radius-${state.radius} size-${state.size} color-${state.color}`}
           />
         </ConfiguratorStage>
         <ConfiguratorControls>

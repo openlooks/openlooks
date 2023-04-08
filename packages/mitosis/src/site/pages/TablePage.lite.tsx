@@ -9,7 +9,7 @@ export default function TablePage() {
   return (
     <DocPage title="Table" description="Render table with theme styles">
       <Title order={2}>Usage</Title>
-      <Text mb="xl">Table data for all examples:</Text>
+      <Text c="mb-xl">Table data for all examples:</Text>
       <Prism language="js">{`const elements = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
   { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
@@ -17,7 +17,7 @@ export default function TablePage() {
   { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
   { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
 ];`}</Prism>
-      <Paper p="xl" withBorder>
+      <Paper c="p-xl withBorder">
         <Table>
           <thead>
             <tr>

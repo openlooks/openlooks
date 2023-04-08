@@ -21,16 +21,16 @@ export default function ScrollAreaPage() {
   return (
     <DocPage title="ScrollArea" description="Area with custom scrollbars">
       <Title order={2}>Usage</Title>
-      <Text mb="xl">
+      <Text c="mb-xl">
         The ScrollArea component customizes the native browser scrollbars. This is notably different than Mantine, which
         uses the Radix UI scroll area component, and recreates scrollbars from scratch using div elements.
       </Text>
       <Configurator>
         <ConfiguratorStage>
-          <ScrollArea variant={state.variant} scrollbarSize={state.scrollbarSize} sx={{ height: '250px' }}>
+          <ScrollArea c={`variant-${state.variant} scrollbarSize-${state.scrollbarSize}`} sx={{ height: '250px' }}>
             <Title order={3}>Charizard (Pokémon)</Title>
-            <Text mb="xl">Charizard description from Bulbapedia</Text>
-            <Text mb="xl">
+            <Text c="mb-xl">Charizard description from Bulbapedia</Text>
+            <Text c="mb-xl">
               Charizard is a draconic, bipedal Pokémon. It is primarily orange with a cream underside from the chest to
               the tip of its tail. It has a long neck, small blue eyes, slightly raised nostrils, and two horn-like
               structures protruding from the back of its rectangular head. There are two fangs visible in the upper jaw
@@ -40,7 +40,7 @@ export default function ScrollAreaPage() {
               each limb has three white claws. It has stocky legs with cream-colored soles on each of its plantigrade
               feet. The tip of its long, tapering tail burns with a sizable flame.
             </Text>
-            <Text mb="xl">
+            <Text c="mb-xl">
               As Mega Charizard X, its body and legs are more physically fit, though its arms remain thin. Its skin
               turns black with a sky-blue underside and soles. Two spikes with blue tips curve upward from the front and
               back of each shoulder, while the tips of its horns sharpen, turn blue, and curve slightly upward. Its brow

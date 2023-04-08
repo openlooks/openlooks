@@ -26,7 +26,7 @@ export default function ActionIconPage() {
       <Title order={2}>Usage</Title>
       <Configurator>
         <ConfiguratorStage>
-          <ActionIcon variant={state.variant} color={state.color} radius={state.radius} size={state.size}>
+          <ActionIcon c={`variant-${state.variant} color-${state.color} radius-${state.radius} size-${state.size}`}>
             <IconAdjustments
               size={
                 (
@@ -87,7 +87,7 @@ import { IconAdjustments } from '@tabler/icons-react';
 
 function Demo() {
   return (
-    <ActionIcon color="${state.color}" size="${state.size}" radius="${state.radius}" variant="${state.variant}">
+    <ActionIcon c="variant-${state.variant} color-${state.color} radius-${state.radius} size-${state.size}">
       <IconAdjustments size="1.625rem" />
     </ActionIcon>
   );

@@ -1,13 +1,17 @@
 import { For } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
-import InputWrapper, { InputWrapperProps } from './InputWrapper.lite';
+import InputWrapper from './InputWrapper.lite';
 
-export interface ColorPickerProps extends BaseComponentProps, InputWrapperProps {
+export interface ColorPickerProps {
   id: string;
-  name: string;
+  c?: string;
+  sx?: Record<string, any>;
   label?: string;
+  description?: string;
+  error?: string;
+  required?: boolean;
+  name: string;
   defaultValue?: string;
   onChange?: (e: any) => void;
 }
@@ -15,7 +19,7 @@ export interface ColorPickerProps extends BaseComponentProps, InputWrapperProps 
 export default function ColorPicker(props: ColorPickerProps) {
   return (
     <InputWrapper id={props.id} label={props.label}>
-      <div class={buildOpenLooksClassName('colorpicker', props)} style={props.sx as JSX.CSS | undefined}>
+      <div class={buildOpenLooksClassName('colorpicker', props.c)} style={props.sx as JSX.CSS | undefined}>
         <For
           each={[
             'black',

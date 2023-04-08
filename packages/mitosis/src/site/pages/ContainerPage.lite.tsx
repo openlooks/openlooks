@@ -12,10 +12,10 @@ export default function ContainerPage() {
         Container is the most basic layout element, it centers content horizontally and adds horizontal padding from
         theme.
       </Text>
-      <Container my="xl" sx={{ background: 'var(--oc-blue-0)' }}>
+      <Container c="my-xl" sx={{ background: 'var(--oc-blue-0)' }}>
         <Text>Default container</Text>
       </Container>
-      <Container my="xl" size="xs" px="xs" sx={{ background: 'var(--oc-blue-0)' }}>
+      <Container c="my-xl size-xs px-xs" sx={{ background: 'var(--oc-blue-0)' }}>
         <Text>xs container with xs horizontal padding</Text>
       </Container>
       <Prism language="jsx">

@@ -1,12 +1,15 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps, Size } from './BaseComponentProps';
-import InputWrapper, { InputWrapperProps } from './InputWrapper.lite';
+import InputWrapper from './InputWrapper.lite';
 
-export interface TextInputProps extends BaseComponentProps, InputWrapperProps {
+export interface TextInputProps {
   id: string;
-  variant?: 'default' | 'filled' | 'unstyled';
-  size?: Size;
+  c?: string;
+  sx?: Record<string, any>;
+  label?: string;
+  description?: string;
+  error?: string;
+  required?: boolean;
   defaultValue?: string;
   placeholder?: string;
   onChange?: (e: any) => void;
@@ -24,7 +27,7 @@ export default function TextInput(props: TextInputProps) {
       <input
         type="text"
         id={props.id}
-        class={buildOpenLooksClassName('textinput', props)}
+        class={buildOpenLooksClassName('textinput', props.c)}
         style={props.sx as JSX.CSS | undefined}
         value={props.defaultValue || ''}
         placeholder={props.placeholder}

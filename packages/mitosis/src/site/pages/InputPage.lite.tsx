@@ -20,7 +20,7 @@ export default function InputPage() {
 // Use TextInput instead of Input everywhere you want to use Input,
 // it is accessible by default and includes Input.Wrapper
 <TextInput label="Input label" description="Input description" />`}</Prism>
-      <Title order={2} mt="xl">
+      <Title order={2} c="mt-xl">
         Usage
       </Title>
       <Text>

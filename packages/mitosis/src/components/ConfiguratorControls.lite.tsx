@@ -1,14 +1,16 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps, Size } from './BaseComponentProps';
 
-export interface ConfiguratorControlsProps extends BaseComponentProps {
-  size?: Size;
+export interface ConfiguratorControlsProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
+  children?: any;
 }
 
 export default function ConfiguratorControls(props: ConfiguratorControlsProps) {
   return (
-    <div class={buildOpenLooksClassName('configurator-controls', props)} style={props.sx as JSX.CSS | undefined}>
+    <div class={buildOpenLooksClassName('configurator-controls', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

@@ -24,10 +24,10 @@ export default function GroupPage() {
       <Configurator>
         <ConfiguratorStage>
           <div style={{ width: '100%' }}>
-            <Group position={state.position} spacing={state.spacing}>
-              <Button variant="outline">1</Button>
-              <Button variant="outline">2</Button>
-              <Button variant="outline">3</Button>
+            <Group c={`position-${state.position} spacing-${state.spacing}`}>
+              <Button c="variant-outline">1</Button>
+              <Button c="variant-outline">2</Button>
+              <Button c="variant-outline">3</Button>
             </Group>
           </div>
         </ConfiguratorStage>
@@ -59,9 +59,9 @@ export default function GroupPage() {
 function Demo() {
   return (
     <Group position="${state.position}" spacing="${state.spacing}">
-      <Button variant="outline">1</Button>
-      <Button variant="outline">2</Button>
-      <Button variant="outline">3</Button>
+      <Button c="variant-outline">1</Button>
+      <Button c="variant-outline">2</Button>
+      <Button c="variant-outline">3</Button>
     </Group>
   );
 }`}

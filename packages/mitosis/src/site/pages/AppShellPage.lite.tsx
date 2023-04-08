@@ -21,45 +21,45 @@ export default function AppShellPage() {
   return (
     <DocPage title="AppShell" description="Responsive shell for your application with header and navbar">
       <Title order={2}>Usage</Title>
-      <Text mb="xl">
+      <Text c="mb-xl">
         AppShell is a layout component that can be used to create a common Header - Navbar - Footer - Aside - Content
         layout pattern. AppShell, Header, Footer, Aside and Navbar components include bare minimum default styles to
         simplify customization.
       </Text>
       <AppShell sx={{ width: '44rem', height: '32rem', border: '1px solid var(--oc-gray-2)' }}>
-        <Header p="md" sx={{ height: '3.75rem', 'border-bottom': '1px solid var(--oc-gray-2)' }}>
+        <Header c="p-md" sx={{ height: '3.75rem', 'border-bottom': '1px solid var(--oc-gray-2)' }}>
           <Anchor href="https://openlooks.dev">OpenLooks</Anchor>
         </Header>
         <AppShellBody>
-          <Navbar p="sm">
-            <Stack justify="flex-start" spacing="xs">
-              <Button variant="subtle" color="gray" radius="sm" p="sm">
-                <Group position="left" spacing="xs">
-                  <ActionIcon variant="light" size="sm" color="blue" radius="sm">
+          <Navbar c="p-sm">
+            <Stack c="justify-flex-start spacing-xs">
+              <Button c="variant-subtle color-gray radius-sm p-sm">
+                <Group c="position-left spacing-xs">
+                  <ActionIcon c="variant-light size-sm color-blue radius-sm">
                     <IconAdjustments size="0.875rem" />
                   </ActionIcon>
                   Pull Requests
                 </Group>
               </Button>
-              <Button variant="subtle" color="gray" radius="sm" p="sm">
-                <Group position="left" spacing="xs">
-                  <ActionIcon variant="light" size="sm" color="cyan" radius="sm">
+              <Button c="variant-subtle color-gray radius-sm p-sm">
+                <Group c="position-left spacing-xs">
+                  <ActionIcon c="variant-light size-sm color-cyan radius-sm">
                     <IconAlertCircle size="0.875rem" />
                   </ActionIcon>
                   Open Issues
                 </Group>
               </Button>
-              <Button variant="subtle" color="gray" radius="sm" p="sm">
-                <Group position="left" spacing="xs">
-                  <ActionIcon variant="light" size="sm" color="violet" radius="sm">
+              <Button c="variant-subtle color-gray radius-sm p-sm">
+                <Group c="position-left spacing-xs">
+                  <ActionIcon c="variant-light size-sm color-violet radius-sm">
                     <IconMessages size="0.875rem" />
                   </ActionIcon>
                   Discussions
                 </Group>
               </Button>
-              <Button variant="subtle" color="gray" radius="sm" p="sm">
-                <Group position="left" spacing="xs">
-                  <ActionIcon variant="light" size="sm" color="grape" radius="sm">
+              <Button c="variant-subtle color-gray radius-sm p-sm">
+                <Group c="position-left spacing-xs">
+                  <ActionIcon c="variant-light size-sm color-grape radius-sm">
                     <IconDatabase size="0.875rem" />
                   </ActionIcon>
                   Databases

@@ -16,10 +16,10 @@ export default function HomePage() {
       title="OpenLooks"
       description="Cross-framework components and utilities for building modern web applications."
     >
-      <Alert icon={<IconAlertCircle size="1rem" />} title="Project Status" color="blue" variant="filled" mb="xl">
+      <Alert slotIcon={<IconAlertCircle size="1rem" />} title="Project Status" c="color-blue variant=filled mb-xl">
         This is a pre alpha release of OpenLooks. Many components are unfinished. Expect breaking changes.
       </Alert>
-      <Alert icon={<IconAlertCircle size="1rem" />} title="Framework Support" color="teal" variant="filled" mb="xl">
+      <Alert slotIcon={<IconAlertCircle size="1rem" />} title="Framework Support" c="color-teal variant-filled mb-xl">
         In theory, OpenLooks should work with all Mitosis target frameworks. However, only React and Solid are actively
         tested.
       </Alert>
@@ -43,7 +43,7 @@ export default function HomePage() {
         <li>100% TypeScript</li>
         <li>MIT license</li>
       </List>
-      <Title order={2} mt="xl">
+      <Title order={2} c="mt-xl">
         Why?
       </Title>
       <List>
@@ -56,7 +56,7 @@ export default function HomePage() {
           {` `}and want to rewrite everything
         </li>
       </List>
-      <Title order={2} mt="xl">
+      <Title order={2} c="mt-xl">
         Project Name
       </Title>
       <Text>
@@ -64,10 +64,10 @@ export default function HomePage() {
         <Anchor href="https://www.gnome-look.org/p/1080192">ClearLooks</Anchor>, the GTK theme often known as "the GTK
         theme for grown-ups".
       </Text>
-      <Title order={2} mt="xl">
+      <Title order={2} c="mt-xl">
         Demo
       </Title>
-      <Paper withBorder p="xl">
+      <Paper c="p-xl withBorder">
         <Center>
           <Counter />
         </Center>

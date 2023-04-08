@@ -12,7 +12,7 @@ export default function NotificationsPage() {
   return (
     <DocPage title="Notifications" description="Notification system">
       <Title order={2}>Demo</Title>
-      <Paper p="xl" mb="xl" radius="md" withBorder>
+      <Paper c="p-xl mb-xl radius-md withBorder">
         <Group
           sx={{
             'flex-flow': 'row wrap',
@@ -22,11 +22,10 @@ export default function NotificationsPage() {
           }}
         >
           <Button
-            color="blue"
-            variant="outline"
+            c="color-blue variant-outline"
             onClick={() =>
               showNotification({
-                color: 'blue',
+                c: 'color-blue',
                 title: 'Default notification',
                 message: 'Hey there, your code is awesome! 🤥',
               })
@@ -35,11 +34,10 @@ export default function NotificationsPage() {
             Default
           </Button>
           <Button
-            color="teal"
-            variant="outline"
+            c="color-teal variant-outline"
             onClick={() =>
               showNotification({
-                color: 'teal',
+                c: 'color-teal',
                 title: 'You did great',
                 message: 'Data was saved',
               })
@@ -48,11 +46,10 @@ export default function NotificationsPage() {
             Teal with icon
           </Button>
           <Button
-            color="red"
-            variant="outline"
+            c="color-red variant-outline"
             onClick={() =>
               showNotification({
-                color: 'red',
+                c: 'color-red',
                 title: 'Bummer!',
                 message: 'You have no right to do this',
               })
@@ -61,11 +58,10 @@ export default function NotificationsPage() {
             Red color
           </Button>
           <Button
-            color="grape"
-            variant="outline"
+            c="color-grape variant-outline"
             onClick={() =>
               showNotification({
-                color: 'grape',
+                c: 'color-grape',
                 title: 'I will never close',
                 message: 'unless you click X',
                 autoClose: false,
@@ -75,11 +71,10 @@ export default function NotificationsPage() {
             Never closes automatically
           </Button>
           <Button
-            color="indigo"
-            variant="outline"
+            c="color-indigo variant-outline"
             onClick={() =>
               showNotification({
-                color: 'indigo',
+                c: 'color-indigo',
                 title: 'Custom autoClose timeout',
                 message: 'Notification will be closed in 10 seconds',
               })
@@ -88,17 +83,16 @@ export default function NotificationsPage() {
             10 seconds timeout
           </Button>
           <Button
-            color="cyan"
-            variant="outline"
+            c="color-cyan variant-outline"
             onClick={() =>
               showNotification({
-                color: 'cyan',
+                c: 'color-cyan',
                 title: 'Loading your data',
                 message: 'Data will be loaded in 3 seconds, you cannot close this yet',
                 disallowClose: true,
                 onClose: () =>
                   showNotification({
-                    color: 'teal',
+                    c: 'color-teal',
                     title: 'Data was loaded',
                     message: 'Notification will close in 3 seconds, you can close this notification now',
                   }),
@@ -124,15 +118,14 @@ function Demo() {
     </>
   );
 }`}</Prism>
-      <Text my="xl">Then use notifications.show function anywhere in your application:</Text>
-      <Paper p="xl" mb="xl" radius="md" withBorder>
+      <Text c="my-xl">Then use notifications.show function anywhere in your application:</Text>
+      <Paper c="p-xl mb-xl radius-md withBorder">
         <Center>
           <Button
-            color="blue"
-            variant="outline"
+            c="color-blue variant-outline"
             onClick={() =>
               showNotification({
-                color: 'blue',
+                c: 'color-blue',
                 title: 'Default notification',
                 message: 'Hey there, your code is awesome! 🤥',
               })
@@ -148,7 +141,7 @@ function Demo() {
   return (
     <Group position="center">
       <Button
-        variant="outline"
+        c="variant-outline"
         onClick={() =>
           showNotification({
             title: 'Default notification',

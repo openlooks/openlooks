@@ -4,7 +4,7 @@ import { BaseComponentProps } from './BaseComponentProps';
 
 export default function AppShellMain(props: BaseComponentProps) {
   return (
-    <main class={buildOpenLooksClassName('main scrollarea', props)} style={props.sx as JSX.CSS | undefined}>
+    <main class={buildOpenLooksClassName('main scrollarea', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </main>
   );

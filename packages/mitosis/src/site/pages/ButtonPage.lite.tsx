@@ -27,7 +27,7 @@ export default function ButtonPage() {
       <Title order={2}>Usage</Title>
       <Configurator>
         <ConfiguratorStage>
-          <Button variant={state.variant} color={state.color} radius={state.radius} size={state.size}>
+          <Button c={`variant-${state.variant} color-${state.color} radius-${state.radius} size-${state.size}`}>
             {state.text}
           </Button>
         </ConfiguratorStage>

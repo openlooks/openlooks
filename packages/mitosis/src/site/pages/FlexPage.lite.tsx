@@ -27,11 +27,7 @@ export default function FlexPage() {
       <Configurator>
         <ConfiguratorStage>
           <Flex
-            gap={state.gap}
-            justify={state.justify}
-            align={state.align}
-            direction={state.direction}
-            wrap={state.wrap}
+            c={`gap-${state.gap} justify-${state.justify} align-${state.align} direction-${state.direction} wrap-${state.wrap}`}
             sx={{ 'background-color': 'var(--oc-gray-2)', height: '150px', width: '100%' }}
           >
             <Button>Button 1</Button>

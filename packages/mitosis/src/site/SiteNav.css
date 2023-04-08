@@ -40,7 +40,7 @@
   color: var(--oc-gray-7);
 }
 
-.navlinks a.openlooks.anchor.dimmed-true {
+.navlinks a.openlooks.anchor.dimmed {
   color: var(--oc-gray-4);
 }
 
@@ -49,9 +49,9 @@
 }
 
 .navlinks a.openlooks.anchor[aria-current],
-.navlinks a.openlooks.anchor.dimmed-true[aria-current],
+.navlinks a.openlooks.anchor.dimmed[aria-current],
 .navlinks a.openlooks.anchor[aria-current]:hover,
-.navlinks a.openlooks.anchor.dimmed-true[aria-current]:hover {
+.navlinks a.openlooks.anchor.dimmed[aria-current]:hover {
   background-color: var(--oc-blue-0);
   color: var(--oc-blue-6);
   border-left: 0.0625rem solid var(--oc-blue-4);

@@ -1,17 +1,18 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps, Size } from './BaseComponentProps';
 
-export interface ButtonProps extends BaseComponentProps {
-  variant?: 'filled' | 'light' | 'outline' | 'subtle';
-  size?: Size;
+export interface ButtonProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
   onClick?: (e: any) => void;
+  children?: any;
 }
 
 export default function Button(props: ButtonProps) {
   return (
     <button
-      class={buildOpenLooksClassName('button', props, { variant: 'filled', color: 'blue', size: 'sm', radius: 'sm' })}
+      class={buildOpenLooksClassName('button', props.c, { variant: 'filled', color: 'blue', size: 'sm', radius: 'sm' })}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => props.onClick?.(event)}
     >

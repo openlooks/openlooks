@@ -25,24 +25,22 @@ export default function SimpleGridPage() {
       <Configurator>
         <ConfiguratorStage>
           <SimpleGrid
-            cols={state.cols}
-            spacing={state.spacing}
-            verticalSpacing={state.verticalSpacing}
+            c={`cols-${state.cols} spacing-${state.spacing} verticalSpacing-${state.verticalSpacing}`}
             sx={{ width: '100%' }}
           >
-            <Text p="xl" ta="center" color="blue" fw={700} sx={{ background: 'var(--oc-blue-0)' }}>
+            <Text c="p-xl ta-center color-blue fw-700" sx={{ background: 'var(--oc-blue-0)' }}>
               1
             </Text>
-            <Text p="xl" ta="center" color="blue" fw={700} sx={{ background: 'var(--oc-blue-0)' }}>
+            <Text c="p-xl ta-center color-blue fw-700" sx={{ background: 'var(--oc-blue-0)' }}>
               2
             </Text>
-            <Text p="xl" ta="center" color="blue" fw={700} sx={{ background: 'var(--oc-blue-0)' }}>
+            <Text c="p-xl ta-center color-blue fw-700" sx={{ background: 'var(--oc-blue-0)' }}>
               3
             </Text>
-            <Text p="xl" ta="center" color="blue" fw={700} sx={{ background: 'var(--oc-blue-0)' }}>
+            <Text c="p-xl ta-center color-blue fw-700" sx={{ background: 'var(--oc-blue-0)' }}>
               4
             </Text>
-            <Text p="xl" ta="center" color="blue" fw={700} sx={{ background: 'var(--oc-blue-0)' }}>
+            <Text c="p-xl ta-center color-blue fw-700" sx={{ background: 'var(--oc-blue-0)' }}>
               5
             </Text>
           </SimpleGrid>

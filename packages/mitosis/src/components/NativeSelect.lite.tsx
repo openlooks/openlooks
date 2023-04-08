@@ -1,13 +1,16 @@
 import { For } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps, Size } from './BaseComponentProps';
-import InputWrapper, { InputWrapperProps } from './InputWrapper.lite';
+import InputWrapper from './InputWrapper.lite';
 
-export interface NativeSelectProps extends BaseComponentProps, InputWrapperProps {
+export interface NativeSelectProps {
   id: string;
-  variant?: 'filled' | 'light' | 'outline' | 'subtle';
-  size?: Size;
+  c?: string;
+  sx?: Record<string, any>;
+  label?: string;
+  description?: string;
+  error?: string;
+  required?: boolean;
   data: string[];
   defaultValue?: string;
   onChange?: (e: any) => void;
@@ -24,7 +27,7 @@ export default function NativeSelect(props: NativeSelectProps) {
     >
       <select
         id={props.id}
-        class={buildOpenLooksClassName('nativeselect', props)}
+        class={buildOpenLooksClassName('nativeselect', props.c)}
         style={props.sx as JSX.CSS | undefined}
         value={props.defaultValue}
         onChange={(event) => props.onChange?.(event)}

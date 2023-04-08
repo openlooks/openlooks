@@ -21,13 +21,17 @@ export default function PaperPage() {
   return (
     <DocPage title="Paper" description="Renders white or dark background depending on color scheme">
       <Title order={2}>Usage</Title>
-      <Text mb="xl">
+      <Text c="mb-xl">
         Paper component renders white (or theme.colors.dark[7] for dark theme) background with shadow, border-radius and
         padding from theme.
       </Text>
       <Configurator>
         <ConfiguratorStage sx={{ background: 'var(--oc-gray-0)' }}>
-          <Paper shadow={state.shadow} radius={state.radius} p={state.padding} withBorder={state.withBorder}>
+          <Paper
+            c={`shadow-${state.shadow} radius-${state.radius} p-${state.padding} ${
+              state.withBorder ? 'withBorder' : ''
+            }`}
+          >
             <Text>Paper is the most basic ui component</Text>
             <Text>
               Use it to create cards, dropdowns, modals and other components that require background with shadow

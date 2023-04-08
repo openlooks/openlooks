@@ -18,8 +18,8 @@ export interface SiteHeaderProps {
 export default function SiteHeader(props: SiteHeaderProps) {
   return (
     <Header>
-      <Group position="apart" spacing="xs" p="md">
-        <Group spacing="md">
+      <Group c="position-apart spacing-xs p-md">
+        <Group c="spacing-md">
           <Burger
             id="nav-burger"
             label="Toggle navbar"
@@ -31,33 +31,24 @@ export default function SiteHeader(props: SiteHeaderProps) {
             <Logo />
           </RouterLink>
         </Group>
-        <Group spacing="xs">
+        <Group c="spacing-xs">
           <ActionIcon
             title="Discord"
-            variant="outline"
-            radius="sm"
-            size="md"
-            color="gray"
+            c="variant-outline radius-sm size-sm color-gray"
             onClick={() => (window.location.href = 'https://discord.gg/')}
           >
             <IconBrandDiscordFilled size="1rem" />
           </ActionIcon>
           <ActionIcon
             title="GitHub"
-            variant="outline"
-            radius="sm"
-            size="md"
-            color="gray"
+            c="variant-outline radius-sm size-sm color-gray"
             onClick={() => (window.location.href = 'https://github.com/openlooks/openlooks')}
           >
             <IconBrandGithub size="1rem" />
           </ActionIcon>
           <ActionIcon
             title="Toggle dark mode"
-            variant="outline"
-            radius="sm"
-            size="md"
-            color="gray"
+            c="variant-outline radius-sm size-sm color-gray"
             onClick={() => toggleTheme()}
           >
             <IconSun size="1rem" />

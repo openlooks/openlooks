@@ -1,0 +1,33 @@
+{
+  "name": "@openlooks/svelte",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "OpenLooks Svelte",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist/index.mjs"
+  ],
+  "main": "dist/index.mjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "peerDependencies": {
+    "svelte": "^3.58.0"
+  },
+  "devDependencies": {
+    "@openlooks/mitosis": "*",
+    "@openlooks/styles": "*",
+    "@sveltejs/vite-plugin-svelte": "^2.0.4",
+    "@tsconfig/svelte": "^4.0.1",
+    "svelte-check": "^3.2.0",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1"
+  }
+}

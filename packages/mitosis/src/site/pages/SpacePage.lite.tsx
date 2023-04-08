@@ -24,7 +24,7 @@ export default function SpacePage() {
         <ConfiguratorStage>
           <div>
             <Text>First line</Text>
-            <Space h={state.h} />
+            <Space c={`h-${state.h}`} />
             <Text>Second line</Text>
           </div>
         </ConfiguratorStage>
@@ -58,7 +58,7 @@ function Demo() {
         <ConfiguratorStage>
           <div style={{ display: 'flex' }}>
             <Text>First part</Text>
-            <Space w={state.w} />
+            <Space c={`w-${state.w}`} />
             <Text>Second part</Text>
           </div>
         </ConfiguratorStage>
@@ -88,16 +88,16 @@ function Demo() {
   );
 }`}
       </Prism>
-      <Title order={2} mt="xl">
+      <Title order={2} c="mt-xl">
         Where to use
       </Title>
-      <Text mb="lg">
+      <Text c="mb-lg">
         In most cases, you would want to use margin props instead of Space when working with Mantine components:
       </Text>
       <Prism language="jsx">{`<Text>First line</Text>
 // <Space h="md" /> is not required as the same can be achieved with margin
 <Text mt="md">Second line</Text>`}</Prism>
-      <Text my="lg">
+      <Text c="my-lg">
         But when you work with regular HTML elements you do not have access to theme.spacing and you may want to use
         Space component to skip direct theme subscription:
       </Text>

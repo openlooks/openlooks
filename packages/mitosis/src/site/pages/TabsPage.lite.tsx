@@ -35,7 +35,7 @@ export default function TabsPage() {
         <ConfiguratorStage>
           <div>
             <Tabs defaultValue="gallery">
-              <TabList color={state.color}>
+              <TabList c={`color-${state.color}`}>
                 <Tab value="gallery">
                   <TabIcon>
                     <IconPhoto size="0.8rem" />
@@ -55,13 +55,13 @@ export default function TabsPage() {
                   <TabLabel>Settings</TabLabel>
                 </Tab>
               </TabList>
-              <TabPanel value="gallery" pt="xs">
+              <TabPanel value="gallery" c="pt-xs">
                 Gallery tab content
               </TabPanel>
-              <TabPanel value="messages" pt="xs">
+              <TabPanel value="messages" c="pt-xs">
                 Messages tab content
               </TabPanel>
-              <TabPanel value="settings" pt="xs">
+              <TabPanel value="settings" c="pt-xs">
                 Settings tab content
               </TabPanel>
             </Tabs>

@@ -26,8 +26,8 @@ export default function AutocompletePage() {
   return (
     <DocPage title="Autocomplete" description="Autocomplete user input with any list of options">
       <Title order={2}>Usage</Title>
-      <Paper p="xl" withBorder>
-        <Container size="xs">
+      <Paper c="p-xl withBorder">
+        <Container c="size-xs">
           <Autocomplete
             id="usageExample"
             data={['React', 'Angular', 'Svelte', 'Vue']}
@@ -47,7 +47,7 @@ function Demo() {
     />
   );
 }`}</Prism>
-      <Title order={2} mt="xl">
+      <Title order={2} c="mt-xl">
         Input props
       </Title>
       <Configurator>
@@ -59,8 +59,7 @@ function Demo() {
             label={state.label}
             description={state.description}
             error={state.error}
-            radius={state.radius}
-            size={state.size}
+            c={`radius-${state.radius} size-${state.size}`}
           />
         </ConfiguratorStage>
         <ConfiguratorControls>

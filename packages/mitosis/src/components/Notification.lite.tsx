@@ -1,13 +1,14 @@
 import { Show } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
 import Button from './Button.lite';
 import { hideNotification } from './NotificationsManager';
 import Text from './Text.lite';
 
-export interface NotificationProps extends BaseComponentProps {
+export interface NotificationProps {
   id?: string;
+  c?: string;
+  sx?: Record<string, any>;
   icon?: JSX.Element;
   title: string;
   message?: string;
@@ -19,18 +20,18 @@ export interface NotificationProps extends BaseComponentProps {
 
 export default function Notification(props: NotificationProps) {
   return (
-    <div class={buildOpenLooksClassName('notification', props)} style={props.sx as JSX.CSS | undefined}>
+    <div class={buildOpenLooksClassName('notification', props.c)} style={props.sx as JSX.CSS | undefined}>
       <div class="prefix">
-        <div class={`bar ${props.color || 'blue'}`} />
+        <div class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
       </div>
       <div class="content">
-        <Text weight={500}>{props.title}</Text>
-        {props.children && <Text color="gray">{props.children}</Text>}
-        {props.message && <Text color="gray">{props.message}</Text>}
+        <Text c="weight-500">{props.title}</Text>
+        {props.children && <Text c="color-gray">{props.children}</Text>}
+        {props.message && <Text c="color-gray">{props.message}</Text>}
       </div>
       <Show when={!props.disallowClose}>
         <div class="close">
-          <Button onClick={() => props.id && hideNotification(props.id)} variant="subtle" color="gray" size="xs">
+          <Button c="variant-subtle color-gray size-xs" onClick={() => props.id && hideNotification(props.id)}>
             ✕
           </Button>
         </div>

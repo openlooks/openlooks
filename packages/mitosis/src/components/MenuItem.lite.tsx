@@ -1,19 +1,22 @@
 import { Show } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
 
-export interface MenuItemProps extends BaseComponentProps {
+export interface MenuItemProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
   icon?: JSX.Element;
   onClick?: (e: any) => void;
   onMouseOver?: (e: any) => void;
   onMouseLeave?: (e: any) => void;
+  children?: any;
 }
 
 export default function MenuItem(props: MenuItemProps) {
   return (
     <div
-      class={buildOpenLooksClassName('menu-item', props)}
+      class={buildOpenLooksClassName('menu-item', props.c)}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => props.onClick?.(event)}
       onMouseOver={(event) => props.onMouseOver?.(event)}

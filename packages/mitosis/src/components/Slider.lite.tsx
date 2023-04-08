@@ -1,21 +1,25 @@
 import { For, Show } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps, Size } from './BaseComponentProps';
-import InputWrapper, { InputWrapperProps } from './InputWrapper.lite';
+import InputWrapper from './InputWrapper.lite';
 
 export interface SliderMark {
   value: number;
   label: string;
 }
 
-export interface SliderProps extends BaseComponentProps, InputWrapperProps {
+export interface SliderProps {
   id: string;
+  c?: string;
+  sx?: Record<string, any>;
+  label?: string;
+  description?: string;
+  error?: string;
+  required?: boolean;
   min?: number;
   max?: number;
   step?: number;
   marks?: SliderMark[];
-  size?: Size;
   defaultValue?: string | number;
   onChange?: (e: any) => void;
 }
@@ -33,7 +37,7 @@ export default function Slider(props: SliderProps) {
         type="range"
         id={props.id}
         list={props.id + '-marks'}
-        class={buildOpenLooksClassName('slider', props)}
+        class={buildOpenLooksClassName('slider', props.c)}
         style={props.sx as JSX.CSS | undefined}
         min={props.min}
         max={props.max}

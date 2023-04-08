@@ -1,18 +1,20 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
 
-export interface InputWrapperProps extends BaseComponentProps {
+export interface InputWrapperProps {
   id: string;
+  c?: string;
+  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
   required?: boolean;
+  children?: any;
 }
 
 export default function InputWrapper(props: InputWrapperProps) {
   return (
-    <div class={buildOpenLooksClassName('inputwrapper', props)} style={props.sx as JSX.CSS | undefined}>
+    <div class={buildOpenLooksClassName('inputwrapper', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.label && (
         <label for={props.id} class="label">
           {props.label}

@@ -1,11 +1,14 @@
 import { useContext } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import { BaseComponentProps } from './BaseComponentProps';
 import Context from './Tabs.context.lite';
 
-export interface TabPanelProps extends BaseComponentProps {
+export interface TabPanelProps {
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
   value: string;
+  children?: any;
 }
 
 export default function TabPanel(props: TabPanelProps) {
@@ -13,7 +16,7 @@ export default function TabPanel(props: TabPanelProps) {
   return (
     <div
       id={`${props.value}-panel`}
-      class={buildOpenLooksClassName('tabpanel text', props)}
+      class={buildOpenLooksClassName('tabpanel text', props.c)}
       style={props.sx as JSX.CSS | undefined}
       role="tabpanel"
       aria-expanded={ctx.currentTab() === props.value}
