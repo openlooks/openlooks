@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build-toy": "npm run build:icons && npm run build:index && npm run compile",
-    "build": "npm run build:icons && npm run build:index && npm run build:mitosis && npm run build:copyfiles",
+    "build": "npm run build:icons && npm run build:index && npm run compile",
+    "build-old": "npm run build:icons && npm run build:index && npm run build:mitosis && npm run build:copyfiles",
     "build:icons": "node buildicons.cjs",
     "build:index": "node buildindex.cjs",
     "build:mitosis": "mitosis build",

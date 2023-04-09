@@ -10,6 +10,7 @@ import {
   getJsxShowElementWhenExpression,
   getSetterName,
   isFunctionCall,
+  isInputValueAttribute,
   isJsxAttribute,
   isJsxElement,
   isLiteImport,
@@ -113,16 +114,6 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
           preactImports.add('JSX');
           return ts.factory.createTypeReferenceNode('JSX.CSSProperties');
         }
-
-        // // Rewrite "MouseEvent" to "React.MouseEvent"
-        // if (typeStr === 'MouseEvent') {
-        //   return ts.factory.createTypeReferenceNode('React.MouseEvent');
-        // }
-
-        // // Rewrite "Event" to "React.SyntheticEvent"
-        // if (typeStr === 'Event') {
-        //   return ts.factory.createTypeReferenceNode('React.SyntheticEvent');
-        // }
       }
 
       // Rewrite JSX "class" attribute to "className"
@@ -133,6 +124,11 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
       // Rewrite JSX "for" attribute to "htmlFor"
       if (isJsxAttribute(node, 'for')) {
         return renameJsxAttribute(node, 'htmlFor');
+      }
+
+      // Rewrite JSX "value" attribute to "defaultValue"
+      if (isInputValueAttribute(node)) {
+        return renameJsxAttribute(node, 'defaultValue');
       }
 
       // Rewrite innerHTML to dangerouslySetInnerHTML

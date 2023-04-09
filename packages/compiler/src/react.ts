@@ -10,6 +10,7 @@ import {
   getJsxShowElementWhenExpression,
   getSetterName,
   isFunctionCall,
+  isInputValueAttribute,
   isJsxAttribute,
   isJsxElement,
   isLiteImport,
@@ -122,6 +123,11 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         }
       }
 
+      // Rewrite JSX "autocomplete" attribute to "autoComplete"
+      if (isJsxAttribute(node, 'autocomplete')) {
+        return renameJsxAttribute(node, 'autoComplete');
+      }
+
       // Rewrite JSX "class" attribute to "className"
       if (isJsxAttribute(node, 'class')) {
         return renameJsxAttribute(node, 'className');
@@ -130,6 +136,11 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
       // Rewrite JSX "for" attribute to "htmlFor"
       if (isJsxAttribute(node, 'for')) {
         return renameJsxAttribute(node, 'htmlFor');
+      }
+
+      // Rewrite JSX "value" attribute to "defaultValue"
+      if (isInputValueAttribute(node)) {
+        return renameJsxAttribute(node, 'defaultValue');
       }
 
       // Rewrite innerHTML to dangerouslySetInnerHTML

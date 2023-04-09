@@ -20,7 +20,7 @@ export interface SliderProps {
   max?: number;
   step?: number;
   marks?: SliderMark[];
-  defaultValue?: string | number;
+  defaultValue?: string;
   onChange?: (e: any) => void;
 }
 

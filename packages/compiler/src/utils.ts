@@ -35,6 +35,18 @@ export function isJsxAttribute(node: ts.Node, name: string): node is ts.JsxAttri
   return ts.isJsxAttribute(node) && node.name.text === name;
 }
 
+export function isInputValueAttribute(node: ts.Node): node is ts.JsxAttribute {
+  return (
+    isJsxAttribute(node, 'value') &&
+    node.parent &&
+    ts.isJsxAttributes(node.parent) &&
+    node.parent.parent &&
+    (ts.isJsxOpeningElement(node.parent.parent) || ts.isJsxSelfClosingElement(node.parent.parent)) &&
+    ts.isIdentifier(node.parent.parent.tagName) &&
+    node.parent.parent.tagName.text === 'input'
+  );
+}
+
 export function renameJsxAttribute(
   node: ts.JsxAttribute,
   newName: string,

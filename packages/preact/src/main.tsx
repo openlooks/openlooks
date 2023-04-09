@@ -7,4 +7,4 @@ import './site/index.css';
 
 initApp();
 
-render(<App />, document.getElementById('app') as HTMLElement);
+render(<App />, document.getElementById('root') as HTMLElement);

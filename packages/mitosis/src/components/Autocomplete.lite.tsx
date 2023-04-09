@@ -61,19 +61,22 @@ export default function Autocomplete(props: AutocompleteProps) {
         aria-invalid={!!props.error}
         onFocus={(event) => {
           event.preventDefault();
-          const wrapperBounds = (event.target.parentNode as HTMLDivElement).getBoundingClientRect();
-          const inputBounds = event.target.getBoundingClientRect();
+          const target = event.target as HTMLInputElement;
+          const wrapperBounds = (target.parentNode as HTMLDivElement).getBoundingClientRect();
+          const inputBounds = target.getBoundingClientRect();
           state.top = `${inputBounds.bottom - wrapperBounds.top + 8}px`;
           state.left = `${inputBounds.left - wrapperBounds.left}px`;
           state.opacity = '1';
           state.display = 'block';
         }}
         onInput={(event) => {
+          const target = event.target as HTMLInputElement;
           state.opacity = '1';
           state.display = 'block';
-          state.filter = event.target.value.toLowerCase();
+          state.filter = target.value.toLowerCase();
         }}
         onKeyDown={(event) => {
+          const target = event.target as HTMLInputElement;
           const filteredData = props.data.filter((str) => str.toLowerCase().includes(state.filter));
           switch (event.key) {
             case 'ArrowUp': {
@@ -96,7 +99,7 @@ export default function Autocomplete(props: AutocompleteProps) {
               if (state.opacity === '1') {
                 event.preventDefault();
                 if (state.hoverIndex >= 0 && state.hoverIndex < filteredData.length) {
-                  (document.getElementById(props.id) as HTMLInputElement).value = filteredData[state.hoverIndex];
+                  target.value = filteredData[state.hoverIndex];
                   state.opacity = '0';
                   window.setTimeout(() => (state.display = 'none'), 100);
                 }
