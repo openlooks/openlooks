@@ -116,14 +116,13 @@ export default function Autocomplete(props: AutocompleteProps) {
         }}
       />
       <Menu
-        size="sm"
-        c="radius-sm"
+        c="size-sm radius-sm"
         sx={{ display: state.display, opacity: state.opacity, top: state.top, left: state.left, width: '12.5rem' }}
       >
         <For each={props.data.filter((str) => str.toLowerCase().includes(state.filter))}>
           {(item, index) => (
             <MenuItem
-              class={index === state.hoverIndex ? 'hover' : 'cody-' + index}
+              c={index === state.hoverIndex ? 'hover' : ''}
               onClick={() => {
                 (document.getElementById(props.id) as HTMLInputElement).value = item;
               }}

@@ -67,7 +67,7 @@ export default function AppShellPage() {
               </Button>
             </Stack>
           </Navbar>
-          <AppShellMain p="xs" sx={{ 'background-color': 'var(--oc-gray-0)' }}>
+          <AppShellMain c="p-xs" sx={{ 'background-color': 'var(--oc-gray-0)' }}>
             <Text>Your application goes here</Text>
           </AppShellMain>
         </AppShellBody>

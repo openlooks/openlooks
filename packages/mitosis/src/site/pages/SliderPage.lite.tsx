@@ -25,9 +25,7 @@ export default function SliderPage() {
         <ConfiguratorStage>
           <Slider
             id="slider"
-            color={state.color}
-            radius={state.radius}
-            size={state.size}
+            c={`color-${state.color} radius-${state.radius} size-${state.size}`}
             marks={[
               { value: 20, label: '20%' },
               { value: 50, label: '50%' },

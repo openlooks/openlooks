@@ -146,6 +146,19 @@ export function getJsxForElementChildExpression(node: ts.JsxElement): ts.Express
   return (node.children.find((child) => ts.isJsxExpression(child)) as ts.JsxExpression | undefined)?.expression;
 }
 
+export function isInsideForElement(node: ts.Node): node is ts.Identifier {
+  // Find a parent node that is a "<For>" JsxElement
+  let forElement = node.parent;
+  while (forElement && !isJsxElement(forElement, 'For')) {
+    forElement = forElement.parent;
+  }
+  return !!forElement;
+}
+
+export function isForElementIndexIdentifier(node: ts.Node): node is ts.Identifier {
+  return ts.isIdentifier(node) && node.text === 'index' && !ts.isParameter(node.parent) && isInsideForElement(node);
+}
+
 export function getJsxShowElementWhenExpression(node: ts.JsxElement): ts.Expression | undefined {
   const whenAttr = node.openingElement.attributes.properties.find(
     (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'when'

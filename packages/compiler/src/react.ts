@@ -106,28 +106,28 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         const typeNode = node as ts.TypeNode;
         const typeStr = tryGetFullText(typeNode);
 
-        // React: Rewrite "JSX.CSS" to "as CSSProperties"
+        // Rewrite "JSX.CSS" to "as CSSProperties"
         if (typeStr === 'JSX.CSS') {
           return ts.factory.createTypeReferenceNode('React.CSSProperties');
         }
 
-        // React: Rewrite "MouseEvent" to "React.MouseEvent"
+        // Rewrite "MouseEvent" to "React.MouseEvent"
         if (typeStr === 'MouseEvent') {
           return ts.factory.createTypeReferenceNode('React.MouseEvent');
         }
 
-        // React: Rewrite "Event" to "React.SyntheticEvent"
+        // Rewrite "Event" to "React.SyntheticEvent"
         if (typeStr === 'Event') {
           return ts.factory.createTypeReferenceNode('React.SyntheticEvent');
         }
       }
 
-      // React: Rewrite JSX "class" attribute to "className"
+      // Rewrite JSX "class" attribute to "className"
       if (isJsxAttribute(node, 'class')) {
         return renameJsxAttribute(node, 'className');
       }
 
-      // React: Rewrite JSX "for" attribute to "htmlFor"
+      // Rewrite JSX "for" attribute to "htmlFor"
       if (isJsxAttribute(node, 'for')) {
         return renameJsxAttribute(node, 'htmlFor');
       }
@@ -149,22 +149,22 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         );
       }
 
-      // React: Rewrite "class" interface member to "className"
+      // Rewrite "class" interface member to "className"
       if (ts.isPropertySignature(node) && node.name.getText() === 'class') {
         return renamePropertySignature(node, 'className');
       }
 
-      // React: Rewrite "createContext" to "React.createContext"
+      // Rewrite "createContext" to "React.createContext"
       if (isFunctionCall(node, 'createContext')) {
         return renameFunctionCall(node, 'React.createContext');
       }
 
-      // React: Rewrite "useContext" to "React.useContext"
+      // Rewrite "useContext" to "React.useContext"
       if (isFunctionCall(node, 'useContext')) {
         return renameFunctionCall(node, 'React.useContext');
       }
 
-      // React: Rewrite "useStore" to "React.useState"
+      // Rewrite "useStore" to "React.useState"
       if (isUseStoreDeclaration(node)) {
         const useStateStmts: ts.Statement[] = [];
         for (const prop of node.declarationList.declarations[0].initializer.arguments[0].properties) {
@@ -195,12 +195,12 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         return useStateStmts;
       }
 
-      // React: Replace state read with state getter
+      // Replace state read with state getter
       if (isStateRead(node)) {
         return ts.factory.createIdentifier(node.name.text);
       }
 
-      // React: Replace state write with state setter
+      // Replace state write with state setter
       if (isStateWrite(node)) {
         return ts.factory.createCallExpression(
           ts.factory.createIdentifier(getSetterName(node.left.name.text)),
@@ -209,7 +209,7 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         );
       }
 
-      // React: Rewrite "onMount" to "useEffect"
+      // Rewrite "onMount" to "useEffect"
       if (isFunctionCall(node, 'onMount')) {
         return ts.factory.createCallExpression(ts.factory.createIdentifier('React.useEffect'), undefined, [
           node.arguments[0],
@@ -217,7 +217,7 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         ]);
       }
 
-      // React: Rewrite <For each={...}> to <>{...}</>
+      // Rewrite <For each={...}> to <>{...}</>
       if (isJsxElement(node, 'For')) {
         const eachExpr = getJsxForElementEachExpression(node);
         const childExpr = getJsxForElementChildExpression(node);
@@ -237,7 +237,7 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         }
       }
 
-      // React: Rewrite <Show when={...}> to <>{...}</>
+      // Rewrite <Show when={...}> to <>{...}</>
       if (isJsxElement(node, 'Show')) {
         const whenExpr = getJsxShowElementWhenExpression(node);
         const childElement = getJsxShowElementChildElement(node);
@@ -263,7 +263,7 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
       // Visit all nodes
       const outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
 
-      // React: Add React import
+      // Add React import
       return ts.factory.updateSourceFile(outputSourceFile, [
         ts.factory.createImportDeclaration(
           undefined,

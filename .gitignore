@@ -10,6 +10,14 @@ packages/styles/dist
 packages/mitosis/src/icons
 packages/mitosis/src/index.*
 
+packages/preact/dist
+packages/preact/public
+packages/preact/src/components
+packages/preact/src/icons
+packages/preact/src/site
+packages/preact/src/utils
+packages/preact/src/index.*
+
 packages/react/dist
 packages/react/public
 packages/react/src/components

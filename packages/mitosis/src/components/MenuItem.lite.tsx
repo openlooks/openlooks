@@ -23,7 +23,7 @@ export default function MenuItem(props: MenuItemProps) {
       onMouseLeave={(event) => props.onMouseLeave?.(event)}
     >
       <Show when={props.icon}>
-        <div className="icon">{props.icon}</div>
+        <div class="icon">{props.icon}</div>
       </Show>
       <div class="label">{props.children}</div>
     </div>

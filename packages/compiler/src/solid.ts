@@ -5,6 +5,7 @@ import ts from 'typescript';
 import {
   ensureDirectoryExists,
   getSetterName,
+  isForElementIndexIdentifier,
   isFunctionCall,
   isJsxElement,
   isLiteImport,
@@ -100,14 +101,14 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         const typeNode = node as ts.TypeNode;
         const typeStr = tryGetFullText(typeNode);
 
-        // React: Rewrite "JSX.CSS" to "JSX.CSSProperties"
+        // Rewrite "JSX.CSS" to "JSX.CSSProperties"
         if (typeStr === 'JSX.CSS') {
           solidImports.add('JSX');
           return ts.factory.createTypeReferenceNode('JSX.CSSProperties');
         }
       }
 
-      // React: Rewrite "useStore" to "createSignal"
+      // Rewrite "useStore" to "createSignal"
       if (isUseStoreDeclaration(node)) {
         solidImports.add('createSignal');
         const useStateStmts: ts.Statement[] = [];
@@ -139,18 +140,23 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         return useStateStmts;
       }
 
-      // React: Replace state read with state getter
+      // Replace state read with state getter
       if (isStateRead(node)) {
         return ts.factory.createCallExpression(ts.factory.createIdentifier(node.name.text), undefined, []);
       }
 
-      // React: Replace state write with state setter
+      // Replace state write with state setter
       if (isStateWrite(node)) {
         return ts.factory.createCallExpression(
           ts.factory.createIdentifier(getSetterName(node.left.name.text)),
           undefined,
           [node.right]
         );
+      }
+
+      // Rewrite "index" to "index()" if inside a For component
+      if (isForElementIndexIdentifier(node)) {
+        return ts.factory.createCallExpression(ts.factory.createIdentifier(node.text), undefined, []);
       }
 
       if (isFunctionCall(node, 'createContext')) {
