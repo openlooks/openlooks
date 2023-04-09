@@ -58,10 +58,10 @@ export default function GroupPage() {
 
 function Demo() {
   return (
-    <Group position="${state.position}" spacing="${state.spacing}">
-      <Button c="variant-outline">1</Button>
-      <Button c="variant-outline">2</Button>
-      <Button c="variant-outline">3</Button>
+    <Group c="position-${state.position} spacing-${state.spacing}">
+      <Button>1</Button>
+      <Button>2</Button>
+      <Button>3</Button>
     </Group>
   );
 }`}

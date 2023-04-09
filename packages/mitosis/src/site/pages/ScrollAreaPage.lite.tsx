@@ -79,7 +79,7 @@ export default function ScrollAreaPage() {
 
 function Demo() {
   return (
-    <ScrollArea h={250} variant="${state.variant}" scrollbarSize="${state.scrollbarSize}">
+    <ScrollArea h={250} c="variant-${state.variant} scrollbarSize-${state.scrollbarSize}">
       {/* ... content */}
     </ScrollArea>
   );

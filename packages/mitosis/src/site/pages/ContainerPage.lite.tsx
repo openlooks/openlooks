@@ -28,7 +28,7 @@ function Demo() {
         Default container
       </Container>
 
-      <Container size="xs" px="xs">
+      <Container c="size-xs px-xs">
         xs container with xs horizontal padding
       </Container>
     </>

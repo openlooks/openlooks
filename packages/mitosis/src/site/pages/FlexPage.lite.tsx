@@ -89,13 +89,7 @@ export default function FlexPage() {
 
 function Demo() {
   return (
-    <Flex
-      gap="${state.gap}"
-      justify="${state.justify}"
-      align="${state.align}"
-      direction="${state.direction}"
-      wrap="${state.wrap}"
-    >
+    <Flex c="gap-${state.gap} justify-${state.justify} align-${state.align} direction-${state.direction} wrap-${state.wrap}">
       <Button>Button 1</Button>
       <Button>Button 2</Button>
       <Button>Button 3</Button>

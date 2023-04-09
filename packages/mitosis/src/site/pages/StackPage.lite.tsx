@@ -68,7 +68,7 @@ export default function StackPage() {
 
 function Demo() {
   return (
-    <Stack align="${state.align}" justify="${state.justify}" spacing="${state.spacing}">
+    <Stack c="align-${state.align} justify-${state.justify} spacing-${state.spacing}">
       <Button c="variant-outline">1</Button>
       <Button c="variant-outline">2</Button>
       <Button c="variant-outline">3</Button>

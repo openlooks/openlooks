@@ -80,7 +80,7 @@ export default function SimpleGridPage() {
 
 function Demo() {
   return (
-    <SimpleGrid cols={${state.cols}} spacing="${state.spacing}" verticalSpacing="${state.verticalSpacing}">
+    <SimpleGrid c="cols-${state.cols} spacing-${state.spacing} verticalSpacing-${state.verticalSpacing}">
       <div>1</div>
       <div>2</div>
       <div>3</div>

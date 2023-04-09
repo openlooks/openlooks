@@ -83,7 +83,7 @@ export default function ButtonPage() {
 
 function Demo() {
   return (
-    <Button variant="${state.variant}" color="${state.color}" radius="${state.radius}" size="${state.size}">
+    <Button c="variant-${state.variant} color-${state.color} radius-${state.radius} size-${state.size}">
       ${state.text}
     </Button>
   );

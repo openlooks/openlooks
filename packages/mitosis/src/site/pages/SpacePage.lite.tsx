@@ -48,7 +48,7 @@ function Demo() {
   return (
     <>
       <Text>First line</Text>
-      <Space h="${state.h}" />
+      <Space c="h-${state.h}" />
       <Text>Second line</Text>
     </>
   );
@@ -82,7 +82,7 @@ function Demo() {
   return (
     <>
       <Text>First part</Text>
-      <Space w="${state.w}" />
+      <Space c="w-${state.w}" />
       <Text>Second part</Text>
     </>
   );

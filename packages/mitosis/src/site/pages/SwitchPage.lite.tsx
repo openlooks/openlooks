@@ -101,9 +101,7 @@ function Demo() {
       label="${state.label}"
       description="${state.description}"
       error="${state.error}"
-      size="${state.size}"
-      radius="${state.radius}"
-      color="${state.color}"
+      c="radius-${state.radius} size-${state.size} color-${state.color}"
     />
   );
 }`}

@@ -4,8 +4,8 @@ import Configurator from '../../components/Configurator.lite';
 import ConfiguratorControls from '../../components/ConfiguratorControls.lite';
 import ConfiguratorStage from '../../components/ConfiguratorStage.lite';
 import Stack from '../../components/Stack.lite';
-import Textarea from '../../components/Textarea.lite';
 import TextInput from '../../components/TextInput.lite';
+import Textarea from '../../components/Textarea.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
@@ -33,8 +33,7 @@ export default function TextareaPage() {
             label={state.label}
             description={state.description}
             error={state.error}
-            radius={state.radius}
-            size={state.size}
+            c={`radius-${state.radius} size-${state.size}`}
           />
         </ConfiguratorStage>
         <ConfiguratorControls>
@@ -104,8 +103,7 @@ function Demo() {
       label="${state.label}"
       description="${state.description}"
       error="${state.error}"
-      radius="${state.radius}"
-      size="${state.size}"
+      c="radius-${state.radius} size-${state.size}"
     />
   );
 }`}

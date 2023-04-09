@@ -16,7 +16,7 @@ export default function CenterPage() {
 
 function Demo() {
   return (
-    <Center p="xl" mx="auto">
+    <Center c="p-xl">
       <div>All elements inside Center are centered</div>
     </Center>
   );

@@ -129,8 +129,7 @@ function Demo() {
       label="${state.label}"
       description="${state.description}"
       error="${state.error}"
-      radius="${state.radius}"
-      size="${state.size}"
+      c="radius-${state.radius} size-${state.size}"
     />
   );
 }`}
