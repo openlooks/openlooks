@@ -7,7 +7,7 @@ export interface PrismProps {
   c?: string;
   sx?: Record<string, any>;
   language: string;
-  children?: any;
+  code: string;
 }
 
 export default function Prism(props: PrismProps) {
@@ -17,7 +17,7 @@ export default function Prism(props: PrismProps) {
         class={buildOpenLooksClassName(`language-${props.language}`, props.c)}
         style={props.sx as JSX.CSS | undefined}
         innerHTML={(window as any).Prism.highlight(
-          props.children,
+          props.code,
           (window as any).Prism.languages[props.language],
           props.language
         )}

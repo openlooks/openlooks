@@ -30,8 +30,9 @@ export default function TextPage() {
         <Text c="ta-center">Aligned to center</Text>
         <Text c="ta-right">Aligned to right</Text>
       </Paper>
-      <Prism language="jsx">
-        {`import { Text } from '@mantine/core';
+      <Prism
+        language="jsx"
+        code={`import { Text } from '@mantine/core';
 
 function Demo() {
   return (
@@ -56,7 +57,7 @@ function Demo() {
     </>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

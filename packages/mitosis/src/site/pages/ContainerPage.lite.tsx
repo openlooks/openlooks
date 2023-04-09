@@ -18,8 +18,9 @@ export default function ContainerPage() {
       <Container c="my-xl size-xs px-xs" sx={{ background: 'var(--oc-blue-0)' }}>
         <Text>xs container with xs horizontal padding</Text>
       </Container>
-      <Prism language="jsx">
-        {`import { Container } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Container } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -34,7 +35,7 @@ function Demo() {
     </>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

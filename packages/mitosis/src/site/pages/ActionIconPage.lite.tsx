@@ -81,8 +81,9 @@ export default function ActionIconPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { ActionIcon } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { ActionIcon } from '@openlooks/react';
 import { IconAdjustments } from '@tabler/icons-react';
 
 function Demo() {
@@ -92,7 +93,7 @@ function Demo() {
     </ActionIcon>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

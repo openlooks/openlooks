@@ -12,14 +12,17 @@ export default function InputPage() {
         {` `}In most cases, you should not use Input component in your application. Input component is a base for other
         inputs and was not designed to be used directly.
       </Text>
-      <Prism language="jsx">{`// Incorrect usage, input is not accessible
+      <Prism
+        language="jsx"
+        code={`// Incorrect usage, input is not accessible
 <Input.Wrapper label="Input label">
   <Input />
 </Input.Wrapper>
 
 // Use TextInput instead of Input everywhere you want to use Input,
 // it is accessible by default and includes Input.Wrapper
-<TextInput label="Input label" description="Input description" />`}</Prism>
+<TextInput label="Input label" description="Input description" />`}
+      />
       <Title order={2} c="mt-xl">
         Usage
       </Title>

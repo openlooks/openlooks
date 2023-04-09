@@ -74,8 +74,9 @@ export default function ScrollAreaPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { ScrollArea } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { ScrollArea } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -84,7 +85,7 @@ function Demo() {
     </ScrollArea>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

@@ -21,8 +21,9 @@ export default function TitlePage() {
         <Title order={5}>This is h5 title</Title>
         <Title order={6}>This is h6 title</Title>
       </Paper>
-      <Prism language="jsx">
-        {`import { Title } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Title } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -36,7 +37,7 @@ function Demo() {
     </>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

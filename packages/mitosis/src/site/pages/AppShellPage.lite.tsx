@@ -72,8 +72,9 @@ export default function AppShellPage() {
           </AppShellMain>
         </AppShellBody>
       </AppShell>
-      <Prism language="jsx">
-        {`import { AppShell, Navbar, Header } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { AppShell, Navbar, Header } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -86,7 +87,7 @@ function Demo() {
     </AppShell>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

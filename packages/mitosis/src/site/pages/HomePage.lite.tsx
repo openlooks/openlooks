@@ -72,7 +72,9 @@ export default function HomePage() {
           <Counter />
         </Center>
       </Paper>
-      <Prism language="jsx">{`import { useStore } from '@builder.io/mitosis';
+      <Prism
+        language="jsx"
+        code={`import { useStore } from '@builder.io/mitosis';
 import { Button } from '@openlooks/react';
 
 function Counter() {
@@ -85,7 +87,8 @@ function Counter() {
       Count: {state.count}
     </Button>
   );
-}`}</Prism>
+}`}
+      />
     </DocPage>
   );
 }

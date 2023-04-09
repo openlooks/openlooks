@@ -75,8 +75,9 @@ export default function SimpleGridPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { SimpleGrid } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { SimpleGrid } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -89,7 +90,7 @@ function Demo() {
     </SimpleGrid>
   )
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

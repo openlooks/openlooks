@@ -14,11 +14,14 @@ export default function CodePage() {
       <Paper c="p-md withBorder">
         <Code>React.createElement()</Code>
       </Paper>
-      <Prism language="jsx">{`import { Code } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Code } from '@openlooks/react';
 
 function Demo() {
   return <Code>React.createElement()</Code>;
-}`}</Prism>
+}`}
+      />
       <Title order={2}>Block code</Title>
       <Text c="mb-xl">To render code in pre element pass block prop to Code component:</Text>
       <Paper c="p-md withBorder">
@@ -29,7 +32,9 @@ function Demo() {
   return <Code>React.createElement()</Code>;
 }`}</Code>
       </Paper>
-      <Prism language="jsx">{`import { Code } from '@mantine/core';
+      <Prism
+        language="jsx"
+        code={`import { Code } from '@mantine/core';
 
 const codeForPreviousDemo = \`import React from 'react';
 import { Code } from '@mantine/core';
@@ -40,7 +45,8 @@ function Demo() {
 
 function Demo() {
   return <Code block>{codeForPreviousDemo}</Code>;
-}`}</Prism>
+}`}
+      />
       <Title order={2}>Custom color</Title>
       <Text c="mb-xl">By default, code has gray color, you can change it to any color from theme.colors:</Text>
       <Paper c="p-md withBorder">
@@ -50,7 +56,9 @@ function Demo() {
           <Code c="color-blue">React.createElement()</Code>
         </Group>
       </Paper>
-      <Prism language="jsx">{`import { Code } from '@mantine/core';
+      <Prism
+        language="jsx"
+        code={`import { Code } from '@mantine/core';
 
 function Demo() {
   return (
@@ -60,7 +68,8 @@ function Demo() {
       <Code c="color-blue">React.createElement()</Code>
     </>
   );
-}`}</Prism>
+}`}
+      />
     </DocPage>
   );
 }

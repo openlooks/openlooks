@@ -17,9 +17,12 @@ export default function BoxPage() {
           Box lets you add inline styles with sx prop
         </Box>
       </Paper>
-      <Prism language="jsx">{`<Box c="p-xl radius-xl" sx={{ background: 'var(--oc-gray-1)', cursor: 'pointer' }}>
+      <Prism
+        language="jsx"
+        code={`<Box c="p-xl radius-xl" sx={{ background: 'var(--oc-gray-1)', cursor: 'pointer' }}>
   Box lets you add inline styles with sx prop
-</Box>`}</Prism>
+</Box>`}
+      />
     </DocPage>
   );
 }

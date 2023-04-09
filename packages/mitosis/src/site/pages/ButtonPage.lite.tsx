@@ -78,8 +78,9 @@ export default function ButtonPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Button } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Button } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -88,7 +89,7 @@ function Demo() {
     </Button>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

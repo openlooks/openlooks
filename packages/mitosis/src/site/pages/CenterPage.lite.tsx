@@ -11,8 +11,9 @@ export default function CenterPage() {
       <Center c="p-xl" sx={{ background: 'var(--oc-blue-0)' }}>
         <Text sx={{ background: 'var(--oc-blue-1)' }}>All elements inside Center are centered</Text>
       </Center>
-      <Prism language="jsx">
-        {`import { Center } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Center } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -21,7 +22,7 @@ function Demo() {
     </Center>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

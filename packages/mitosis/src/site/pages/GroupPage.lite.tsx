@@ -53,8 +53,9 @@ export default function GroupPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Group, Button } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Group, Button } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -65,7 +66,7 @@ function Demo() {
     </Group>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

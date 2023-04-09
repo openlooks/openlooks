@@ -82,8 +82,9 @@ export default function NativeSelectPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { NativeSelect } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { NativeSelect } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -96,7 +97,7 @@ function Demo() {
     />
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

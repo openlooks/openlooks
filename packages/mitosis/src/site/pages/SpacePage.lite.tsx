@@ -41,8 +41,9 @@ export default function SpacePage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Text, Space } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Text, Space } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -53,7 +54,7 @@ function Demo() {
     </>
   );
 }`}
-      </Prism>
+      />
       <Configurator>
         <ConfiguratorStage>
           <div style={{ display: 'flex' }}>
@@ -75,8 +76,9 @@ function Demo() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Text, Space } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Text, Space } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -87,24 +89,30 @@ function Demo() {
     </>
   );
 }`}
-      </Prism>
+      />
       <Title order={2} c="mt-xl">
         Where to use
       </Title>
       <Text c="mb-lg">
         In most cases, you would want to use margin props instead of Space when working with Mantine components:
       </Text>
-      <Prism language="jsx">{`<Text>First line</Text>
+      <Prism
+        language="jsx"
+        code={`<Text>First line</Text>
 // <Space h="md" /> is not required as the same can be achieved with margin
-<Text mt="md">Second line</Text>`}</Prism>
+<Text mt="md">Second line</Text>`}
+      />
       <Text c="my-lg">
         But when you work with regular HTML elements you do not have access to theme.spacing and you may want to use
         Space component to skip direct theme subscription:
       </Text>
-      <Prism language="jsx">{`<div>First line</div>
+      <Prism
+        language="jsx"
+        code={`<div>First line</div>
 <Space h="md" />
 // Margin props are not available on div, use Space to add spacing from theme
-<div>Second line</div>`}</Prism>
+<div>Second line</div>`}
+      />
     </DocPage>
   );
 }

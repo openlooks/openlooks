@@ -39,8 +39,9 @@ export default function GridPage() {
           </GridCol>
         </Grid>
       </Paper>
-      <Prism language="jsx">
-        {`import { Grid } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Grid } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -51,7 +52,7 @@ function Demo() {
     </Grid>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

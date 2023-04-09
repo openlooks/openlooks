@@ -84,8 +84,9 @@ export default function FlexPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Flex, Button } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Flex, Button } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -96,7 +97,7 @@ function Demo() {
     </Flex>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

@@ -108,7 +108,9 @@ export default function NotificationsPage() {
         Add Notifications component anywhere in your application, usually it is placed inside MantineProvider next to
         your App component:
       </Text>
-      <Prism language="jsx">{`import { Notifications } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Notifications } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -117,7 +119,8 @@ function Demo() {
       <App />
     </>
   );
-}`}</Prism>
+}`}
+      />
       <Text c="my-xl">Then use notifications.show function anywhere in your application:</Text>
       <Paper c="p-xl mb-xl radius-md withBorder">
         <Center>
@@ -135,7 +138,9 @@ function Demo() {
           </Button>
         </Center>
       </Paper>
-      <Prism language="jsx">{`import { Group, Button, showNotification } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Group, Button, showNotification } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -153,7 +158,8 @@ function Demo() {
       </Button>
     </Group>
   );
-}`}</Prism>
+}`}
+      />
     </DocPage>
   );
 }

@@ -10,13 +10,16 @@ export default function TablePage() {
     <DocPage title="Table" description="Render table with theme styles">
       <Title order={2}>Usage</Title>
       <Text c="mb-xl">Table data for all examples:</Text>
-      <Prism language="js">{`const elements = [
+      <Prism
+        language="js"
+        code={`const elements = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
   { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
   { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
   { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
   { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-];`}</Prism>
+];`}
+      />
       <Paper c="p-xl withBorder">
         <Table>
           <thead>
@@ -61,7 +64,9 @@ export default function TablePage() {
           </tbody>
         </Table>
       </Paper>
-      <Prism language="jsx">{`import { Table } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Table } from '@openlooks/react';
 
 function Demo() {
   const rows = elements.map((element) => (
@@ -86,7 +91,8 @@ function Demo() {
       <tbody>{rows}</tbody>
     </Table>
   );
-}`}</Prism>
+}`}
+      />
     </DocPage>
   );
 }

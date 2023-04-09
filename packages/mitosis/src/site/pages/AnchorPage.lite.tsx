@@ -22,7 +22,9 @@ export default function AnchorPage() {
           </Anchor>
         </Center>
       </Paper>
-      <Prism language="jsx">{`import { Anchor } from '@mantine/core';
+      <Prism
+        language="jsx"
+        code={`import { Anchor } from '@mantine/core';
 
 function Demo() {
   return (
@@ -30,7 +32,8 @@ function Demo() {
       OpenLooks docs
     </Anchor>
   );
-}`}</Prism>
+}`}
+      />
     </DocPage>
   );
 }

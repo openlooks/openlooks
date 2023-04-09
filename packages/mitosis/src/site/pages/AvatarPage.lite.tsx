@@ -23,7 +23,9 @@ export default function AvatarPage() {
           </Avatar>
         </Group>
       </Paper>
-      <Prism language="jsx">{`import { Avatar } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Avatar } from '@openlooks/react';
 import { IconStar } from '@tabler/icons-react';
 
 function Demo() {
@@ -44,7 +46,8 @@ function Demo() {
       </Avatar>
     </>
   );
-}`}</Prism>
+}`}
+      />
     </DocPage>
   );
 }

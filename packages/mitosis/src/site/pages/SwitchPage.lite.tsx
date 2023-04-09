@@ -92,8 +92,9 @@ export default function SwitchPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Switch } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Switch } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -105,7 +106,7 @@ function Demo() {
     />
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

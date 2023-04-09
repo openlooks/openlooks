@@ -31,7 +31,7 @@ export default function DocPage(props: DocPageProps) {
               <Text c="color-gray size-sm">Import</Text>
             </GridCol>
             <GridCol c="span-11">
-              <Prism language="js" c="p-0 m-0">{`import { ${props.title} } from '@openlooks/mitosis';`}</Prism>
+              <Prism language="js" c="p-0 m-0" code={`import { ${props.title} } from '@openlooks/mitosis';`} />
             </GridCol>
             <GridCol>
               <Text c="color-gray size-sm">Source</Text>

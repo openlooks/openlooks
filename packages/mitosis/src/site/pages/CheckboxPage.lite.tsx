@@ -93,8 +93,9 @@ export default function CheckboxPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Checkbox } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Checkbox } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -107,7 +108,7 @@ function Demo() {
     />
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

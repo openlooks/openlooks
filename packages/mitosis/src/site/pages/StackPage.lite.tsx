@@ -63,8 +63,9 @@ export default function StackPage() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { Stack, Button } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { Stack, Button } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -75,7 +76,7 @@ function Demo() {
     </Stack>
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }

@@ -36,7 +36,9 @@ export default function AutocompletePage() {
           />
         </Container>
       </Paper>
-      <Prism language="jsx">{`import { Autocomplete } from '@mantine/core';
+      <Prism
+        language="jsx"
+        code={`import { Autocomplete } from '@mantine/core';
 
 function Demo() {
   return (
@@ -46,7 +48,8 @@ function Demo() {
       data={['React', 'Angular', 'Svelte', 'Vue']}
     />
   );
-}`}</Prism>
+}`}
+      />
       <Title order={2} c="mt-xl">
         Input props
       </Title>
@@ -119,8 +122,9 @@ function Demo() {
           </Stack>
         </ConfiguratorControls>
       </Configurator>
-      <Prism language="jsx">
-        {`import { TextInput } from '@openlooks/react';
+      <Prism
+        language="jsx"
+        code={`import { TextInput } from '@openlooks/react';
 
 function Demo() {
   return (
@@ -133,7 +137,7 @@ function Demo() {
     />
   );
 }`}
-      </Prism>
+      />
     </DocPage>
   );
 }
