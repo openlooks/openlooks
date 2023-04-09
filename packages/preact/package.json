@@ -1,0 +1,29 @@
+{
+  "name": "@openlooks/preact",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "OpenLooks Preact",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist/index.mjs"
+  ],
+  "main": "dist/index.mjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "preact": "^10.13.2"
+  },
+  "devDependencies": {
+    "@openlooks/mitosis": "*",
+    "@openlooks/styles": "*",
+    "@preact/preset-vite": "^2.5.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1"
+  }
+}

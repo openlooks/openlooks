@@ -3,6 +3,7 @@
 import fastGlob from 'fast-glob';
 import { resolve } from 'path';
 import ts from 'typescript';
+import { transformToPreact } from './preact';
 import { transformToReact } from './react';
 import { transformToSolid } from './solid';
 
@@ -71,6 +72,7 @@ async function watch(inputFiles: string[], rootNames: string[]): Promise<void> {
 }
 
 function transform(program: ts.Program, inputFiles: string[]): void {
+  transformToPreact(program, resolvedInputDir, inputFiles, '../preact');
   transformToReact(program, resolvedInputDir, inputFiles, '../react');
   transformToSolid(program, resolvedInputDir, inputFiles, '../solid');
 }

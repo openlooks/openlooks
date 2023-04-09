@@ -185,10 +185,10 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
     // Return transformer factory
     return (sourceFile: ts.SourceFile) => {
       // Visit all nodes
-      const outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
+      let outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
 
       if (solidImports.size > 0) {
-        return ts.factory.updateSourceFile(outputSourceFile, [
+        outputSourceFile = ts.factory.updateSourceFile(outputSourceFile, [
           ts.factory.createImportDeclaration(
             undefined,
             ts.factory.createImportClause(
@@ -204,9 +204,9 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
           ),
           ...outputSourceFile.statements,
         ]);
-      } else {
-        return outputSourceFile;
       }
+
+      return outputSourceFile;
     };
   };
 }
