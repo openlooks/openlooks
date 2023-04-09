@@ -16,7 +16,7 @@ export default function HomePage() {
       title="OpenLooks"
       description="Cross-framework components and utilities for building modern web applications."
     >
-      <Alert slotIcon={<IconAlertCircle size="1rem" />} title="Project Status" c="color-blue variant=filled mb-xl">
+      <Alert slotIcon={<IconAlertCircle size="1rem" />} title="Project Status" c="color-blue variant-filled mb-xl">
         This is a pre alpha release of OpenLooks. Many components are unfinished. Expect breaking changes.
       </Alert>
       <Alert slotIcon={<IconAlertCircle size="1rem" />} title="Framework Support" c="color-teal variant-filled mb-xl">
