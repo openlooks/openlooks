@@ -3,9 +3,9 @@
 import fastGlob from 'fast-glob';
 import { resolve } from 'path';
 import ts from 'typescript';
-import { transformToPreact } from './preact';
-import { transformToReact } from './react';
-import { transformToSolid } from './solid';
+import { transformToPreact } from './generators/preact';
+import { transformToReact } from './generators/react';
+import { transformToSolid } from './generators/solid';
 
 const inputDir = '../mitosis';
 const resolvedInputDir = resolve(inputDir);

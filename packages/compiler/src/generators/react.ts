@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import prettier from 'prettier';
 import ts from 'typescript';
 import {
+  addImport,
   ensureDirectoryExists,
   getJsxForElementChildExpression,
   getJsxForElementEachExpression,
@@ -23,7 +24,7 @@ import {
   renameJsxAttribute,
   renamePropertySignature,
   tryGetFullText,
-} from './utils';
+} from '../utils';
 
 export function transformToReact(
   program: ts.Program,
@@ -275,14 +276,7 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
       const outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
 
       // Add React import
-      return ts.factory.updateSourceFile(outputSourceFile, [
-        ts.factory.createImportDeclaration(
-          undefined,
-          ts.factory.createImportClause(false, ts.factory.createIdentifier('React'), undefined),
-          ts.factory.createStringLiteral('react')
-        ),
-        ...outputSourceFile.statements,
-      ]);
+      return addImport(outputSourceFile, 'React', undefined, 'react');
     };
   };
 }

@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import prettier from 'prettier';
 import ts from 'typescript';
 import {
+  addImport,
   ensureDirectoryExists,
   getSetterName,
   isForElementIndexIdentifier,
@@ -15,7 +16,7 @@ import {
   isStateWrite,
   isUseStoreDeclaration,
   tryGetFullText,
-} from './utils';
+} from '../utils';
 
 export function transformToSolid(
   program: ts.Program,
@@ -186,26 +187,7 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
     return (sourceFile: ts.SourceFile) => {
       // Visit all nodes
       let outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
-
-      if (solidImports.size > 0) {
-        outputSourceFile = ts.factory.updateSourceFile(outputSourceFile, [
-          ts.factory.createImportDeclaration(
-            undefined,
-            ts.factory.createImportClause(
-              false,
-              undefined,
-              ts.factory.createNamedImports(
-                Array.from(solidImports)
-                  .sort()
-                  .map((i) => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(i)))
-              )
-            ),
-            ts.factory.createStringLiteral('solid-js')
-          ),
-          ...outputSourceFile.statements,
-        ]);
-      }
-
+      outputSourceFile = addImport(outputSourceFile, undefined, solidImports, 'solid-js');
       return outputSourceFile;
     };
   };

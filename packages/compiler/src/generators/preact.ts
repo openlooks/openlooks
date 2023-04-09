@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import prettier from 'prettier';
 import ts from 'typescript';
 import {
+  addImport,
   ensureDirectoryExists,
   getJsxForElementChildExpression,
   getJsxForElementEachExpression,
@@ -22,7 +23,7 @@ import {
   renameJsxAttribute,
   renamePropertySignature,
   tryGetFullText,
-} from './utils';
+} from '../utils';
 
 export function transformToPreact(
   program: ts.Program,
@@ -264,22 +265,6 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         preactHooksImports.add('useContext');
       }
 
-      // if (isFunctionCall(node, 'onMount')) {
-      //   preactHooksImports.add('useEffect');
-      // }
-
-      // if (isFunctionCall(node, 'useState')) {
-      //   preactHooksImports.add('useState');
-      // }
-
-      // if (isJsxElement(node, 'For')) {
-      //   preactImports.add('For');
-      // }
-
-      // if (isJsxElement(node, 'Show')) {
-      //   preactImports.add('Show');
-      // }
-
       return node;
     };
 
@@ -287,45 +272,8 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
     return (sourceFile: ts.SourceFile) => {
       // Visit all nodes
       let outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
-
-      if (preactImports.size > 0) {
-        outputSourceFile = ts.factory.updateSourceFile(outputSourceFile, [
-          ts.factory.createImportDeclaration(
-            undefined,
-            ts.factory.createImportClause(
-              false,
-              undefined,
-              ts.factory.createNamedImports(
-                Array.from(preactImports)
-                  .sort()
-                  .map((i) => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(i)))
-              )
-            ),
-            ts.factory.createStringLiteral('preact')
-          ),
-          ...outputSourceFile.statements,
-        ]);
-      }
-
-      if (preactHooksImports.size > 0) {
-        outputSourceFile = ts.factory.updateSourceFile(outputSourceFile, [
-          ts.factory.createImportDeclaration(
-            undefined,
-            ts.factory.createImportClause(
-              false,
-              undefined,
-              ts.factory.createNamedImports(
-                Array.from(preactHooksImports)
-                  .sort()
-                  .map((i) => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(i)))
-              )
-            ),
-            ts.factory.createStringLiteral('preact/hooks')
-          ),
-          ...outputSourceFile.statements,
-        ]);
-      }
-
+      outputSourceFile = addImport(outputSourceFile, undefined, preactHooksImports, 'preact/hooks');
+      outputSourceFile = addImport(outputSourceFile, undefined, preactImports, 'preact');
       return outputSourceFile;
     };
   };

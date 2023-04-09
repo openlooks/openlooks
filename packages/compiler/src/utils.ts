@@ -191,3 +191,32 @@ export function getSetterName(name: string): string {
 export function capitalize(input: string): string {
   return input.charAt(0).toUpperCase() + input.slice(1);
 }
+
+export function addImport(
+  sourceFile: ts.SourceFile,
+  name: string | undefined,
+  namedBindings: Set<string> | undefined,
+  moduleName: string
+): ts.SourceFile {
+  if (!name && (!namedBindings || namedBindings.size === 0)) {
+    return sourceFile;
+  }
+  return ts.factory.updateSourceFile(sourceFile, [
+    ts.factory.createImportDeclaration(
+      undefined,
+      ts.factory.createImportClause(
+        false,
+        name ? ts.factory.createIdentifier(name) : undefined,
+        namedBindings
+          ? ts.factory.createNamedImports(
+              Array.from(namedBindings)
+                .sort()
+                .map((i) => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(i)))
+            )
+          : undefined
+      ),
+      ts.factory.createStringLiteral(moduleName)
+    ),
+    ...sourceFile.statements,
+  ]);
+}
