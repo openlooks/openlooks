@@ -20,7 +20,10 @@ export default function HomePage() {
         This is a pre alpha release of OpenLooks. Many components are unfinished. Expect breaking changes.
       </Alert>
       <Alert slotIcon={<IconAlertCircle size="1rem" />} title="Framework Support" c="color-teal variant-filled mb-xl">
-        In theory, OpenLooks should work with all Mitosis target frameworks. However, only React and Solid are actively
+        In theory, OpenLooks should work with all Mitosis target frameworks.
+        <br />
+        <br />
+        In practice, only <strong>React</strong>, <strong>Preact</strong>, and <strong>Solid</strong> are actively
         tested.
       </Alert>
       <Title order={2}>What is this?</Title>
@@ -57,6 +60,23 @@ export default function HomePage() {
         </li>
       </List>
       <Title order={2} c="mt-xl">
+        Demos
+      </Title>
+      <Text>
+        See this site in multiple frameworks:
+        <ul>
+          <li>
+            Preact: <Anchor href="https://preact.openlooks.dev">https://preact.openlooks.dev</Anchor>
+          </li>
+          <li>
+            React: <Anchor href="https://react.openlooks.dev">https://react.openlooks.dev</Anchor>
+          </li>
+          <li>
+            Solid: <Anchor href="https://solid.openlooks.dev">https://solid.openlooks.dev</Anchor>
+          </li>
+        </ul>
+      </Text>
+      <Title order={2} c="mt-xl">
         Project Name
       </Title>
       <Text>
@@ -65,7 +85,7 @@ export default function HomePage() {
         theme for grown-ups".
       </Text>
       <Title order={2} c="mt-xl">
-        Demo
+        Counter
       </Title>
       <Paper c="p-xl withBorder">
         <Center>
