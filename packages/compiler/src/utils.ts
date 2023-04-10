@@ -111,17 +111,22 @@ export function isUseStoreDeclaration(node: ts.Node): node is ts.VariableStateme
   );
 }
 
-export function isStateRead(node: ts.Node): node is ts.PropertyAccessExpression {
+export function isPropsRead(node: ts.Node): node is ts.PropertyAccessExpression {
+  return ts.isPropertyAccessExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === 'props';
+}
+
+export function isStateRead(node: ts.Node, allowSetter?: boolean): node is ts.PropertyAccessExpression {
   // Check that this is (1) a "state" property acces and (2) not an assignment operation
   return (
     ts.isPropertyAccessExpression(node) &&
     ts.isIdentifier(node.expression) &&
     node.expression.text === 'state' &&
-    !(
-      ts.isBinaryExpression(node.parent) &&
-      node.parent.operatorToken.kind === ts.SyntaxKind.EqualsToken &&
-      node.parent.left === node
-    )
+    (allowSetter ||
+      !(
+        ts.isBinaryExpression(node.parent) &&
+        node.parent.operatorToken.kind === ts.SyntaxKind.EqualsToken &&
+        node.parent.left === node
+      ))
   );
 }
 
@@ -165,6 +170,17 @@ export function isInsideForElement(node: ts.Node): node is ts.Identifier {
     forElement = forElement.parent;
   }
   return !!forElement;
+}
+
+export function isInsideJsx(node: ts.Node): boolean {
+  let curr = node;
+  while (curr) {
+    if (ts.isJsxAttribute(curr) || ts.isJsxElement(curr)) {
+      return true;
+    }
+    curr = curr.parent || (curr as any).original;
+  }
+  return false;
 }
 
 export function isForElementIndexIdentifier(node: ts.Node): node is ts.Identifier {

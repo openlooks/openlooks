@@ -6,6 +6,7 @@ import ts from 'typescript';
 import { transformToPreact } from './generators/preact';
 import { transformToReact } from './generators/react';
 import { transformToSolid } from './generators/solid';
+import { transformToSvelte } from './generators/svelte';
 
 const inputDir = '../mitosis';
 const resolvedInputDir = resolve(inputDir);
@@ -75,6 +76,7 @@ function transform(program: ts.Program, inputFiles: string[]): void {
   transformToPreact(program, resolvedInputDir, inputFiles, '../preact');
   transformToReact(program, resolvedInputDir, inputFiles, '../react');
   transformToSolid(program, resolvedInputDir, inputFiles, '../solid');
+  transformToSvelte(program, resolvedInputDir, inputFiles, '../svelte');
 }
 
 main()
