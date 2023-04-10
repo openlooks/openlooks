@@ -40,7 +40,7 @@ export function isJsxEventAttribute(node: ts.Node): node is ts.JsxAttribute {
     return false;
   }
   const parent = getParentJsxTag(node);
-  return !!(parent && /^[a-z]\w+/.test(parent.tagName.getText()));
+  return !!(parent && /^[a-z]\w*/.test(parent.tagName.getText()));
 }
 
 export function isJsxSlotAttribute(node: ts.Node): node is ts.JsxAttribute {
@@ -273,4 +273,15 @@ export function addImport(
     ),
     ...sourceFile.statements,
   ]);
+}
+
+export function isContextProviderElement(node: ts.Node): node is ts.JsxElement {
+  return ts.isJsxElement(node) && node.openingElement.tagName.getText() === 'Context.Provider';
+}
+
+export function getContextProviderValue(node: ts.JsxElement): ts.Expression | undefined {
+  const valueAttr = node.openingElement.attributes.properties.find(
+    (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'value'
+  ) as ts.JsxAttribute;
+  return (valueAttr?.initializer as ts.JsxExpression | undefined)?.expression;
 }

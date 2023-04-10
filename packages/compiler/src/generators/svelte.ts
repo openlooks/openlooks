@@ -1,12 +1,14 @@
 import fs from 'fs';
-import { resolve } from 'path';
+import { basename, resolve } from 'path';
 import prettier from 'prettier';
 import ts, { Expression, JsxElement } from 'typescript';
 import {
   addImport,
   ensureDirectoryExists,
+  getContextProviderValue,
   getJsxForElementChildExpression,
   getJsxForElementEachExpression,
+  isContextProviderElement,
   isFunctionCall,
   isInsideJsx,
   isJsxAttribute,
@@ -25,9 +27,10 @@ import {
 interface SvelteLandmarks {
   sourceFile?: ts.SourceFile;
   moduleStatements: ts.Statement[];
+  setContextExpression?: ts.Expression;
   topFunction?: ts.FunctionDeclaration;
   returnStmt?: ts.ReturnStatement;
-  rootJsxElement?: ts.JsxElement | ts.JsxFragment;
+  rootJsxElement?: ts.JsxChild;
   usesStyle?: boolean;
 }
 
@@ -79,6 +82,16 @@ export function transformToSvelte(
             printer.printNode(ts.EmitHint.Unspecified, stmt as ts.Statement, landmarks.sourceFile as ts.SourceFile)
           );
         }
+      }
+
+      if (landmarks.setContextExpression) {
+        svelteOutput.push(
+          printer.printNode(
+            ts.EmitHint.Unspecified,
+            landmarks.setContextExpression,
+            landmarks.sourceFile as ts.SourceFile
+          )
+        );
       }
 
       if (landmarks.usesStyle) {
@@ -138,15 +151,11 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
       throw new Error('Missing checker');
     }
 
-    const solidImports = new Set<string>();
+    const svelteImports = new Set<string>();
 
     return (context: ts.TransformationContext) => {
       const visitor: ts.Visitor = (node) => {
         node = ts.visitEachChild(node, visitor, context);
-
-        if (ts.isSourceFile(node)) {
-          landmarks.sourceFile = node;
-        }
 
         if (ts.isInterfaceDeclaration(node)) {
           landmarks.moduleStatements.push(node);
@@ -155,7 +164,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
             const propsStatements = [] as ts.Node[];
 
             for (const member of node.members) {
-              if (ts.isPropertySignature(member) && ts.isIdentifier(member.name)) {
+              if (ts.isPropertySignature(member) && ts.isIdentifier(member.name) && member.name.text !== 'children') {
                 if (member.questionToken) {
                   // Optional prop - add "undefined" to type and add intializer
                   propsStatements.push(
@@ -281,7 +290,6 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
 
         // Rewrite "useStore" to "createSignal"
         if (isUseStoreDeclaration(node)) {
-          solidImports.add('createSignal');
           const useStateStmts: ts.Statement[] = [];
           for (const prop of node.declarationList.declarations[0].initializer.arguments[0].properties) {
             const propAssignment = prop as ts.PropertyAssignment;
@@ -300,13 +308,25 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
         }
 
         // Replace state read with state getter
-        if (isPropsRead(node)) {
+        if (isPropsRead(node) && node.name.text !== 'children') {
           return ts.factory.createIdentifier(node.name.text);
+        }
+
+        if (
+          ts.isJsxExpression(node) &&
+          node.expression &&
+          isPropsRead(node.expression) &&
+          node.expression.name.text === 'children'
+        ) {
+          return ts.factory.createJsxSelfClosingElement(
+            ts.factory.createIdentifier('slot'),
+            undefined,
+            ts.factory.createJsxAttributes([])
+          );
         }
 
         // Replace state read with state getter
         if (isStateRead(node, true)) {
-          // return ts.factory.createCallExpression(ts.factory.createIdentifier(node.name.text), undefined, []);
           return ts.factory.createIdentifier(node.name.text);
         }
 
@@ -343,24 +363,69 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           }
         }
 
-        if (isFunctionCall(node, 'createContext')) {
-          solidImports.add('createContext');
+        if (
+          landmarks.sourceFile?.fileName &&
+          ts.isExportAssignment(node) &&
+          ts.isCallExpression(node.expression) &&
+          isFunctionCall(node.expression, 'createContext')
+        ) {
+          const contextName = basename(landmarks.sourceFile.fileName).replace('.context.lite.ts', '');
+          return [
+            ts.factory.createVariableStatement(
+              undefined,
+              ts.factory.createVariableDeclarationList(
+                [
+                  ts.factory.createVariableDeclaration(
+                    'key',
+                    undefined,
+                    undefined,
+                    ts.factory.createCallExpression(ts.factory.createIdentifier('Symbol'), undefined, undefined)
+                  ),
+                ],
+                ts.NodeFlags.Const
+              )
+            ),
+            ts.factory.createExportAssignment(
+              undefined,
+              false,
+              ts.factory.createObjectLiteralExpression([
+                ts.factory.createPropertyAssignment(
+                  ts.factory.createIdentifier(contextName),
+                  node.expression.arguments[0]
+                ),
+                ts.factory.createShorthandPropertyAssignment('key'),
+              ])
+            ),
+          ];
+        }
+
+        if (isContextProviderElement(node)) {
+          // Replace the context provider with default <slot />
+          const valueExpr = getContextProviderValue(node);
+          if (valueExpr) {
+            svelteImports.add('setContext');
+            landmarks.setContextExpression = ts.factory.createCallExpression(
+              ts.factory.createIdentifier('setContext'),
+              undefined,
+              [ts.factory.createIdentifier('Context.key'), valueExpr]
+            );
+            return ts.factory.createJsxSelfClosingElement(
+              ts.factory.createIdentifier('slot'),
+              undefined,
+              ts.factory.createJsxAttributes([])
+            );
+          }
         }
 
         if (isFunctionCall(node, 'useContext')) {
-          solidImports.add('useContext');
+          svelteImports.add('getContext');
+          return ts.factory.updateCallExpression(node, ts.factory.createIdentifier('getContext'), undefined, [
+            ts.factory.createIdentifier('Context.key'),
+          ]);
         }
 
         if (isFunctionCall(node, 'onMount')) {
-          solidImports.add('onMount');
-        }
-
-        if (isJsxElement(node, 'For')) {
-          solidImports.add('For');
-        }
-
-        if (isJsxElement(node, 'Show')) {
-          solidImports.add('Show');
+          svelteImports.add('onMount');
         }
 
         return node;
@@ -369,8 +434,9 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
       // Return transformer factory
       return (sourceFile: ts.SourceFile) => {
         // Visit all nodes
+        landmarks.sourceFile = sourceFile;
         let outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
-        outputSourceFile = addImport(outputSourceFile, undefined, solidImports, 'solid-js');
+        outputSourceFile = addImport(outputSourceFile, undefined, svelteImports, 'svelte');
         return outputSourceFile;
       };
     };
@@ -381,19 +447,19 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
   return landmarks;
 }
 
-function getRootJsxElement(expr: ts.Expression | undefined): ts.JsxElement | undefined {
+function getRootJsxElement(expr: ts.Expression | undefined): ts.JsxChild | undefined {
   let result = expr as ts.Node;
   if (result && ts.isParenthesizedExpression(result)) {
     result = result.expression;
   }
-  return result as ts.JsxElement;
+  return ts.isJsxChild(result) ? result : undefined;
 }
 
 function writeJsxElementOrFragment(
   printer: ts.Printer,
   sourceFile: ts.SourceFile,
   output: string[],
-  node: ts.JsxElement | ts.JsxFragment
+  node: ts.JsxChild
 ): void {
   if (node) {
     if (ts.isJsxFragment(node)) {
