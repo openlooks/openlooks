@@ -54,9 +54,10 @@ export default function Autocomplete(props: AutocompleteProps) {
         value={props.defaultValue || ''}
         placeholder={props.placeholder}
         autocomplete="off"
-        aria-role="combobox"
+        role="combobox"
         aria-haspopup="listbox"
         aria-autocomplete="list"
+        aria-controls={props.id + '-items'}
         aria-expanded={state.display === 'block' ? 'true' : 'false'}
         aria-invalid={!!props.error}
         onFocus={(event) => {
@@ -99,6 +100,9 @@ export default function Autocomplete(props: AutocompleteProps) {
               if (state.opacity === '1') {
                 event.preventDefault();
                 if (state.hoverIndex >= 0 && state.hoverIndex < filteredData.length) {
+                  if (props.onChange) {
+                    props.onChange(filteredData[state.hoverIndex]);
+                  }
                   target.value = filteredData[state.hoverIndex];
                   state.opacity = '0';
                   window.setTimeout(() => (state.display = 'none'), 100);
@@ -119,6 +123,7 @@ export default function Autocomplete(props: AutocompleteProps) {
         }}
       />
       <Menu
+        id={props.id + '-items'}
         c="size-sm radius-sm"
         sx={{ display: state.display, opacity: state.opacity, top: state.top, left: state.left, width: '12.5rem' }}
       >
@@ -128,6 +133,9 @@ export default function Autocomplete(props: AutocompleteProps) {
               c={index === state.hoverIndex ? 'hover' : ''}
               onClick={() => {
                 (document.getElementById(props.id) as HTMLInputElement).value = item;
+                if (props.onChange) {
+                  props.onChange(item);
+                }
               }}
               onMouseOver={() => {
                 state.hoverIndex = index;

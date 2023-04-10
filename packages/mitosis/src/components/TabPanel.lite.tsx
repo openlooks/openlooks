@@ -18,7 +18,6 @@ export default function TabPanel(props: TabPanelProps) {
       class={buildOpenLooksClassName('tabpanel text', props.c)}
       style={props.sx as JSX.CSS | undefined}
       role="tabpanel"
-      aria-expanded={ctx.currentTab() === props.value}
       hidden={ctx.currentTab() !== props.value}
     >
       {props.children}

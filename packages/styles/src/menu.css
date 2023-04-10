@@ -6,6 +6,13 @@
 }
 
 .menu-item {
+  border: 0;
+  appearance: none;
+  font-family: var(--font-family);
+  background-color: transparent;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
   align-items: center;
   border-radius: 0.25rem;
   color: var(--color-7, var(--oc-gray-9));

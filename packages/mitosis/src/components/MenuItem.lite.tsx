@@ -15,7 +15,7 @@ export interface MenuItemProps {
 
 export default function MenuItem(props: MenuItemProps) {
   return (
-    <div
+    <button
       id={props.id}
       class={buildOpenLooksClassName('menu-item', props.c)}
       style={props.sx as JSX.CSS | undefined}
@@ -27,6 +27,6 @@ export default function MenuItem(props: MenuItemProps) {
         <div class="icon">{props.icon}</div>
       </Show>
       <div class="label">{props.children}</div>
-    </div>
+    </button>
   );
 }

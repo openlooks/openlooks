@@ -20,7 +20,12 @@ export interface NotificationProps {
 
 export default function Notification(props: NotificationProps) {
   return (
-    <div id={props.id} class={buildOpenLooksClassName('notification', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div
+      id={props.id}
+      class={buildOpenLooksClassName('notification', props.c)}
+      style={props.sx as JSX.CSS | undefined}
+      data-autoClose={props.autoClose}
+    >
       <div class="prefix">
         <div id={props.id} class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
       </div>
@@ -33,7 +38,17 @@ export default function Notification(props: NotificationProps) {
       </div>
       <Show when={!props.disallowClose}>
         <div class="close">
-          <Button c="variant-subtle color-gray size-xs" onClick={() => props.id && hideNotification(props.id)}>
+          <Button
+            c="variant-subtle color-gray size-xs"
+            onClick={() => {
+              if (props.onClose) {
+                props.onClose();
+              }
+              if (props.id) {
+                hideNotification(props.id);
+              }
+            }}
+          >
             ✕
           </Button>
         </div>
