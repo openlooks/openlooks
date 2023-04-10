@@ -5,6 +5,8 @@ import AppShellMain from '../components/AppShellMain.lite';
 import Notifications from '../components/Notifications.lite';
 import Route from '../components/Route.lite';
 import Router from '../components/Router.lite';
+import SiteHeader from './SiteHeader.lite';
+import SiteNav from './SiteNav.lite';
 import AccordionPage from './pages/AccordionPage.lite';
 import ActionIconPage from './pages/ActionIconPage.lite';
 import AffixPage from './pages/AffixPage.lite';
@@ -87,9 +89,9 @@ import StepperPage from './pages/StepperPage.lite';
 import SwitchPage from './pages/SwitchPage.lite';
 import TablePage from './pages/TablePage.lite';
 import TabsPage from './pages/TabsPage.lite';
-import TextareaPage from './pages/TextareaPage.lite';
 import TextInputPage from './pages/TextInputPage.lite';
 import TextPage from './pages/TextPage.lite';
+import TextareaPage from './pages/TextareaPage.lite';
 import ThemeIconPage from './pages/ThemeIconPage.lite';
 import TimelinePage from './pages/TimelinePage.lite';
 import TitlePage from './pages/TitlePage.lite';
@@ -98,8 +100,6 @@ import TransferListPage from './pages/TransferListPage.lite';
 import TransitionPage from './pages/TransitionPage.lite';
 import TypographyStylesProviderPage from './pages/TypographyStylesProviderPage.lite';
 import UnstyledButtonPage from './pages/UnstyledButtonPage.lite';
-import SiteHeader from './SiteHeader.lite';
-import SiteNav from './SiteNav.lite';
 
 import './index.css';
 
@@ -120,7 +120,7 @@ export default function App() {
         <AppShellBody>
           <SiteNav
             forceOpen={state.navOpen}
-            onLinkClick={(event: MouseEvent) => {
+            onLinkClick={(event) => {
               event.preventDefault();
               state.navOpen = false;
             }}

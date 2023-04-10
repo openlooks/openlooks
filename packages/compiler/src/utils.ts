@@ -35,6 +35,10 @@ export function isJsxAttribute(node: ts.Node, name: string): node is ts.JsxAttri
   return ts.isJsxAttribute(node) && node.name.text === name;
 }
 
+export function isJsxSlotAttribute(node: ts.Node): node is ts.JsxAttribute {
+  return ts.isJsxAttribute(node) && node.name.text.startsWith('slot');
+}
+
 export function isInputValueAttribute(node: ts.Node): node is ts.JsxAttribute {
   return (
     isJsxAttribute(node, 'value') &&
@@ -159,8 +163,13 @@ export function getJsxForElementEachExpression(node: ts.JsxElement): ts.Expressi
   return (eachAttr?.initializer as ts.JsxExpression | undefined)?.expression;
 }
 
-export function getJsxForElementChildExpression(node: ts.JsxElement): ts.Expression | undefined {
-  return (node.children.find((child) => ts.isJsxExpression(child)) as ts.JsxExpression | undefined)?.expression;
+export function getJsxForElementChildExpression(node: ts.JsxElement): ts.ArrowFunction | undefined {
+  for (const child of node.children) {
+    if (ts.isJsxExpression(child) && child.expression && ts.isArrowFunction(child.expression)) {
+      return child.expression;
+    }
+  }
+  return undefined;
 }
 
 export function isInsideForElement(node: ts.Node): node is ts.Identifier {

@@ -1,20 +1,24 @@
 import fs from 'fs';
 import { resolve } from 'path';
-import ts from 'typescript';
 import prettier from 'prettier';
+import ts, { Expression, JsxChild } from 'typescript';
 import {
   addImport,
   ensureDirectoryExists,
+  getJsxForElementChildExpression,
+  getJsxForElementEachExpression,
   isFunctionCall,
   isInsideJsx,
   isJsxAttribute,
   isJsxElement,
+  isJsxSlotAttribute,
   isLiteImport,
   isLiteReexport,
   isMitosisImport,
   isPropsRead,
   isStateRead,
   isUseStoreDeclaration,
+  tryGetFullText,
 } from '../utils';
 
 interface SvelteLandmarks {
@@ -22,7 +26,7 @@ interface SvelteLandmarks {
   propsInterface?: ts.InterfaceDeclaration;
   topFunction?: ts.FunctionDeclaration;
   returnStmt?: ts.ReturnStatement;
-  rootJsxElement?: ts.JsxElement;
+  rootJsxElement?: ts.JsxElement | ts.JsxFragment;
 }
 
 export function transformToSvelte(
@@ -44,17 +48,14 @@ export function transformToSvelte(
     }
 
     const source = program.getSourceFile(inputFile) as ts.SourceFile;
-    // const result = ts.transform(source, [transformer(program)]);
     const landmarks = buildLandmarks(program, source);
     const printer = ts.createPrinter();
 
-    // for (const output of landmarks.sourceFile.transformed) {
     const targetFileName = resolve(
       outDir,
       inputFile.replace(rootInputDir, '.').replace('.lite.tsx', '.svelte').replace('.lite.ts', '.ts')
     );
 
-    // const transformerOutput = printer.printFile(output);
     const transformerOutput = ['<script lang="ts">', printer.printFile(landmarks.sourceFile as ts.SourceFile), '\n\n'];
 
     if (landmarks.topFunction?.body?.statements) {
@@ -64,22 +65,24 @@ export function transformToSvelte(
         );
       }
     }
+
     transformerOutput.push('\n</script>\n\n');
 
     if (landmarks.rootJsxElement) {
-      transformerOutput.push(
-        printer.printNode(
-          ts.EmitHint.Unspecified,
-          landmarks.rootJsxElement as ts.JsxElement,
-          landmarks.sourceFile as ts.SourceFile
-        )
+      writeJsxElementOrFragment(
+        printer,
+        landmarks.sourceFile as ts.SourceFile,
+        transformerOutput,
+        landmarks.rootJsxElement
       );
     }
 
-    const prettierOutput = prettier.format(transformerOutput.join('\n'), { filepath: targetFileName });
+    const svelteReplaced = transformSolidToSvelte(transformerOutput.join('\n'));
+    const prettierOutput = targetFileName.endsWith('.svelte')
+      ? prettier.format(svelteReplaced, { filepath: targetFileName })
+      : svelteReplaced;
     ensureDirectoryExists(targetFileName);
     fs.writeFileSync(targetFileName, prettierOutput, 'utf8');
-    // }
   }
 }
 
@@ -103,19 +106,6 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
     const solidImports = new Set<string>();
 
     return (context: ts.TransformationContext) => {
-      // Plan:
-      // During walk:
-      // Get reference to the default export function
-      // Remove it from the source file
-      // Get reference to return statement in default export function
-      // Remove it from the function
-      // During write
-      // In <script> tag, first write the main source
-      // Then write all of the non-JSX code from the function
-      // Then write the JSX
-      // let componentFunction: ts.FunctionDeclaration | undefined = undefined;
-      // let componentReturnStmt: ts.ReturnStatement | undefined = undefined;
-
       const visitor: ts.Visitor = (node) => {
         node = ts.visitEachChild(node, visitor, context);
 
@@ -156,7 +146,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
 
         if (ts.isReturnStatement(node)) {
           landmarks.returnStmt = node;
-          landmarks.rootJsxElement = getRootJsxElement(node);
+          landmarks.rootJsxElement = getRootJsxElement(node.expression);
           return undefined;
         }
 
@@ -171,7 +161,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
             node,
             node.modifiers,
             node.importClause,
-            ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '')),
+            ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '.svelte')),
             undefined
           );
         }
@@ -183,14 +173,18 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
             node.modifiers,
             node.isTypeOnly,
             node.exportClause,
-            ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '')),
+            ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '.svelte')),
             undefined
           );
         }
 
-        // Remove "style" attribute
+        // TODO: implement "style" attributes
         if (isJsxAttribute(node, 'style')) {
-          // return renameJsxAttribute(node, 'htmlFor');
+          return undefined;
+        }
+
+        // TODO: implement "slot" attributes
+        if (isJsxSlotAttribute(node) || isJsxAttribute(node, 'icon')) {
           return undefined;
         }
 
@@ -229,19 +223,39 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           return ts.factory.createIdentifier(node.name.text);
         }
 
-        // // Replace state write with state setter
-        // if (isStateWrite(node)) {
-        //   return ts.factory.createCallExpression(
-        //     ts.factory.createIdentifier(getSetterName(node.left.name.text)),
-        //     undefined,
-        //     [node.right]
-        //   );
-        // }
-
-        // // Rewrite "index" to "index()" if inside a For component
-        // if (isForElementIndexIdentifier(node)) {
-        //   return ts.factory.createCallExpression(ts.factory.createIdentifier(node.text), undefined, []);
-        // }
+        // Rewrite <For each={...}> to <>{...}</>
+        if (isJsxElement(node, 'For')) {
+          const eachExpr = getJsxForElementEachExpression(node);
+          const childExpr = getJsxForElementChildExpression(node);
+          if (eachExpr && childExpr) {
+            // Rewrite the <For each={...}> to <For each={...} as={...}></For>
+            return ts.factory.updateJsxElement(
+              node,
+              ts.factory.updateJsxOpeningElement(
+                node.openingElement,
+                node.openingElement.tagName,
+                node.openingElement.typeArguments,
+                ts.factory.createJsxAttributes([
+                  ts.factory.createJsxAttribute(
+                    ts.factory.createIdentifier('each'),
+                    ts.factory.createJsxExpression(undefined, eachExpr)
+                  ),
+                  ts.factory.createJsxAttribute(
+                    ts.factory.createIdentifier('as'),
+                    ts.factory.createJsxExpression(
+                      undefined,
+                      ts.factory.createArrayLiteralExpression(
+                        childExpr.parameters.map((param) => ts.factory.createIdentifier(tryGetFullText(param)))
+                      )
+                    )
+                  ),
+                ])
+              ),
+              [getRootJsxElement(childExpr.body as Expression, true) as JsxChild],
+              node.closingElement
+            );
+          }
+        }
 
         if (isFunctionCall(node, 'createContext')) {
           solidImports.add('createContext');
@@ -271,10 +285,6 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
         // Visit all nodes
         let outputSourceFile = ts.visitNode(sourceFile, visitor) as ts.SourceFile;
         outputSourceFile = addImport(outputSourceFile, undefined, solidImports, 'solid-js');
-
-        console.log('componentFunction', !!landmarks.topFunction);
-        console.log('componentReturnStmt', !!landmarks.returnStmt);
-
         return outputSourceFile;
       };
     };
@@ -285,13 +295,46 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
   return landmarks;
 }
 
-function getRootJsxElement(returnStmt: ts.ReturnStatement): ts.JsxElement | undefined {
-  let result = returnStmt.expression;
-  // while (result) {
-  // console.log('root element', ts.SyntaxKind[result.kind]);
+function getRootJsxElement(expr: ts.Expression | undefined, collapseFragments = false): ts.JsxElement | undefined {
+  let result = expr as ts.Node;
   if (result && ts.isParenthesizedExpression(result)) {
     result = result.expression;
   }
-  // }
+  if (result && collapseFragments && ts.isJsxFragment(result)) {
+    result = result.children[0];
+  }
   return result as ts.JsxElement;
+}
+
+function writeJsxElementOrFragment(
+  printer: ts.Printer,
+  sourceFile: ts.SourceFile,
+  output: string[],
+  node: ts.JsxElement | ts.JsxFragment
+): void {
+  if (node) {
+    if (ts.isJsxFragment(node)) {
+      for (const child of node.children) {
+        writeJsxElementOrFragment(printer, sourceFile, output, child as ts.JsxElement | ts.JsxFragment);
+      }
+    } else {
+      output.push(printer.printNode(ts.EmitHint.Unspecified, node, sourceFile));
+    }
+  }
+}
+
+function transformSolidToSvelte(content: string): string {
+  const solidForPattern = /<For each=\{(.+?)\} as=\{\[(.+?)\]\}>([\s\S]*?)<\/For>/g;
+  const solidShowPattern = /<Show when=\{(.+?)\}>([\s\S]*?)<\/Show>/g;
+  const jsxFragmentOpenPattern = /<>\s*/g;
+  const jsxFragmentClosePattern = /\s*<\/>/g;
+  content = content.replace(solidForPattern, (_match, each, as, content) => {
+    return `{#each ${each} as ${as}}` + '\n' + content + '\n{/each}';
+  });
+  content = content.replace(solidShowPattern, (_match, when, content) => {
+    return `{#if ${when}}` + '\n' + content + '\n{/if}';
+  });
+  content = content.replace(jsxFragmentOpenPattern, '');
+  content = content.replace(jsxFragmentClosePattern, '');
+  return content;
 }

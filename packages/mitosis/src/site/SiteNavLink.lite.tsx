@@ -14,7 +14,7 @@ export default function SiteNavLink(props: SiteNavLinkProps) {
       class={buildOpenLooksClassName('anchor text', props.c)}
       href={props.href}
       aria-current={router.url() === props.href ? 'page' : undefined}
-      onClick={(event: MouseEvent) => {
+      onClick={(event) => {
         event.preventDefault();
         router.navigate(props.href);
         props.onClick(event);

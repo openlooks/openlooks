@@ -46,7 +46,7 @@ export default function ColorPicker(props: ColorPickerProps) {
                 name={props.name}
                 value={color}
                 checked={color === props.defaultValue}
-                onChange={(event: Event) => {
+                onChange={(event) => {
                   if (props.onChange) {
                     props.onChange(event);
                   }

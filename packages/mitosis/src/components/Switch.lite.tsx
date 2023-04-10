@@ -1,3 +1,4 @@
+import { Show } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
 
@@ -25,8 +26,12 @@ export default function Switch(props: SwitchProps) {
         </div>
         <div class="openlooks inputwrapper">
           <label for={props.id}>{props.label}</label>
-          {props.description && <div class="description">{props.description}</div>}
-          {props.error && <div class="error">{props.error}</div>}
+          <Show when={props.description}>
+            <div class="description">{props.description}</div>
+          </Show>
+          <Show when={props.error}>
+            <div class="error">{props.error}</div>
+          </Show>
         </div>
       </div>
     </>

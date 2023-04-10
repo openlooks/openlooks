@@ -24,9 +24,7 @@ export default function Notifications(props: NotificationsProps) {
 
   return (
     <div class={buildOpenLooksClassName('notifications', props.c)} style={props.sx as JSX.CSS | undefined}>
-      <For each={state.currentNotifications}>
-        {(n: NotificationProps) => <Notification {...n}>{n.children}</Notification>}
-      </For>
+      <For each={state.currentNotifications}>{(n) => <Notification {...n}>{n.children}</Notification>}</For>
     </div>
   );
 }

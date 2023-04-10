@@ -26,8 +26,12 @@ export default function Notification(props: NotificationProps) {
       </div>
       <div class="content">
         <Text c="weight-500">{props.title}</Text>
-        {props.children && <Text c="color-gray">{props.children}</Text>}
-        {props.message && <Text c="color-gray">{props.message}</Text>}
+        <Show when={props.children}>
+          <Text c="color-gray">{props.children}</Text>
+        </Show>
+        <Show when={props.message}>
+          <Text c="color-gray">{props.message}</Text>
+        </Show>
       </div>
       <Show when={!props.disallowClose}>
         <div class="close">

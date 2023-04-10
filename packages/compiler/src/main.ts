@@ -3,9 +3,6 @@
 import fastGlob from 'fast-glob';
 import { resolve } from 'path';
 import ts from 'typescript';
-import { transformToPreact } from './generators/preact';
-import { transformToReact } from './generators/react';
-import { transformToSolid } from './generators/solid';
 import { transformToSvelte } from './generators/svelte';
 
 const inputDir = '../mitosis';
@@ -13,6 +10,7 @@ const resolvedInputDir = resolve(inputDir);
 
 async function main(): Promise<void> {
   const inputFiles = (await fastGlob([inputDir + '/src/**/*', inputDir + '/public/**/*'])).map((f) => resolve(f));
+  // const inputFiles = [resolve('../mitosis/src/components/Autocomplete.lite.tsx')];
   const rootNames = inputFiles.filter((f) => f.endsWith('.ts') || f.endsWith('.tsx'));
   buildAll(inputFiles, rootNames);
   if (process.argv.some((a) => a === '--watch')) {
@@ -73,9 +71,9 @@ async function watch(inputFiles: string[], rootNames: string[]): Promise<void> {
 }
 
 function transform(program: ts.Program, inputFiles: string[]): void {
-  transformToPreact(program, resolvedInputDir, inputFiles, '../preact');
-  transformToReact(program, resolvedInputDir, inputFiles, '../react');
-  transformToSolid(program, resolvedInputDir, inputFiles, '../solid');
+  // transformToPreact(program, resolvedInputDir, inputFiles, '../preact');
+  // transformToReact(program, resolvedInputDir, inputFiles, '../react');
+  // transformToSolid(program, resolvedInputDir, inputFiles, '../solid');
   transformToSvelte(program, resolvedInputDir, inputFiles, '../svelte');
 }
 
