@@ -7,7 +7,6 @@ import {
   ensureDirectoryExists,
   getJsxForElementChildExpression,
   getJsxForElementEachExpression,
-  getParentJsxTag,
   isFunctionCall,
   isInsideJsx,
   isJsxAttribute,
@@ -25,7 +24,7 @@ import {
 
 interface SvelteLandmarks {
   sourceFile?: ts.SourceFile;
-  propsInterface?: ts.InterfaceDeclaration;
+  moduleStatements: ts.Statement[];
   topFunction?: ts.FunctionDeclaration;
   returnStmt?: ts.ReturnStatement;
   rootJsxElement?: ts.JsxElement | ts.JsxFragment;
@@ -64,11 +63,11 @@ export function transformToSvelte(
     if (targetFileName.endsWith('.svelte')) {
       const svelteOutput = [];
 
-      if (landmarks.propsInterface) {
+      if (landmarks.moduleStatements) {
         svelteOutput.push('<script lang="ts" context="module">');
-        svelteOutput.push(
-          printer.printNode(ts.EmitHint.Unspecified, landmarks.propsInterface, landmarks.sourceFile as ts.SourceFile)
-        );
+        for (const stmt of landmarks.moduleStatements) {
+          svelteOutput.push(printer.printNode(ts.EmitHint.Unspecified, stmt, landmarks.sourceFile as ts.SourceFile));
+        }
         svelteOutput.push('\n</script>\n\n');
       }
 
@@ -124,6 +123,7 @@ export function transformToSvelte(
 function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandmarks {
   const landmarks: SvelteLandmarks = {
     sourceFile: undefined as ts.SourceFile | undefined,
+    moduleStatements: [] as ts.Statement[],
     topFunction: undefined as ts.FunctionDeclaration | undefined,
     returnStmt: undefined as ts.ReturnStatement | undefined,
   };
@@ -148,49 +148,52 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           landmarks.sourceFile = node;
         }
 
-        if (ts.isInterfaceDeclaration(node) && node.name.text.endsWith('Props')) {
-          landmarks.propsInterface = node;
-          const propsStatements = [] as ts.Node[];
+        if (ts.isInterfaceDeclaration(node)) {
+          landmarks.moduleStatements.push(node);
 
-          for (const member of node.members) {
-            if (ts.isPropertySignature(member) && ts.isIdentifier(member.name)) {
-              if (member.questionToken) {
-                // Optional prop - add "undefined" to type and add intializer
-                propsStatements.push(
-                  ts.factory.createVariableStatement(
-                    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-                    ts.factory.createVariableDeclarationList(
-                      [
-                        ts.factory.createVariableDeclaration(
-                          member.name.text,
-                          undefined,
-                          ts.factory.createUnionTypeNode([
-                            member.type as ts.TypeNode,
-                            ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
-                          ]),
-                          ts.factory.createIdentifier('undefined')
-                        ),
-                      ],
-                      ts.NodeFlags.Let
+          if (node.name.text.endsWith('Props')) {
+            const propsStatements = [] as ts.Node[];
+
+            for (const member of node.members) {
+              if (ts.isPropertySignature(member) && ts.isIdentifier(member.name)) {
+                if (member.questionToken) {
+                  // Optional prop - add "undefined" to type and add intializer
+                  propsStatements.push(
+                    ts.factory.createVariableStatement(
+                      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+                      ts.factory.createVariableDeclarationList(
+                        [
+                          ts.factory.createVariableDeclaration(
+                            member.name.text,
+                            undefined,
+                            ts.factory.createUnionTypeNode([
+                              member.type as ts.TypeNode,
+                              ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+                            ]),
+                            ts.factory.createIdentifier('undefined')
+                          ),
+                        ],
+                        ts.NodeFlags.Let
+                      )
                     )
-                  )
-                );
-              } else {
-                // Required prop
-                propsStatements.push(
-                  ts.factory.createVariableStatement(
-                    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-                    ts.factory.createVariableDeclarationList(
-                      [ts.factory.createVariableDeclaration(member.name.text, undefined, member.type, undefined)],
-                      ts.NodeFlags.Let
+                  );
+                } else {
+                  // Required prop
+                  propsStatements.push(
+                    ts.factory.createVariableStatement(
+                      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+                      ts.factory.createVariableDeclarationList(
+                        [ts.factory.createVariableDeclaration(member.name.text, undefined, member.type, undefined)],
+                        ts.NodeFlags.Let
+                      )
                     )
-                  )
-                );
+                  );
+                }
               }
             }
-          }
 
-          return propsStatements;
+            return propsStatements;
+          }
         }
 
         if (

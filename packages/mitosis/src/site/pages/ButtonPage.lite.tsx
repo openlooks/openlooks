@@ -1,5 +1,5 @@
 import { useStore } from '@builder.io/mitosis';
-import { Color, Size } from '../../components/BaseComponentProps';
+import type { Color, Size } from '../../components/BaseComponentProps';
 import Button from '../../components/Button.lite';
 import ColorPicker from '../../components/ColorPicker.lite';
 import Configurator from '../../components/Configurator.lite';

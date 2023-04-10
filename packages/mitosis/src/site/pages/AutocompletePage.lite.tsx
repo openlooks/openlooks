@@ -1,6 +1,6 @@
 import { useStore } from '@builder.io/mitosis';
 import Autocomplete from '../../components/Autocomplete.lite';
-import { Size } from '../../components/BaseComponentProps';
+import type { Size } from '../../components/BaseComponentProps';
 import Configurator from '../../components/Configurator.lite';
 import ConfiguratorControls from '../../components/ConfiguratorControls.lite';
 import ConfiguratorStage from '../../components/ConfiguratorStage.lite';

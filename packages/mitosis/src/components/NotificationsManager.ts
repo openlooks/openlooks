@@ -1,5 +1,5 @@
 import { randomId } from '../utils/use-id';
-import { NotificationProps } from './Notification.lite';
+import type { NotificationProps } from './Notification.lite';
 
 const manager = {
   notifications: [] as NotificationProps[],

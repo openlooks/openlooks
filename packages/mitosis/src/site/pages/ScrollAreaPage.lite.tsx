@@ -1,5 +1,5 @@
 import { useStore } from '@builder.io/mitosis';
-import { Size } from '../../components/BaseComponentProps';
+import type { Size } from '../../components/BaseComponentProps';
 import Configurator from '../../components/Configurator.lite';
 import ConfiguratorControls from '../../components/ConfiguratorControls.lite';
 import ConfiguratorStage from '../../components/ConfiguratorStage.lite';

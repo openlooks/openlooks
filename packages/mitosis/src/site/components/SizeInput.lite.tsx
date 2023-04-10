@@ -1,4 +1,4 @@
-import { Size } from '../../components/BaseComponentProps';
+import type { Size } from '../../components/BaseComponentProps';
 import Slider from '../../components/Slider.lite';
 import { convertNumberToSize, convertSizeToNumber } from './utils';
 

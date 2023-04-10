@@ -1,7 +1,8 @@
 import { For, onMount, useStore } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
-import Notification, { NotificationProps } from './Notification.lite';
+import type { NotificationProps } from './Notification.lite';
+import Notification from './Notification.lite';
 import { subscribeNotifications } from './NotificationsManager';
 
 export interface NotificationsProps {
