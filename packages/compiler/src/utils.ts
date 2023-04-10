@@ -35,6 +35,14 @@ export function isJsxAttribute(node: ts.Node, name: string): node is ts.JsxAttri
   return ts.isJsxAttribute(node) && node.name.text === name;
 }
 
+export function isJsxEventAttribute(node: ts.Node): node is ts.JsxAttribute {
+  if (!ts.isJsxAttribute(node) || !/^on[A-Z]\w+/.test(node.name.text)) {
+    return false;
+  }
+  const parent = getParentJsxTag(node);
+  return !!(parent && /^[a-z]\w+/.test(parent.tagName.getText()));
+}
+
 export function isJsxSlotAttribute(node: ts.Node): node is ts.JsxAttribute {
   return ts.isJsxAttribute(node) && node.name.text.startsWith('slot');
 }
@@ -190,6 +198,17 @@ export function isInsideJsx(node: ts.Node): boolean {
     curr = curr.parent || (curr as any).original;
   }
   return false;
+}
+
+export function getParentJsxTag(node: ts.Node): ts.JsxOpeningElement | ts.JsxSelfClosingElement | undefined {
+  let curr = node;
+  while (curr) {
+    if (ts.isJsxOpeningElement(curr) || ts.isJsxSelfClosingElement(curr)) {
+      return curr;
+    }
+    curr = curr.parent || (curr as any).original;
+  }
+  return undefined;
 }
 
 export function isForElementIndexIdentifier(node: ts.Node): node is ts.Identifier {

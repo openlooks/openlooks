@@ -7,10 +7,12 @@ import {
   ensureDirectoryExists,
   getJsxForElementChildExpression,
   getJsxForElementEachExpression,
+  getParentJsxTag,
   isFunctionCall,
   isInsideJsx,
   isJsxAttribute,
   isJsxElement,
+  isJsxEventAttribute,
   isJsxSlotAttribute,
   isLiteImport,
   isLiteReexport,
@@ -259,6 +261,15 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
         // TODO: implement "slot" attributes
         if (isJsxSlotAttribute(node) || isJsxAttribute(node, 'icon')) {
           return undefined;
+        }
+
+        if (isJsxEventAttribute(node)) {
+          const attrName = node.name.escapedText as string;
+          return ts.factory.updateJsxAttribute(
+            node,
+            ts.factory.createIdentifier('on:' + attrName[2].toLowerCase() + attrName.slice(3)),
+            node.initializer
+          );
         }
 
         if (ts.isAsExpression(node) && isInsideJsx(node)) {
