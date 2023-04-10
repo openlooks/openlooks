@@ -10,7 +10,11 @@ export interface AppShellMainProps {
 
 export default function AppShellMain(props: AppShellMainProps) {
   return (
-    <main class={buildOpenLooksClassName('main scrollarea', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <main
+      id={props.id}
+      class={buildOpenLooksClassName('main scrollarea', props.c)}
+      style={props.sx as JSX.CSS | undefined}
+    >
       {props.children}
     </main>
   );

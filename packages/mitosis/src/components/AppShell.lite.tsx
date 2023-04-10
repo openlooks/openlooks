@@ -10,7 +10,7 @@ export interface AppShellProps {
 
 export default function AppShell(props: AppShellProps) {
   return (
-    <div class={buildOpenLooksClassName('appshell', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('appshell', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

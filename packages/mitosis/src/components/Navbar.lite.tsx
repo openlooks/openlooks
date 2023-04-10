@@ -10,7 +10,11 @@ export interface NavbarProps {
 
 export default function Navbar(props: NavbarProps) {
   return (
-    <nav class={buildOpenLooksClassName('navbar scrollarea', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <nav
+      id={props.id}
+      class={buildOpenLooksClassName('navbar scrollarea', props.c)}
+      style={props.sx as JSX.CSS | undefined}
+    >
       {props.children}
     </nav>
   );

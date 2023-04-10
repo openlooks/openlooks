@@ -11,6 +11,7 @@ export interface ScrollAreaProps {
 export default function ScrollArea(props: ScrollAreaProps) {
   return (
     <div
+      id={props.id}
       class={buildOpenLooksClassName('scrollarea', props.c, { variant: 'hover', scrollbarSize: 'md' })}
       style={props.sx as JSX.CSS | undefined}
     >

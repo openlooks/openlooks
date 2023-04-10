@@ -4,7 +4,6 @@ import { buildOpenLooksClassName } from '../utils/classname';
 import Context from './Tabs.context.lite';
 
 export interface TabPanelProps {
-  id?: string;
   c?: string;
   sx?: Record<string, any>;
   value: string;

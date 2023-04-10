@@ -12,6 +12,7 @@ export interface UnstyledButtonProps {
 export default function UnstyledButton(props: UnstyledButtonProps) {
   return (
     <button
+      id={props.id}
       class={buildOpenLooksClassName('unstyled-button', props.c)}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => props.onClick?.(event)}

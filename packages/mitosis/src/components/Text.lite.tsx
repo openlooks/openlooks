@@ -10,7 +10,7 @@ export interface TextProps {
 
 export default function Text(props: TextProps) {
   return (
-    <div class={buildOpenLooksClassName('text', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('text', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

@@ -12,8 +12,9 @@ export interface PrismProps {
 
 export default function Prism(props: PrismProps) {
   return (
-    <pre class={buildOpenLooksClassName(`language-${props.language}`, props.c)}>
+    <pre id={props.id} class={buildOpenLooksClassName(`language-${props.language}`, props.c)}>
       <code
+        id={props.id}
         class={buildOpenLooksClassName(`language-${props.language}`, props.c)}
         style={props.sx as JSX.CSS | undefined}
         innerHTML={(window as any).Prism.highlight(

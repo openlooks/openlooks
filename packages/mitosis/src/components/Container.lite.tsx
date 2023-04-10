@@ -10,7 +10,7 @@ export interface ContainerProps {
 
 export default function Container(props: ContainerProps) {
   return (
-    <div class={buildOpenLooksClassName('container', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('container', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

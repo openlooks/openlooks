@@ -10,7 +10,7 @@ export interface ConfiguratorProps {
 
 export default function Configurator(props: ConfiguratorProps) {
   return (
-    <div class={buildOpenLooksClassName('configurator', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('configurator', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

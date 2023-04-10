@@ -24,8 +24,6 @@ export default function TabsPage() {
     variant: 'filled' as 'filled' | 'light' | 'outline' | 'subtle',
     color: 'blue' as Color,
     radius: 'sm' as Size,
-    size: 'sm' as Size,
-    text: 'Settings',
   });
 
   return (

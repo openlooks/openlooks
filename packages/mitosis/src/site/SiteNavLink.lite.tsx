@@ -1,9 +1,12 @@
 import { useContext } from '@builder.io/mitosis';
-import { AnchorProps } from '../components/Anchor.lite';
 import Context from '../components/Router.context.lite';
 import { buildOpenLooksClassName } from '../utils/classname';
 
-export interface SiteNavLinkProps extends AnchorProps {
+export interface SiteNavLinkProps {
+  id?: string;
+  c?: string;
+  children?: any;
+  href: string;
   onClick: (event: MouseEvent) => void;
 }
 
@@ -11,6 +14,7 @@ export default function SiteNavLink(props: SiteNavLinkProps) {
   const router = useContext(Context);
   return (
     <a
+      id={props.id}
       class={buildOpenLooksClassName('anchor text', props.c)}
       href={props.href}
       aria-current={router.url() === props.href ? 'page' : undefined}

@@ -10,7 +10,7 @@ export interface TabIconProps {
 
 export default function TabIcon(props: TabIconProps) {
   return (
-    <span class={buildOpenLooksClassName('tab-icon', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <span id={props.id} class={buildOpenLooksClassName('tab-icon', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </span>
   );

@@ -15,6 +15,7 @@ export interface AnchorProps {
 export default function Anchor(props: AnchorProps) {
   return (
     <a
+      id={props.id}
       class={buildOpenLooksClassName('anchor text', props.c)}
       style={props.sx as JSX.CSS | undefined}
       href={props.href}

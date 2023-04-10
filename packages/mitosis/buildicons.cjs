@@ -28,16 +28,6 @@ async function main() {
     mkdirSync(resolve(outputDir));
   }
 
-  // Create icon props
-  writeFileSync(
-    resolve(outputDir, 'IconProps.ts'),
-    `export interface IconProps {
-  size?: string;
-}
-  `,
-    'utf8'
-  );
-
   for (const file of iconList) {
     let svg = readFileSync(resolve(inputDir, file), 'utf8');
 
@@ -57,8 +47,11 @@ async function main() {
     const iconName = getIconName(file);
     writeFileSync(
       resolve(outputDir, `${iconName}.lite.tsx`),
-      `import { IconProps } from './IconProps';
-export default function ${iconName}(props: IconProps) {
+      `export interface ${iconName}Props {
+  size?: string;
+}
+
+export default function ${iconName}(props: ${iconName}Props) {
   return (${svg.trim()});
 }
 `,

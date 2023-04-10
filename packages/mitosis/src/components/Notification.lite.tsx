@@ -9,7 +9,7 @@ export interface NotificationProps {
   id?: string;
   c?: string;
   sx?: Record<string, any>;
-  icon?: JSX.Element;
+  // icon?: JSX.Element;
   title: string;
   message?: string;
   children?: JSX.Element;
@@ -20,9 +20,9 @@ export interface NotificationProps {
 
 export default function Notification(props: NotificationProps) {
   return (
-    <div class={buildOpenLooksClassName('notification', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('notification', props.c)} style={props.sx as JSX.CSS | undefined}>
       <div class="prefix">
-        <div class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
+        <div id={props.id} class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
       </div>
       <div class="content">
         <Text c="weight-500">{props.title}</Text>

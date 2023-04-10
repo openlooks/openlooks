@@ -10,7 +10,7 @@ export interface ListProps {
 
 export default function List(props: ListProps) {
   return (
-    <ul class={buildOpenLooksClassName('text', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <ul id={props.id} class={buildOpenLooksClassName('text', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </ul>
   );

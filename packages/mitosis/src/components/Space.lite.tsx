@@ -8,5 +8,7 @@ export interface SpaceProps {
 }
 
 export default function Space(props: SpaceProps) {
-  return <div class={buildOpenLooksClassName('space', props.c)} style={props.sx as JSX.CSS | undefined} />;
+  return (
+    <div id={props.id} class={buildOpenLooksClassName('space', props.c)} style={props.sx as JSX.CSS | undefined} />
+  );
 }

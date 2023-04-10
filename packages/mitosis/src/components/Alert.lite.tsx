@@ -13,6 +13,7 @@ export interface AlertProps {
 export default function Alert(props: AlertProps) {
   return (
     <div
+      id={props.id}
       class={buildOpenLooksClassName('alert', props.c, { variant: 'light', color: 'blue', radius: 'sm' })}
       style={props.sx as JSX.CSS | undefined}
     >

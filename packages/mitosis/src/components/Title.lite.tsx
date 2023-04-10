@@ -15,32 +15,32 @@ export default function Title(props: TitleProps) {
   return (
     <>
       <Show when={props.order === 1 || props.order === undefined}>
-        <h1 class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
+        <h1 id={props.id} class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
           {props.children}
         </h1>
       </Show>
       <Show when={props.order === 2}>
-        <h2 class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
+        <h2 id={props.id} class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
           {props.children}
         </h2>
       </Show>
       <Show when={props.order === 3}>
-        <h3 class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
+        <h3 id={props.id} class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
           {props.children}
         </h3>
       </Show>
       <Show when={props.order === 4}>
-        <h4 class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
+        <h4 id={props.id} class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
           {props.children}
         </h4>
       </Show>
       <Show when={props.order === 5}>
-        <h5 class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
+        <h5 id={props.id} class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
           {props.children}
         </h5>
       </Show>
       <Show when={props.order === 6}>
-        <h6 class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
+        <h6 id={props.id} class={buildOpenLooksClassName('title', props.c)} style={props.sx as JSX.CSS | undefined}>
           {props.children}
         </h6>
       </Show>

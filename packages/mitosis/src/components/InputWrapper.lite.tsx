@@ -19,6 +19,7 @@ export default function InputWrapper(props: InputWrapperProps) {
       <Show when={props.label}>
         <label for={props.id} class="label">
           {props.label}
+          <Show when={props.required}>*</Show>
         </label>
       </Show>
       <Show when={props.description}>

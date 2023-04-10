@@ -1,6 +1,6 @@
-import { Show } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
+import InputWrapper from './InputWrapper.lite';
 
 export interface CheckboxProps {
   id: string;
@@ -16,24 +16,23 @@ export interface CheckboxProps {
 export default function Checkbox(props: CheckboxProps) {
   return (
     <>
-      <div class={buildOpenLooksClassName('checkbox', props.c)} style={props.sx as JSX.CSS | undefined}>
+      <div id={props.id} class={buildOpenLooksClassName('checkbox', props.c)} style={props.sx as JSX.CSS | undefined}>
         <div>
           <input
+            id={props.id}
             class={buildOpenLooksClassName('checkbox', props.c)}
             type="checkbox"
             value="on"
             checked={props.defaultChecked}
           />
         </div>
-        <div class="openlooks inputwrapper">
-          <label for={props.id}>{props.label}</label>
-          <Show when={props.description}>
-            <div class="description">{props.description}</div>
-          </Show>
-          <Show when={props.error}>
-            <div class="error">{props.error}</div>
-          </Show>
-        </div>
+        <InputWrapper
+          id={props.id}
+          label={props.label}
+          description={props.description}
+          error={props.error}
+          required={props.required}
+        />
       </div>
     </>
   );

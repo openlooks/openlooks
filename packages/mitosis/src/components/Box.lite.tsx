@@ -10,7 +10,7 @@ export interface BoxProps {
 
 export default function Box(props: BoxProps) {
   return (
-    <div class={buildOpenLooksClassName('', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

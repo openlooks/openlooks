@@ -154,16 +154,6 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
         return renamePropertySignature(node, 'className');
       }
 
-      // // Rewrite "createContext" to "React.createContext"
-      // if (isFunctionCall(node, 'createContext')) {
-      //   return renameFunctionCall(node, 'React.createContext');
-      // }
-
-      // // Rewrite "useContext" to "React.useContext"
-      // if (isFunctionCall(node, 'useContext')) {
-      //   return renameFunctionCall(node, 'React.useContext');
-      // }
-
       // Rewrite "useStore" to "React.useState"
       if (isUseStoreDeclaration(node)) {
         preactHooksImports.add('useState');

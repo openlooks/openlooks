@@ -16,6 +16,7 @@ export default function RouterLink(props: RouterLinkProps) {
   const router = useContext(Context);
   return (
     <a
+      id={props.id}
       class={buildOpenLooksClassName('anchor text', props.c)}
       style={props.sx as JSX.CSS | undefined}
       href={props.href}

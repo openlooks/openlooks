@@ -10,7 +10,11 @@ export interface GroupProps {
 
 export default function Group(props: GroupProps) {
   return (
-    <div class={buildOpenLooksClassName('group', props.c, { spacing: 'sm' })} style={props.sx as JSX.CSS | undefined}>
+    <div
+      id={props.id}
+      class={buildOpenLooksClassName('group', props.c, { spacing: 'sm' })}
+      style={props.sx as JSX.CSS | undefined}
+    >
       {props.children}
     </div>
   );

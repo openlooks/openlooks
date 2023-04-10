@@ -16,6 +16,7 @@ export interface MenuItemProps {
 export default function MenuItem(props: MenuItemProps) {
   return (
     <div
+      id={props.id}
       class={buildOpenLooksClassName('menu-item', props.c)}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => props.onClick?.(event)}

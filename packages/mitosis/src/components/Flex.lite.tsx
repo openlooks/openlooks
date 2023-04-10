@@ -10,7 +10,7 @@ export interface FlexProps {
 
 export default function Flex(props: FlexProps) {
   return (
-    <div class={buildOpenLooksClassName('flex', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('flex', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

@@ -15,10 +15,12 @@ export default function Code(props: CodeProps) {
     <>
       <Show when={props.block}>
         <pre
+          id={props.id}
           class={buildOpenLooksClassName('code', props.c, { color: 'gray' })}
           style={props.sx as JSX.CSS | undefined}
         >
           <code
+            id={props.id}
             class={buildOpenLooksClassName('code', props.c, { color: 'gray' })}
             style={props.sx as JSX.CSS | undefined}
           >
@@ -28,6 +30,7 @@ export default function Code(props: CodeProps) {
       </Show>
       <Show when={!props.block}>
         <code
+          id={props.id}
           class={buildOpenLooksClassName('code', props.c, { color: 'gray' })}
           style={props.sx as JSX.CSS | undefined}
         >

@@ -15,7 +15,6 @@ export default function SliderPage() {
     color: 'blue' as Color,
     radius: 'sm' as Size,
     size: 'sm' as Size,
-    text: 'Settings',
   });
 
   return (

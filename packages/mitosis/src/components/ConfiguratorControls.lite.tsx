@@ -10,7 +10,11 @@ export interface ConfiguratorControlsProps {
 
 export default function ConfiguratorControls(props: ConfiguratorControlsProps) {
   return (
-    <div class={buildOpenLooksClassName('configurator-controls', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div
+      id={props.id}
+      class={buildOpenLooksClassName('configurator-controls', props.c)}
+      style={props.sx as JSX.CSS | undefined}
+    >
       {props.children}
     </div>
   );

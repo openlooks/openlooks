@@ -10,7 +10,7 @@ export interface PaperProps {
 
 export default function Paper(props: PaperProps) {
   return (
-    <div class={buildOpenLooksClassName('paper', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('paper', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

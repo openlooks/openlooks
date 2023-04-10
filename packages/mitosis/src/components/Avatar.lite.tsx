@@ -13,7 +13,11 @@ export interface AvatarProps {
 
 export default function Avatar(props: AvatarProps) {
   return (
-    <div class={buildOpenLooksClassName('avatar', props.c, { color: 'gray' })} style={props.sx as JSX.CSS | undefined}>
+    <div
+      id={props.id}
+      class={buildOpenLooksClassName('avatar', props.c, { color: 'gray' })}
+      style={props.sx as JSX.CSS | undefined}
+    >
       <div class="openlooks center">
         <Show when={props.src}>
           <img src={props.src} alt={props.alt} title={props.alt} />

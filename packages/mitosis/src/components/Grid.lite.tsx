@@ -10,7 +10,7 @@ export interface GridProps {
 
 export default function Grid(props: GridProps) {
   return (
-    <div class={buildOpenLooksClassName('grid', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('grid', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

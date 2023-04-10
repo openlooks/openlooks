@@ -12,6 +12,7 @@ export interface ButtonProps {
 export default function Button(props: ButtonProps) {
   return (
     <button
+      id={props.id}
       class={buildOpenLooksClassName('button', props.c, { variant: 'filled', color: 'blue', size: 'sm', radius: 'sm' })}
       style={props.sx as JSX.CSS | undefined}
       onClick={(event) => props.onClick?.(event)}

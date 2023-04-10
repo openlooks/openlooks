@@ -10,7 +10,11 @@ export interface ConfiguratorStageProps {
 
 export default function ConfiguratorStage(props: ConfiguratorStageProps) {
   return (
-    <div class={buildOpenLooksClassName('configurator-stage', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div
+      id={props.id}
+      class={buildOpenLooksClassName('configurator-stage', props.c)}
+      style={props.sx as JSX.CSS | undefined}
+    >
       {props.children}
     </div>
   );

@@ -10,7 +10,7 @@ export interface SimpleGridProps {
 
 export default function SimpleGrid(props: SimpleGridProps) {
   return (
-    <div class={buildOpenLooksClassName('simplegrid', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div id={props.id} class={buildOpenLooksClassName('simplegrid', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

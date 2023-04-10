@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { resolve } from 'path';
 import prettier from 'prettier';
-import ts, { Expression, JsxChild } from 'typescript';
+import ts, { Expression, JsxElement } from 'typescript';
 import {
   addImport,
   ensureDirectoryExists,
@@ -27,6 +27,7 @@ interface SvelteLandmarks {
   topFunction?: ts.FunctionDeclaration;
   returnStmt?: ts.ReturnStatement;
   rootJsxElement?: ts.JsxElement | ts.JsxFragment;
+  usesStyle?: boolean;
 }
 
 export function transformToSvelte(
@@ -56,31 +57,63 @@ export function transformToSvelte(
       inputFile.replace(rootInputDir, '.').replace('.lite.tsx', '.svelte').replace('.lite.ts', '.ts')
     );
 
-    const transformerOutput = ['<script lang="ts">', printer.printFile(landmarks.sourceFile as ts.SourceFile), '\n\n'];
+    let transformerOutput: string;
 
-    if (landmarks.topFunction?.body?.statements) {
-      for (const stmt of landmarks.topFunction.body.statements) {
-        transformerOutput.push(
-          printer.printNode(ts.EmitHint.Unspecified, stmt as ts.Statement, landmarks.sourceFile as ts.SourceFile)
+    if (targetFileName.endsWith('.svelte')) {
+      const svelteOutput = [];
+
+      if (landmarks.propsInterface) {
+        svelteOutput.push('<script lang="ts" context="module">');
+        svelteOutput.push(
+          printer.printNode(ts.EmitHint.Unspecified, landmarks.propsInterface, landmarks.sourceFile as ts.SourceFile)
+        );
+        svelteOutput.push('\n</script>\n\n');
+      }
+
+      svelteOutput.push('<script lang="ts">', printer.printFile(landmarks.sourceFile as ts.SourceFile), '\n\n');
+
+      if (landmarks.topFunction?.body?.statements) {
+        for (const stmt of landmarks.topFunction.body.statements) {
+          svelteOutput.push(
+            printer.printNode(ts.EmitHint.Unspecified, stmt as ts.Statement, landmarks.sourceFile as ts.SourceFile)
+          );
+        }
+      }
+
+      if (landmarks.usesStyle) {
+        svelteOutput.push(`  function cssPropertiesToString(cssProperties: Record<string, string | number> | undefined): string {
+    if (!cssProperties) {
+      return '';
+    }
+    return Object.entries(cssProperties)
+      .map(([property, value]) => {
+        const kebabCaseProperty = property.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+        return \`\${kebabCaseProperty}: \${value}\`;
+      })
+      .join('; ');
+  }
+
+  let style = '';
+  $: style = cssPropertiesToString(sx);`);
+      }
+
+      svelteOutput.push('\n</script>\n\n');
+
+      if (landmarks.rootJsxElement) {
+        writeJsxElementOrFragment(
+          printer,
+          landmarks.sourceFile as ts.SourceFile,
+          svelteOutput,
+          landmarks.rootJsxElement
         );
       }
+
+      transformerOutput = transformSolidToSvelte(svelteOutput.join('\n'));
+    } else {
+      transformerOutput = printer.printFile(landmarks.sourceFile as ts.SourceFile);
     }
 
-    transformerOutput.push('\n</script>\n\n');
-
-    if (landmarks.rootJsxElement) {
-      writeJsxElementOrFragment(
-        printer,
-        landmarks.sourceFile as ts.SourceFile,
-        transformerOutput,
-        landmarks.rootJsxElement
-      );
-    }
-
-    const svelteReplaced = transformSolidToSvelte(transformerOutput.join('\n'));
-    const prettierOutput = targetFileName.endsWith('.svelte')
-      ? prettier.format(svelteReplaced, { filepath: targetFileName })
-      : svelteReplaced;
+    const prettierOutput = prettier.format(transformerOutput, { filepath: targetFileName });
     ensureDirectoryExists(targetFileName);
     fs.writeFileSync(targetFileName, prettierOutput, 'utf8');
   }
@@ -119,15 +152,39 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
 
           for (const member of node.members) {
             if (ts.isPropertySignature(member) && ts.isIdentifier(member.name)) {
-              propsStatements.push(
-                ts.factory.createVariableStatement(
-                  [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-                  ts.factory.createVariableDeclarationList(
-                    [ts.factory.createVariableDeclaration(member.name.text, undefined, member.type, undefined)],
-                    ts.NodeFlags.Let
+              if (member.questionToken) {
+                // Optional prop - add "undefined" to type and add intializer
+                propsStatements.push(
+                  ts.factory.createVariableStatement(
+                    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+                    ts.factory.createVariableDeclarationList(
+                      [
+                        ts.factory.createVariableDeclaration(
+                          member.name.text,
+                          undefined,
+                          ts.factory.createUnionTypeNode([
+                            member.type as ts.TypeNode,
+                            ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+                          ]),
+                          ts.factory.createIdentifier('undefined')
+                        ),
+                      ],
+                      ts.NodeFlags.Let
+                    )
                   )
-                )
-              );
+                );
+              } else {
+                // Required prop
+                propsStatements.push(
+                  ts.factory.createVariableStatement(
+                    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+                    ts.factory.createVariableDeclarationList(
+                      [ts.factory.createVariableDeclaration(member.name.text, undefined, member.type, undefined)],
+                      ts.NodeFlags.Let
+                    )
+                  )
+                );
+              }
             }
           }
 
@@ -145,9 +202,12 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
         }
 
         if (ts.isReturnStatement(node)) {
-          landmarks.returnStmt = node;
-          landmarks.rootJsxElement = getRootJsxElement(node.expression);
-          return undefined;
+          const jsxReturnValue = getRootJsxElement(node.expression);
+          if (jsxReturnValue) {
+            landmarks.returnStmt = node;
+            landmarks.rootJsxElement = jsxReturnValue;
+            return undefined;
+          }
         }
 
         // Remove mitosis imports
@@ -157,30 +217,43 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
 
         // Remove ".lite" suffixes from import file names
         if (isLiteImport(node)) {
+          let newName = node.moduleSpecifier.text;
+          if (newName.endsWith('.context.lite')) {
+            newName = newName.replace('.context.lite', '.context');
+          } else if (newName.endsWith('.lite')) {
+            newName = newName.replace('.lite', '.svelte');
+          }
           return ts.factory.updateImportDeclaration(
             node,
             node.modifiers,
             node.importClause,
-            ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '.svelte')),
+            ts.factory.createStringLiteral(newName),
             undefined
           );
         }
 
         // Remove ".lite" suffixes from re-export file names
         if (isLiteReexport(node)) {
+          let newName = node.moduleSpecifier.text;
+          if (newName.endsWith('.context.lite')) {
+            newName = newName.replace('.context.lite', '.context');
+          } else if (newName.endsWith('.lite')) {
+            newName = newName.replace('.lite', '.svelte');
+          }
           return ts.factory.updateExportDeclaration(
             node,
             node.modifiers,
             node.isTypeOnly,
             node.exportClause,
-            ts.factory.createStringLiteral(node.moduleSpecifier.text.replace('.lite', '.svelte')),
+            ts.factory.createStringLiteral(newName),
             undefined
           );
         }
 
         // TODO: implement "style" attributes
         if (isJsxAttribute(node, 'style')) {
-          return undefined;
+          landmarks.usesStyle = true;
+          return ts.factory.updateJsxAttribute(node, node.name, ts.factory.createStringLiteral('{style}'));
         }
 
         // TODO: implement "slot" attributes
@@ -223,12 +296,11 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           return ts.factory.createIdentifier(node.name.text);
         }
 
-        // Rewrite <For each={...}> to <>{...}</>
+        // Rewrite the <For each={...}> to <For each={...} as={...}></For>
         if (isJsxElement(node, 'For')) {
           const eachExpr = getJsxForElementEachExpression(node);
           const childExpr = getJsxForElementChildExpression(node);
           if (eachExpr && childExpr) {
-            // Rewrite the <For each={...}> to <For each={...} as={...}></For>
             return ts.factory.updateJsxElement(
               node,
               ts.factory.updateJsxOpeningElement(
@@ -251,7 +323,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
                   ),
                 ])
               ),
-              [getRootJsxElement(childExpr.body as Expression, true) as JsxChild],
+              [getRootJsxElement(childExpr.body as Expression) as JsxElement],
               node.closingElement
             );
           }
@@ -295,13 +367,10 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
   return landmarks;
 }
 
-function getRootJsxElement(expr: ts.Expression | undefined, collapseFragments = false): ts.JsxElement | undefined {
+function getRootJsxElement(expr: ts.Expression | undefined): ts.JsxElement | undefined {
   let result = expr as ts.Node;
   if (result && ts.isParenthesizedExpression(result)) {
     result = result.expression;
-  }
-  if (result && collapseFragments && ts.isJsxFragment(result)) {
-    result = result.children[0];
   }
   return result as ts.JsxElement;
 }
@@ -324,16 +393,16 @@ function writeJsxElementOrFragment(
 }
 
 function transformSolidToSvelte(content: string): string {
-  const solidForPattern = /<For each=\{(.+?)\} as=\{\[(.+?)\]\}>([\s\S]*?)<\/For>/g;
-  const solidShowPattern = /<Show when=\{(.+?)\}>([\s\S]*?)<\/Show>/g;
+  const forOpenPattern = /<For each=\{([^}]+?)\} as=\{\[(.+?)\]\}>/gm;
+  const forClosePattern = /<\/For>/g;
+  const showOpenPattern = /<Show when=\{(.+?)\}>/g;
+  const showClosePattern = /<\/Show>/g;
   const jsxFragmentOpenPattern = /<>\s*/g;
   const jsxFragmentClosePattern = /\s*<\/>/g;
-  content = content.replace(solidForPattern, (_match, each, as, content) => {
-    return `{#each ${each} as ${as}}` + '\n' + content + '\n{/each}';
-  });
-  content = content.replace(solidShowPattern, (_match, when, content) => {
-    return `{#if ${when}}` + '\n' + content + '\n{/if}';
-  });
+  content = content.replace(forOpenPattern, (_match, each, as) => `{#each ${each} as ${as}}`);
+  content = content.replace(forClosePattern, '{/each}');
+  content = content.replace(showOpenPattern, (_match, when) => `{#if ${when}}`);
+  content = content.replace(showClosePattern, '{/if}');
   content = content.replace(jsxFragmentOpenPattern, '');
   content = content.replace(jsxFragmentClosePattern, '');
   return content;

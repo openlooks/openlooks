@@ -203,10 +203,20 @@ export function getJsxShowElementWhenExpression(node: ts.JsxElement): ts.Express
   return (whenAttr?.initializer as ts.JsxExpression | undefined)?.expression;
 }
 
-export function getJsxShowElementChildElement(node: ts.JsxElement): ts.JsxElement | ts.JsxFragment | undefined {
-  return node.children.find(
-    (child) => ts.isJsxElement(child) || ts.isJsxFragment(child) || ts.isJsxSelfClosingElement(child)
-  ) as ts.JsxElement | ts.JsxFragment | undefined;
+export function getJsxShowElementChildElement(
+  node: ts.JsxElement
+): ts.JsxElement | ts.JsxExpression | ts.JsxFragment | ts.JsxSelfClosingElement | undefined {
+  let result = node.children.find((child) => ts.isJsxChild(child)) as ts.JsxChild | undefined;
+
+  if (result && ts.isJsxText(result)) {
+    result = ts.factory.createJsxFragment(
+      ts.factory.createJsxOpeningFragment(),
+      [result],
+      ts.factory.createJsxJsxClosingFragment()
+    );
+  }
+
+  return result;
 }
 
 export function getSetterName(name: string): string {

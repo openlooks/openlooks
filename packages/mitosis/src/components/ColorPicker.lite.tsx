@@ -18,8 +18,18 @@ export interface ColorPickerProps {
 
 export default function ColorPicker(props: ColorPickerProps) {
   return (
-    <InputWrapper id={props.id} label={props.label}>
-      <div class={buildOpenLooksClassName('colorpicker', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <InputWrapper
+      id={props.id}
+      label={props.label}
+      description={props.description}
+      error={props.error}
+      required={props.required}
+    >
+      <div
+        id={props.id}
+        class={buildOpenLooksClassName('colorpicker', props.c)}
+        style={props.sx as JSX.CSS | undefined}
+      >
         <For
           each={[
             'black',

@@ -10,7 +10,7 @@ export interface TabLabelProps {
 
 export default function TabLabel(props: TabLabelProps) {
   return (
-    <span class={buildOpenLooksClassName('tab-label', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <span id={props.id} class={buildOpenLooksClassName('tab-label', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </span>
   );

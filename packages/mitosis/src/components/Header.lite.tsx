@@ -10,7 +10,7 @@ export interface HeaderProps {
 
 export default function Header(props: HeaderProps) {
   return (
-    <header class={buildOpenLooksClassName('header', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <header id={props.id} class={buildOpenLooksClassName('header', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </header>
   );

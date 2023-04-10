@@ -1,6 +1,6 @@
-import { Show } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
+import InputWrapper from './InputWrapper.lite';
 
 export interface SwitchProps {
   id: string;
@@ -15,24 +15,22 @@ export interface SwitchProps {
 export default function Switch(props: SwitchProps) {
   return (
     <>
-      <div class={buildOpenLooksClassName('switch', props.c)} style={props.sx as JSX.CSS | undefined}>
+      <div id={props.id} class={buildOpenLooksClassName('switch', props.c)} style={props.sx as JSX.CSS | undefined}>
         <div>
           <label class="track">
             <input type="checkbox" />
-            <span class={buildOpenLooksClassName('slider', props.c)}>
-              <span class={buildOpenLooksClassName('thumb', props.c)} />
+            <span id={props.id} class={buildOpenLooksClassName('slider', props.c)}>
+              <span id={props.id} class={buildOpenLooksClassName('thumb', props.c)} />
             </span>
           </label>
         </div>
-        <div class="openlooks inputwrapper">
-          <label for={props.id}>{props.label}</label>
-          <Show when={props.description}>
-            <div class="description">{props.description}</div>
-          </Show>
-          <Show when={props.error}>
-            <div class="error">{props.error}</div>
-          </Show>
-        </div>
+        <InputWrapper
+          id={props.id}
+          label={props.label}
+          description={props.description}
+          error={props.error}
+          required={props.required}
+        />
       </div>
     </>
   );
