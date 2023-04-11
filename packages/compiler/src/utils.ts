@@ -221,7 +221,9 @@ export function getJsxShowElementWhenExpression(node: ts.JsxElement): ts.Express
 export function getJsxShowElementChildElement(
   node: ts.JsxElement
 ): ts.JsxElement | ts.JsxExpression | ts.JsxFragment | ts.JsxSelfClosingElement | undefined {
-  let result = node.children.find((child) => ts.isJsxChild(child)) as ts.JsxChild | undefined;
+  let result = node.children.find(
+    (child) => ts.isJsxChild(child) && !(ts.isJsxText(child) && child.containsOnlyTriviaWhiteSpaces)
+  ) as ts.JsxChild | undefined;
 
   if (result && ts.isJsxText(result)) {
     result = ts.factory.createJsxFragment(
