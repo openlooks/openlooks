@@ -30,7 +30,7 @@ export default function AppShellPage() {
         <Header c="p-md" sx={{ height: '3.75rem', 'border-bottom': '1px solid var(--oc-gray-2)' }}>
           <Anchor href="https://openlooks.dev">OpenLooks</Anchor>
         </Header>
-        <AppShellBody>
+        <AppShellBody sx={{ height: 'calc(100vh - 3.75rem)' }}>
           <Navbar c="p-sm">
             <Stack c="justify-flex-start spacing-xs">
               <Button c="variant-subtle color-gray radius-sm p-sm">

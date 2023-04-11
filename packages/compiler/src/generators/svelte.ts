@@ -95,20 +95,15 @@ export function transformToSvelte(
       }
 
       if (landmarks.usesStyle) {
-        svelteOutput.push(`  function cssPropertiesToString(cssProperties: Record<string, string | number> | undefined): string {
-    if (!cssProperties) {
-      return '';
-    }
-    return Object.entries(cssProperties)
-      .map(([property, value]) => {
-        const kebabCaseProperty = property.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
-        return \`\${kebabCaseProperty}: \${value}\`;
-      })
-      .join('; ');
-  }
-
-  let style = '';
-  $: style = cssPropertiesToString(sx);`);
+        svelteOutput.push(`  function mitosis_styling(node, vars) {
+Object.entries(vars || {}).forEach(([p, v]) => {
+if (p.startsWith('--')) {
+  node.style.setProperty(p, v);
+} else {
+  node.style[p] = v;
+}
+});
+}`);
       }
 
       svelteOutput.push('\n</script>\n\n');
@@ -264,10 +259,14 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           );
         }
 
-        // TODO: implement "style" attributes
+        // Replace "style" with mitosis styling adapter
         if (isJsxAttribute(node, 'style')) {
           landmarks.usesStyle = true;
-          return ts.factory.updateJsxAttribute(node, node.name, ts.factory.createStringLiteral('{style}'));
+          return ts.factory.updateJsxAttribute(
+            node,
+            ts.factory.createIdentifier('use:mitosis_styling'),
+            node.initializer
+          );
         }
 
         // TODO: implement "slot" attributes

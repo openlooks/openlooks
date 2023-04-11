@@ -1,3 +1,4 @@
+import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
 
 export interface AppShellBodyProps {
@@ -9,7 +10,7 @@ export interface AppShellBodyProps {
 
 export default function AppShellBody(props: AppShellBodyProps) {
   return (
-    <div id={props.id} class={buildOpenLooksClassName('body', props.c)} style={{ height: 'calc(100vh - 3.75rem)' }}>
+    <div id={props.id} class={buildOpenLooksClassName('body', props.c)} style={props.sx as JSX.CSS | undefined}>
       {props.children}
     </div>
   );

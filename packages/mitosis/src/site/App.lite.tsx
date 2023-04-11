@@ -117,7 +117,7 @@ export default function App() {
             state.navOpen = !state.navOpen;
           }}
         />
-        <AppShellBody>
+        <AppShellBody sx={{ height: 'calc(100vh - 3.75rem)' }}>
           <SiteNav
             forceOpen={state.navOpen}
             onLinkClick={(event) => {
