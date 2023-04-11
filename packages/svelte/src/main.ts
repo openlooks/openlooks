@@ -1,10 +1,11 @@
 import App from './site/App.svelte';
+import { initApp } from './utils/init';
 
 import '@openlooks/styles';
 import './site/index.css';
 
-const app = new App({
-  target: document.getElementById('app'),
-});
+initApp();
+
+const app = new App({ target: document.getElementById('root') });
 
 export default app;

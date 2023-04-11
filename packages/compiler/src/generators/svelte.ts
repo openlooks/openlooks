@@ -198,6 +198,8 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
             }
 
             return propsStatements;
+          } else {
+            return undefined;
           }
         }
 
