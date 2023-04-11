@@ -1,5 +1,7 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../../utils/classname';
+import { getPrism } from '../../utils/prism';
+
 import './Prism.css';
 
 export interface PrismProps {
@@ -17,11 +19,7 @@ export default function Prism(props: PrismProps) {
         id={props.id}
         class={buildOpenLooksClassName(`language-${props.language}`, props.c)}
         style={props.sx as JSX.CSS | undefined}
-        innerHTML={(window as any).Prism.highlight(
-          props.code,
-          (window as any).Prism.languages[props.language],
-          props.language
-        )}
+        innerHTML={getPrism().highlight(props.code, getPrism().languages[props.language], props.language)}
       />
     </pre>
   );
