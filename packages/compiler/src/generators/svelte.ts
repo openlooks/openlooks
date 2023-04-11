@@ -5,6 +5,7 @@ import ts, { Expression, JsxElement } from 'typescript';
 import {
   addImport,
   ensureDirectoryExists,
+  findJsxAttribute,
   getContextProviderValue,
   getJsxForElementChildExpression,
   getJsxForElementEachExpression,
@@ -311,6 +312,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           return ts.factory.createIdentifier(node.name.text);
         }
 
+        // Replace {children} with <slot />
         if (
           ts.isJsxExpression(node) &&
           node.expression &&
@@ -322,6 +324,31 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
             undefined,
             ts.factory.createJsxAttributes([])
           );
+        }
+
+        if (ts.isJsxSelfClosingElement(node)) {
+          const innerHtmlAttr = findJsxAttribute(node, 'innerHTML');
+          if (innerHtmlAttr?.initializer) {
+            return ts.factory.createJsxElement(
+              ts.factory.createJsxOpeningElement(
+                node.tagName,
+                node.typeArguments,
+                ts.factory.createJsxAttributes(node.attributes.properties.filter((p) => p !== innerHtmlAttr))
+              ),
+              [
+                ts.factory.createJsxExpression(
+                  undefined,
+                  ts.addSyntheticLeadingComment(
+                    (innerHtmlAttr.initializer as ts.JsxExpression).expression as ts.Expression,
+                    ts.SyntaxKind.MultiLineCommentTrivia,
+                    '@html',
+                    true
+                  )
+                ),
+              ],
+              ts.factory.createJsxClosingElement(node.tagName)
+            );
+          }
         }
 
         // Replace state read with state getter
@@ -478,11 +505,13 @@ function transformSolidToSvelte(content: string): string {
   const showClosePattern = /<\/Show>/g;
   const jsxFragmentOpenPattern = /<>\s*/g;
   const jsxFragmentClosePattern = /\s*<\/>/g;
+  const htmlCommentPattern = /\/\*@html\*\/[\s\n]*/g;
   content = content.replace(forOpenPattern, (_match, each, as) => `{#each ${each} as ${as}}`);
   content = content.replace(forClosePattern, '{/each}');
   content = content.replace(showOpenPattern, (_match, when) => `{#if ${when}}`);
   content = content.replace(showClosePattern, '{/if}');
   content = content.replace(jsxFragmentOpenPattern, '');
   content = content.replace(jsxFragmentClosePattern, '');
+  content = content.replace(htmlCommentPattern, '@html ');
   return content;
 }

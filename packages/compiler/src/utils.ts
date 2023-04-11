@@ -165,9 +165,7 @@ export function isJsxElement(
 }
 
 export function getJsxForElementEachExpression(node: ts.JsxElement): ts.Expression | undefined {
-  const eachAttr = node.openingElement.attributes.properties.find(
-    (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'each'
-  ) as ts.JsxAttribute;
+  const eachAttr = findJsxAttribute(node.openingElement, 'each');
   return (eachAttr?.initializer as ts.JsxExpression | undefined)?.expression;
 }
 
@@ -216,9 +214,7 @@ export function isForElementIndexIdentifier(node: ts.Node): node is ts.Identifie
 }
 
 export function getJsxShowElementWhenExpression(node: ts.JsxElement): ts.Expression | undefined {
-  const whenAttr = node.openingElement.attributes.properties.find(
-    (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'when'
-  ) as ts.JsxAttribute;
+  const whenAttr = findJsxAttribute(node.openingElement, 'when');
   return (whenAttr?.initializer as ts.JsxExpression | undefined)?.expression;
 }
 
@@ -280,8 +276,15 @@ export function isContextProviderElement(node: ts.Node): node is ts.JsxElement {
 }
 
 export function getContextProviderValue(node: ts.JsxElement): ts.Expression | undefined {
-  const valueAttr = node.openingElement.attributes.properties.find(
-    (attr) => ts.isJsxAttribute(attr) && attr.name.text === 'value'
-  ) as ts.JsxAttribute;
+  const valueAttr = findJsxAttribute(node.openingElement, 'value');
   return (valueAttr?.initializer as ts.JsxExpression | undefined)?.expression;
+}
+
+export function findJsxAttribute(
+  node: ts.JsxOpeningElement | ts.JsxSelfClosingElement,
+  name: string
+): ts.JsxAttribute | undefined {
+  return node.attributes.properties.find((attr) => ts.isJsxAttribute(attr) && attr.name.text === name) as
+    | ts.JsxAttribute
+    | undefined;
 }
