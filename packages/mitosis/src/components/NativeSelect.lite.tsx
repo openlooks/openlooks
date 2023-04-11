@@ -32,7 +32,13 @@ export default function NativeSelect(props: NativeSelectProps) {
         value={props.defaultValue}
         onChange={(event) => props.onChange?.(event)}
       >
-        <For each={props.data}>{(item) => <option value={item}>{item}</option>}</For>
+        <For each={props.data}>
+          {(item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          )}
+        </For>
       </select>
     </InputWrapper>
   );

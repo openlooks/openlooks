@@ -21,6 +21,7 @@ export default function SiteNav(props: SiteNavProps) {
               <For each={section.links}>
                 {(link) => (
                   <SiteNavLink
+                    key={link.href}
                     href={link.href}
                     onClick={(event) => props.onLinkClick(event)}
                     c={link.dimmed ? 'dimmed' : ''}

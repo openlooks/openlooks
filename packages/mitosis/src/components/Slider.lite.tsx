@@ -48,7 +48,9 @@ export default function Slider(props: SliderProps) {
       />
       <Show when={props.marks}>
         <datalist id={props.id + '-marks'} class="openlooks">
-          <For each={props.marks}>{(mark) => <option value={mark.value} label={mark.label}></option>}</For>
+          <For each={props.marks}>
+            {(mark) => <option key={mark.label} value={mark.value} label={mark.label}></option>}
+          </For>
         </datalist>
       </Show>
     </InputWrapper>
