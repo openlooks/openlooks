@@ -27,6 +27,53 @@
   color: var(--oc-dark-2);
 }
 
+.doc-header .key-value {
+  display: flex;
+  align-items: center;
+  min-height: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  overflow-x: auto;
+  margin-top: 0.5rem;
+}
+
+.doc-header .key-value > .key {
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: rgb(134, 142, 150);
+  width: 6.25rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.doc-header .key-value > .value {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.doc-header .key-value > .value > a {
+  display: flex;
+  color: var(--oc-gray-9);
+}
+
+.dark .doc-header .key-value > .value > a {
+  color: var(--oc-dark-0);
+}
+
+.doc-header .key-value > .value > a > .icon {
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 0px) and (max-width: 36rem) {
+  .doc-header .key-value > .key {
+    display: none;
+  }
+}
+
 .doc-body > h2.openlooks.title {
   margin-bottom: 1rem;
 }

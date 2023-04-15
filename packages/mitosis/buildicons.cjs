@@ -11,6 +11,7 @@ const iconList = [
   'database.svg',
   'message-circle.svg',
   'messages.svg',
+  'pencil.svg',
   'photo.svg',
   'search.svg',
   'settings.svg',
