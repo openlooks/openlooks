@@ -12,7 +12,11 @@ export interface DialogProps {
 export default function Dialog(props: DialogProps) {
   return (
     <Affix>
-      <div id={props.id} class={buildOpenLooksClassName('popover', props.c)} style={props.sx as JSX.CSS | undefined}>
+      <div
+        id={props.id}
+        class={buildOpenLooksClassName('popover paper', props.c, { shadow: 'xl', radius: 'sm', withBorder: true })}
+        style={props.sx as JSX.CSS | undefined}
+      >
         {props.children}
       </div>
     </Affix>

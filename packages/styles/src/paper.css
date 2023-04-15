@@ -39,10 +39,12 @@
     rgba(0, 0, 0, 0.04) 0px 1.0625rem 1.0625rem -0.4375rem;
 }
 
-.paper.withBorder {
+.paper.withBorder,
+.paper.withBorder-true {
   border: 0.0625rem solid var(--oc-gray-3);
 }
 
-.dark .paper.withBorder {
+.dark .paper.withBorder,
+.dark .paper.withBorder-true {
   border-color: var(--oc-dark-4);
 }

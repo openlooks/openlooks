@@ -1,12 +1,7 @@
 .popover {
   position: absolute;
-  background: var(--oc-white);
-  cursor: default;
-  outline: none;
   z-index: 11;
-  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.12);
   transition: opacity 0.1s;
-  border: 0.0625rem solid var(--oc-gray-3);
   font-family: var(--font-family);
   padding: 0.25rem;
 }

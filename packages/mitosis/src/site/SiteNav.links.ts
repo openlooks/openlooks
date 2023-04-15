@@ -86,7 +86,7 @@ export const siteNavLinks = [
     title: 'Overlays',
     links: [
       { href: '/affix', label: 'Affix' },
-      { href: '/dialog', label: 'Dialog', dimmed: true },
+      { href: '/dialog', label: 'Dialog' },
       { href: '/drawer', label: 'Drawer', dimmed: true },
       { href: '/hover-card', label: 'HoverCard', dimmed: true },
       { href: '/loading-overlay', label: 'LoadingOverlay', dimmed: true },

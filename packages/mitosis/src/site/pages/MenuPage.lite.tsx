@@ -34,14 +34,15 @@ export default function MenuPage() {
     <DocPage title="Menu" description="Combine a list of secondary actions into single interactive area">
       <Title order={2}>Usage</Title>
       <Paper c="p-xl withBorder">
-        <Center>
+        <Center sx={{ position: 'relative' }}>
           <Button
             onClick={(event) => {
               event.preventDefault();
               if (state.opacity === '0') {
                 const buttonBounds = event.target.getBoundingClientRect();
-                state.top = `${buttonBounds.bottom + 8}px`;
-                state.left = `${buttonBounds.left}px`;
+                const parentBounds = event.target.parentElement.getBoundingClientRect();
+                state.top = `${buttonBounds.bottom - parentBounds.top + 8}px`;
+                state.left = `${buttonBounds.left - parentBounds.left}px`;
                 state.opacity = '1';
               } else {
                 state.opacity = '0';
