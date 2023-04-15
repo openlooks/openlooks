@@ -40,11 +40,11 @@
 
 .dark .button.variant-light {
   color: var(--color-3);
-  background-color: var(--color-9);
+  background-color: var(--color-10);
 }
 
 .dark .button.variant-light:hover {
-  background-color: var(--color-8);
+  background-color: var(--color-11);
 }
 
 .button.variant-outline {
@@ -54,17 +54,17 @@
 }
 
 .button.variant-outline:hover {
-  background-color: var(--color-0);
+  background-color: var(--color-13);
 }
 
 .dark .button.variant-outline {
   color: var(--color-6);
-  background-color: var(--oc-dark-7);
+  background-color: var(--oc-dark-8);
   border-color: var(--color-6);
 }
 
 .dark .button.variant-outline:hover {
-  background-color: var(--color-9);
+  background-color: var(--color-12);
 }
 
 .button.variant-subtle {

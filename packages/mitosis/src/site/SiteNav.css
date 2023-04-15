@@ -73,6 +73,10 @@
   color: var(--oc-dark-1);
 }
 
+.dark .navlinks a.openlooks.anchor.dimmed {
+  color: var(--oc-dark-3);
+}
+
 .dark .navlinks a.openlooks.anchor:hover {
   background-color: var(--oc-dark-5);
 }

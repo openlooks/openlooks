@@ -15,10 +15,10 @@ import SizeInput from '../components/SizeInput.lite';
 
 export default function ActionIconPage() {
   const state = useStore({
-    variant: 'filled' as 'filled' | 'light' | 'outline' | 'subtle',
-    color: 'blue' as Color,
+    color: 'gray' as Color,
+    size: 'md' as Size,
     radius: 'sm' as Size,
-    size: 'sm' as Size,
+    variant: 'subtle' as 'filled' | 'light' | 'outline' | 'subtle',
   });
 
   return (
@@ -44,15 +44,6 @@ export default function ActionIconPage() {
         </ConfiguratorStage>
         <ConfiguratorControls>
           <Stack>
-            <NativeSelect
-              id="variant"
-              label="Variant"
-              data={['filled', 'light', 'outline', 'subtle']}
-              defaultValue={state.variant}
-              onChange={(event) => {
-                state.variant = event.target.value;
-              }}
-            />
             <ColorPicker
               id="color"
               name="color"
@@ -63,6 +54,14 @@ export default function ActionIconPage() {
               }}
             />
             <SizeInput
+              id="size"
+              label="Size"
+              defaultValue={state.size as Size}
+              onChange={(event) => {
+                state.size = event.target.value;
+              }}
+            />
+            <SizeInput
               id="radius"
               label="Radius"
               defaultValue={state.radius as Size}
@@ -70,12 +69,13 @@ export default function ActionIconPage() {
                 state.radius = event.target.value;
               }}
             />
-            <SizeInput
-              id="size"
-              label="Size"
-              defaultValue={state.size as Size}
+            <NativeSelect
+              id="variant"
+              label="Variant"
+              data={['filled', 'light', 'outline', 'subtle']}
+              defaultValue={state.variant}
               onChange={(event) => {
-                state.size = event.target.value;
+                state.variant = event.target.value;
               }}
             />
           </Stack>

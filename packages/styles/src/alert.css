@@ -3,18 +3,13 @@
  */
 
 .alert {
-  /* line-height: 1; */
   display: flex;
   font-family: var(--font-family);
   font-size: var(--font-size-sm);
   overflow: hidden;
   padding: 0.75rem 0.75rem 0.75rem 1rem;
-  border-radius: 0.25rem;
+  /* border-radius: 0.25rem; */
   border: 0.0625rem solid transparent;
-  /* user-select: none;
-  cursor: pointer; */
-  /* font-weight: 600;
-  border: 0.0625rem solid transparent; */
 }
 
 .alert .alert-icon {
@@ -53,7 +48,7 @@
 
 .dark .alert.variant-light {
   color: var(--color-3);
-  background-color: var(--color-9);
+  background-color: var(--color-10);
 }
 
 .alert.variant-filled {

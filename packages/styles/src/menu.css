@@ -3,6 +3,8 @@
   font-size: var(--font-size-xs);
   font-weight: 500;
   padding: 0.3125rem 0.75rem;
+  cursor: default;
+  user-select: none;
 }
 
 .menu-item {
@@ -39,4 +41,21 @@
 .menu-item:hover,
 .menu-item.hover {
   background-color: var(--color-0, var(--oc-gray-1));
+}
+
+/*
+ * Dark theme
+ */
+
+.dark .menu-label {
+  color: var(--color-dark-2);
+}
+
+.dark .menu-item {
+  color: var(--color-7, var(--oc-dark-0));
+}
+
+.dark .menu-item:hover,
+.dark .menu-item.hover {
+  background-color: var(--color-11, var(--oc-dark-5));
 }

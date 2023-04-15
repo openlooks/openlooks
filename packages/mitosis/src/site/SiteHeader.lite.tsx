@@ -34,21 +34,21 @@ export default function SiteHeader(props: SiteHeaderProps) {
         <Group c="spacing-xs">
           <ActionIcon
             title="Discord"
-            c="variant-outline radius-sm size-sm color-gray"
+            c="variant-outline radius-sm size-md color-gray"
             onClick={() => (window.location.href = 'https://discord.gg/')}
           >
             <IconBrandDiscordFilled size="1rem" />
           </ActionIcon>
           <ActionIcon
             title="GitHub"
-            c="variant-outline radius-sm size-sm color-gray"
+            c="variant-outline radius-sm size-md color-gray"
             onClick={() => (window.location.href = 'https://github.com/openlooks/openlooks')}
           >
             <IconBrandGithub size="1rem" />
           </ActionIcon>
           <ActionIcon
             title="Toggle dark mode"
-            c="variant-outline radius-sm size-sm color-gray"
+            c="variant-outline radius-sm size-md color-gray"
             onClick={() => toggleTheme()}
           >
             <IconSun size="1rem" />
