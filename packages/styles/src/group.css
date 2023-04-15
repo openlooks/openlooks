@@ -57,6 +57,7 @@
  * Grow
  */
 
-.group.grow > * {
+.group.grow > *,
+.group.grow-true > * {
   flex-grow: 1;
 }

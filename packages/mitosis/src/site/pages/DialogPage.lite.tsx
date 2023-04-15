@@ -31,7 +31,7 @@ export default function DialogPage() {
           >
             Toggle dialog
           </Button>
-          <Dialog c="size-sm radius-sm p-md" sx={{ opacity: state.opacity, width: '23rem' }}>
+          <Dialog c="radius-sm p-md" sx={{ opacity: state.opacity, width: '23rem' }}>
             <Text c="size-sm mb-xs weight-500">Subscribe to email newsletter</Text>
             <Group c="align-flex-end">
               <TextInput id="textinput" placeholder="hello@gluesticker.com" sx={{ flex: 1 }} />

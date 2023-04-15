@@ -13,6 +13,10 @@
   line-height: 1.6;
 }
 
+.inputwrapper > label.label > .required {
+  color: var(--oc-red-6);
+}
+
 .inputwrapper > div.description {
   font-size: 0.75rem;
   line-height: 1.2;

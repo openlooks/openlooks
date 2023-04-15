@@ -20,7 +20,7 @@ export default function InputWrapper(props: InputWrapperProps) {
         <label for={props.id} class="label">
           {props.label}
           <Show when={props.required}>
-            <>*</>
+            <span class="required">{` *`}</span>
           </Show>
         </label>
       </Show>

@@ -16,11 +16,11 @@ export interface CheckboxProps {
 export default function Checkbox(props: CheckboxProps) {
   return (
     <>
-      <div id={props.id} class={buildOpenLooksClassName('checkbox', props.c)} style={props.sx as JSX.CSS | undefined}>
+      <div class={buildOpenLooksClassName('checkbox', props.c)} style={props.sx as JSX.CSS | undefined}>
         <div>
           <input
             id={props.id}
-            class={buildOpenLooksClassName('checkbox', props.c)}
+            class={buildOpenLooksClassName('checkbox', props.c, { radius: 'sm' })}
             type="checkbox"
             value="on"
             checked={props.defaultChecked}

@@ -65,3 +65,11 @@
   --size: 2.25rem;
   --font-size: var(--font-size-xl);
 }
+
+/*
+ * Label
+ */
+
+.checkbox > .inputwrapper > label.label {
+  font-weight: 400;
+}

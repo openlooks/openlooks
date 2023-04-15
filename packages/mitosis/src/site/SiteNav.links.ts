@@ -87,7 +87,7 @@ export const siteNavLinks = [
     links: [
       { href: '/affix', label: 'Affix' },
       { href: '/dialog', label: 'Dialog' },
-      { href: '/drawer', label: 'Drawer', dimmed: true },
+      { href: '/drawer', label: 'Drawer' },
       { href: '/hover-card', label: 'HoverCard', dimmed: true },
       { href: '/loading-overlay', label: 'LoadingOverlay', dimmed: true },
       { href: '/menu', label: 'Menu' },
