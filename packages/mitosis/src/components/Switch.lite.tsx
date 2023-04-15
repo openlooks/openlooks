@@ -10,15 +10,20 @@ export interface SwitchProps {
   description?: string;
   error?: string;
   required?: boolean;
+  onChange?: (event: any) => void;
 }
 
 export default function Switch(props: SwitchProps) {
   return (
     <>
-      <div id={props.id} class={buildOpenLooksClassName('switch', props.c)} style={props.sx as JSX.CSS | undefined}>
+      <div
+        id={props.id}
+        class={buildOpenLooksClassName('switch', props.c, { radius: 'xl', size: 'sm' })}
+        style={props.sx as JSX.CSS | undefined}
+      >
         <div>
           <label class="track">
-            <input type="checkbox" />
+            <input type="checkbox" onChange={(event) => props.onChange?.(event)} />
             <span id={props.id} class={buildOpenLooksClassName('slider', props.c)}>
               <span id={props.id} class={buildOpenLooksClassName('thumb', props.c)} />
             </span>

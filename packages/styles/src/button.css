@@ -9,6 +9,7 @@
   cursor: pointer;
   font-weight: 600;
   border: 0.0625rem solid transparent;
+  white-space: nowrap;
 }
 
 .button:active {

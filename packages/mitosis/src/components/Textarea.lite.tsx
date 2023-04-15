@@ -2,7 +2,7 @@ import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
 import InputWrapper from './InputWrapper.lite';
 
-export interface TextInputProps {
+export interface TextareaProps {
   id: string;
   c?: string;
   sx?: Record<string, any>;
@@ -15,7 +15,7 @@ export interface TextInputProps {
   onChange?: (e: any) => void;
 }
 
-export default function TextInput(props: TextInputProps) {
+export default function Textarea(props: TextareaProps) {
   return (
     <InputWrapper
       id={props.id}

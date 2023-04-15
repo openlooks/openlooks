@@ -52,3 +52,11 @@
 .group.spacing-xl {
   gap: 1.5rem;
 }
+
+/*
+ * Grow
+ */
+
+.group.grow > * {
+  flex-grow: 1;
+}
