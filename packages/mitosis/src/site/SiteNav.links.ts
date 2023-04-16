@@ -23,7 +23,7 @@ export const siteNavLinks = [
       { href: '/close-button', label: 'CloseButton', dimmed: true },
       { href: '/copy-button', label: 'CopyButton', dimmed: true },
       { href: '/file-button', label: 'FileButton', dimmed: true },
-      { href: '/unstyled-button', label: 'UnstyledButton', dimmed: true },
+      { href: '/unstyled-button', label: 'UnstyledButton' },
     ],
   },
   {
