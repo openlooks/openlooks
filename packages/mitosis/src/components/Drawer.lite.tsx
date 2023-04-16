@@ -18,7 +18,7 @@ export interface DrawerProps {
 export default function Drawer(props: DrawerProps) {
   return (
     <>
-      <Overlay visible={props.visible} />
+      <Overlay fixed visible={props.visible} />
       <div
         id={props.id}
         class={buildOpenLooksClassName('drawer paper', props.c)}
