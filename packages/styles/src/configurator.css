@@ -17,9 +17,9 @@
 }
 
 .configurator .configurator-controls {
-  display: flex;
+  /* display: flex;
   align-items: stretch;
-  justify-content: stretch;
+  justify-content: stretch; */
   width: 16rem;
   border-left: 0.0625rem solid var(--oc-gray-2);
   padding: 1rem;

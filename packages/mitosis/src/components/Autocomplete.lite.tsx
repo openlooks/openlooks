@@ -21,7 +21,7 @@ export interface AutocompleteProps {
 
 export default function Autocomplete(props: AutocompleteProps) {
   const state = useStore({
-    display: 'none',
+    visibility: 'hidden' as 'visible' | 'hidden',
     opacity: '0',
     top: '0',
     left: '0',
@@ -32,8 +32,8 @@ export default function Autocomplete(props: AutocompleteProps) {
   onMount(() => {
     document.addEventListener('click', (event) => {
       if ((event.target as HTMLElement | undefined)?.id !== props.id) {
+        state.visibility = 'hidden';
         state.opacity = '0';
-        window.setTimeout(() => (state.display = 'none'), 100);
       }
     });
   });
@@ -58,7 +58,7 @@ export default function Autocomplete(props: AutocompleteProps) {
         aria-haspopup="listbox"
         aria-autocomplete="list"
         aria-controls={props.id + '-items'}
-        aria-expanded={state.display === 'block' ? 'true' : 'false'}
+        aria-expanded={state.visibility === 'visible' ? 'true' : 'false'}
         aria-invalid={!!props.error}
         onFocus={(event) => {
           event.preventDefault();
@@ -67,13 +67,13 @@ export default function Autocomplete(props: AutocompleteProps) {
           const inputBounds = target.getBoundingClientRect();
           state.top = `${inputBounds.bottom - wrapperBounds.top + 8}px`;
           state.left = `${inputBounds.left - wrapperBounds.left}px`;
+          state.visibility = 'visible';
           state.opacity = '1';
-          state.display = 'block';
         }}
         onInput={(event) => {
           const target = event.target as HTMLInputElement;
+          state.visibility = 'visible';
           state.opacity = '1';
-          state.display = 'block';
           state.filter = target.value.toLowerCase();
         }}
         onKeyDown={(event) => {
@@ -82,17 +82,13 @@ export default function Autocomplete(props: AutocompleteProps) {
           switch (event.key) {
             case 'ArrowUp': {
               event.preventDefault();
-              if (state.hoverIndex > 0) {
-                state.hoverIndex = state.hoverIndex - 1;
-              }
+              state.hoverIndex = Math.max(0, Math.min(filteredData.length - 1, state.hoverIndex - 1));
               break;
             }
 
             case 'ArrowDown': {
               event.preventDefault();
-              if (state.hoverIndex < filteredData.length - 1) {
-                state.hoverIndex = state.hoverIndex + 1;
-              }
+              state.hoverIndex = Math.max(0, Math.min(filteredData.length - 1, state.hoverIndex + 1));
               break;
             }
 
@@ -104,8 +100,8 @@ export default function Autocomplete(props: AutocompleteProps) {
                     props.onChange(filteredData[state.hoverIndex]);
                   }
                   target.value = filteredData[state.hoverIndex];
+                  state.visibility = 'hidden';
                   state.opacity = '0';
-                  window.setTimeout(() => (state.display = 'none'), 100);
                 }
               }
               break;
@@ -114,8 +110,8 @@ export default function Autocomplete(props: AutocompleteProps) {
             case 'Escape': {
               if (state.opacity === '1') {
                 event.preventDefault();
+                state.visibility = 'hidden';
                 state.opacity = '0';
-                window.setTimeout(() => (state.display = 'none'), 100);
               }
               break;
             }
@@ -125,7 +121,13 @@ export default function Autocomplete(props: AutocompleteProps) {
       <Menu
         id={props.id + '-items'}
         c="size-sm radius-sm"
-        sx={{ display: state.display, opacity: state.opacity, top: state.top, left: state.left, width: '12.5rem' }}
+        sx={{
+          visibility: state.visibility,
+          opacity: state.opacity,
+          top: state.top,
+          left: state.left,
+          width: '12.5rem',
+        }}
       >
         <For each={props.data.filter((str) => str.toLowerCase().includes(state.filter))}>
           {(item, index) => (

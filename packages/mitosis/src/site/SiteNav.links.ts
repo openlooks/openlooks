@@ -20,7 +20,7 @@ export const siteNavLinks = [
     links: [
       { href: '/action-icon', label: 'ActionIcon' },
       { href: '/button', label: 'Button' },
-      { href: '/close-button', label: 'CloseButton', dimmed: true },
+      { href: '/close-button', label: 'CloseButton' },
       { href: '/copy-button', label: 'CopyButton', dimmed: true },
       { href: '/file-button', label: 'FileButton', dimmed: true },
       { href: '/unstyled-button', label: 'UnstyledButton' },

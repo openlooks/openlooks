@@ -14,7 +14,7 @@ export default function ActionIcon(props: ActionIconProps) {
   return (
     <button
       id={props.id}
-      class={buildOpenLooksClassName('actionicon', props.c)}
+      class={buildOpenLooksClassName('actionicon', props.c, { color: 'gray' })}
       style={props.sx as JSX.CSS | undefined}
       title={props.title}
       onClick={(event) => props.onClick?.(event)}

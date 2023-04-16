@@ -10,7 +10,11 @@ export interface StackProps {
 
 export default function Stack(props: StackProps) {
   return (
-    <div id={props.id} class={buildOpenLooksClassName('stack', props.c)} style={props.sx as JSX.CSS | undefined}>
+    <div
+      id={props.id}
+      class={buildOpenLooksClassName('stack', props.c, { justify: 'flex-start' })}
+      style={props.sx as JSX.CSS | undefined}
+    >
       {props.children}
     </div>
   );

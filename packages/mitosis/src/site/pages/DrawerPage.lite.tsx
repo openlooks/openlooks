@@ -9,15 +9,13 @@ import DocPage from '../components/DocPage.lite';
 
 export default function DrawerPage() {
   const state = useStore({
-    display: 'none',
-    opacity: '0',
+    visible: false,
   });
 
   onMount(() => {
     document.addEventListener('click', (event) => {
       if ((event.target as HTMLElement | undefined)?.classList.contains('overlay')) {
-        state.opacity = '0';
-        window.setTimeout(() => (state.display = 'none'), 300);
+        state.visible = false;
       }
     });
   });
@@ -30,18 +28,18 @@ export default function DrawerPage() {
           <Button
             onClick={(event) => {
               event.preventDefault();
-              if (state.opacity === '0') {
-                state.display = 'block';
-                state.opacity = '1';
-              } else {
-                state.opacity = '0';
-                window.setTimeout(() => (state.display = 'none'), 300);
-              }
+              state.visible = !state.visible;
             }}
           >
             Toggle drawer
           </Button>
-          <Drawer c="p-md" sx={{ display: state.display, opacity: state.opacity, width: '27rem' }}>
+          <Drawer
+            title="Authentication"
+            c="p-md"
+            width="27.5rem"
+            visible={state.visible}
+            onClose={() => (state.visible = false)}
+          >
             <AuthenticationForm formType="register" />
           </Drawer>
         </Center>

@@ -5,7 +5,6 @@ import Checkbox from '../../components/Checkbox.lite';
 import Group from '../../components/Group.lite';
 import PasswordInput from '../../components/PasswordInput.lite';
 import Stack from '../../components/Stack.lite';
-import Text from '../../components/Text.lite';
 import TextInput from '../../components/TextInput.lite';
 
 export interface AuthenticationFormProps {
@@ -16,8 +15,6 @@ export default function AuthenticationForm(props: AuthenticationFormProps) {
   return (
     <form>
       <Stack>
-        <Text c="fz-md">Authentication</Text>
-
         <Show when={props.formType === 'register'}>
           <Group c="grow">
             <TextInput id="firstName" data-autofocus required placeholder="Your first name" label="First name" />
