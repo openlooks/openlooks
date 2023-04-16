@@ -17,15 +17,14 @@ export default function Switch(props: SwitchProps) {
   return (
     <>
       <div
-        id={props.id}
         class={buildOpenLooksClassName('switch', props.c, { radius: 'xl', size: 'sm' })}
         style={props.sx as JSX.CSS | undefined}
       >
         <div>
           <label class="track">
-            <input type="checkbox" onChange={(event) => props.onChange?.(event)} />
-            <span id={props.id} class={buildOpenLooksClassName('slider', props.c)}>
-              <span id={props.id} class={buildOpenLooksClassName('thumb', props.c)} />
+            <input id={props.id} type="checkbox" onChange={(event) => props.onChange?.(event)} />
+            <span class={buildOpenLooksClassName('slider', props.c, { radius: 'xl', size: 'sm' })}>
+              <span class={buildOpenLooksClassName('thumb', props.c, { radius: 'xl', size: 'sm' })} />
             </span>
           </label>
         </div>

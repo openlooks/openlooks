@@ -4,6 +4,7 @@ import Configurator from '../../components/Configurator.lite';
 import ConfiguratorControls from '../../components/ConfiguratorControls.lite';
 import ConfiguratorStage from '../../components/ConfiguratorStage.lite';
 import Stack from '../../components/Stack.lite';
+import Switch from '../../components/Switch.lite';
 import TextInput from '../../components/TextInput.lite';
 import Title from '../../components/Title.lite';
 import DocPage from '../components/DocPage.lite';
@@ -18,6 +19,7 @@ export default function TextInputPage() {
     error: '',
     radius: 'sm' as Size,
     size: 'sm' as Size,
+    required: false,
   });
 
   return (
@@ -31,6 +33,7 @@ export default function TextInputPage() {
             label={state.label}
             description={state.description}
             error={state.error}
+            required={state.required}
             c={`radius-${state.radius} size-${state.size}`}
           />
         </ConfiguratorStage>
@@ -88,6 +91,13 @@ export default function TextInputPage() {
                 state.size = event.target.value;
               }}
             />
+            <Switch
+              id="required"
+              label="Required"
+              onChange={(event) => {
+                state.required = event.target.checked;
+              }}
+            />
           </Stack>
         </ConfiguratorControls>
       </Configurator>
@@ -102,6 +112,7 @@ function Demo() {
       label="${state.label}"
       description="${state.description}"
       error="${state.error}"
+      required={${state.required}}
       c="radius-${state.radius} size-${state.size}"
     />
   );
