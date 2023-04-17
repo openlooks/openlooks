@@ -12,15 +12,14 @@ export interface PrismProps {
   code: string;
 }
 
+// prettier-ignore
 export default function Prism(props: PrismProps) {
   return (
-    <pre id={props.id} class={buildOpenLooksClassName(`language-${props.language}`, props.c)}>
-      <code
-        id={props.id}
-        class={buildOpenLooksClassName(`language-${props.language}`, props.c)}
-        style={props.sx as JSX.CSS | undefined}
-        innerHTML={getPrism().highlight(props.code, getPrism().languages[props.language], props.language)}
-      />
-    </pre>
+    <pre id={props.id} class={buildOpenLooksClassName(`language-${props.language}`, props.c)}><code
+      id={props.id}
+      class={buildOpenLooksClassName(`language-${props.language}`, props.c)}
+      style={props.sx as JSX.CSS | undefined}
+      innerHTML={getPrism().highlight(props.code, getPrism().languages[props.language], props.language)}
+    /></pre>
   );
 }
