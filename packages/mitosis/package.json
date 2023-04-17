@@ -17,7 +17,7 @@
     "@builder.io/mitosis-cli": "0.0.55",
     "@openlooks/compiler": "*",
     "@openlooks/styles": "*",
-    "@tabler/icons": "2.14.0",
+    "@tabler/icons": "2.16.0",
     "chokidar": "3.5.3",
     "fast-glob": "3.2.12"
   }
