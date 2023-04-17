@@ -39,7 +39,7 @@ export const siteNavLinks = [
       { href: '/json-input', label: 'JsonInput', dimmed: true },
       { href: '/multi-select', label: 'MultiSelect', dimmed: true },
       { href: '/native-select', label: 'NativeSelect' },
-      { href: '/number-input', label: 'NumberInput', dimmed: true },
+      { href: '/number-input', label: 'NumberInput' },
       { href: '/password-input', label: 'PasswordInput' },
       { href: '/pin-input', label: 'PinInput', dimmed: true },
       { href: '/radio', label: 'Radio', dimmed: true },
