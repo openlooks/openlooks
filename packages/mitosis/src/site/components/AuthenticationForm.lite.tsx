@@ -24,9 +24,15 @@ export default function AuthenticationForm(props: AuthenticationFormProps) {
           </Group>
         </Show>
 
-        <TextInput id="email" required placeholder="Your email" label="Email" icon={<IconAt size="1rem" />} />
+        <TextInput id="email" required placeholder="Your email" label="Email" slotIcon={<IconAt size="1rem" />} />
 
-        <PasswordInput id="password" required placeholder="Password" label="Password" icon={<IconLock size="1rem" />} />
+        <PasswordInput
+          id="password"
+          required
+          placeholder="Password"
+          label="Password"
+          slotIcon={<IconLock size="1rem" />}
+        />
 
         <Show when={props.formType === 'register'}>
           <PasswordInput
@@ -34,7 +40,7 @@ export default function AuthenticationForm(props: AuthenticationFormProps) {
             required
             label="Confirm Password"
             placeholder="Confirm password"
-            icon={<IconLock size="1rem" />}
+            slotIcon={<IconLock size="1rem" />}
           />
         </Show>
 

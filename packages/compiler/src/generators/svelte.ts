@@ -9,13 +9,15 @@ import {
   getContextProviderValue,
   getJsxForElementChildExpression,
   getJsxForElementEachExpression,
+  getSlotAttributes,
   isContextProviderElement,
   isFunctionCall,
   isInsideJsx,
+  isInsideJsxAttribute,
+  isInsideSlotAttribute,
   isJsxAttribute,
   isJsxElement,
   isJsxEventAttribute,
-  isJsxSlotAttribute,
   isLiteImport,
   isLiteReexport,
   isMitosisImport,
@@ -160,7 +162,12 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
             const propsStatements = [] as ts.Node[];
 
             for (const member of node.members) {
-              if (ts.isPropertySignature(member) && ts.isIdentifier(member.name) && member.name.text !== 'children') {
+              if (
+                ts.isPropertySignature(member) &&
+                ts.isIdentifier(member.name) &&
+                member.name.text !== 'children' &&
+                !member.name.text.startsWith('slot')
+              ) {
                 if (member.questionToken) {
                   // Optional prop - add "undefined" to type and add intializer
                   propsStatements.push(
@@ -272,11 +279,6 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           );
         }
 
-        // TODO: implement "slot" attributes
-        if (isJsxSlotAttribute(node) || isJsxAttribute(node, 'icon') || isJsxAttribute(node, 'rightSection')) {
-          return undefined;
-        }
-
         if (isJsxEventAttribute(node)) {
           const attrName = node.name.escapedText as string;
           return ts.factory.updateJsxAttribute(
@@ -310,8 +312,14 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
         }
 
         // Replace state read with state getter
-        if (isPropsRead(node) && node.name.text !== 'children') {
-          return ts.factory.createIdentifier(node.name.text);
+        if (isPropsRead(node)) {
+          if (node.name.text === 'children' || node.name.text.startsWith('slot')) {
+            if (isInsideJsxAttribute(node) && !isInsideSlotAttribute(node)) {
+              return ts.factory.createIdentifier('$$slots.' + node.name.text);
+            }
+          } else {
+            return ts.factory.createIdentifier(node.name.text);
+          }
         }
 
         // Replace {children} with <slot />
@@ -319,25 +327,48 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
           ts.isJsxExpression(node) &&
           node.expression &&
           isPropsRead(node.expression) &&
-          node.expression.name.text === 'children'
+          !isInsideJsxAttribute(node)
         ) {
-          return ts.factory.createJsxSelfClosingElement(
-            ts.factory.createIdentifier('slot'),
-            undefined,
-            ts.factory.createJsxAttributes([])
-          );
+          if (node.expression.name.text === 'children') {
+            return ts.factory.createJsxSelfClosingElement(
+              ts.factory.createIdentifier('slot'),
+              undefined,
+              ts.factory.createJsxAttributes([])
+            );
+          }
+          if (node.expression.name.text.startsWith('slot')) {
+            return ts.factory.createJsxSelfClosingElement(
+              ts.factory.createIdentifier('slot'),
+              undefined,
+              ts.factory.createJsxAttributes([
+                ts.factory.createJsxAttribute(
+                  ts.factory.createIdentifier('name'),
+                  ts.factory.createStringLiteral(node.expression.name.text)
+                ),
+              ])
+            );
+          }
         }
 
-        if (ts.isJsxSelfClosingElement(node)) {
-          const innerHtmlAttr = findJsxAttribute(node, 'innerHTML');
-          if (innerHtmlAttr?.initializer) {
-            return ts.factory.createJsxElement(
-              ts.factory.createJsxOpeningElement(
-                node.tagName,
-                node.typeArguments,
-                ts.factory.createJsxAttributes(node.attributes.properties.filter((p) => p !== innerHtmlAttr))
-              ),
-              [
+        // Rewrite attributes and/or move slot attributes to children
+        // Move innerHTML to @html comment
+        // Move slot attributes to slot elements
+        if (ts.isJsxElement(node) || ts.isJsxSelfClosingElement(node)) {
+          const openingElement = ts.isJsxElement(node) ? node.openingElement : node;
+          const existingChildren = ts.isJsxElement(node) ? node.children : [];
+          const slotAttrs = getSlotAttributes(openingElement);
+          const innerHtmlAttr = findJsxAttribute(openingElement, 'innerHTML');
+          if (slotAttrs.length > 0 || innerHtmlAttr) {
+            const attrsToRemove = [] as ts.JsxAttributeLike[];
+            if (slotAttrs.length > 0) {
+              attrsToRemove.push(...slotAttrs);
+            }
+            if (innerHtmlAttr) {
+              attrsToRemove.push(innerHtmlAttr);
+            }
+            let newChildren = [...existingChildren];
+            if (innerHtmlAttr) {
+              newChildren = [
                 ts.factory.createJsxExpression(
                   undefined,
                   ts.addSyntheticLeadingComment(
@@ -347,8 +378,67 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
                     true
                   )
                 ),
-              ],
-              ts.factory.createJsxClosingElement(node.tagName)
+              ];
+            } else {
+              for (const s of slotAttrs) {
+                if (
+                  s.initializer &&
+                  ts.isJsxExpression(s.initializer) &&
+                  s.initializer.expression &&
+                  (ts.isJsxElement(s.initializer.expression) || ts.isJsxSelfClosingElement(s.initializer.expression))
+                ) {
+                  // Slot content
+                  newChildren.push(
+                    ts.factory.createJsxElement(
+                      ts.factory.createJsxOpeningElement(
+                        ts.factory.createIdentifier('slot'),
+                        undefined,
+                        ts.factory.createJsxAttributes([
+                          ts.factory.createJsxAttribute(
+                            ts.factory.createIdentifier('name'),
+                            ts.factory.createStringLiteral(s.name.text)
+                          ),
+                        ])
+                      ),
+                      [s.initializer.expression],
+                      ts.factory.createJsxClosingElement(ts.factory.createIdentifier('slot'))
+                    )
+                  );
+                } else {
+                  // Slot pass through
+                  newChildren.push(
+                    ts.factory.createJsxSelfClosingElement(
+                      ts.factory.createIdentifier('slot'),
+                      undefined,
+                      ts.factory.createJsxAttributes([
+                        ts.factory.createJsxAttribute(
+                          ts.factory.createIdentifier('name'),
+                          ts.factory.createStringLiteral(s.name.text)
+                        ),
+                        ts.factory.createJsxAttribute(
+                          ts.factory.createIdentifier('slot'),
+                          ts.factory.createStringLiteral(
+                            tryGetFullText(s.initializer as ts.JsxExpression)
+                              .replace('{props.', '')
+                              .replace('}', '')
+                          )
+                        ),
+                      ])
+                    )
+                  );
+                }
+              }
+            }
+            return ts.factory.createJsxElement(
+              ts.factory.createJsxOpeningElement(
+                openingElement.tagName,
+                openingElement.typeArguments,
+                ts.factory.createJsxAttributes(
+                  openingElement.attributes.properties.filter((p) => !attrsToRemove.includes(p))
+                )
+              ),
+              newChildren,
+              ts.factory.createJsxClosingElement(openingElement.tagName)
             );
           }
         }

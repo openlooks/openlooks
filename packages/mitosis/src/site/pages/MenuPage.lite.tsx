@@ -56,14 +56,14 @@ export default function MenuPage() {
             sx={{ opacity: state.opacity, top: state.top, left: state.left, width: '12.5rem' }}
           >
             <MenuLabel>Application</MenuLabel>
-            <MenuItem icon={<IconSettings size="0.875rem" />}>Settings</MenuItem>
-            <MenuItem icon={<IconMessageCircle size="0.875rem" />}>Messages</MenuItem>
-            <MenuItem icon={<IconPhoto size="0.875rem" />}>Gallery</MenuItem>
-            <MenuItem icon={<IconSearch size="0.875rem" />}>Search</MenuItem>
+            <MenuItem slotIcon={<IconSettings size="0.875rem" />}>Settings</MenuItem>
+            <MenuItem slotIcon={<IconMessageCircle size="0.875rem" />}>Messages</MenuItem>
+            <MenuItem slotIcon={<IconPhoto size="0.875rem" />}>Gallery</MenuItem>
+            <MenuItem slotIcon={<IconSearch size="0.875rem" />}>Search</MenuItem>
             <MenuDivider />
             <MenuLabel>Danger zone</MenuLabel>
-            <MenuItem icon={<IconArrowsLeftRight size="0.875rem" />}>Transfer my data</MenuItem>
-            <MenuItem icon={<IconTrash size="0.875rem" />} c="color-red">
+            <MenuItem slotIcon={<IconArrowsLeftRight size="0.875rem" />}>Transfer my data</MenuItem>
+            <MenuItem slotIcon={<IconTrash size="0.875rem" />} c="color-red">
               Delete my account
             </MenuItem>
           </Menu>

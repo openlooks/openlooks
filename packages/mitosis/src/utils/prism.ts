@@ -14,10 +14,3 @@ export function getPrism(): PrismLike {
   window.Prism = window.Prism || {};
   return window.Prism;
 }
-
-// export function initApp() {
-//   window.Prism = window.Prism || {};
-//   window.Prism.manual = true;
-
-//   initTheme();
-// }

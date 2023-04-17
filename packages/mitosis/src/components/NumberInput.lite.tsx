@@ -12,8 +12,8 @@ export interface NumberInputProps {
   required?: boolean;
   defaultValue?: string;
   placeholder?: string;
-  icon?: JSX.Element;
-  rightSection?: JSX.Element;
+  slotIcon?: JSX.Element;
+  slotRightSection?: JSX.Element;
   onChange?: (e: any) => void;
 }
 
@@ -34,8 +34,8 @@ export default function NumberInput(props: NumberInputProps) {
         defaultValue={props.defaultValue}
         placeholder={props.placeholder}
         invalid={!!props.error}
-        icon={props.icon}
-        rightSection={props.rightSection}
+        slotIcon={props.slotIcon}
+        slotRightSection={props.slotRightSection}
         onChange={(event) => props.onChange?.(event)}
       />
     </InputWrapper>

@@ -9,7 +9,7 @@ export interface NotificationProps {
   id?: string;
   c?: string;
   sx?: Record<string, any>;
-  // icon?: JSX.Element;
+  slotIcon?: JSX.Element;
   title: string;
   message?: string;
   children?: JSX.Element;

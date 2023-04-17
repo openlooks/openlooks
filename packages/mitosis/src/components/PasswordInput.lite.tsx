@@ -15,7 +15,7 @@ export interface PasswordInputProps {
   required?: boolean;
   defaultValue?: string;
   placeholder?: string;
-  icon?: JSX.Element;
+  slotIcon?: JSX.Element;
   onChange?: (e: any) => void;
 }
 
@@ -36,12 +36,12 @@ export default function PasswordInput(props: PasswordInputProps) {
         id={props.id}
         c={props.c}
         sx={props.sx}
-        type="text"
+        type={state.visible ? 'text' : 'password'}
         defaultValue={props.defaultValue}
         placeholder={props.placeholder}
         invalid={!!props.error}
-        icon={props.icon}
-        rightSection={
+        slotIcon={props.slotIcon}
+        slotRightSection={
           <ActionIcon
             c="color-gray size-sm radius-sm variant-subtle"
             onClick={(event) => {

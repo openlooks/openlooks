@@ -10,16 +10,16 @@ export interface InputProps {
   defaultValue?: string;
   placeholder?: string;
   invalid?: boolean;
-  icon?: JSX.Element;
-  rightSection?: JSX.Element;
+  slotIcon?: JSX.Element;
+  slotRightSection?: JSX.Element;
   onChange?: (e: any) => void;
 }
 
 export default function Input(props: InputProps) {
   return (
     <div style={{ position: 'relative' }}>
-      <Show when={props.icon}>
-        <div class="leftSection">{props.icon}</div>
+      <Show when={props.slotIcon}>
+        <div class="leftSection">{props.slotIcon}</div>
       </Show>
       <input
         id={props.id}
@@ -32,8 +32,8 @@ export default function Input(props: InputProps) {
         onChange={(event) => props.onChange?.(event)}
         onInput={(event) => props.onChange?.(event)}
       />
-      <Show when={props.rightSection}>
-        <div class="rightSection">{props.rightSection}</div>
+      <Show when={props.slotRightSection}>
+        <div class="rightSection">{props.slotRightSection}</div>
       </Show>
     </div>
   );

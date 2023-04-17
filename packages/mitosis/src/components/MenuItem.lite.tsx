@@ -6,7 +6,7 @@ export interface MenuItemProps {
   id?: string;
   c?: string;
   sx?: Record<string, any>;
-  icon?: JSX.Element;
+  slotIcon?: JSX.Element;
   onClick?: (e: any) => void;
   onMouseOver?: (e: any) => void;
   onMouseLeave?: (e: any) => void;
@@ -23,8 +23,8 @@ export default function MenuItem(props: MenuItemProps) {
       onMouseOver={(event) => props.onMouseOver?.(event)}
       onMouseLeave={(event) => props.onMouseLeave?.(event)}
     >
-      <Show when={props.icon}>
-        <div class="icon">{props.icon}</div>
+      <Show when={props.slotIcon}>
+        <div class="icon">{props.slotIcon}</div>
       </Show>
       <div class="label">{props.children}</div>
     </button>

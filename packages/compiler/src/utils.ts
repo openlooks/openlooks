@@ -198,6 +198,39 @@ export function isInsideJsx(node: ts.Node): boolean {
   return false;
 }
 
+export function isInsideJsxAttribute(node: ts.Node): boolean {
+  let curr = node;
+  while (curr) {
+    if (ts.isJsxAttribute(curr)) {
+      return true;
+    }
+    curr = curr.parent || (curr as any).original;
+  }
+  return false;
+}
+
+export function isInsideSlotAttribute(node: ts.Node): boolean {
+  let curr = node;
+  while (curr) {
+    if (ts.isJsxAttribute(curr) && curr.name.text.startsWith('slot')) {
+      return true;
+    }
+    curr = curr.parent || (curr as any).original;
+  }
+  return false;
+}
+
+export function getSlotAttributes(node: ts.JsxOpeningElement | ts.JsxSelfClosingElement): ts.JsxAttribute[] {
+  const result = [];
+  // const attributes = node.attributes;
+  for (const attr of node.attributes.properties) {
+    if (ts.isJsxAttribute(attr) && attr.name.text.startsWith('slot')) {
+      result.push(attr);
+    }
+  }
+  return result;
+}
+
 export function getParentJsxTag(node: ts.Node): ts.JsxOpeningElement | ts.JsxSelfClosingElement | undefined {
   let curr = node;
   while (curr) {
