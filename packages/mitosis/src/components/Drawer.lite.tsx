@@ -7,7 +7,6 @@ import Text from './Text.lite';
 export interface DrawerProps {
   id?: string;
   c?: string;
-  sx?: Record<string, any>;
   title?: string;
   width: string;
   visible?: boolean;

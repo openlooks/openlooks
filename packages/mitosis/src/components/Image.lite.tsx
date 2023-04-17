@@ -6,6 +6,7 @@ export interface ImageProps {
   c?: string;
   sx?: Record<string, any>;
   src: string;
+  alt: string;
 }
 
 export default function Image(props: ImageProps) {
@@ -15,6 +16,7 @@ export default function Image(props: ImageProps) {
       class={buildOpenLooksClassName('image', props.c)}
       style={props.sx as JSX.CSS | undefined}
       src={props.src}
+      alt={props.alt}
     />
   );
 }

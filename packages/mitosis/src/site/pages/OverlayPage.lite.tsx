@@ -24,7 +24,10 @@ export default function OverlayPage() {
       <Paper c="p-xl mt-xl withBorder">
         <Center>
           <div style={{ width: '400px', height: '225px', position: 'relative', margin: 'auto', overflow: 'hidden' }}>
-            <Image src="https://images.unsplash.com/photo-1618359057154-e21ae64350b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80" />
+            <Image
+              src="https://images.unsplash.com/photo-1618359057154-e21ae64350b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
+              alt="Dog"
+            />
             <Overlay visible={state.visible} />
           </div>
           <Button c="mt-xl" onClick={() => (state.visible = !state.visible)}>
@@ -42,7 +45,10 @@ function Demo() {
   return (
     <>
       <div style={{ width: '400px', height: '225px', position: 'relative', margin: 'auto', overflow: 'hidden' }}>
-        <Image src="https://images.unsplash.com/photo-1618359057154-e21ae64350b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80" />
+        <Image
+          src="https://images.unsplash.com/photo-1618359057154-e21ae64350b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80"
+          alt="Dog"
+        />
         <Overlay visible={state.visible} />
       </div>
       <Button c="mt-xl" onClick={() => (state.visible = !state.visible)}>

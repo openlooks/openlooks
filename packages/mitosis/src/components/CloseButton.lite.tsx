@@ -1,6 +1,6 @@
 import { convertSizeToIconSize } from '../site/components/utils';
 import ActionIcon from './ActionIcon.lite';
-import { Size } from './BaseComponentProps';
+import type { Size } from './BaseComponentProps';
 import CloseIcon from './CloseIcon.lite';
 
 export interface CloseButtonProps {
