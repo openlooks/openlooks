@@ -95,3 +95,7 @@
     padding-right: var(--spacing-$(size));
   }
 }
+
+.fullWidth {
+  width: 100%;
+}

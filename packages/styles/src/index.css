@@ -21,8 +21,10 @@
 @import 'appshell.css';
 @import 'autocomplete.css';
 @import 'avatar.css';
+@import 'badge.css';
 @import 'burger.css';
 @import 'button.css';
+@import 'card.css';
 @import 'center.css';
 @import 'checkbox.css';
 @import 'code.css';
@@ -62,3 +64,4 @@
  */
 
 @import 'system.css';
+@import 'variants.css';

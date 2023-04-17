@@ -1,0 +1,59 @@
+/*
+ * Variants
+ */
+
+.variant-filled {
+  color: var(--oc-white);
+  background-color: var(--color-6);
+}
+
+button.variant-filled:hover {
+  background-color: var(--color-8);
+}
+
+.variant-light {
+  color: var(--color-6);
+  background-color: var(--color-0);
+}
+
+button.variant-light:hover {
+  background-color: var(--color-1);
+}
+
+.dark .variant-light {
+  color: var(--color-3);
+  background-color: var(--color-10);
+}
+
+.dark button.variant-light:hover {
+  background-color: var(--color-11);
+}
+
+.variant-outline {
+  color: var(--color-6);
+  background-color: var(--oc-white);
+  border-color: var(--color-6);
+}
+
+button.variant-outline:hover {
+  background-color: var(--color-13);
+}
+
+.dark .variant-outline {
+  color: var(--color-6);
+  background-color: var(--oc-dark-8);
+  border-color: var(--color-6);
+}
+
+.dark button.variant-outline:hover {
+  background-color: var(--color-12);
+}
+
+.variant-subtle {
+  color: var(--color-6);
+  background-color: var(--oc-white);
+}
+
+button.variant-subtle:hover {
+  background-color: var(--color-0);
+}

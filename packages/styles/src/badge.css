@@ -1,0 +1,53 @@
+/*
+ * Base styles
+ */
+
+.badge {
+  font-family: var(--font-family);
+  border: 0.0625rem solid transparent;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.015625rem;
+  cursor: inherit;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/*
+ * Sizes
+ */
+
+.badge.size-xs {
+  height: 1rem;
+  padding: 0px calc(0.416667rem);
+  font-size: 0.5625rem;
+}
+
+.badge.size-sm {
+  height: 1.125rem;
+  padding: 0px calc(0.5rem);
+  font-size: 0.625rem;
+}
+
+.badge.size-md {
+  height: 1.25rem;
+  padding: 0 0.667rem;
+  font-size: 0.6875rem;
+}
+
+.badge.size-lg {
+  height: 1.625rem;
+  padding: 0px calc(0.833333rem);
+  font-size: 0.8125rem;
+}
+
+.badge.size-xl {
+  height: 2rem;
+  padding: 0px calc(1rem);
+  font-size: 1rem;
+}

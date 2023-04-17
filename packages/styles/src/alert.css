@@ -37,37 +37,12 @@
  * Variants
  */
 
-.alert.variant-light {
-  background-color: var(--color-0);
-}
-
 .alert.variant-light .alert-icon,
 .alert.variant-light .alert-title {
   color: var(--color-6);
 }
 
-.dark .alert.variant-light {
-  color: var(--color-3);
-  background-color: var(--color-10);
-}
-
-.alert.variant-filled {
-  color: var(--oc-white);
-  background-color: var(--color-6);
-}
-
-.alert.variant-outline {
-  background-color: var(--oc-white);
-  border-color: var(--color-6);
-}
-
 .alert.variant-outline .alert-icon,
 .alert.variant-outline .alert-title {
   color: var(--color-6);
-}
-
-.dark .alert.variant-outline {
-  color: var(--color-6);
-  background-color: var(--oc-dark-7);
-  border-color: var(--color-6);
 }

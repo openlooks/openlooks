@@ -1,0 +1,13 @@
+.card-section {
+  overflow: hidden;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+}
+
+.card-section:first-child {
+  margin-top: -1.25rem;
+}
+
+.card-section:last-child {
+  margin-bottom: -1.25rem;
+}
