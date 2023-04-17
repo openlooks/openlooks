@@ -6,6 +6,8 @@ import Group from '../../components/Group.lite';
 import PasswordInput from '../../components/PasswordInput.lite';
 import Stack from '../../components/Stack.lite';
 import TextInput from '../../components/TextInput.lite';
+import IconAt from '../../icons/IconAt.lite';
+import IconLock from '../../icons/IconLock.lite';
 
 export interface AuthenticationFormProps {
   formType: 'register' | 'login';
@@ -17,26 +19,14 @@ export default function AuthenticationForm(props: AuthenticationFormProps) {
       <Stack>
         <Show when={props.formType === 'register'}>
           <Group c="grow">
-            <TextInput id="firstName" data-autofocus required placeholder="Your first name" label="First name" />
+            <TextInput id="firstName" required placeholder="Your first name" label="First name" />
             <TextInput id="lastName" required placeholder="Your last name" label="Last name" />
           </Group>
         </Show>
 
-        <TextInput
-          id="email"
-          required
-          placeholder="Your email"
-          label="Email"
-          // icon={<IconAt size={16} stroke={1.5} />}
-        />
+        <TextInput id="email" required placeholder="Your email" label="Email" icon={<IconAt size="1rem" />} />
 
-        <PasswordInput
-          id="password"
-          required
-          placeholder="Password"
-          label="Password"
-          // icon={<IconLock size={16} stroke={1.5} />}
-        />
+        <PasswordInput id="password" required placeholder="Password" label="Password" icon={<IconLock size="1rem" />} />
 
         <Show when={props.formType === 'register'}>
           <PasswordInput
@@ -44,7 +34,7 @@ export default function AuthenticationForm(props: AuthenticationFormProps) {
             required
             label="Confirm Password"
             placeholder="Confirm password"
-            // icon={<IconLock size={16} stroke={1.5} />}
+            icon={<IconLock size="1rem" />}
           />
         </Show>
 

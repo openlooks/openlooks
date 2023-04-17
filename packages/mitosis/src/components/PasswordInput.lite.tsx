@@ -1,9 +1,9 @@
+import { useStore } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
-import { buildOpenLooksClassName } from '../utils/classname';
 import ActionIcon from './ActionIcon.lite';
+import Input from './Input.lite';
 import InputWrapper from './InputWrapper.lite';
 import PasswordToggleIcon from './PasswordToggleIcon.lite';
-import { useStore } from '@builder.io/mitosis';
 
 export interface PasswordInputProps {
   id: string;
@@ -15,6 +15,7 @@ export interface PasswordInputProps {
   required?: boolean;
   defaultValue?: string;
   placeholder?: string;
+  icon?: JSX.Element;
   onChange?: (e: any) => void;
 }
 
@@ -31,19 +32,16 @@ export default function PasswordInput(props: PasswordInputProps) {
       error={props.error}
       required={props.required}
     >
-      <div style={{ position: 'relative' }}>
-        <input
-          type={state.visible ? 'text' : 'password'}
-          id={props.id}
-          class={buildOpenLooksClassName('textinput', props.c)}
-          style={props.sx as JSX.CSS | undefined}
-          value={props.defaultValue || ''}
-          placeholder={props.placeholder}
-          aria-invalid={!!props.error}
-          onChange={(event) => props.onChange?.(event)}
-          onInput={(event) => props.onChange?.(event)}
-        />
-        <div class="rightSection">
+      <Input
+        id={props.id}
+        c={props.c}
+        sx={props.sx}
+        type="text"
+        defaultValue={props.defaultValue}
+        placeholder={props.placeholder}
+        invalid={!!props.error}
+        icon={props.icon}
+        rightSection={
           <ActionIcon
             c="color-gray size-sm radius-sm variant-subtle"
             onClick={(event) => {
@@ -53,8 +51,9 @@ export default function PasswordInput(props: PasswordInputProps) {
           >
             <PasswordToggleIcon size="0.9375rem" reveal={state.visible} />
           </ActionIcon>
-        </div>
-      </div>
+        }
+        onChange={(event) => props.onChange?.(event)}
+      />
     </InputWrapper>
   );
 }

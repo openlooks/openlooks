@@ -25,6 +25,7 @@ export default function Drawer(props: DrawerProps) {
           width: props.width,
           opacity: props.visible ? '1' : '0',
           visibility: props.visible ? 'visible' : 'hidden',
+          transform: props.visible ? 'translateX(0)' : `translateX(-${props.width})`,
         }}
       >
         <Group c="position-apart pb-md">

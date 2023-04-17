@@ -10,7 +10,7 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .inputwrapper > label.label > .required {
@@ -27,6 +27,22 @@
   font-size: 0.75rem;
   line-height: 1.2;
   color: var(--oc-red-6);
+}
+
+.inputwrapper > div > div.leftSection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  color: var(--oc-gray-5);
+}
+
+.inputwrapper > div > div.leftSection + input {
+  padding-left: 2rem;
 }
 
 .inputwrapper > div > div.rightSection {

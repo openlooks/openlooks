@@ -273,7 +273,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
         }
 
         // TODO: implement "slot" attributes
-        if (isJsxSlotAttribute(node) || isJsxAttribute(node, 'icon')) {
+        if (isJsxSlotAttribute(node) || isJsxAttribute(node, 'icon') || isJsxAttribute(node, 'rightSection')) {
           return undefined;
         }
 

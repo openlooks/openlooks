@@ -1,5 +1,5 @@
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
-import { buildOpenLooksClassName } from '../utils/classname';
+import Input from './Input.lite';
 import InputWrapper from './InputWrapper.lite';
 
 export interface TextInputProps {
@@ -12,6 +12,8 @@ export interface TextInputProps {
   required?: boolean;
   defaultValue?: string;
   placeholder?: string;
+  icon?: JSX.Element;
+  rightSection?: JSX.Element;
   onChange?: (e: any) => void;
 }
 
@@ -24,16 +26,17 @@ export default function TextInput(props: TextInputProps) {
       error={props.error}
       required={props.required}
     >
-      <input
-        type="text"
+      <Input
         id={props.id}
-        class={buildOpenLooksClassName('textinput', props.c)}
-        style={props.sx as JSX.CSS | undefined}
-        value={props.defaultValue || ''}
+        c={props.c}
+        sx={props.sx}
+        type="text"
+        defaultValue={props.defaultValue}
         placeholder={props.placeholder}
-        aria-invalid={!!props.error}
+        invalid={!!props.error}
+        icon={props.icon}
+        rightSection={props.rightSection}
         onChange={(event) => props.onChange?.(event)}
-        onInput={(event) => props.onChange?.(event)}
       />
     </InputWrapper>
   );
