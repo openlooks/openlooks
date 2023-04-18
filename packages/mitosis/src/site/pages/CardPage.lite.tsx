@@ -1,5 +1,6 @@
 import Badge from '../../components/Badge.lite';
 import Button from '../../components/Button.lite';
+import Card from '../../components/Card.lite';
 import CardSection from '../../components/CardSection.lite';
 import Center from '../../components/Center.lite';
 import Group from '../../components/Group.lite';
@@ -18,7 +19,7 @@ export default function CardPage() {
       <Paper c="p-xl mt-xl withBorder">
         <Center>
           <div style={{ 'max-width': '21.25rem' }}>
-            <Paper c="shadow-sm p-lg radius-md withBorder">
+            <Card c="shadow-sm p-lg radius-md withBorder">
               <CardSection>
                 <Image
                   src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
@@ -38,7 +39,7 @@ export default function CardPage() {
               </Text>
 
               <Button c="variant-light color-blue mt-md radius-md fullWidth">Book classic tour now</Button>
-            </Paper>
+            </Card>
           </div>
         </Center>
       </Paper>
@@ -48,7 +49,7 @@ export default function CardPage() {
 
 function Demo() {
   return (
-    <Paper c="shadow-sm p-lg radius-md withBorder">
+    <Card c="shadow-sm p-lg radius-md withBorder">
       <CardSection>
         <Image
           src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
@@ -68,7 +69,7 @@ function Demo() {
       </Text>
 
       <Button c="variant-light color-blue mt-md radius-md fullWidth">Book classic tour now</Button>
-    </Paper>
+    </Card>
   );
 }`}
       />

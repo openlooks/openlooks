@@ -3,7 +3,6 @@
   margin: auto;
   max-width: var(--breakpoint-md);
   width: 100%;
-  overflow: hidden;
 }
 
 .dark .paper {

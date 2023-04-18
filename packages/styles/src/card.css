@@ -1,3 +1,7 @@
+.card {
+  overflow: hidden;
+}
+
 .card-section {
   overflow: hidden;
   margin-left: -1.25rem;
