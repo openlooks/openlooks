@@ -91,7 +91,7 @@ export const siteNavLinks = [
       { href: '/hover-card', label: 'HoverCard', dimmed: true },
       { href: '/loading-overlay', label: 'LoadingOverlay', dimmed: true },
       { href: '/menu', label: 'Menu' },
-      { href: '/modal', label: 'Modal', dimmed: true },
+      { href: '/modal', label: 'Modal' },
       { href: '/overlay', label: 'Overlay' },
       { href: '/popover', label: 'Popover', dimmed: true },
       { href: '/tooltip', label: 'Tooltip', dimmed: true },
