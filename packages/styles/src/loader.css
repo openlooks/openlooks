@@ -1,76 +1,32 @@
 .loader {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-
-.loader svg {
-  height: 2.25rem;
-  width: 2.25rem;
-  animation: rotate 2s linear infinite;
-  transform-origin: center center;
-}
-
-.loader circle {
-  fill: none;
-  stroke: var(--color-6, var(--oc-blue-6));
-  stroke-width: 12;
-  stroke-dasharray: 2, 400;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 2, 400;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 180, 400;
-    stroke-dashoffset: -70px;
-  }
-  100% {
-    stroke-dasharray: 180, 400;
-    stroke-dashoffset: -248px;
-  }
+  stroke: var(--color-6);
 }
 
 /*
  * Sizes
  */
 
-.loader.size-xs svg {
+.loader.size-xs {
   height: 1.125rem;
   width: 1.125rem;
 }
 
-.loader.size-sm svg {
+.loader.size-sm {
   height: 1.375rem;
   width: 1.375rem;
 }
 
-.loader.size-md svg {
+.loader.size-md {
   height: 2.25rem;
   width: 2.25rem;
 }
 
-.loader.size-lg svg {
+.loader.size-lg {
   height: 2.75rem;
   width: 2.75rem;
 }
 
-.loader.size-xl svg {
+.loader.size-xl {
   height: 3.625rem;
   width: 3.625rem;
 }
