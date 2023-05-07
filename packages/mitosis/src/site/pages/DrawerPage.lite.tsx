@@ -1,4 +1,4 @@
-import { onMount, useStore } from '@builder.io/mitosis';
+import { useStore } from '@builder.io/mitosis';
 import Button from '../../components/Button.lite';
 import Center from '../../components/Center.lite';
 import Drawer from '../../components/Drawer.lite';
@@ -10,14 +10,6 @@ import DocPage from '../components/DocPage.lite';
 export default function DrawerPage() {
   const state = useStore({
     visible: false,
-  });
-
-  onMount(() => {
-    document.addEventListener('click', (event) => {
-      if ((event.target as HTMLElement | undefined)?.classList.contains('overlay')) {
-        state.visible = false;
-      }
-    });
   });
 
   return (

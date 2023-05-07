@@ -1,3 +1,4 @@
+import { onMount } from '@builder.io/mitosis';
 import { buildOpenLooksClassName } from '../utils/classname';
 import CloseButton from './CloseButton.lite';
 import Group from './Group.lite';
@@ -15,6 +16,15 @@ export interface ModalProps {
 }
 
 export default function Modal(props: ModalProps) {
+  onMount(() => {
+    document.addEventListener('click', (event: MouseEvent) => {
+      const classList = (event.target as HTMLElement | undefined)?.classList;
+      if (classList?.contains('overlay') || classList?.contains('modal-container')) {
+        props.onClose?.();
+      }
+    });
+  });
+
   return (
     <>
       <Overlay fixed visible={props.visible} />

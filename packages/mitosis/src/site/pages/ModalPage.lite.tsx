@@ -1,4 +1,4 @@
-import { onMount, useStore } from '@builder.io/mitosis';
+import { useStore } from '@builder.io/mitosis';
 import Button from '../../components/Button.lite';
 import Center from '../../components/Center.lite';
 import Modal from '../../components/Modal.lite';
@@ -10,15 +10,6 @@ import DocPage from '../components/DocPage.lite';
 export default function ModalPage() {
   const state = useStore({
     visible: false,
-  });
-
-  onMount(() => {
-    document.addEventListener('click', (event) => {
-      const classList = (event.target as HTMLElement | undefined)?.classList;
-      if (classList?.contains('overlay') || classList?.contains('modal-container')) {
-        state.visible = false;
-      }
-    });
   });
 
   return (

@@ -1,3 +1,4 @@
+import { onMount } from '@builder.io/mitosis';
 import { buildOpenLooksClassName } from '../utils/classname';
 import CloseButton from './CloseButton.lite';
 import Group from './Group.lite';
@@ -15,6 +16,14 @@ export interface DrawerProps {
 }
 
 export default function Drawer(props: DrawerProps) {
+  onMount(() => {
+    document.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement | undefined)?.classList.contains('overlay')) {
+        props.onClose?.();
+      }
+    });
+  });
+
   return (
     <>
       <Overlay fixed visible={props.visible} />
