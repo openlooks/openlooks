@@ -2,9 +2,10 @@
   font-family: var(--font-family);
   position: relative;
   display: flex;
+  align-items: center;
   flex-direction: row;
-  margin: 12px auto;
-  padding: 0;
+  margin-top: 1rem;
+  padding: 0.625rem;
   background: var(--oc-white);
   border: 1px solid var(--oc-gray-3);
   border-radius: 4px;
@@ -12,21 +13,38 @@
   overflow: hidden;
 }
 
-.notification .prefix {
-  padding: 4px;
+.notification .bar {
+  display: block;
+  position: absolute;
+  width: 0.375rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-6);
 }
 
-.notification .bar {
+.notification .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
   background-color: var(--color-6);
-  border-radius: 4px;
-  width: 6px;
-  height: 100%;
-  margin-right: 8px;
+  color: var(--oc-white);
+}
+
+.notification svg.loader {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .notification .content {
-  flex: 1;
-  padding: 12px 0;
+  flex: 1 1 0%;
+  overflow: hidden;
+  margin-right: 0.625rem;
+  margin-left: 1rem;
 }
 
 .notification .content div {

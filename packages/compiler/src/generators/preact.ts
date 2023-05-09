@@ -115,6 +115,12 @@ function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> 
           preactImports.add('JSX');
           return ts.factory.createTypeReferenceNode('JSX.CSSProperties');
         }
+
+        // Rewrite "JSX.CSS" to "as CSSProperties"
+        if (typeStr === 'JSX.Element') {
+          preactImports.add('ComponentChildren');
+          return ts.factory.createTypeReferenceNode('ComponentChildren');
+        }
       }
 
       // Rewrite JSX "class" attribute to "className"

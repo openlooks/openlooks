@@ -2,6 +2,7 @@ import { Show } from '@builder.io/mitosis';
 import { JSX } from '@builder.io/mitosis/jsx-runtime';
 import { buildOpenLooksClassName } from '../utils/classname';
 import Button from './Button.lite';
+import Loader from './Loader.lite';
 import { hideNotification } from './NotificationsManager';
 import Text from './Text.lite';
 
@@ -10,11 +11,12 @@ export interface NotificationProps {
   c?: string;
   sx?: Record<string, any>;
   slotIcon?: JSX.Element;
+  loading?: boolean;
   title: string;
   message?: string;
   children?: JSX.Element;
   autoClose?: number | false;
-  disallowClose?: boolean;
+  withCloseButton?: boolean;
   onClose?: () => void;
 }
 
@@ -22,21 +24,29 @@ export default function Notification(props: NotificationProps) {
   return (
     <div
       id={props.id}
-      class={buildOpenLooksClassName('notification', props.c)}
+      class={buildOpenLooksClassName('notification', undefined)}
       style={props.sx as JSX.CSS | undefined}
       data-autoClose={props.autoClose}
     >
-      <div class="prefix">
-        <div id={props.id} class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
-      </div>
+      <Show when={props.slotIcon}>
+        <div class={buildOpenLooksClassName('icon', props.c, { color: 'blue' })}>{props.slotIcon}</div>
+      </Show>
+      <Show when={props.loading}>
+        <div class={buildOpenLooksClassName('loading', props.c, { color: 'blue' })}>
+          <Loader />
+        </div>
+      </Show>
+      <Show when={!props.slotIcon && !props.loading}>
+        <div class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
+      </Show>
       <div class="content">
-        <Text c="weight-500">{props.title}</Text>
-        <Text c="color-gray">{props.children}</Text>
+        <Text c="size-sm weight-500">{props.title}</Text>
+        <Text c="size-sm color-gray">{props.children}</Text>
         <Show when={props.message}>
-          <Text c="color-gray">{props.message}</Text>
+          <Text c="size-sm color-gray">{props.message}</Text>
         </Show>
       </div>
-      <Show when={!props.disallowClose}>
+      <Show when={props.withCloseButton !== false}>
         <div class="close">
           <Button
             c="variant-subtle color-gray size-xs"

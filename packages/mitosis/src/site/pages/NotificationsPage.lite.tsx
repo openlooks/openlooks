@@ -5,6 +5,7 @@ import { showNotification } from '../../components/NotificationsManager';
 import Paper from '../../components/Paper.lite';
 import Text from '../../components/Text.lite';
 import Title from '../../components/Title.lite';
+import IconCheck from '../../icons/IconCheck.lite';
 import DocPage from '../components/DocPage.lite';
 import Prism from '../components/Prism.lite';
 
@@ -38,6 +39,7 @@ export default function NotificationsPage() {
             onClick={() =>
               showNotification({
                 c: 'color-teal',
+                slotIcon: <IconCheck size="1.1rem" />,
                 title: 'You did great',
                 message: 'Data was saved',
               })
@@ -89,7 +91,8 @@ export default function NotificationsPage() {
                 c: 'color-cyan',
                 title: 'Loading your data',
                 message: 'Data will be loaded in 3 seconds, you cannot close this yet',
-                disallowClose: true,
+                loading: true,
+                withCloseButton: false,
                 onClose: () =>
                   showNotification({
                     c: 'color-teal',
