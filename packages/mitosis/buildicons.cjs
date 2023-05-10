@@ -9,6 +9,7 @@ const iconList = [
   'at.svg',
   'brand-discord-filled.svg',
   'brand-github.svg',
+  'check.svg',
   'database.svg',
   'lock.svg',
   'message-circle.svg',
@@ -21,6 +22,7 @@ const iconList = [
   'sun.svg',
   'trash.svg',
   'user-circle.svg',
+  'x.svg',
 ];
 
 async function main() {
