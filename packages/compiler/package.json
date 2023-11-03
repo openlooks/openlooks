@@ -10,9 +10,9 @@
     "compile": "node --experimental-specifier-resolution=node --loader ts-node/esm src/main.ts"
   },
   "devDependencies": {
-    "@types/prettier": "2.7.2",
-    "fast-glob": "3.2.12",
-    "prettier": "2.8.8",
+    "@types/prettier": "2.7.3",
+    "fast-glob": "3.3.1",
+    "prettier": "3.0.3",
     "ts-node": "10.9.1"
   }
 }

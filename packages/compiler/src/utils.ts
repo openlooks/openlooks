@@ -32,11 +32,11 @@ export function renamePropertySignature(node: ts.PropertySignature, newName: str
 }
 
 export function isJsxAttribute(node: ts.Node, name: string): node is ts.JsxAttribute {
-  return ts.isJsxAttribute(node) && node.name.text === name;
+  return ts.isJsxAttribute(node) && node.name.getText() === name;
 }
 
 export function isJsxEventAttribute(node: ts.Node): node is ts.JsxAttribute {
-  if (!ts.isJsxAttribute(node) || !/^on[A-Z]\w+/.test(node.name.text)) {
+  if (!ts.isJsxAttribute(node) || !/^on[A-Z]\w+/.test(node.name.getText())) {
     return false;
   }
   const parent = getParentJsxTag(node);
@@ -44,7 +44,7 @@ export function isJsxEventAttribute(node: ts.Node): node is ts.JsxAttribute {
 }
 
 export function isJsxSlotAttribute(node: ts.Node): node is ts.JsxAttribute {
-  return ts.isJsxAttribute(node) && node.name.text.startsWith('slot');
+  return ts.isJsxAttribute(node) && node.name.getText().startsWith('slot');
 }
 
 export function isInputValueAttribute(node: ts.Node): node is ts.JsxAttribute {
@@ -108,7 +108,7 @@ export function isLiteReexport(node: ts.Node): node is ts.ExportDeclaration & { 
 export function isUseStoreDeclaration(node: ts.Node): node is ts.VariableStatement & {
   declarationList: ts.VariableDeclarationList & {
     declarations: [
-      ts.VariableDeclaration & { initializer: ts.CallExpression & { arguments: [ts.ObjectLiteralExpression] } }
+      ts.VariableDeclaration & { initializer: ts.CallExpression & { arguments: [ts.ObjectLiteralExpression] } },
     ];
   };
 } {
@@ -212,7 +212,7 @@ export function isInsideJsxAttribute(node: ts.Node): boolean {
 export function isInsideSlotAttribute(node: ts.Node): boolean {
   let curr = node;
   while (curr) {
-    if (ts.isJsxAttribute(curr) && curr.name.text.startsWith('slot')) {
+    if (ts.isJsxAttribute(curr) && curr.name.getText().startsWith('slot')) {
       return true;
     }
     curr = curr.parent || (curr as any).original;
@@ -224,7 +224,7 @@ export function getSlotAttributes(node: ts.JsxOpeningElement | ts.JsxSelfClosing
   const result = [];
   // const attributes = node.attributes;
   for (const attr of node.attributes.properties) {
-    if (ts.isJsxAttribute(attr) && attr.name.text.startsWith('slot')) {
+    if (ts.isJsxAttribute(attr) && attr.name.getText().startsWith('slot')) {
       result.push(attr);
     }
   }
@@ -319,7 +319,7 @@ export function findJsxAttribute(
   node: ts.JsxOpeningElement | ts.JsxSelfClosingElement,
   name: string
 ): ts.JsxAttribute | undefined {
-  return node.attributes.properties.find((attr) => ts.isJsxAttribute(attr) && attr.name.text === name) as
+  return node.attributes.properties.find((attr) => ts.isJsxAttribute(attr) && attr.name.getText() === name) as
     | ts.JsxAttribute
     | undefined;
 }

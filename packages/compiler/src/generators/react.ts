@@ -26,12 +26,12 @@ import {
   tryGetFullText,
 } from '../utils';
 
-export function transformToReact(
+export async function transformToReact(
   program: ts.Program,
   rootInputDir: string,
   inputFiles: string[],
   outDir: string
-): void {
+): Promise<void> {
   for (const inputFile of inputFiles) {
     if (inputFile.endsWith('tsconfig.json')) {
       continue;
@@ -55,7 +55,7 @@ export function transformToReact(
       );
 
       const transformerOutput = printer.printFile(output);
-      const prettierOutput = prettier.format(transformerOutput, { filepath: targetFileName });
+      const prettierOutput = await prettier.format(transformerOutput, { filepath: targetFileName });
       ensureDirectoryExists(targetFileName);
       fs.writeFileSync(targetFileName, prettierOutput, 'utf8');
     }

@@ -15,24 +15,25 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@builder.io/eslint-plugin-mitosis": "0.0.14",
-    "@types/node": "20.1.0",
-    "@typescript-eslint/eslint-plugin": "5.59.2",
-    "@typescript-eslint/parser": "5.59.2",
-    "eslint": "8.40.0",
-    "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-prettier": "4.2.1",
+    "@builder.io/eslint-plugin-mitosis": "0.0.15",
+    "@types/node": "20.8.10",
+    "@typescript-eslint/eslint-plugin": "6.9.1",
+    "@typescript-eslint/parser": "6.9.1",
+    "eslint": "8.52.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-react-hooks": "4.6.0",
-    "npm-check-updates": "16.10.10",
+    "npm-check-updates": "16.14.6",
     "nyc": "15.1.0",
-    "prettier": "2.8.8",
-    "rimraf": "5.0.0",
-    "turbo": "1.9.3",
-    "typescript": "5.0.4"
+    "prettier": "3.0.3",
+    "rimraf": "5.0.5",
+    "turbo": "1.10.16",
+    "typescript": "5.2.2"
   },
   "prettier": {
     "printWidth": 120,
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "eslintConfig": {
     "root": true,

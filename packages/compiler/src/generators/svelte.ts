@@ -37,12 +37,12 @@ interface SvelteLandmarks {
   usesStyle?: boolean;
 }
 
-export function transformToSvelte(
+export async function transformToSvelte(
   program: ts.Program,
   rootInputDir: string,
   inputFiles: string[],
   outDir: string
-): void {
+): Promise<void> {
   for (const inputFile of inputFiles) {
     if (inputFile.endsWith('tsconfig.json') || inputFile.endsWith('index.ts')) {
       continue;
@@ -125,7 +125,7 @@ if (p.startsWith('--')) {
       transformerOutput = printer.printFile(landmarks.sourceFile as ts.SourceFile);
     }
 
-    const prettierOutput = prettier.format(transformerOutput, { filepath: targetFileName });
+    const prettierOutput = await prettier.format(transformerOutput, { filepath: targetFileName });
     ensureDirectoryExists(targetFileName);
     fs.writeFileSync(targetFileName, prettierOutput, 'utf8');
   }
@@ -280,7 +280,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
         }
 
         if (isJsxEventAttribute(node)) {
-          const attrName = node.name.escapedText as string;
+          const attrName = node.name.getText();
           return ts.factory.updateJsxAttribute(
             node,
             ts.factory.createIdentifier('on:' + attrName[2].toLowerCase() + attrName.slice(3)),
@@ -396,7 +396,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
                         ts.factory.createJsxAttributes([
                           ts.factory.createJsxAttribute(
                             ts.factory.createIdentifier('name'),
-                            ts.factory.createStringLiteral(s.name.text)
+                            ts.factory.createStringLiteral(s.name.getText())
                           ),
                         ])
                       ),
@@ -413,7 +413,7 @@ function buildLandmarks(program: ts.Program, source: ts.SourceFile): SvelteLandm
                       ts.factory.createJsxAttributes([
                         ts.factory.createJsxAttribute(
                           ts.factory.createIdentifier('name'),
-                          ts.factory.createStringLiteral(s.name.text)
+                          ts.factory.createStringLiteral(s.name.getText())
                         ),
                         ts.factory.createJsxAttribute(
                           ts.factory.createIdentifier('slot'),
