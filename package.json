@@ -7,77 +7,21 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "test": "turbo run test",
-    "lint": "eslint packages/",
-    "prettier": "prettier --write ."
+    "fix": "biome check --apply .",
+    "lint": "biome check .",
+    "test": "turbo run test"
   },
+  "packageManager": "npm@10.0.0",
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "@builder.io/eslint-plugin-mitosis": "0.0.15",
-    "@types/node": "20.8.10",
-    "@typescript-eslint/eslint-plugin": "6.9.1",
-    "@typescript-eslint/parser": "6.9.1",
-    "eslint": "8.52.0",
-    "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-prettier": "5.0.1",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "npm-check-updates": "16.14.6",
-    "nyc": "15.1.0",
-    "prettier": "3.0.3",
-    "rimraf": "5.0.5",
-    "turbo": "1.10.16",
-    "typescript": "5.2.2"
-  },
-  "prettier": {
-    "printWidth": 120,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "eslintConfig": {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": "./tsconfig.base.json",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:prettier/recommended",
-      "plugin:react-hooks/recommended",
-      "plugin:@builder.io/mitosis/recommended"
-    ],
-    "rules": {
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-floating-promises": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_"
-        }
-      ],
-      "no-control-regex": "off",
-      "prefer-promise-reject-errors": "error"
-    },
-    "ignorePatterns": [
-      "dist",
-      "node_modules",
-      "package-lock.json",
-      "packages/**/dist/",
-      "packages/compiler/output",
-      "packages/react/src/components/",
-      "packages/solid/src/components/",
-      "packages/styles/**/*.js",
-      "packages/**/*.cjs"
-    ]
+    "@biomejs/biome": "1.8.3",
+    "@types/node": "20.14.10",
+    "npm-check-updates": "16.14.20",
+    "nyc": "17.0.0",
+    "rimraf": "6.0.1",
+    "turbo": "2.0.6",
+    "typescript": "5.5.3"
   }
 }

@@ -3,7 +3,7 @@
     "strict": true,
     "target": "ESNext",
     "jsx": "preserve",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,

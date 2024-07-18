@@ -1,0 +1,90 @@
+.appshell .navbar.open {
+  display: block !important;
+  position: absolute !important;
+  width: 100% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 100;
+}
+
+.navlinks {
+  font-family: var(--font-family);
+  padding: 0.5rem;
+  max-width: 20rem;
+}
+
+.navlinks .section {
+  border-left: 0.0625rem solid var(--oc-gray-4);
+  border-top: 0.0625rem solid var(--oc-gray-4);
+  border-radius: 0.25rem 0 0;
+  padding: 0 1rem 0 1.5rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.75rem;
+  color: var(--oc-gray-7);
+  background-color: var(--oc-gray-0);
+}
+
+.navlinks a.openlooks.anchor {
+  display: block;
+  text-decoration: none;
+  outline: 0;
+  border-left: 0.0625rem solid var(--oc-gray-4);
+  border-radius: 0 0.25rem 0.25rem 0;
+  padding: 0 0 0 1.5rem;
+  margin-left: 0.5rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.875rem;
+  color: var(--oc-gray-7);
+}
+
+.navlinks a.openlooks.anchor.dimmed {
+  color: var(--oc-gray-4);
+}
+
+.navlinks a.openlooks.anchor:hover {
+  background-color: var(--oc-gray-0);
+}
+
+.navlinks a.openlooks.anchor[aria-current],
+.navlinks a.openlooks.anchor.dimmed[aria-current],
+.navlinks a.openlooks.anchor[aria-current]:hover,
+.navlinks a.openlooks.anchor.dimmed[aria-current]:hover {
+  background-color: var(--oc-blue-0);
+  color: var(--oc-blue-6);
+  border-left: 0.0625rem solid var(--oc-blue-4);
+  font-weight: 500;
+}
+/*
+ * Dark theme
+ */
+
+.dark .navlinks .section {
+  border-left: 0.0625rem solid var(--oc-dark-6);
+  border-top: 0.0625rem solid var(--oc-dark-6);
+  background-color: var(--oc-dark-6);
+  color: var(--oc-dark-2);
+}
+
+.dark .navlinks a.openlooks.anchor {
+  border-left: 0.0625rem solid var(--oc-dark-6);
+  color: var(--oc-dark-1);
+}
+
+.dark .navlinks a.openlooks.anchor.dimmed {
+  color: var(--oc-dark-3);
+}
+
+.dark .navlinks a.openlooks.anchor:hover {
+  background-color: var(--oc-dark-5);
+}
+
+.dark .navlinks a.openlooks.anchor[aria-current],
+.dark .navlinks a.openlooks.anchor[aria-current]:hover {
+  background-color: var(--oc-blue-9);
+  color: var(--oc-blue-0);
+  border-left: 0.0625rem solid var(--oc-blue-4);
+}
