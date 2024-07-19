@@ -1,21 +1,8 @@
-import { Component, ComponentProps } from './Component';
+import { ComponentProps } from './Component';
+import { SimpleComponent } from './SimpleComponent';
 
-export interface AppShellMainProps extends ComponentProps {
-  children: Component[];
-}
-
-export class AppShellMain extends Component<AppShellMainProps, HTMLElement> {
-  public createDom(): HTMLElement {
-    this.element = this.createElement('main', 'main scrollarea');
-    for (const child of this.props.children) {
-      this.element.appendChild(child.createDom());
-    }
-    return this.element;
-  }
-
-  public render(): void {
-    for (const child of this.props.children) {
-      child.render();
-    }
+export class AppShellMain extends SimpleComponent {
+  constructor(props?: ComponentProps) {
+    super('main', 'main scrollarea', props);
   }
 }

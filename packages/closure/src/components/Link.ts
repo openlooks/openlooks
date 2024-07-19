@@ -7,7 +7,11 @@ export interface LinkProps extends TextProps {
 }
 
 export class Link extends Component<LinkProps, HTMLAnchorElement> {
-  public createDom(): HTMLElement {
+  constructor(public props: LinkProps) {
+    super(props);
+  }
+
+  public createDom(): HTMLAnchorElement {
     this.element = this.createElement('a', 'anchor text');
     this.element.addEventListener('click', this.onClick.bind(this));
     this.render();

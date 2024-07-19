@@ -8,14 +8,15 @@ export interface RouterProps extends ComponentProps {
 
 export class Router extends Component<RouterProps, HTMLDivElement> {
   static instance: Router;
-  lastUrl?: string;
+  private currentUrl?: string;
+  private currentElements: Node[] = [];
 
-  constructor(props: RouterProps) {
+  constructor(public props: RouterProps) {
     super(props);
     Router.instance = this;
   }
 
-  public createDom(): HTMLElement {
+  public createDom(): HTMLDivElement {
     this.element = document.createElement('div');
     window.addEventListener('popstate', () => {
       this.render();
@@ -25,22 +26,28 @@ export class Router extends Component<RouterProps, HTMLDivElement> {
   }
 
   public render(): void {
-    const prevUrl = this.lastUrl;
-    const currentUrl = window.location.pathname;
-    const el = this.element as HTMLDivElement;
-
-    for (const route of this.props.routes) {
-      if (route.props.path === prevUrl && route.element) {
-        el.removeChild(route.element);
-      } else if (route.props.path === currentUrl) {
-        if (!route.element) {
-          route.createDom();
-        }
-        el.appendChild(route.element as HTMLElement);
-      }
+    if (window.location.pathname === this.currentUrl) {
+      return;
     }
 
-    this.lastUrl = currentUrl;
+    const el = this.element as HTMLDivElement;
+
+    if (this.currentElements.length > 0) {
+      for (const element of this.currentElements) {
+        el.removeChild(element);
+      }
+      this.currentElements.length = 0;
+    }
+
+    this.currentUrl = window.location.pathname;
+
+    for (const route of this.props.routes) {
+      if (route.props.path === this.currentUrl) {
+        const child = route.getComponent().getDom();
+        el.appendChild(child);
+        this.currentElements.push(child);
+      }
+    }
   }
 }
 

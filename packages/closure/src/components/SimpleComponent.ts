@@ -1,18 +1,21 @@
 import { Component, ComponentProps } from './Component';
 
-export interface FragmentProps extends ComponentProps {
-  children: Component[];
-}
+export class SimpleComponent extends Component<ComponentProps, HTMLElement> {
+  constructor(
+    public tagName: keyof HTMLElementTagNameMap,
+    public baseClassName: string,
+    props?: ComponentProps
+  ) {
+    super(props);
+  }
 
-export class Fragment extends Component<FragmentProps, DocumentFragment> {
-  public createDom(): DocumentFragment {
-    this.element = document.createDocumentFragment();
+  public createDom(): HTMLElement {
+    this.element = this.createElement(this.tagName, this.baseClassName);
     if (this.props?.children) {
       for (const child of this.props.children) {
         this.element.appendChild(child.createDom());
       }
     }
-    this.render();
     return this.element;
   }
 

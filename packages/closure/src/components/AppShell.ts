@@ -1,21 +1,8 @@
-import { Component, ComponentProps } from './Component';
+import { ComponentProps } from './Component';
+import { SimpleComponent } from './SimpleComponent';
 
-export interface AppShellProps extends ComponentProps {
-  children: Component[];
-}
-
-export class AppShell extends Component<AppShellProps, HTMLDivElement> {
-  public createDom(): HTMLElement {
-    this.element = this.createElement('div', 'appshell');
-    for (const child of this.props.children) {
-      this.element.appendChild(child.createDom());
-    }
-    return this.element;
-  }
-
-  public render(): void {
-    for (const child of this.props.children) {
-      child.render();
-    }
+export class AppShell extends SimpleComponent {
+  constructor(props?: ComponentProps) {
+    super('div', 'appshell', props);
   }
 }

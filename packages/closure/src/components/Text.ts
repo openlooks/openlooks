@@ -5,7 +5,11 @@ export interface TextProps extends ComponentProps {
 }
 
 export class Text extends Component<TextProps, HTMLDivElement> {
-  public createDom(): HTMLElement {
+  constructor(public props: TextProps) {
+    super(props);
+  }
+
+  public createDom(): HTMLDivElement {
     this.element = this.createElement('div', 'text');
     this.render();
     return this.element;
