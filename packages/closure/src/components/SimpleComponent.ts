@@ -1,29 +1,35 @@
+import { createElement } from '../utils/dom';
 import { Component, ComponentProps } from './Component';
 
-export class SimpleComponent extends Component<ComponentProps, HTMLElement> {
+// Better names: HtmlComponent?
+
+export class SimpleComponent<
+  TProps extends ComponentProps = ComponentProps,
+  TElement extends HTMLElement = HTMLElement,
+> extends Component<TProps, TElement> {
   constructor(
     public tagName: keyof HTMLElementTagNameMap,
     public baseClassName: string,
-    props?: ComponentProps
+    public classKeys?: (keyof TProps)[],
+    public defaultProps?: Partial<TProps>,
+    props?: TProps
   ) {
     super(props);
   }
 
-  public createDom(): HTMLElement {
-    this.element = this.createElement(this.tagName, this.baseClassName);
+  public createDom(): TElement {
+    this.element = createElement(
+      this.tagName,
+      this.baseClassName,
+      this.classKeys,
+      this.defaultProps,
+      this.props
+    ) as TElement;
     if (this.props?.children) {
       for (const child of this.props.children) {
-        this.element.appendChild(child.createDom());
+        this.element.appendChild(child instanceof Component ? child.createDom() : child);
       }
     }
     return this.element;
-  }
-
-  public render(): void {
-    if (this.props?.children) {
-      for (const child of this.props.children) {
-        child.render();
-      }
-    }
   }
 }

@@ -1,8 +1,8 @@
 import { ComponentProps } from './Component';
 import { SimpleComponent } from './SimpleComponent';
 
-export class AppShell extends SimpleComponent {
+export class Configurator extends SimpleComponent {
   constructor(props?: ComponentProps) {
-    super('div', 'appshell', undefined, undefined, props);
+    super('div', 'configurator', undefined, undefined, props);
   }
 }

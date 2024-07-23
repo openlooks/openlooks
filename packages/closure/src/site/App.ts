@@ -15,7 +15,7 @@ export class App extends Component<ComponentProps, HTMLDivElement> {
   readonly appShell: AppShell;
 
   constructor() {
-    super({});
+    super();
 
     this.siteNav = new SiteNav();
 

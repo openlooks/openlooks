@@ -43,9 +43,11 @@ export class Router extends Component<RouterProps, HTMLDivElement> {
 
     for (const route of this.props.routes) {
       if (route.props.path === this.currentUrl) {
-        const child = route.getComponent().getDom();
-        el.appendChild(child);
-        this.currentElements.push(child);
+        const childComponent = route.getComponent();
+        const childElement = childComponent.getDom();
+        el.appendChild(childElement);
+        childComponent.render();
+        this.currentElements.push(childElement);
       }
     }
   }

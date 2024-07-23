@@ -1,3 +1,4 @@
+import { createElement } from '../utils/dom';
 import { Component, ComponentProps } from './Component';
 
 export interface TextProps extends ComponentProps {
@@ -10,7 +11,7 @@ export class Text extends Component<TextProps, HTMLDivElement> {
   }
 
   public createDom(): HTMLDivElement {
-    this.element = this.createElement('div', 'text');
+    this.element = createElement('div', 'text');
     this.render();
     return this.element;
   }

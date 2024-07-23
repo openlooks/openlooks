@@ -1,3 +1,4 @@
+import { createElement } from '../utils/dom';
 import { Component } from './Component';
 import { navigate } from './Router';
 import { TextProps } from './Text';
@@ -12,7 +13,7 @@ export class Link extends Component<LinkProps, HTMLAnchorElement> {
   }
 
   public createDom(): HTMLAnchorElement {
-    this.element = this.createElement('a', 'anchor text');
+    this.element = createElement('a', 'anchor text', undefined, undefined, this.props);
     this.element.addEventListener('click', this.onClick.bind(this));
     this.render();
     return this.element;

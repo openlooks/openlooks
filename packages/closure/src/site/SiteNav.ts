@@ -5,38 +5,7 @@ import { siteNavLinks } from './SiteNav.links';
 import './SiteNav.css';
 
 export class SiteNav extends Component<ComponentProps, HTMLDivElement> {
-  constructor() {
-    super({});
-  }
-  //   super(undefined);
-  //   // return (
-  //   //   <Navbar c={props.forceOpen ? "open" : undefined}>
-  //   //     <div className="navlinks">
-  //   //       <>
-  //   //         {siteNavLinks.map((section) => (
-  //   //           <>
-  //   //             <div className="section">{section.title}</div>
-  //   //             <>
-  //   //               {section.links.map((link) => (
-  //   //                 <SiteNavLink
-  //   //                   key={link.href}
-  //   //                   href={link.href}
-  //   //                   onClick={(event) => props.onLinkClick(event)}
-  //   //                   c={link.dimmed ? "dimmed" : ""}
-  //   //                 >
-  //   //                   {link.label}
-  //   //                 </SiteNavLink>
-  //   //               ))}
-  //   //             </>
-  //   //           </>
-  //   //         ))}
-  //   //       </>
-  //   //     </div>
-  //   //   </Navbar>
-  //   // );
-  // }
-
-  public createDom(): HTMLElement {
+  public createDom(): HTMLDivElement {
     const el = document.createElement('div');
     el.className = 'navlinks';
 
@@ -51,20 +20,13 @@ export class SiteNav extends Component<ComponentProps, HTMLDivElement> {
           new Link({
             text: link.label,
             href: link.href,
+            className: link.dimmed ? 'dimmed' : '',
           }).createDom()
         );
       }
     }
 
+    this.element = el;
     return el;
   }
-
-  // public updateProps(props: SiteNavProps): void {
-  //   this.props = props;
-  //   this.render();
-  // }
-
-  // public render(): void {
-  //   throw new Error('Method not implemented.');
-  // }
 }

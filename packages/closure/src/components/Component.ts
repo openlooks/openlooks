@@ -1,10 +1,28 @@
-import { buildOpenLooksClassName } from '../utils/classname';
+export type Color =
+  | 'black'
+  | 'gray'
+  | 'red'
+  | 'pink'
+  | 'grape'
+  | 'violet'
+  | 'indigo'
+  | 'blue'
+  | 'cyan'
+  | 'teal'
+  | 'green'
+  | 'lime'
+  | 'yellow'
+  | 'orange';
+
+export type Size = 0 | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 export interface ComponentProps {
   id?: string;
   className?: string;
   style?: CSSStyleDeclaration;
-  children?: Component[];
+  children?: (Component | Node)[];
 }
 
 export abstract class Component<
@@ -24,25 +42,17 @@ export abstract class Component<
     return this.element;
   }
 
-  public createElement<K extends keyof HTMLElementTagNameMap>(
-    tagName: K,
-    baseName: string
-  ): HTMLElementTagNameMap[K] {
-    const el = document.createElement(tagName);
-    el.className = buildOpenLooksClassName(baseName, this.props?.className);
-    if (this.props?.id) {
-      el.id = this.props.id;
-    }
-    if (this.props?.style) {
-      Object.assign(el.style, this.props.style);
-    }
-    return el;
-  }
-
   public updateProps(props: TProps): void {
     this.props = props;
-    this.render();
   }
 
-  public render(): void {}
+  public render(): void {
+    if (this.props?.children) {
+      for (const child of this.props.children) {
+        if (child instanceof Component) {
+          child.render();
+        }
+      }
+    }
+  }
 }
