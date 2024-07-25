@@ -1,5 +1,5 @@
+import { initApp } from '@openlooks/core';
 import { App } from './site/App';
-import { initApp } from './utils/init';
 
 import '@openlooks/styles';
 import './site/index.css';

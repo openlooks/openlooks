@@ -1,10 +1,13 @@
-import { AppShell } from '../components/AppShell';
-import { AppShellBody } from '../components/AppShellBody';
-import { AppShellMain } from '../components/AppShellMain';
-import { Component, ComponentProps } from '../components/Component';
-import { Route } from '../components/Route';
-import { Router } from '../components/Router';
-import { ScrollArea } from '../components/ScrollArea';
+import {
+  AppShell,
+  AppShellBody,
+  AppShellMain,
+  Component,
+  ComponentProps,
+  Route,
+  Router,
+  ScrollArea,
+} from '@openlooks/core';
 import { ButtonPage } from '../pages/ButtonPage';
 import { HomePage } from '../pages/HomePage';
 import { NotificationPage } from '../pages/NotificationPage';

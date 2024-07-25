@@ -1,6 +1,4 @@
-import { Link } from '../components/Link';
-import { SimpleComponent } from '../components/SimpleComponent';
-import { Text } from '../components/Text';
+import { Link, SimpleComponent, Text } from '@openlooks/core';
 
 export class TestPage extends SimpleComponent {
   constructor() {

@@ -1,18 +1,22 @@
-import { Button, ButtonProps } from '../components/Button';
-import { ColorPicker } from '../components/ColorPicker';
-import { Color, Size } from '../components/Component';
-import { Configurator } from '../components/Configurator';
-import { ConfiguratorControls } from '../components/ConfiguratorControls';
-import { ConfiguratorStage } from '../components/ConfiguratorStage';
-import { Container } from '../components/Container';
-import { Link } from '../components/Link';
-import { NativeSelect } from '../components/NativeSelect';
-import { SimpleComponent } from '../components/SimpleComponent';
-import { SizeInput } from '../components/SizeInput';
-import { Stack } from '../components/Stack';
-import { Text } from '../components/Text';
-import { TextInput } from '../components/TextInput';
-import { Title } from '../components/Title';
+import {
+  Button,
+  ButtonProps,
+  Color,
+  ColorPicker,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  Container,
+  Link,
+  NativeSelect,
+  SimpleComponent,
+  Size,
+  SizeInput,
+  Stack,
+  Text,
+  TextInput,
+  Title,
+} from '@openlooks/core';
 
 export class ButtonPage extends SimpleComponent {
   readonly buttonProps: ButtonProps;

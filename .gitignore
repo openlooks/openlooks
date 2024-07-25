@@ -1,16 +1,13 @@
 node_modules
+dist
 .turbo
 .DS_Store
 
-packages/compiler/dist
 packages/compiler/output
-
-packages/styles/dist
 
 packages/mitosis/src/icons
 packages/mitosis/src/index.*
 
-packages/preact/dist
 packages/preact/public
 packages/preact/src/components
 packages/preact/src/icons
@@ -18,7 +15,6 @@ packages/preact/src/site
 packages/preact/src/utils
 packages/preact/src/index.*
 
-packages/react/dist
 packages/react/public
 packages/react/src/components
 packages/react/src/icons
@@ -26,7 +22,6 @@ packages/react/src/site
 packages/react/src/utils
 packages/react/src/index.*
 
-packages/solid/dist
 packages/solid/public
 packages/solid/src/components
 packages/solid/src/icons
@@ -34,7 +29,6 @@ packages/solid/src/site
 packages/solid/src/utils
 packages/solid/src/index.*
 
-packages/svelte/dist
 packages/svelte/public
 packages/svelte/src/components
 packages/svelte/src/icons
@@ -42,7 +36,6 @@ packages/svelte/src/site
 packages/svelte/src/utils
 packages/svelte/src/index.*
 
-packages/vue/dist
 packages/vue/public
 packages/vue/src/components
 packages/vue/src/icons

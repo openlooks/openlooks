@@ -1,11 +1,13 @@
-import { Container } from '../components/Container';
-import { Link } from '../components/Link';
-import { Notification } from '../components/Notification';
-import { Paper } from '../components/Paper';
-import { SimpleComponent } from '../components/SimpleComponent';
-import { Stack } from '../components/Stack';
-import { Text } from '../components/Text';
-import { Title } from '../components/Title';
+import {
+  Container,
+  Link,
+  Notification,
+  Paper,
+  SimpleComponent,
+  Stack,
+  Text,
+  Title,
+} from '@openlooks/core';
 
 export class NotificationPage extends SimpleComponent {
   constructor() {

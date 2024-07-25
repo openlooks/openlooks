@@ -1,5 +1,4 @@
-import { Component, ComponentProps } from '../components/Component';
-import { Link } from '../components/Link';
+import { Component, ComponentProps, Link } from '@openlooks/core';
 import { siteNavLinks } from './SiteNav.links';
 
 import './SiteNav.css';

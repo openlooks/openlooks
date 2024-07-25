@@ -13,11 +13,11 @@
     "compile": "node --experimental-modules --experimental-specifier-resolution=node ../compiler/dist/main.js"
   },
   "devDependencies": {
-    "@builder.io/mitosis": "0.3.10",
-    "@builder.io/mitosis-cli": "0.3.10",
+    "@builder.io/mitosis": "0.3.14",
+    "@builder.io/mitosis-cli": "0.3.14",
     "@openlooks/compiler": "*",
     "@openlooks/styles": "*",
-    "@tabler/icons": "3.10.0",
+    "@tabler/icons": "3.11.0",
     "chokidar": "3.6.0",
     "fast-glob": "3.3.2"
   }
