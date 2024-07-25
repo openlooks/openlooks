@@ -21,7 +21,7 @@ export const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 export interface ComponentProps {
   id?: string;
   className?: string;
-  style?: CSSStyleDeclaration;
+  style?: Partial<CSSStyleDeclaration>;
   children?: (Component | Node)[];
 }
 
