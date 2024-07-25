@@ -1,15 +1,11 @@
 {
-  "name": "closure",
-  "private": true,
+  "name": "@openlooks/core",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "tsc"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "typescript": "5.2.2"
   }
 }
