@@ -8,11 +8,13 @@ export interface RouterProps extends ComponentProps {
 
 export class Router extends Component<RouterProps, HTMLDivElement> {
   static instance: Router;
-  private currentUrl?: string;
+  eventTarget: EventTarget;
+  currentUrl?: string;
   private currentElements: Node[] = [];
 
   constructor(public props: RouterProps) {
     super(props);
+    this.eventTarget = new EventTarget();
     Router.instance = this;
   }
 
@@ -21,6 +23,7 @@ export class Router extends Component<RouterProps, HTMLDivElement> {
     window.addEventListener('popstate', () => {
       this.render();
       scrollToTop();
+      this.eventTarget.dispatchEvent(new Event('change'));
     });
     return this.element;
   }
@@ -54,6 +57,11 @@ export class Router extends Component<RouterProps, HTMLDivElement> {
 }
 
 export function navigate(url: string) {
-  window.history.pushState(null, '', url);
-  Router.instance.render();
+  if (url.startsWith('http')) {
+    window.location.href = url;
+  } else {
+    window.history.pushState(null, '', url);
+    Router.instance.render();
+    Router.instance.eventTarget.dispatchEvent(new Event('change'));
+  }
 }

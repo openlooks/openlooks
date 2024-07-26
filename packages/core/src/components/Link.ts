@@ -1,6 +1,6 @@
 import { createElement } from '../utils/dom';
 import { Component } from './Component';
-import { navigate } from './Router';
+import { navigate, Router } from './Router';
 import { TextProps } from './Text';
 
 export interface LinkProps extends TextProps {
@@ -15,6 +15,15 @@ export class Link extends Component<LinkProps, HTMLAnchorElement> {
   public createDom(): HTMLAnchorElement {
     this.element = createElement('a', 'anchor text', undefined, undefined, this.props);
     this.element.addEventListener('click', this.onClick.bind(this));
+    Router.instance.eventTarget.addEventListener('change', () => {
+      if (this.element) {
+        if (Router.instance.currentUrl === this.props.href) {
+          this.element.setAttribute('aria-current', 'page');
+        } else {
+          this.element.removeAttribute('aria-current');
+        }
+      }
+    });
     this.render();
     return this.element;
   }
@@ -26,6 +35,9 @@ export class Link extends Component<LinkProps, HTMLAnchorElement> {
   }
 
   public onClick(e: MouseEvent) {
+    if (e.button !== 0) {
+      return;
+    }
     e.preventDefault();
     navigate(this.props.href);
   }
