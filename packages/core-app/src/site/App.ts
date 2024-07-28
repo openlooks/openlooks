@@ -13,6 +13,7 @@ import {
 } from '@openlooks/core';
 import { ButtonPage } from '../pages/ButtonPage';
 import { CardPage } from '../pages/CardPage';
+import { FlexPage } from '../pages/FlexPage';
 import { HomePage } from '../pages/HomePage';
 import { NotificationPage } from '../pages/NotificationPage';
 import { TablePage } from '../pages/TablePage';
@@ -59,6 +60,7 @@ export class App extends Component<HTMLDivElement, ComponentProps> {
                     new Route({ path: '/', component: () => new HomePage() }),
                     new Route({ path: '/button', component: () => new ButtonPage() }),
                     new Route({ path: '/card', component: () => new CardPage() }),
+                    new Route({ path: '/flex', component: () => new FlexPage() }),
                     new Route({ path: '/notification', component: () => new NotificationPage() }),
                     new Route({ path: '/table', component: () => new TablePage() }),
                     new Route({ path: '/test', component: () => new TestPage() }),

@@ -14,6 +14,7 @@ export * from './components/Configurator';
 export * from './components/ConfiguratorControls';
 export * from './components/ConfiguratorStage';
 export * from './components/Container';
+export * from './components/Flex';
 export * from './components/Fragment';
 export * from './components/Group';
 export * from './components/Header';
