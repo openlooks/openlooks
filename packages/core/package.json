@@ -9,6 +9,9 @@
     "./components/*": {
       "import": "./dist/components/*.js"
     },
+    "./icons/*": {
+      "import": "./dist/icons/*.js"
+    },
     "./utils/*": {
       "import": "./dist/utils/*.js"
     }

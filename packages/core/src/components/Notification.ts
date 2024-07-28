@@ -1,12 +1,12 @@
 import { buildClassName } from '../utils/classname';
 import { updateElement } from '../utils/dom';
-import { Color, ComponentProps } from './Component';
-import { Loader } from './Loader';
+import { Color, Component, ComponentProps } from './Component';
 import { HtmlComponent } from './HtmlComponent';
+import { Loader } from './Loader';
 
 export interface NotificationProps extends ComponentProps {
   color?: Color;
-  slotIcon?: JSX.Element;
+  icon?: Component;
   loading?: boolean;
   title: string;
   message?: string;
@@ -42,7 +42,12 @@ export class Notification extends HtmlComponent<HTMLDivElement, NotificationProp
     //   <div class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
     // </Show>
 
-    if (this.props.loading) {
+    if (this.props.icon) {
+      const iconDiv = document.createElement('div');
+      iconDiv.className = buildClassName('icon', ['color'], { color: 'blue' }, this.props);
+      iconDiv.appendChild(this.props.icon.createDom());
+      this.element.appendChild(iconDiv);
+    } else if (this.props.loading) {
       const loadingDiv = document.createElement('div');
       loadingDiv.className = buildClassName('loading', ['color'], { color: 'blue' }, this.props);
 
@@ -50,11 +55,6 @@ export class Notification extends HtmlComponent<HTMLDivElement, NotificationProp
       loadingDiv.appendChild(loader.getDom());
 
       this.element.appendChild(loadingDiv);
-      // } else if (this.props.slotIcon) {
-      //   const iconDiv = document.createElement('div');
-      //   iconDiv.className = buildClassName('icon', ['color'], { color: 'blue' }, this.props);
-      //   iconDiv.appendChild(this.props.slotIcon);
-      //   this.element.appendChild
     } else {
       const barDiv = document.createElement('div');
       barDiv.className = buildClassName('bar', ['color'], { color: 'blue' }, this.props);
