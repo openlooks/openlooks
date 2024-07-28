@@ -3,6 +3,7 @@
 export * from './components/AppShell';
 export * from './components/AppShellBody';
 export * from './components/AppShellMain';
+export * from './components/Avatar';
 export * from './components/Badge';
 export * from './components/Button';
 export * from './components/Card';
