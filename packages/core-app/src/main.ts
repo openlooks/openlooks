@@ -1,7 +1,7 @@
 import { initApp } from '@openlooks/core';
 import { App } from './site/App';
 
-import '@openlooks/styles';
+import '@openlooks/styles/index.css';
 import './site/index.css';
 
 initApp();

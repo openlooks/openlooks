@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 import preact from '@preact/preset-vite';
 
 export default defineConfig({
-  plugins: [preact(), dts()],
+  plugins: [preact()],
   build: {
     target: 'esnext',
     modulePreload: {
