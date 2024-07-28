@@ -1,4 +1,4 @@
-import { initApp } from "@openlooks/core";
+import { initApp } from "@openlooks/core/utils/init";
 import "@openlooks/styles";
 import React from "react";
 import ReactDOM from "react-dom/client";

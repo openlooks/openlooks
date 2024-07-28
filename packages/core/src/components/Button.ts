@@ -24,11 +24,6 @@ export class Button extends HtmlComponent<HTMLButtonElement, ButtonProps> {
     super('button', 'button', classKeys, defaultProps, props);
   }
 
-  // public createDom(): HTMLButtonElement {
-  //   this.element = super.createDom();
-  //   return this.element;
-  // }
-
   public decorateDom(element: HTMLButtonElement): void {
     super.decorateDom(element);
     if (this.props.onClick) {
@@ -36,42 +31,8 @@ export class Button extends HtmlComponent<HTMLButtonElement, ButtonProps> {
     }
   }
 
-  // public updateProps(props: ButtonProps): void {
-  //   super.updateProps(props);
-  //   updateElement(
-  //     this.element as HTMLButtonElement,
-  //     this.baseClassName,
-  //     classKeys,
-  //     defaultProps,
-  //     this.props
-  //   );
-  // }
-
   public render(): void {
     const el = this.element as HTMLButtonElement;
     el.textContent = this.props.text;
   }
 }
-
-// export default function Button(props: ButtonProps) {
-//   return (
-//     <button
-//       id={props.id}
-//       class={buildClassName('button', props.c, { variant: 'filled', color: 'blue', size: 'sm', radius: 'sm' })}
-//       style={props.sx as JSX.CSS | undefined}
-//       onClick={(event) => props.onClick?.(event)}
-//       data-loading={props.loading}
-//       disabled={props.loading}
-//     >
-//       <Show when={props.slotIcon && !props.loading}>
-//         <div class={buildClassName('icon', undefined, { variant: 'none' })}>{props.slotIcon}</div>
-//       </Show>
-//       <Show when={props.loading}>
-//         <div class={buildClassName('icon', undefined, { variant: 'none' })}>
-//           <Loader c="color-white variant-none" />
-//         </div>
-//       </Show>
-//       {props.children}
-//     </button>
-//   );
-// }

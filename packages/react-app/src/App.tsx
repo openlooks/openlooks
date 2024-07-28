@@ -1,4 +1,4 @@
-import { Button } from "@openlooks/react";
+import { Button } from "@openlooks/react/components/Button";
 import { useState } from "react";
 
 export function App() {
