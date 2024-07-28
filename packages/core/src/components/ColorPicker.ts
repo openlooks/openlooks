@@ -25,7 +25,7 @@ const colors = [
   'orange',
 ];
 
-export class ColorPicker extends Component<ColorPickerProps, HTMLDivElement> {
+export class ColorPicker extends Component<HTMLDivElement, ColorPickerProps> {
   private inputWrapper?: InputWrapper;
   private innerDiv?: HTMLDivElement;
 

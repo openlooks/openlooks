@@ -1,6 +1,6 @@
-import { Container, SimpleComponent, Table, Title } from '@openlooks/core';
+import { Container, HtmlComponent, Table, Title } from '@openlooks/core';
 
-export class TablePage extends SimpleComponent {
+export class TablePage extends HtmlComponent {
   constructor() {
     super('div', '', undefined, undefined, {
       children: [

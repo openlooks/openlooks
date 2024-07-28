@@ -1,19 +1,13 @@
-import { createElement } from '../utils/dom';
-import { Component, ComponentProps } from './Component';
+import { ComponentProps } from './Component';
+import { HtmlComponent } from './HtmlComponent';
 
 export interface TextProps extends ComponentProps {
   text: string;
 }
 
-export class Text extends Component<TextProps, HTMLDivElement> {
+export class Text extends HtmlComponent<HTMLDivElement, TextProps> {
   constructor(public props: TextProps) {
-    super(props);
-  }
-
-  public createDom(): HTMLDivElement {
-    this.element = createElement('div', 'text');
-    this.render();
-    return this.element;
+    super('div', 'text', undefined, undefined, props);
   }
 
   public render(): void {

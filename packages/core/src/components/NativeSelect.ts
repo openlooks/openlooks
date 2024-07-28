@@ -8,7 +8,7 @@ export interface NativeSelectProps extends InputWrapperProps {
   onChange?: (e: Event) => void;
 }
 
-export class NativeSelect extends Component<NativeSelectProps, HTMLDivElement> {
+export class NativeSelect extends Component<HTMLDivElement, NativeSelectProps> {
   private inputWrapper?: InputWrapper;
   private selectElement?: HTMLSelectElement;
 

@@ -1,7 +1,7 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
-export class Header extends SimpleComponent {
+export class Header extends HtmlComponent {
   constructor(props?: ComponentProps) {
     super('div', 'header', undefined, undefined, props);
   }

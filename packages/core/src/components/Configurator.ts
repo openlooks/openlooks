@@ -1,7 +1,7 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
-export class Configurator extends SimpleComponent {
+export class Configurator extends HtmlComponent {
   constructor(props?: ComponentProps) {
     super('div', 'configurator', undefined, undefined, props);
   }

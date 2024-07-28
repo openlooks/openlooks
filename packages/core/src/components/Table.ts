@@ -1,11 +1,11 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
 export interface TableProps extends ComponentProps {
   innerHTML?: string;
 }
 
-export class Table extends SimpleComponent<TableProps, HTMLTableElement> {
+export class Table extends HtmlComponent<HTMLTableElement, TableProps> {
   constructor(props?: TableProps) {
     super('table', 'table', undefined, undefined, props);
   }

@@ -1,6 +1,5 @@
-import { updateElement } from '../utils/dom';
 import { Color, ComponentProps, Size } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
 export interface ButtonProps extends ComponentProps {
   text: string;
@@ -20,29 +19,33 @@ const defaultProps: Partial<ButtonProps> = {
   radius: 'sm',
 };
 
-export class Button extends SimpleComponent<ButtonProps, HTMLButtonElement> {
+export class Button extends HtmlComponent<HTMLButtonElement, ButtonProps> {
   constructor(public props: ButtonProps) {
     super('button', 'button', classKeys, defaultProps, props);
   }
 
-  public createDom(): HTMLButtonElement {
-    this.element = super.createDom();
+  // public createDom(): HTMLButtonElement {
+  //   this.element = super.createDom();
+  //   return this.element;
+  // }
+
+  public decorateDom(element: HTMLButtonElement): void {
+    super.decorateDom(element);
     if (this.props.onClick) {
-      this.element.addEventListener('click', this.props.onClick);
+      element.addEventListener('click', this.props.onClick);
     }
-    return this.element;
   }
 
-  public updateProps(props: ButtonProps): void {
-    super.updateProps(props);
-    updateElement(
-      this.element as HTMLButtonElement,
-      this.baseClassName,
-      classKeys,
-      defaultProps,
-      this.props
-    );
-  }
+  // public updateProps(props: ButtonProps): void {
+  //   super.updateProps(props);
+  //   updateElement(
+  //     this.element as HTMLButtonElement,
+  //     this.baseClassName,
+  //     classKeys,
+  //     defaultProps,
+  //     this.props
+  //   );
+  // }
 
   public render(): void {
     const el = this.element as HTMLButtonElement;

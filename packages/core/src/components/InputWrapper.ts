@@ -1,3 +1,4 @@
+import { addChildren } from '../utils/addchild';
 import { createElement } from '../utils/dom';
 import { Component, ComponentProps } from './Component';
 
@@ -9,7 +10,7 @@ export interface InputWrapperProps extends ComponentProps {
   required?: boolean;
 }
 
-export class InputWrapper extends Component<InputWrapperProps, HTMLDivElement> {
+export class InputWrapper extends Component<HTMLDivElement, InputWrapperProps> {
   public createDom(): HTMLDivElement {
     this.element = createElement('div', 'inputwrapper');
 
@@ -32,11 +33,7 @@ export class InputWrapper extends Component<InputWrapperProps, HTMLDivElement> {
       this.element.appendChild(description);
     }
 
-    if (this.props?.children) {
-      for (const child of this.props.children) {
-        this.element.appendChild(child instanceof Component ? child.createDom() : child);
-      }
-    }
+    addChildren(this.element, this.props?.children);
 
     if (this.props?.error) {
       const error = document.createElement('div');

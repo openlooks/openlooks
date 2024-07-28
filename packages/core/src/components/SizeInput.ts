@@ -8,7 +8,7 @@ export interface SizeInputProps extends Omit<SliderProps, 'min' | 'max' | 'step'
   defaultValue?: Size;
 }
 
-export class SizeInput extends Component<SliderProps, HTMLDivElement> {
+export class SizeInput extends Component<HTMLDivElement, SliderProps> {
   slider?: Slider;
 
   constructor(public props: SizeInputProps) {

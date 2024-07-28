@@ -1,7 +1,7 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
-export class Paper extends SimpleComponent {
+export class Paper extends HtmlComponent {
   constructor(props?: ComponentProps) {
     super('div', 'paper', undefined, undefined, props);
   }

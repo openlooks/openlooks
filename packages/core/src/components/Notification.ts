@@ -2,36 +2,24 @@ import { buildClassName } from '../utils/classname';
 import { updateElement } from '../utils/dom';
 import { Color, ComponentProps } from './Component';
 import { Loader } from './Loader';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
 export interface NotificationProps extends ComponentProps {
-  // text: string;
-  // variant?: string;
   color?: Color;
-  // size?: Size;
-  // radius?: Size;
-  // onClick?: (e: MouseEvent) => void;
-
   slotIcon?: JSX.Element;
   loading?: boolean;
   title: string;
   message?: string;
-  // children?: JSX.Element;
   autoClose?: number | false;
   withCloseButton?: boolean;
   onClose?: () => void;
 }
 
-const classKeys: (keyof NotificationProps)[] = []; //['variant', 'color', 'size', 'radius'];
+const classKeys: (keyof NotificationProps)[] = [];
 
-const defaultProps: Partial<NotificationProps> = {
-  // variant: 'filled',
-  // color: 'blue',
-  // size: 'sm',
-  // radius: 'sm',
-};
+const defaultProps: Partial<NotificationProps> = {};
 
-export class Notification extends SimpleComponent<NotificationProps, HTMLDivElement> {
+export class Notification extends HtmlComponent<HTMLDivElement, NotificationProps> {
   constructor(public props: NotificationProps) {
     super('div', 'notification', classKeys, defaultProps, props);
   }

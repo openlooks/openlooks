@@ -18,7 +18,7 @@ import { TablePage } from '../pages/TablePage';
 import { TestPage } from '../pages/TestPage';
 import { SiteNav } from './SiteNav';
 
-export class App extends Component<ComponentProps, HTMLDivElement> {
+export class App extends Component<HTMLDivElement, ComponentProps> {
   readonly appShell: AppShell;
 
   constructor() {

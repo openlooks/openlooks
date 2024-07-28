@@ -1,7 +1,7 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
-export class AppShellBody extends SimpleComponent {
+export class AppShellBody extends HtmlComponent {
   constructor(props?: ComponentProps) {
     super('div', 'body', undefined, undefined, props);
   }

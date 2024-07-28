@@ -7,7 +7,7 @@ export interface TextInputProps extends InputWrapperProps {
   onChange?: (e: Event) => void;
 }
 
-export class TextInput extends Component<TextInputProps, HTMLDivElement> {
+export class TextInput extends Component<HTMLDivElement, TextInputProps> {
   private inputWrapper?: InputWrapper;
   private inputElement?: HTMLInputElement;
 

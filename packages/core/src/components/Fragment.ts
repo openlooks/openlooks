@@ -1,14 +1,10 @@
+import { addChildren } from '../utils/addchild';
 import { Component, ComponentProps } from './Component';
 
-export class Fragment extends Component<ComponentProps, DocumentFragment> {
+export class Fragment extends Component<DocumentFragment, ComponentProps> {
   public createDom(): DocumentFragment {
     this.element = document.createDocumentFragment();
-    if (this.props?.children) {
-      for (const child of this.props.children) {
-        this.element.appendChild(child instanceof Component ? child.createDom() : child);
-      }
-    }
-    this.render();
+    addChildren(this.element, this.props?.children);
     return this.element;
   }
 }

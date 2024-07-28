@@ -3,7 +3,7 @@ import { siteNavLinks } from './SiteNav.links';
 
 import './SiteNav.css';
 
-export class SiteNav extends Component<ComponentProps, HTMLDivElement> {
+export class SiteNav extends Component<HTMLDivElement, ComponentProps> {
   public createDom(): HTMLDivElement {
     const el = document.createElement('div');
     el.className = 'navlinks';
@@ -15,13 +15,13 @@ export class SiteNav extends Component<ComponentProps, HTMLDivElement> {
       el.appendChild(sectionEl);
 
       for (const link of section.links) {
-        el.appendChild(
-          new Link({
-            text: link.label,
-            href: link.href,
-            className: link.dimmed ? 'dimmed' : '',
-          }).createDom()
-        );
+        const linkComponent = new Link({
+          text: link.label,
+          href: link.href,
+          className: link.dimmed ? 'dimmed' : '',
+        });
+        el.appendChild(linkComponent.createDom());
+        linkComponent.render();
       }
     }
 

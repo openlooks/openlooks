@@ -9,7 +9,7 @@ import {
   Container,
   Link,
   NativeSelect,
-  SimpleComponent,
+  HtmlComponent,
   Size,
   SizeInput,
   Stack,
@@ -18,7 +18,7 @@ import {
   Title,
 } from '@openlooks/core';
 
-export class ButtonPage extends SimpleComponent {
+export class ButtonPage extends HtmlComponent {
   readonly buttonProps: ButtonProps;
   readonly button: Button;
 

@@ -1,13 +1,13 @@
 import { createElement } from '../utils/dom';
 import { Component } from './Component';
-import { navigate, Router } from './Router';
+import { Router, navigate } from './Router';
 import { TextProps } from './Text';
 
 export interface LinkProps extends TextProps {
   href: string;
 }
 
-export class Link extends Component<LinkProps, HTMLAnchorElement> {
+export class Link extends Component<HTMLAnchorElement, LinkProps> {
   constructor(public props: LinkProps) {
     super(props);
   }
@@ -24,7 +24,6 @@ export class Link extends Component<LinkProps, HTMLAnchorElement> {
         }
       }
     });
-    this.render();
     return this.element;
   }
 

@@ -17,7 +17,7 @@ export interface SliderProps extends InputWrapperProps {
   onChange?: (e: Event) => void;
 }
 
-export class Slider extends Component<SliderProps, HTMLDivElement> {
+export class Slider extends Component<HTMLDivElement, SliderProps> {
   private inputWrapper?: InputWrapper;
   private inputElement?: HTMLInputElement;
 

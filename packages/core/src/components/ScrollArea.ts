@@ -1,5 +1,5 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
 export interface ScrollAreaProps extends ComponentProps {
   variant?: string;
@@ -13,30 +13,8 @@ const defaultProps: Partial<ScrollAreaProps> = {
   scrollbarSize: 'md',
 };
 
-export class ScrollArea extends SimpleComponent<ScrollAreaProps, HTMLDivElement> {
+export class ScrollArea extends HtmlComponent<HTMLDivElement, ScrollAreaProps> {
   constructor(props?: ComponentProps) {
     super('div', 'scrollarea', classKeys, defaultProps, props);
   }
 }
-
-// import { JSX } from '@builder.io/mitosis/jsx-runtime';
-// import { buildOpenLooksClassName } from '../utils/classname';
-
-// export interface ScrollAreaProps {
-//   id?: string;
-//   c?: string;
-//   sx?: Record<string, any>;
-//   children?: any;
-// }
-
-// export default function ScrollArea(props: ScrollAreaProps) {
-//   return (
-//     <div
-//       id={props.id}
-//       class={buildOpenLooksClassName('scrollarea', props.c, { variant: 'hover', scrollbarSize: 'md' })}
-//       style={props.sx as JSX.CSS | undefined}
-//     >
-//       {props.children}
-//     </div>
-//   );
-// }

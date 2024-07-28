@@ -1,7 +1,7 @@
 import { buildClassName } from '../utils/classname';
 import { Component, ComponentProps } from './Component';
 
-export class Loader extends Component<ComponentProps, SVGElement> {
+export class Loader extends Component<SVGElement, ComponentProps> {
   public createDom(): SVGElement {
     const el = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     el.viewBox.baseVal.width = 38;

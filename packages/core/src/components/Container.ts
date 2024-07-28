@@ -1,26 +1,8 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
-export class Container extends SimpleComponent {
+export class Container extends HtmlComponent {
   constructor(props?: ComponentProps) {
     super('div', 'container', undefined, undefined, props);
   }
 }
-
-// import { JSX } from '@builder.io/mitosis/jsx-runtime';
-// import { buildOpenLooksClassName } from '../utils/classname';
-
-// export interface ContainerProps {
-//   id?: string;
-//   c?: string;
-//   sx?: Record<string, any>;
-//   children?: any;
-// }
-
-// export default function Container(props: ContainerProps) {
-//   return (
-//     <div id={props.id} class={buildOpenLooksClassName('container', props.c)} style={props.sx as JSX.CSS | undefined}>
-//       {props.children}
-//     </div>
-//   );
-// }

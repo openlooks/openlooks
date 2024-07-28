@@ -1,6 +1,6 @@
-import { Link, SimpleComponent, Text } from '@openlooks/core';
+import { Link, HtmlComponent, Text } from '@openlooks/core';
 
-export class HomePage extends SimpleComponent {
+export class HomePage extends HtmlComponent {
   constructor() {
     super('div', 'home', undefined, undefined, {
       children: [

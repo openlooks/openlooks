@@ -3,13 +3,13 @@ import {
   Link,
   Notification,
   Paper,
-  SimpleComponent,
+  HtmlComponent,
   Stack,
   Text,
   Title,
 } from '@openlooks/core';
 
-export class NotificationPage extends SimpleComponent {
+export class NotificationPage extends HtmlComponent {
   constructor() {
     super('div', '', undefined, undefined, {
       children: [

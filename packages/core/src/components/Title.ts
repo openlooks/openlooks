@@ -6,7 +6,7 @@ export interface TitleProps extends ComponentProps {
   text: string;
 }
 
-export class Title extends Component<TitleProps, HTMLHeadingElement> {
+export class Title extends Component<HTMLHeadingElement, TitleProps> {
   constructor(public props: TitleProps) {
     super(props);
   }

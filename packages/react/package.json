@@ -2,34 +2,25 @@
   "name": "@openlooks/react",
   "version": "0.0.1",
   "type": "module",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
   "description": "OpenLooks React",
   "license": "MIT",
   "engines": {
     "node": ">=18"
   },
-  "files": [
-    "dist/index.mjs"
-  ],
-  "main": "dist/index.mjs",
   "scripts": {
-    "dev": "vite",
-    "build": "npm run build:site",
-    "build:site": "vite build",
-    "build:lib": "vite build --config vite.lib.config.ts",
-    "preview": "vite preview"
+    "build": "tsc"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@openlooks/core": "*",
+    "react": "^18.2.0"
   },
   "devDependencies": {
-    "@openlooks/mitosis": "*",
+    "@openlooks/core": "*",
     "@openlooks/styles": "*",
     "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "typescript": "^5.5.4",
-    "vite": "^5.3.5",
-    "vite-plugin-dts": "^3.9.1"
+    "typescript": "^5.5.4"
   }
 }

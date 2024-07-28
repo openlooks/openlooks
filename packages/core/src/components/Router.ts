@@ -6,7 +6,7 @@ export interface RouterProps extends ComponentProps {
   routes: Route[];
 }
 
-export class Router extends Component<RouterProps, HTMLDivElement> {
+export class Router extends Component<HTMLDivElement, RouterProps> {
   static instance: Router;
   eventTarget: EventTarget;
   currentUrl?: string;

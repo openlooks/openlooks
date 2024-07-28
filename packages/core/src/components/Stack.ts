@@ -1,7 +1,7 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
-export class Stack extends SimpleComponent<ComponentProps, HTMLDivElement> {
+export class Stack extends HtmlComponent {
   constructor(props?: ComponentProps) {
     super('div', 'stack', undefined, undefined, props);
   }

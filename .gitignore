@@ -15,13 +15,6 @@ packages/preact/src/site
 packages/preact/src/utils
 packages/preact/src/index.*
 
-packages/react/public
-packages/react/src/components
-packages/react/src/icons
-packages/react/src/site
-packages/react/src/utils
-packages/react/src/index.*
-
 packages/solid/public
 packages/solid/src/components
 packages/solid/src/icons

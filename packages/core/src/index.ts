@@ -20,7 +20,7 @@ export * from './components/Paper';
 export * from './components/Route';
 export * from './components/Router';
 export * from './components/ScrollArea';
-export * from './components/SimpleComponent';
+export * from './components/HtmlComponent';
 export * from './components/SizeInput';
 export * from './components/Slider';
 export * from './components/Stack';

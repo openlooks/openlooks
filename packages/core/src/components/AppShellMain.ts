@@ -1,7 +1,7 @@
 import { ComponentProps } from './Component';
-import { SimpleComponent } from './SimpleComponent';
+import { HtmlComponent } from './HtmlComponent';
 
-export class AppShellMain extends SimpleComponent {
+export class AppShellMain extends HtmlComponent {
   constructor(props?: ComponentProps) {
     super('main', 'main scrollarea', undefined, undefined, props);
   }

@@ -18,22 +18,36 @@ export type Size = 0 | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
+export type ComponentChild = Component | Node | string;
+
 export interface ComponentProps {
   id?: string;
   className?: string;
   style?: Partial<CSSStyleDeclaration>;
-  children?: (Component | Node)[];
+  children?: ComponentChild[];
 }
 
 export abstract class Component<
-  TProps extends ComponentProps = ComponentProps,
   TElement extends Node = Node,
+  TProps extends ComponentProps = ComponentProps,
 > {
   public element?: TElement;
 
   constructor(public props?: TProps) {}
 
   public abstract createDom(): TElement;
+
+  public destroyDom(): void {
+    // Children classes should override this method
+  }
+
+  public decorateDom(element: TElement): void {
+    this.element = element;
+  }
+
+  public undecorateDom(_element: TElement): void {
+    this.element = undefined;
+  }
 
   public getDom(): TElement {
     if (!this.element) {
