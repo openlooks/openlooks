@@ -21,8 +21,6 @@ export class NotificationPage extends HtmlComponent {
             new Title({ order: 1, text: 'Notification' }),
             new Text({ text: 'Notification' }),
             new Text({ text: 'This is a container test' }),
-
-            // <Paper c="p-xl withBorder" sx={{ background: 'var(--oc-gray-1)', cursor: 'pointer' }}>
             new Paper({
               className: 'p-xl withBorder',
               style: { background: 'var(--oc-gray-1)' },
@@ -52,17 +50,6 @@ export class NotificationPage extends HtmlComponent {
                       loading: true,
                       withCloseButton: false,
                     }),
-
-                    // <Notification title="Default notification">This is default notification with title and body</Notification>
-                    // <Notification slotIcon={<IconCheck size="1.1rem" />} c="color-teal" title="Teal notification">
-                    //   This is teal notification with icon
-                    // </Notification>
-                    // <Notification slotIcon={<IconX size="1.1rem" />} c="color-red" title="Teal notification">
-                    //   Bummer! Notification without title
-                    // </Notification>
-                    // <Notification title="Uploading data to the server" loading withCloseButton={false}>
-                    //   Please wait until data is uploaded, you cannot close this notification yet
-                    // </Notification>
                   ],
                 }),
               ],
