@@ -27,7 +27,7 @@ export class ActionIconPage extends HtmlComponent {
       color: 'blue',
       radius: 'sm',
       size: 'sm',
-      children: [new IconAdjustments({ size: 'sm' })],
+      children: [new IconAdjustments({ size: '80%' })],
     };
 
     const actionIcon = new ActionIcon(actionIconProps);
