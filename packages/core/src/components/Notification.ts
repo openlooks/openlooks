@@ -1,5 +1,4 @@
 import { buildClassName } from '../utils/classname';
-import { updateElement } from '../utils/dom';
 import { Color, Component, ComponentProps } from './Component';
 import { HtmlComponent } from './HtmlComponent';
 import { Loader } from './Loader';
@@ -26,21 +25,6 @@ export class Notification extends HtmlComponent<HTMLDivElement, NotificationProp
 
   public createDom(): HTMLDivElement {
     this.element = super.createDom();
-    // if (this.props.onClick) {
-    //   this.element.addEventListener('click', this.props.onClick);
-    // }
-
-    //   <Show when={props.slotIcon}>
-    //   <div class={buildOpenLooksClassName('icon', props.c, { color: 'blue' })}>{props.slotIcon}</div>
-    // </Show>
-    // <Show when={props.loading}>
-    //   <div class={buildOpenLooksClassName('loading', props.c, { color: 'blue' })}>
-    //     <Loader />
-    //   </div>
-    // </Show>
-    // <Show when={!props.slotIcon && !props.loading}>
-    //   <div class={buildOpenLooksClassName('bar', props.c, { color: 'blue' })} />
-    // </Show>
 
     if (this.props.icon) {
       const iconDiv = document.createElement('div');
@@ -122,21 +106,5 @@ export class Notification extends HtmlComponent<HTMLDivElement, NotificationProp
     // </Show>
 
     return this.element;
-  }
-
-  public updateProps(props: NotificationProps): void {
-    super.updateProps(props);
-    updateElement(
-      this.element as HTMLDivElement,
-      this.baseClassName,
-      classKeys,
-      defaultProps,
-      this.props
-    );
-  }
-
-  public render(): void {
-    // const el = this.element as HTMLDivElement;
-    // el.textContent = this.props.text;
   }
 }
