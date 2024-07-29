@@ -11,6 +11,7 @@ import {
   Router,
   ScrollArea,
 } from '@openlooks/core';
+import { ActionIconPage } from '../pages/ActionIconPage';
 import { AvatarPage } from '../pages/AvatarPage';
 import { ButtonPage } from '../pages/ButtonPage';
 import { CardPage } from '../pages/CardPage';
@@ -59,6 +60,7 @@ export class App extends Component<HTMLDivElement, ComponentProps> {
                 new Router({
                   routes: [
                     new Route({ path: '/', component: () => new HomePage() }),
+                    new Route({ path: '/action-icon', component: () => new ActionIconPage() }),
                     new Route({ path: '/avatar', component: () => new AvatarPage() }),
                     new Route({ path: '/button', component: () => new ButtonPage() }),
                     new Route({ path: '/card', component: () => new CardPage() }),
