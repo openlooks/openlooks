@@ -5,14 +5,13 @@
   "files": [
     "dist"
   ],
+  "main": "dist/main.mjs",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && esbuild ./src/main.ts --bundle --packages=external --format=esm --outfile=./dist/main.mjs",
     "compile": "node --experimental-specifier-resolution=node --loader ts-node/esm src/main.ts"
   },
   "devDependencies": {
-    "@types/prettier": "2.7.3",
-    "fast-glob": "3.3.1",
-    "prettier": "3.0.3",
-    "ts-node": "10.9.1"
+    "fast-glob": "3.3.3",
+    "ts-node": "10.9.2"
   }
 }

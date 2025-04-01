@@ -3,7 +3,7 @@ import Burger from '../components/Burger.lite';
 import Group from '../components/Group.lite';
 import Header from '../components/Header.lite';
 import RouterLink from '../components/RouterLink.lite';
-import IconBrandDiscordFilled from '../icons/IconBrandDiscordFilled.lite';
+import IconBrandDiscord from '../icons/IconBrandDiscord.lite';
 import IconBrandGithub from '../icons/IconBrandGithub.lite';
 import IconSun from '../icons/IconSun.lite';
 import { toggleTheme } from '../utils/theme';
@@ -37,7 +37,7 @@ export default function SiteHeader(props: SiteHeaderProps) {
             c="variant-outline radius-sm size-md color-gray"
             onClick={() => (window.location.href = 'https://discord.gg/')}
           >
-            <IconBrandDiscordFilled size="1rem" />
+            <IconBrandDiscord size="1rem" />
           </ActionIcon>
           <ActionIcon
             title="GitHub"

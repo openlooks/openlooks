@@ -10,15 +10,15 @@
     "build:mitosis": "mitosis build",
     "build:copyfiles": "node copyfiles.cjs",
     "dev": "node watch.cjs",
-    "compile": "node --experimental-specifier-resolution=node ../compiler/dist/main.js"
+    "compile": "node ../compiler/dist/main.mjs"
   },
   "devDependencies": {
-    "@builder.io/mitosis": "0.0.129",
-    "@builder.io/mitosis-cli": "0.0.88",
+    "@builder.io/mitosis": "0.8.0",
+    "@builder.io/mitosis-cli": "0.8.0",
     "@openlooks/compiler": "*",
     "@openlooks/styles": "*",
-    "@tabler/icons": "2.40.0",
-    "chokidar": "3.5.3",
-    "fast-glob": "3.3.1"
+    "@tabler/icons": "3.31.0",
+    "chokidar": "4.0.3",
+    "fast-glob": "3.3.3"
   }
 }

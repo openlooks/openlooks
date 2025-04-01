@@ -7,7 +7,7 @@ const iconList = [
   'alert-circle.svg',
   'arrows-left-right.svg',
   'at.svg',
-  'brand-discord-filled.svg',
+  'brand-discord.svg',
   'brand-github.svg',
   'check.svg',
   'database.svg',
@@ -26,7 +26,7 @@ const iconList = [
 ];
 
 async function main() {
-  const inputDir = '../../node_modules/@tabler/icons/icons/';
+  const inputDir = '../../node_modules/@tabler/icons/icons/outline/';
   const outputDir = './src/icons/';
 
   if (!existsSync(resolve(outputDir))) {

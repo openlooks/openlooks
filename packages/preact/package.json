@@ -17,13 +17,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.18.2"
+    "preact": "^10.26.4"
   },
   "devDependencies": {
     "@openlooks/mitosis": "*",
     "@openlooks/styles": "*",
-    "@preact/preset-vite": "^2.6.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0"
+    "@preact/preset-vite": "^2.10.1",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.4"
   }
 }

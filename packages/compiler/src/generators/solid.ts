@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { resolve } from 'path';
-import prettier from 'prettier';
 import ts from 'typescript';
 import {
   addImport,
@@ -47,9 +46,8 @@ export async function transformToSolid(
       );
 
       const transformerOutput = printer.printFile(output);
-      const prettierOutput = await prettier.format(transformerOutput, { filepath: targetFileName });
       ensureDirectoryExists(targetFileName);
-      fs.writeFileSync(targetFileName, prettierOutput, 'utf8');
+      fs.writeFileSync(targetFileName, transformerOutput, 'utf8');
     }
   }
 }

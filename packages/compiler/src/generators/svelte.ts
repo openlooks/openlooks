@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { basename, resolve } from 'path';
-import prettier from 'prettier';
 import ts, { Expression, JsxElement } from 'typescript';
 import {
   addImport,
@@ -125,9 +124,8 @@ if (p.startsWith('--')) {
       transformerOutput = printer.printFile(landmarks.sourceFile as ts.SourceFile);
     }
 
-    const prettierOutput = await prettier.format(transformerOutput, { filepath: targetFileName });
     ensureDirectoryExists(targetFileName);
-    fs.writeFileSync(targetFileName, prettierOutput, 'utf8');
+    fs.writeFileSync(targetFileName, transformerOutput, 'utf8');
   }
 }
 
