@@ -72,9 +72,9 @@ async function watch(inputFiles: string[], rootNames: string[]): Promise<void> {
 }
 
 async function transform(program: ts.Program, inputFiles: string[]): Promise<void> {
-  await transformToPreact(program, resolvedInputDir, inputFiles, '../preact');
+  // await transformToPreact(program, resolvedInputDir, inputFiles, '../preact');
   await transformToReact(program, resolvedInputDir, inputFiles, '../react');
-  await transformToSolid(program, resolvedInputDir, inputFiles, '../solid');
+  // await transformToSolid(program, resolvedInputDir, inputFiles, '../solid');
   // transformToSvelte(program, resolvedInputDir, inputFiles, '../svelte');
 }
 

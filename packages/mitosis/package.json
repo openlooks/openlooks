@@ -10,7 +10,7 @@
     "build:mitosis": "mitosis build",
     "build:copyfiles": "node copyfiles.cjs",
     "dev": "node watch.cjs",
-    "compile": "node ../compiler/dist/main.mjs"
+    "compile": "tsx ../compiler/src/main.ts"
   },
   "devDependencies": {
     "@builder.io/mitosis": "0.8.0",
