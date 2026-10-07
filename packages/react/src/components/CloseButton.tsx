@@ -1,13 +1,15 @@
+import type { JSX } from "react";
 import { convertSizeToIconSize } from "../utils/convert";
 import { ActionIcon } from "./ActionIcon";
-import type { Size } from "./BaseComponentProps";
+import type { BaseComponentProps, Size } from "./BaseComponentProps";
 import { CloseIcon } from "./CloseIcon";
-export interface CloseButtonProps {
+
+export interface CloseButtonProps extends BaseComponentProps {
   size?: Size;
   title?: string;
-  onClick?: (e: any) => void;
 }
-export function CloseButton(props: CloseButtonProps) {
+
+export function CloseButton(props: CloseButtonProps): JSX.Element {
   return (
     <ActionIcon
       onClick={(event) => props.onClick?.(event)}

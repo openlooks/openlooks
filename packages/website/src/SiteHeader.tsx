@@ -1,19 +1,23 @@
-import React from "react";
-import { ActionIcon } from "@openlooks/react";
-import { Burger } from "@openlooks/react";
-import { Group } from "@openlooks/react";
-import { Header } from "@openlooks/react";
-import { RouterLink } from "@openlooks/react";
-import { IconBrandDiscord } from "@openlooks/react";
-import { IconBrandGithub } from "@openlooks/react";
-import { IconSun } from "@openlooks/react";
-import { toggleTheme } from "@openlooks/react";
+import {
+  ActionIcon,
+  BaseComponentProps,
+  Burger,
+  Group,
+  Header,
+  IconBrandDiscord,
+  IconBrandGithub,
+  IconSun,
+  RouterLink,
+  toggleTheme,
+} from "@openlooks/react";
 import { Logo } from "./components/Logo";
 import "./SiteHeader.css";
-export interface SiteHeaderProps {
+
+export interface SiteHeaderProps extends BaseComponentProps {
   burgerOpen: boolean;
   onBurgerClick: () => void;
 }
+
 export function SiteHeader(props: SiteHeaderProps) {
   return (
     <Header>

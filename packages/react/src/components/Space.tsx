@@ -1,16 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface SpaceProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-}
-export function Space(props: SpaceProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface SpaceProps extends BaseComponentProps {}
+
+export function Space(props: SpaceProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("space", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     />
   );
 }

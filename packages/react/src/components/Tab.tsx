@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { useContext } from "react";
 import { TabsContext } from "./Tabs.context";
 
@@ -6,7 +7,7 @@ export interface TabProps {
   children: any;
 }
 
-export function Tab(props: TabProps) {
+export function Tab(props: TabProps): JSX.Element {
   const ctx = useContext(TabsContext);
   return (
     <button

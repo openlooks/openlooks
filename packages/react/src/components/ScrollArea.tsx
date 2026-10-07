@@ -1,12 +1,11 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface ScrollAreaProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function ScrollArea(props: ScrollAreaProps) {
+
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface ScrollAreaProps extends BaseComponentProps {}
+
+export function ScrollArea(props: ScrollAreaProps): JSX.Element {
   return (
     <div
       id={props.id}
@@ -14,7 +13,7 @@ export function ScrollArea(props: ScrollAreaProps) {
         variant: "hover",
         scrollbarSize: "md",
       })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { ActionIcon } from "@openlooks/react";
 import { Anchor } from "@openlooks/react";
 import { AppShell } from "@openlooks/react";
@@ -41,7 +40,7 @@ export function AppShellPage() {
           c="p-md"
           sx={{
             height: "3.75rem",
-            "border-bottom": "1px solid var(--oc-gray-2)",
+            borderBottom: "1px solid var(--oc-gray-2)",
           }}
         >
           <Anchor href="https://openlooks.dev">OpenLooks</Anchor>

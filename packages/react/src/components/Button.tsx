@@ -1,16 +1,14 @@
-import { CSSProperties, JSX } from "react";
+import type { JSX } from "react";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { buildOpenLooksClassName } from "../utils/classname";
 import { Loader } from "./Loader";
-export interface ButtonProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
+
+export interface ButtonProps extends BaseComponentProps {
   slotIcon?: JSX.Element;
   loading?: boolean;
-  onClick?: (e: any) => void;
-  children?: any;
 }
-export function Button(props: ButtonProps) {
+
+export function Button(props: ButtonProps): JSX.Element {
   return (
     <button
       id={props.id}
@@ -20,7 +18,7 @@ export function Button(props: ButtonProps) {
         size: "sm",
         radius: "sm",
       })}
-      style={props.sx as CSSProperties | undefined}
+      style={props.sx}
       onClick={(event) => props.onClick?.(event)}
       data-loading={props.loading}
       disabled={props.loading}

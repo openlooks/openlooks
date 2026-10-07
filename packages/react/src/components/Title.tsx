@@ -1,14 +1,12 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface TitleProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface TitleProps extends BaseComponentProps {
   order?: 1 | 2 | 3 | 4 | 5 | 6;
-  children?: any;
 }
-export function Title(props: TitleProps) {
-  // TODO: Figure out how to use Solid "Dynamic" in Mitosis
+
+export function Title(props: TitleProps): JSX.Element {
   return (
     <>
       <>
@@ -16,7 +14,7 @@ export function Title(props: TitleProps) {
           <h1
             id={props.id}
             className={buildOpenLooksClassName("title", props.c)}
-            style={props.sx as React.CSSProperties | undefined}
+            style={props.sx}
           >
             {props.children}
           </h1>
@@ -27,7 +25,7 @@ export function Title(props: TitleProps) {
           <h2
             id={props.id}
             className={buildOpenLooksClassName("title", props.c)}
-            style={props.sx as React.CSSProperties | undefined}
+            style={props.sx}
           >
             {props.children}
           </h2>
@@ -38,7 +36,7 @@ export function Title(props: TitleProps) {
           <h3
             id={props.id}
             className={buildOpenLooksClassName("title", props.c)}
-            style={props.sx as React.CSSProperties | undefined}
+            style={props.sx}
           >
             {props.children}
           </h3>
@@ -49,7 +47,7 @@ export function Title(props: TitleProps) {
           <h4
             id={props.id}
             className={buildOpenLooksClassName("title", props.c)}
-            style={props.sx as React.CSSProperties | undefined}
+            style={props.sx}
           >
             {props.children}
           </h4>
@@ -60,7 +58,7 @@ export function Title(props: TitleProps) {
           <h5
             id={props.id}
             className={buildOpenLooksClassName("title", props.c)}
-            style={props.sx as React.CSSProperties | undefined}
+            style={props.sx}
           >
             {props.children}
           </h5>
@@ -71,7 +69,7 @@ export function Title(props: TitleProps) {
           <h6
             id={props.id}
             className={buildOpenLooksClassName("title", props.c)}
-            style={props.sx as React.CSSProperties | undefined}
+            style={props.sx}
           >
             {props.children}
           </h6>

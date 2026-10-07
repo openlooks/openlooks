@@ -1,21 +1,25 @@
-import React from "react";
 import type { Size } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { NativeSelect } from "@openlooks/react";
-import { ScrollArea } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Text } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  NativeSelect,
+  ScrollArea,
+  Stack,
+  Text,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function ScrollAreaPage() {
-  const [variant, setVariant] = React.useState(
+import { SizeInput } from "../components/SizeInput";
+
+export function ScrollAreaPage(): JSX.Element {
+  const [variant, setVariant] = useState(
     "hover" as "hover" | "never" | "always",
   );
-  const [scrollbarSize, setScrollbarSize] = React.useState("md" as Size);
+  const [scrollbarSize, setScrollbarSize] = useState("md" as Size);
   return (
     <DocPage title="ScrollArea" description="Area with custom scrollbars">
       <Title order={2}>Usage</Title>

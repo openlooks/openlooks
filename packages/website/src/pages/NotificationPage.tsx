@@ -1,13 +1,16 @@
-import React from "react";
-import { Notification } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Text } from "@openlooks/react";
-import { Title } from "@openlooks/react";
-import { IconCheck } from "@openlooks/react";
-import { IconX } from "@openlooks/react";
+import {
+  IconCheck,
+  IconX,
+  Notification,
+  Paper,
+  Text,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
 import { DocPage } from "../components/DocPage";
 import { Prism } from "../components/Prism";
-export function NotificationPage() {
+
+export function NotificationPage(): JSX.Element {
   return (
     <DocPage
       title="Notification"
@@ -19,7 +22,7 @@ export function NotificationPage() {
         c="p-xl withBorder"
         sx={{ background: "var(--oc-gray-1)", cursor: "pointer" }}
       >
-        <div style={{ margin: "auto", "max-width": "25rem" }}>
+        <div style={{ margin: "auto", maxWidth: "25rem" }}>
           <Notification title="Default notification">
             This is default notification with title and body
           </Notification>

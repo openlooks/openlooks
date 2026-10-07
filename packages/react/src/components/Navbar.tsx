@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface NavbarProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children: any;
-}
-export function Navbar(props: NavbarProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface NavbarProps extends BaseComponentProps {}
+
+export function Navbar(props: NavbarProps): JSX.Element {
   return (
     <nav
       id={props.id}
       className={buildOpenLooksClassName("navbar scrollarea", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </nav>

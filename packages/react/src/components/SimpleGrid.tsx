@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface SimpleGridProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function SimpleGrid(props: SimpleGridProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface SimpleGridProps extends BaseComponentProps {}
+
+export function SimpleGrid(props: SimpleGridProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("simplegrid", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

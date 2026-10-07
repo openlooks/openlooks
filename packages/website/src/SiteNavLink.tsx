@@ -1,15 +1,18 @@
-import React from "react";
-import { RouterContext } from "@openlooks/react";
-import { buildOpenLooksClassName } from "@openlooks/react";
-export interface SiteNavLinkProps {
-  id?: string;
-  c?: string;
-  children?: any;
+import {
+  BaseComponentProps,
+  buildOpenLooksClassName,
+  RouterContext,
+} from "@openlooks/react";
+import type { JSX, MouseEvent } from "react";
+import { useContext } from "react";
+
+export interface SiteNavLinkProps extends BaseComponentProps {
   href: string;
-  onClick: (event: React.MouseEvent) => void;
+  onClick: (event: MouseEvent) => void;
 }
-export function SiteNavLink(props: SiteNavLinkProps) {
-  const router = React.useContext(RouterContext);
+
+export function SiteNavLink(props: SiteNavLinkProps): JSX.Element {
+  const router = useContext(RouterContext);
   return (
     <a
       id={props.id}

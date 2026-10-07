@@ -1,14 +1,13 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface BurgerProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface BurgerProps extends BaseComponentProps {
   opened?: boolean;
   label?: string;
-  onClick?: (e: any) => void;
 }
-export function Burger(props: BurgerProps) {
+
+export function Burger(props: BurgerProps): JSX.Element {
   return (
     <button
       id={props.id}
@@ -16,7 +15,7 @@ export function Burger(props: BurgerProps) {
         "unstyled-button burger-button",
         props.c,
       )}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
       aria-label={props.label}
       onClick={(event) => {
         props.onClick?.(event);

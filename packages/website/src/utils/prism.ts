@@ -1,4 +1,3 @@
-import React from "react";
 export interface PrismLike {
     manual: boolean;
     languages: Record<string, any>;

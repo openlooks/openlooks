@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface CenterProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Center(props: CenterProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface CenterProps extends BaseComponentProps {}
+
+export function Center(props: CenterProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("center", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

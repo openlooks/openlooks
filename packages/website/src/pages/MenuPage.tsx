@@ -1,24 +1,28 @@
-import React from "react";
-import { Button } from "@openlooks/react";
-import { Center } from "@openlooks/react";
-import { Menu } from "@openlooks/react";
-import { MenuDivider } from "@openlooks/react";
-import { MenuItem } from "@openlooks/react";
-import { MenuLabel } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Title } from "@openlooks/react";
-import { IconArrowsLeftRight } from "@openlooks/react";
-import { IconMessageCircle } from "@openlooks/react";
-import { IconPhoto } from "@openlooks/react";
-import { IconSearch } from "@openlooks/react";
-import { IconSettings } from "@openlooks/react";
-import { IconTrash } from "@openlooks/react";
+import {
+  Button,
+  Center,
+  IconArrowsLeftRight,
+  IconMessageCircle,
+  IconPhoto,
+  IconSearch,
+  IconSettings,
+  IconTrash,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuLabel,
+  Paper,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useEffect, useState } from "react";
 import { DocPage } from "../components/DocPage";
-export function MenuPage() {
-  const [opacity, setOpacity] = React.useState("0");
-  const [top, setTop] = React.useState("0");
-  const [left, setLeft] = React.useState("0");
-  React.useEffect(() => {
+
+export function MenuPage(): JSX.Element {
+  const [opacity, setOpacity] = useState("0");
+  const [top, setTop] = useState("0");
+  const [left, setLeft] = useState("0");
+  useEffect(() => {
     document.addEventListener("click", (event) => {
       if ((event.target as HTMLElement | undefined)?.tagName !== "BUTTON") {
         setOpacity("0");
@@ -37,9 +41,10 @@ export function MenuPage() {
             onClick={(event) => {
               event.preventDefault();
               if (opacity === "0") {
-                const buttonBounds = event.target.getBoundingClientRect();
-                const parentBounds =
-                  event.target.parentElement.getBoundingClientRect();
+                const target = event.target as HTMLButtonElement;
+                const parent = target.parentElement as HTMLElement;
+                const buttonBounds = target.getBoundingClientRect();
+                const parentBounds = parent.getBoundingClientRect();
                 setTop(`${buttonBounds.bottom - parentBounds.top + 8}px`);
                 setLeft(`${buttonBounds.left - parentBounds.left}px`);
                 setOpacity("1");

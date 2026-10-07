@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface AppShellBodyProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function AppShellBody(props: AppShellBodyProps) {
+import { BaseComponentProps } from "./BaseComponentProps";
+
+export interface AppShellBodyProps extends BaseComponentProps {}
+
+export function AppShellBody(props: AppShellBodyProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("body", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

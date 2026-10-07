@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface HeaderProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Header(props: HeaderProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface HeaderProps extends BaseComponentProps {}
+
+export function Header(props: HeaderProps): JSX.Element {
   return (
     <header
       id={props.id}
       className={buildOpenLooksClassName("header", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </header>

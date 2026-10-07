@@ -1,15 +1,18 @@
-import React from "react";
-import { Button } from "@openlooks/react";
-import { Center } from "@openlooks/react";
-import { Dialog } from "@openlooks/react";
-import { Group } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Text } from "@openlooks/react";
-import { TextInput } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Button,
+  Center,
+  Dialog,
+  Group,
+  Paper,
+  Text,
+  TextInput,
+  Title,
+} from "@openlooks/react";
+import { JSX, useState } from "react";
 import { DocPage } from "../components/DocPage";
-export function DialogPage() {
-  const [opacity, setOpacity] = React.useState("0");
+
+export function DialogPage(): JSX.Element {
+  const [opacity, setOpacity] = useState("0");
   return (
     <DocPage
       title="Dialog"

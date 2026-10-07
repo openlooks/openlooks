@@ -1,12 +1,10 @@
-import React from "react";
-import { Burger } from "@openlooks/react";
-import { Center } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Text } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import { Burger, Center, Paper, Text, Title } from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-export function BurgerPage() {
-  const [opened, setOpened] = React.useState(false);
+
+export function BurgerPage(): JSX.Element {
+  const [opened, setOpened] = useState(false);
   return (
     <DocPage title="Burger" description="Open/close navigation button">
       <Title order={2}>Usage</Title>

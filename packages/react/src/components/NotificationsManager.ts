@@ -1,10 +1,11 @@
-import React from "react";
 import { randomId } from '../utils/use-id';
 import type { NotificationProps } from "./Notification";
+
 const manager = {
     notifications: [] as NotificationProps[],
     listeners: [] as ((n: NotificationProps[]) => void)[],
 };
+
 export function showNotification(n: NotificationProps): void {
     n.id = n.id || randomId();
     manager.notifications = [...manager.notifications, n];
@@ -13,6 +14,7 @@ export function showNotification(n: NotificationProps): void {
         window.setTimeout(() => hideNotification(n.id as string), n.autoClose || 3000);
     }
 }
+
 export function hideNotification(id: string): void {
     const n = manager.notifications.find((n) => n.id === id);
     if (n) {
@@ -23,12 +25,14 @@ export function hideNotification(id: string): void {
         }
     }
 }
+
 export function subscribeNotifications(listener: (n: NotificationProps[]) => void): () => void {
     manager.listeners.push(listener);
     return () => {
         manager.listeners = manager.listeners.filter((l) => l !== listener);
     };
 }
+
 function emitNotifications(): void {
     manager.listeners.forEach((l) => l(manager.notifications));
 }

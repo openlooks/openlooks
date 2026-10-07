@@ -1,14 +1,13 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface AlertProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
+import { BaseComponentProps } from "./BaseComponentProps";
+
+export interface AlertProps extends BaseComponentProps {
   slotIcon?: any;
   title: string;
-  children?: any;
 }
-export function Alert(props: AlertProps) {
+
+export function Alert(props: AlertProps): JSX.Element {
   return (
     <div
       id={props.id}
@@ -17,7 +16,7 @@ export function Alert(props: AlertProps) {
         color: "blue",
         radius: "sm",
       })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       <div className="alert-icon">{props.slotIcon}</div>
       <div className="alert-body">

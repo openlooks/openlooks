@@ -1,8 +1,8 @@
-import React from "react";
-import { Text } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import { Text, Title } from "@openlooks/react";
+import type { JSX } from "react";
 import { DocPage } from "../components/DocPage";
-export function AccordionPage() {
+
+export function AccordionPage(): JSX.Element {
   return (
     <DocPage
       title="Accordion"

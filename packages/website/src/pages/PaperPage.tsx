@@ -1,19 +1,24 @@
-import React from "react";
 import type { Size } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Text } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Checkbox,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  Paper,
+  Stack,
+  Text,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { Prism } from "../components/Prism";
-export function PaperPage() {
-  const [shadow, setShadow] = React.useState("xs" as Size);
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [padding, setPadding] = React.useState("md" as Size);
-  const [withBorder, setWithBorder] = React.useState(false);
+import { SizeInput } from "../components/SizeInput";
+
+export function PaperPage(): JSX.Element {
+  const [shadow, setShadow] = useState("xs" as Size);
+  const [radius, setRadius] = useState("sm" as Size);
+  const [padding, setPadding] = useState("md" as Size);
+  const [withBorder, setWithBorder] = useState(false);
   return (
     <DocPage
       title="Paper"
@@ -60,6 +65,14 @@ export function PaperPage() {
               defaultValue={padding}
               onChange={(event) => {
                 setPadding(event.target.value);
+              }}
+            />
+            <Checkbox
+              id="withBorder"
+              label="With Border"
+              defaultChecked={withBorder}
+              onChange={(event) => {
+                setWithBorder(event.target.checked);
               }}
             />
           </Stack>

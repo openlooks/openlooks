@@ -1,10 +1,10 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { InputWrapper } from "./InputWrapper";
-export interface TextareaProps {
+
+export interface TextareaProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
@@ -13,7 +13,8 @@ export interface TextareaProps {
   placeholder?: string;
   onChange?: (e: any) => void;
 }
-export function Textarea(props: TextareaProps) {
+
+export function Textarea(props: TextareaProps): JSX.Element {
   return (
     <InputWrapper
       id={props.id}
@@ -25,7 +26,7 @@ export function Textarea(props: TextareaProps) {
       <textarea
         id={props.id}
         className={buildOpenLooksClassName("textarea", props.c)}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
         value={props.defaultValue || ""}
         placeholder={props.placeholder}
         aria-invalid={!!props.error}

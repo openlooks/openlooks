@@ -1,29 +1,33 @@
-import React from "react";
 import type { Size } from "@openlooks/react";
-import { Button } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { Flex } from "@openlooks/react";
-import { NativeSelect } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Button,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  Flex,
+  NativeSelect,
+  Stack,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function FlexPage() {
-  const [gap, setGap] = React.useState("md" as Size);
-  const [justify, setJustify] = React.useState(
+import { SizeInput } from "../components/SizeInput";
+
+export function FlexPage(): JSX.Element {
+  const [gap, setGap] = useState("md" as Size);
+  const [justify, setJustify] = useState(
     "flex-start" as
       "center" | "flex-start" | "flex-end" | "space-between" | "space-around",
   );
-  const [align, setAlign] = React.useState(
+  const [align, setAlign] = useState(
     "flex-start" as "stretch" | "center" | "flex-start" | "flex-end",
   );
-  const [direction, setDirection] = React.useState(
+  const [direction, setDirection] = useState(
     "row" as "row" | "column" | "row-reverse" | "column-reverse",
   );
-  const [wrap, setWrap] = React.useState(
+  const [wrap, setWrap] = useState(
     "wrap" as "wrap" | "nowrap" | "wrap-reverse",
   );
   return (

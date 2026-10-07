@@ -1,4 +1,3 @@
-import React from "react";
 /**
  * Builds a class name based on the base name and the props.
  * @param baseName The base component name.

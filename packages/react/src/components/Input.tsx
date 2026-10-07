@@ -1,9 +1,8 @@
-import React from "react";
+import type { JSX } from "react";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface InputProps {
-  id: string;
-  c?: string;
-  sx?: Record<string, any>;
+
+export interface InputProps extends BaseComponentProps {
   type: string;
   defaultValue?: string;
   placeholder?: string;
@@ -12,7 +11,8 @@ export interface InputProps {
   slotRightSection?: JSX.Element;
   onChange?: (e: any) => void;
 }
-export function Input(props: InputProps) {
+
+export function Input(props: InputProps): JSX.Element {
   return (
     <div style={{ position: "relative" }}>
       <>
@@ -21,7 +21,7 @@ export function Input(props: InputProps) {
       <input
         id={props.id}
         className={buildOpenLooksClassName("textinput", props.c)}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
         type={props.type}
         defaultValue={props.defaultValue || ""}
         placeholder={props.placeholder}

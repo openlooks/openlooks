@@ -1,4 +1,3 @@
-import React from "react";
 import { Affix } from "@openlooks/react";
 import { Button } from "@openlooks/react";
 import { Center } from "@openlooks/react";

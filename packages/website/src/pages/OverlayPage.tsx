@@ -1,15 +1,19 @@
-import React from "react";
-import { Button } from "@openlooks/react";
-import { Center } from "@openlooks/react";
-import { Image } from "@openlooks/react";
-import { Overlay } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Text } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Button,
+  Center,
+  Image,
+  Overlay,
+  Paper,
+  Text,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
 import { Prism } from "../components/Prism";
-export function OverlayPage() {
-  const [visible, setVisible] = React.useState(false);
+
+export function OverlayPage(): JSX.Element {
+  const [visible, setVisible] = useState(false);
   return (
     <DocPage
       title="Overlay"

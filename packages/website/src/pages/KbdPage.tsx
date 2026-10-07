@@ -1,4 +1,3 @@
-import React from "react";
 import { Text } from "@openlooks/react";
 import { Title } from "@openlooks/react";
 import { DocPage } from "../components/DocPage";

@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface CardSectionProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function CardSection(props: CardSectionProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface CardSectionProps extends BaseComponentProps {}
+
+export function CardSection(props: CardSectionProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("card-section", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

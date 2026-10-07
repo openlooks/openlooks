@@ -6,7 +6,9 @@ export interface TabsProps {
   children?: any;
 }
 
-export function Tabs(props: TabsProps) {
+import type { JSX } from "react";
+
+export function Tabs(props: TabsProps): JSX.Element {
   const [currentValue, setCurrentValue] = useState(props.defaultValue || "");
   return (
     <TabsContext.Provider

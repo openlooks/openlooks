@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface TabLabelProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function TabLabel(props: TabLabelProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface TabLabelProps extends BaseComponentProps {}
+
+export function TabLabel(props: TabLabelProps): JSX.Element {
   return (
     <span
       id={props.id}
       className={buildOpenLooksClassName("tab-label", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </span>

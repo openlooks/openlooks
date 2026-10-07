@@ -1,11 +1,11 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface LoaderProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-}
-export function Loader(props: LoaderProps) {
+
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface LoaderProps extends BaseComponentProps {}
+
+export function Loader(props: LoaderProps): JSX.Element {
   return (
     <svg
       id={props.id}
@@ -14,11 +14,11 @@ export function Loader(props: LoaderProps) {
         color: "blue",
         size: "md",
       })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
-      <g fill="none" fill-rule="evenodd">
-        <g transform="translate(2.5 2.5)" stroke-width="5">
-          <circle stroke-opacity=".5" cx="16" cy="16" r="16" />
+      <g fill="none" fillRule="evenodd">
+        <g transform="translate(2.5 2.5)" strokeWidth={5}>
+          <circle strokeOpacity=".5" cx="16" cy="16" r="16" />
           <path d="M32 16c0-9.94-8.06-16-16-16">
             <animateTransform
               attributeName="transform"

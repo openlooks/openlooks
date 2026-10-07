@@ -45,7 +45,7 @@ export function HomePage() {
           Uses{` `}
           <Anchor href="https://github.com/BuilderIO/mitosis">Mitosis</Anchor>
           {` `}to support popular frameworks such as{` `}
-          <Anchor href="https://react.dev/">React</Anchor>,{` `}
+          <Anchor href="https://dev/">React</Anchor>,{` `}
           <Anchor href="https://angular.io/">Angular</Anchor>,{` `}
           <Anchor href="https://vuejs.org/">Vue</Anchor>,{` `}
           <Anchor href="https://svelte.dev/">Svelte</Anchor>,{` `}
@@ -89,15 +89,13 @@ export function HomePage() {
         <ul>
           <li>
             Preact:{" "}
-            <Anchor href="https://preact.openlooks.dev">
-              https://preact.openlooks.dev
+            <Anchor href="https://popenlooks.dev">
+              https://popenlooks.dev
             </Anchor>
           </li>
           <li>
             React:{" "}
-            <Anchor href="https://react.openlooks.dev">
-              https://react.openlooks.dev
-            </Anchor>
+            <Anchor href="https://openlooks.dev">https://openlooks.dev</Anchor>
           </li>
           <li>
             Solid:{" "}

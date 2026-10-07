@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface BoxProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Box(props: BoxProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface BoxProps extends BaseComponentProps {}
+
+export function Box(props: BoxProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

@@ -1,17 +1,20 @@
-import React from "react";
-import { Badge } from "@openlooks/react";
-import { Button } from "@openlooks/react";
-import { Card } from "@openlooks/react";
-import { CardSection } from "@openlooks/react";
-import { Center } from "@openlooks/react";
-import { Group } from "@openlooks/react";
-import { Image } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Text } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Badge,
+  Button,
+  Card,
+  CardSection,
+  Center,
+  Group,
+  Image,
+  Paper,
+  Text,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
 import { DocPage } from "../components/DocPage";
 import { Prism } from "../components/Prism";
-export function CardPage() {
+
+export function CardPage(): JSX.Element {
   return (
     <DocPage
       title="Card"
@@ -24,7 +27,7 @@ export function CardPage() {
       </Text>
       <Paper c="p-xl mt-xl withBorder">
         <Center>
-          <div style={{ "max-width": "21.25rem" }}>
+          <div style={{ maxWidth: "21.25rem" }}>
             <Card c="shadow-sm p-lg radius-md withBorder">
               <CardSection>
                 <Image

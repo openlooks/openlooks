@@ -1,22 +1,24 @@
-import React from "react";
+import type { ChangeEvent, JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { InputWrapper } from "./InputWrapper";
-export interface CheckboxProps {
+
+export interface CheckboxProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
   required?: boolean;
   defaultChecked?: boolean;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
-export function Checkbox(props: CheckboxProps) {
+
+export function Checkbox(props: CheckboxProps): JSX.Element {
   return (
     <>
       <div
         className={buildOpenLooksClassName("checkbox", props.c)}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
       >
         <div>
           <input
@@ -26,7 +28,8 @@ export function Checkbox(props: CheckboxProps) {
             })}
             type="checkbox"
             defaultValue="on"
-            checked={props.defaultChecked}
+            defaultChecked={props.defaultChecked}
+            onChange={props.onChange}
           />
         </div>
         <InputWrapper

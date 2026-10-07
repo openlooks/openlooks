@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface ConfiguratorProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Configurator(props: ConfiguratorProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface ConfiguratorProps extends BaseComponentProps {}
+
+export function Configurator(props: ConfiguratorProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("configurator", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

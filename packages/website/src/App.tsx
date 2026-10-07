@@ -1,12 +1,15 @@
-import React from "react";
-import { AppShell } from "@openlooks/react";
-import { AppShellBody } from "@openlooks/react";
-import { AppShellMain } from "@openlooks/react";
-import { Notifications } from "@openlooks/react";
-import { Route } from "@openlooks/react";
-import { Router } from "@openlooks/react";
+import {
+  AppShell,
+  AppShellBody,
+  AppShellMain,
+  Notifications,
+  Route,
+  Router,
+} from "@openlooks/react";
+import { useState } from "react";
 import { SiteHeader } from "./SiteHeader";
 import { SiteNav } from "./SiteNav";
+import "./index.css";
 import { AccordionPage } from "./pages/AccordionPage";
 import { ActionIconPage } from "./pages/ActionIconPage";
 import { AffixPage } from "./pages/AffixPage";
@@ -100,9 +103,9 @@ import { TransferListPage } from "./pages/TransferListPage";
 import { TransitionPage } from "./pages/TransitionPage";
 import { TypographyStylesProviderPage } from "./pages/TypographyStylesProviderPage";
 import { UnstyledButtonPage } from "./pages/UnstyledButtonPage";
-import "./index.css";
+
 export function App() {
-  const [navOpen, setNavOpen] = React.useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   return (
     <Router>
       <AppShell>

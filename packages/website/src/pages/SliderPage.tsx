@@ -1,18 +1,22 @@
-import React from "react";
 import type { Color, Size } from "@openlooks/react";
-import { ColorPicker } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { Slider } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  ColorPicker,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  Slider,
+  Stack,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { Prism } from "../components/Prism";
-export function SliderPage() {
-  const [color, setColor] = React.useState("blue" as Color);
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [size, setSize] = React.useState("sm" as Size);
+import { SizeInput } from "../components/SizeInput";
+
+export function SliderPage(): JSX.Element {
+  const [color, setColor] = useState("blue" as Color);
+  const [radius, setRadius] = useState("sm" as Size);
+  const [size, setSize] = useState("sm" as Size);
   return (
     <DocPage
       title="Slider"

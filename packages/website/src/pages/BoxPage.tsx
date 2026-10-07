@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@openlooks/react";
 import { Paper } from "@openlooks/react";
 import { Text } from "@openlooks/react";

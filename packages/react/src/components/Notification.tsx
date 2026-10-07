@@ -1,29 +1,28 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { Button } from "./Button";
 import { Loader } from "./Loader";
 import { hideNotification } from "./NotificationsManager";
 import { Text } from "./Text";
-export interface NotificationProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
+
+export interface NotificationProps extends BaseComponentProps {
   slotIcon?: JSX.Element;
   loading?: boolean;
   title: string;
   message?: string;
-  children?: JSX.Element;
   autoClose?: number | false;
   withCloseButton?: boolean;
   onClose?: () => void;
 }
-export function Notification(props: NotificationProps) {
+
+export function Notification(props: NotificationProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("notification", undefined)}
-      style={props.sx as React.CSSProperties | undefined}
-      data-autoClose={props.autoClose}
+      style={props.sx}
+      data-autoclose={props.autoClose}
     >
       <>
         {props.slotIcon && (

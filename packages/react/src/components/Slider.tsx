@@ -1,14 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { InputWrapper } from "./InputWrapper";
+
 export interface SliderMark {
   value: number;
   label: string;
 }
-export interface SliderProps {
+
+export interface SliderProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
@@ -20,7 +21,8 @@ export interface SliderProps {
   defaultValue?: string;
   onChange?: (e: any) => void;
 }
-export function Slider(props: SliderProps) {
+
+export function Slider(props: SliderProps): JSX.Element {
   return (
     <InputWrapper
       id={props.id}
@@ -34,7 +36,7 @@ export function Slider(props: SliderProps) {
         id={props.id}
         list={props.id + "-marks"}
         className={buildOpenLooksClassName("slider", props.c)}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
         min={props.min}
         max={props.max}
         step={props.step}

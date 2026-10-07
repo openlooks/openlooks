@@ -1,4 +1,3 @@
-import React from "react";
 import type { Size } from "@openlooks/react";
 import { Button } from "@openlooks/react";
 import { Configurator } from "@openlooks/react";
@@ -12,12 +11,15 @@ import { DocPage } from "../components/DocPage";
 import { Switch } from "@openlooks/react";
 import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function GroupPage() {
-  const [position, setPosition] = React.useState(
+import { useState } from "react";
+import type { JSX } from "react";
+
+export function GroupPage(): JSX.Element {
+  const [position, setPosition] = useState(
     "left" as "left" | "center" | "right" | "apart",
   );
-  const [spacing, setSpacing] = React.useState("md" as Size);
-  const [grow, setGrow] = React.useState(false);
+  const [spacing, setSpacing] = useState("md" as Size);
+  const [grow, setGrow] = useState(false);
   return (
     <DocPage
       title="Group"

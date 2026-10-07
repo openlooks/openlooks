@@ -1,12 +1,10 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface MenuProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Menu(props: MenuProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface MenuProps extends BaseComponentProps {}
+
+export function Menu(props: MenuProps): JSX.Element {
   return (
     <div
       id={props.id}
@@ -15,7 +13,7 @@ export function Menu(props: MenuProps) {
         radius: "sm",
         withBorder: true,
       })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

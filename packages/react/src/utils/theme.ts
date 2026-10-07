@@ -1,4 +1,3 @@
-import React from "react";
 // Supporting system preference and manual selection
 // https://tailwindcss.com/docs/dark-mode#supporting-system-preference-and-manual-selection
 const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

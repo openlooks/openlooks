@@ -9,15 +9,15 @@ import {
   Text,
   Title,
 } from "@openlooks/react";
-import React from "react";
+import { JSX, useState } from "react";
 import { DocPage } from "../components/DocPage";
 import { Prism } from "../components/Prism";
 import { SizeInput } from "../components/SizeInput";
 
-export function SimpleGridPage() {
-  const [cols, setCols] = React.useState(3);
-  const [spacing, setSpacing] = React.useState("md" as Size);
-  const [verticalSpacing, setVerticalSpacing] = React.useState("md" as Size);
+export function SimpleGridPage(): JSX.Element {
+  const [cols, setCols] = useState(3);
+  const [spacing, setSpacing] = useState("md" as Size);
+  const [verticalSpacing, setVerticalSpacing] = useState("md" as Size);
   return (
     <DocPage
       title="SimpleGrid"

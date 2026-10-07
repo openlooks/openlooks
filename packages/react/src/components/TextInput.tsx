@@ -1,10 +1,10 @@
-import React from "react";
 import { Input } from "./Input";
 import { InputWrapper } from "./InputWrapper";
-export interface TextInputProps {
+import type { BaseComponentProps } from "./BaseComponentProps";
+import type { JSX } from "react";
+
+export interface TextInputProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
@@ -15,7 +15,8 @@ export interface TextInputProps {
   slotRightSection?: JSX.Element;
   onChange?: (e: any) => void;
 }
-export function TextInput(props: TextInputProps) {
+
+export function TextInput(props: TextInputProps): JSX.Element {
   return (
     <InputWrapper
       id={props.id}

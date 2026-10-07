@@ -1,22 +1,26 @@
-import React from "react";
-import { ActionIcon } from "@openlooks/react";
 import type { Color, Size } from "@openlooks/react";
-import { ColorPicker } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { NativeSelect } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Title } from "@openlooks/react";
-import { IconAdjustments } from "@openlooks/react";
+import {
+  ActionIcon,
+  ColorPicker,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  IconAdjustments,
+  NativeSelect,
+  Stack,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function ActionIconPage() {
-  const [color, setColor] = React.useState("gray" as Color);
-  const [size, setSize] = React.useState("md" as Size);
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [variant, setVariant] = React.useState(
+import { SizeInput } from "../components/SizeInput";
+
+export function ActionIconPage(): JSX.Element {
+  const [color, setColor] = useState("gray" as Color);
+  const [size, setSize] = useState("md" as Size);
+  const [radius, setRadius] = useState("sm" as Size);
+  const [variant, setVariant] = useState(
     "subtle" as "filled" | "light" | "outline" | "subtle",
   );
   return (

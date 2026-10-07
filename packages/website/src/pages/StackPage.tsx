@@ -1,24 +1,28 @@
-import React from "react";
 import type { Size } from "@openlooks/react";
-import { Button } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { NativeSelect } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Button,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  NativeSelect,
+  Stack,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function StackPage() {
-  const [align, setAlign] = React.useState(
+import { SizeInput } from "../components/SizeInput";
+
+export function StackPage(): JSX.Element {
+  const [align, setAlign] = useState(
     "stretch" as "stretch" | "center" | "flex-start" | "flex-end",
   );
-  const [justify, setJustify] = React.useState(
+  const [justify, setJustify] = useState(
     "center" as
       "center" | "flex-start" | "flex-end" | "space-between" | "space-around",
   );
-  const [spacing, setSpacing] = React.useState("md" as Size);
+  const [spacing, setSpacing] = useState("md" as Size);
   return (
     <DocPage
       title="Stack"

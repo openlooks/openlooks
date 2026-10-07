@@ -1,21 +1,18 @@
-import React from "react";
+import type { JSX } from "react";
+import { BaseComponentProps } from "..";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface AnchorProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
+
+export interface AnchorProps extends BaseComponentProps {
   href: string;
   target?: string;
   label?: string;
-  onClick?: (event: React.MouseEvent) => void;
 }
-export function Anchor(props: AnchorProps) {
+export function Anchor(props: AnchorProps): JSX.Element {
   return (
     <a
       id={props.id}
       className={buildOpenLooksClassName("anchor text", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
       href={props.href}
       target={props.target}
       aria-label={props.label}

@@ -1,20 +1,20 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface InputWrapperProps {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface InputWrapperProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
   required?: boolean;
-  children?: any;
 }
-export function InputWrapper(props: InputWrapperProps) {
+
+export function InputWrapper(props: InputWrapperProps): JSX.Element {
   return (
     <div
       className={buildOpenLooksClassName("inputwrapper", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       <>
         {props.label && (

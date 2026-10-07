@@ -1,13 +1,11 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
 import { Affix } from "./Affix";
-export interface DialogProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Dialog(props: DialogProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface DialogProps extends BaseComponentProps {}
+
+export function Dialog(props: DialogProps): JSX.Element {
   return (
     <Affix>
       <div
@@ -17,7 +15,7 @@ export function Dialog(props: DialogProps) {
           radius: "sm",
           withBorder: true,
         })}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
       >
         {props.children}
       </div>

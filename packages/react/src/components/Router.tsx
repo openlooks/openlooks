@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { useEffect, useState } from "react";
 import { scrollToTop } from "../utils/scrolltop";
 import { RouterContext } from "./Router.context";
@@ -6,11 +7,12 @@ export interface RouterProps {
   children?: any;
 }
 
-export function Router(props: RouterProps) {
+export function Router(props: RouterProps): JSX.Element {
   const [currentUrl, setCurrentUrl] = useState(window.location.pathname);
   useEffect(() => {
     // Listen for URL changes
     window.addEventListener("popstate", () => {
+      console.log("CODY Router popstate event");
       setCurrentUrl(window.location.pathname);
       scrollToTop();
     });

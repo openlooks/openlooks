@@ -1,17 +1,18 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { InputWrapper } from "./InputWrapper";
-export interface SwitchProps {
+
+export interface SwitchProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
   required?: boolean;
   onChange?: (event: any) => void;
 }
-export function Switch(props: SwitchProps) {
+
+export function Switch(props: SwitchProps): JSX.Element {
   return (
     <>
       <div
@@ -19,7 +20,7 @@ export function Switch(props: SwitchProps) {
           radius: "xl",
           size: "sm",
         })}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
       >
         <div>
           <label className="track">

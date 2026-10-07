@@ -1,12 +1,10 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface BadgeProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Badge(props: BadgeProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface BadgeProps extends BaseComponentProps {}
+
+export function Badge(props: BadgeProps): JSX.Element {
   return (
     <div
       id={props.id}
@@ -16,7 +14,7 @@ export function Badge(props: BadgeProps) {
         size: "md",
         radius: "xl",
       })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

@@ -1,24 +1,28 @@
-import React from "react";
 import type { Size } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Switch } from "@openlooks/react";
-import { TextInput } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  NumberInput,
+  Stack,
+  Switch,
+  TextInput,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-import { NumberInput } from "@openlooks/react";
-export function NumberInputPage() {
-  const [placeholder, setPlaceholder] = React.useState("Your age");
-  const [label, setLabel] = React.useState("Your age");
-  const [description, setDescription] = React.useState("");
-  const [error, setError] = React.useState("");
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [size, setSize] = React.useState("sm" as Size);
-  const [required, setRequired] = React.useState(false);
+import { SizeInput } from "../components/SizeInput";
+
+export function NumberInputPage(): JSX.Element {
+  const [placeholder, setPlaceholder] = useState("Your age");
+  const [label, setLabel] = useState("Your age");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+  const [radius, setRadius] = useState("sm" as Size);
+  const [size, setSize] = useState("sm" as Size);
+  const [required, setRequired] = useState(false);
   return (
     <DocPage title="NumberInput" description="Capture number input from user">
       <Title order={2}>Usage</Title>

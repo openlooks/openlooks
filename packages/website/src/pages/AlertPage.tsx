@@ -1,25 +1,28 @@
-import React from "react";
-import { Alert } from "@openlooks/react";
 import type { Color, Size } from "@openlooks/react";
-import { ColorPicker } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { NativeSelect } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { TextInput } from "@openlooks/react";
-import { Title } from "@openlooks/react";
-import { IconAlertCircle } from "@openlooks/react";
+import {
+  Alert,
+  ColorPicker,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  IconAlertCircle,
+  NativeSelect,
+  Stack,
+  TextInput,
+  Title,
+} from "@openlooks/react";
+import { JSX, useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { Prism } from "../components/Prism";
-export function AlertPage() {
-  const [title, setTitle] = React.useState("Bummer!");
-  const [message, setMessage] = React.useState(
+import { SizeInput } from "../components/SizeInput";
+
+export function AlertPage(): JSX.Element {
+  const [title, setTitle] = useState("Bummer!");
+  const [message, setMessage] = useState(
     "Something terrible happened! You made a mistake and there is no going back, your data was lost forever!",
   );
-  const [color, setColor] = React.useState("blue" as Color);
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [variant, setVariant] = React.useState(
+  const [color, setColor] = useState("blue" as Color);
+  const [radius, setRadius] = useState("sm" as Size);
+  const [variant, setVariant] = useState(
     "filled" as "light" | "filled" | "outline",
   );
   return (

@@ -1,12 +1,14 @@
-import React from "react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { ActionIcon } from "./ActionIcon";
 import { Input } from "./Input";
 import { InputWrapper } from "./InputWrapper";
 import { PasswordToggleIcon } from "./PasswordToggleIcon";
-export interface PasswordInputProps {
+
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface PasswordInputProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
@@ -16,8 +18,9 @@ export interface PasswordInputProps {
   slotIcon?: JSX.Element;
   onChange?: (e: any) => void;
 }
-export function PasswordInput(props: PasswordInputProps) {
-  const [visible, setVisible] = React.useState(false);
+
+export function PasswordInput(props: PasswordInputProps): JSX.Element {
+  const [visible, setVisible] = useState(false);
   return (
     <InputWrapper
       id={props.id}

@@ -1,21 +1,22 @@
-import React from "react";
+import type { JSX } from "react";
+import { useEffect } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { CloseButton } from "./CloseButton";
 import { Group } from "./Group";
 import { Overlay } from "./Overlay";
 import { Text } from "./Text";
-export interface ModalProps {
-  id?: string;
-  c?: string;
+
+export interface ModalProps extends BaseComponentProps {
   title?: string;
   width: string;
   visible?: boolean;
   onClose?: () => void;
-  children?: any;
 }
-export function Modal(props: ModalProps) {
-  React.useEffect(() => {
-    document.addEventListener("click", (event: React.MouseEvent) => {
+
+export function Modal(props: ModalProps): JSX.Element {
+  useEffect(() => {
+    document.addEventListener("click", (event: MouseEvent) => {
       const classList = (event.target as HTMLElement | undefined)?.classList;
       if (
         classList?.contains("overlay") ||

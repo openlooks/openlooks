@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface GridProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Grid(props: GridProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface GridProps extends BaseComponentProps {}
+
+export function Grid(props: GridProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("grid", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

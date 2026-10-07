@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface TabListProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function TabList(props: TabListProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface TabListProps extends BaseComponentProps {}
+
+export function TabList(props: TabListProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("tablist", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

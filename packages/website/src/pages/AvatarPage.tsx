@@ -1,4 +1,3 @@
-import React from "react";
 import { Avatar } from "@openlooks/react";
 import { Group } from "@openlooks/react";
 import { Paper } from "@openlooks/react";

@@ -1,19 +1,18 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface AvatarProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface AvatarProps extends BaseComponentProps {
   src?: string;
   alt?: string;
-  children?: any;
 }
-export function Avatar(props: AvatarProps) {
+
+export function Avatar(props: AvatarProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("avatar", props.c, { color: "gray" })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       <div className="openlooks center">
         <>

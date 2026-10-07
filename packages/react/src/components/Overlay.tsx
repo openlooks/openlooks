@@ -1,13 +1,14 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface OverlayProps {
-  id?: string;
-  c?: string;
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface OverlayProps extends BaseComponentProps {
   visible?: boolean;
   /** Determines whether overlay should have fixed position instead of absolute, false by default */
   fixed?: boolean;
 }
-export function Overlay(props: OverlayProps) {
+
+export function Overlay(props: OverlayProps): JSX.Element {
   return (
     <div
       id={props.id}

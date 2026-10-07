@@ -1,4 +1,3 @@
-import React from "react";
 import { Center } from "@openlooks/react";
 import { CloseButton } from "@openlooks/react";
 import { Paper } from "@openlooks/react";

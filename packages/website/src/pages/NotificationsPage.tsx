@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@openlooks/react";
 import { Center } from "@openlooks/react";
 import { Group } from "@openlooks/react";
@@ -16,9 +15,9 @@ export function NotificationsPage() {
       <Paper c="p-xl mb-xl radius-md withBorder">
         <Group
           sx={{
-            "flex-flow": "row wrap",
-            "align-items": "center",
-            "justify-content": "center",
+            flexFlow: "row wrap",
+            alignItems: "center",
+            justifyContent: "center",
             gap: "16px",
           }}
         >

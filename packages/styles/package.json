@@ -5,6 +5,9 @@
   "license": "MIT",
   "type": "module",
   "main": "dist/index.css",
+  "exports": {
+    "./styles.css": "./dist/index.css"
+  },
   "files": [
     "dist/index.css"
   ],

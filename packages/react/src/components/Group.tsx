@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface GroupProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Group(props: GroupProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface GroupProps extends BaseComponentProps {}
+
+export function Group(props: GroupProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("group", props.c, { spacing: "sm" })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

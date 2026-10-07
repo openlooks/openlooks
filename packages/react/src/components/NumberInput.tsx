@@ -1,10 +1,10 @@
-import React from "react";
+import type { JSX } from "react";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { Input } from "./Input";
 import { InputWrapper } from "./InputWrapper";
-export interface NumberInputProps {
+
+export interface NumberInputProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
@@ -15,7 +15,8 @@ export interface NumberInputProps {
   slotRightSection?: JSX.Element;
   onChange?: (e: any) => void;
 }
-export function NumberInput(props: NumberInputProps) {
+
+export function NumberInput(props: NumberInputProps): JSX.Element {
   return (
     <InputWrapper
       id={props.id}

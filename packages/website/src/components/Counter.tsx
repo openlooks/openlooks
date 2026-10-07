@@ -1,7 +1,9 @@
-import React from "react";
 import { Button } from "@openlooks/react";
-export function Counter() {
-  const [count, setCount] = React.useState(0);
+import type { JSX } from "react";
+import { useState } from "react";
+
+export function Counter(): JSX.Element {
+  const [count, setCount] = useState(0);
   return (
     <Button onClick={() => setCount(count + 1)}>
       {`Count: `}

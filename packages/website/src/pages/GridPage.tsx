@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid } from "@openlooks/react";
 import { GridCol } from "@openlooks/react";
 import { Paper } from "@openlooks/react";

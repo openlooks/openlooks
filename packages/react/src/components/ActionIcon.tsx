@@ -1,13 +1,10 @@
-import React from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface ActionIconProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, string | number>;
-  children?: any;
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface ActionIconProps extends BaseComponentProps {
   title?: string;
-  onClick?: (e: any) => void;
 }
+
 export function ActionIcon(props: ActionIconProps) {
   return (
     <button
@@ -15,7 +12,7 @@ export function ActionIcon(props: ActionIconProps) {
       className={buildOpenLooksClassName("actionicon", props.c, {
         color: "gray",
       })}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
       title={props.title}
       onClick={(event) => props.onClick?.(event)}
     >

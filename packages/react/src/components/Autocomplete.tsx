@@ -1,12 +1,13 @@
-import React from "react";
+import type { JSX } from "react";
+import { useEffect, useState } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { InputWrapper } from "./InputWrapper";
 import { Menu } from "./Menu";
 import { MenuItem } from "./MenuItem";
-export interface AutocompleteProps {
+
+export interface AutocompleteProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   data: string[];
   defaultValue?: string;
   placeholder?: string;
@@ -16,16 +17,18 @@ export interface AutocompleteProps {
   required?: boolean;
   onChange?: (e: any) => void;
 }
-export function Autocomplete(props: AutocompleteProps) {
-  const [visibility, setVisibility] = React.useState(
+
+export function Autocomplete(props: AutocompleteProps): JSX.Element {
+  const [visibility, setVisibility] = useState(
     "hidden" as "visible" | "hidden",
   );
-  const [opacity, setOpacity] = React.useState("0");
-  const [top, setTop] = React.useState("0");
-  const [left, setLeft] = React.useState("0");
-  const [filter, setFilter] = React.useState("");
-  const [hoverIndex, setHoverIndex] = React.useState(-1);
-  React.useEffect(() => {
+  const [opacity, setOpacity] = useState("0");
+  const [top, setTop] = useState("0");
+  const [left, setLeft] = useState("0");
+  const [filter, setFilter] = useState("");
+  const [hoverIndex, setHoverIndex] = useState(-1);
+
+  useEffect(() => {
     document.addEventListener("click", (event) => {
       if ((event.target as HTMLElement | undefined)?.id !== props.id) {
         setVisibility("hidden");
@@ -33,6 +36,7 @@ export function Autocomplete(props: AutocompleteProps) {
       }
     });
   }, []);
+
   return (
     <InputWrapper
       id={props.id}
@@ -45,7 +49,7 @@ export function Autocomplete(props: AutocompleteProps) {
         type="text"
         id={props.id}
         className={buildOpenLooksClassName("textinput", props.c)}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
         defaultValue={props.defaultValue || ""}
         placeholder={props.placeholder}
         autoComplete="off"
@@ -134,6 +138,7 @@ export function Autocomplete(props: AutocompleteProps) {
             .filter((str) => str.toLowerCase().includes(filter))
             .map((item, index) => (
               <MenuItem
+                key={item}
                 c={index === hoverIndex ? "hover" : ""}
                 onClick={() => {
                   (

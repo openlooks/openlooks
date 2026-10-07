@@ -1,10 +1,10 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { InputWrapper } from "./InputWrapper";
-export interface NativeSelectProps {
+
+export interface NativeSelectProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
@@ -13,7 +13,8 @@ export interface NativeSelectProps {
   defaultValue?: string;
   onChange?: (e: any) => void;
 }
-export function NativeSelect(props: NativeSelectProps) {
+
+export function NativeSelect(props: NativeSelectProps): JSX.Element {
   return (
     <InputWrapper
       id={props.id}
@@ -25,7 +26,7 @@ export function NativeSelect(props: NativeSelectProps) {
       <select
         id={props.id}
         className={buildOpenLooksClassName("nativeselect", props.c)}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
         value={props.defaultValue}
         onChange={(event) => props.onChange?.(event)}
       >

@@ -1,4 +1,3 @@
-import React from "react";
 import { Anchor } from "@openlooks/react";
 import { Button } from "@openlooks/react";
 import { Checkbox } from "@openlooks/react";

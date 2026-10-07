@@ -1,24 +1,28 @@
-import React from "react";
-import { Autocomplete } from "@openlooks/react";
 import type { Size } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { Container } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { TextInput } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Autocomplete,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  Container,
+  Paper,
+  Stack,
+  TextInput,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function AutocompletePage() {
-  const [placeholder, setPlaceholder] = React.useState("Pick one");
-  const [label, setLabel] = React.useState("Your favorite framework/library");
-  const [description, setDescription] = React.useState("");
-  const [error, setError] = React.useState("");
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [size, setSize] = React.useState("sm" as Size);
+import { SizeInput } from "../components/SizeInput";
+
+export function AutocompletePage(): JSX.Element {
+  const [placeholder, setPlaceholder] = useState("Pick one");
+  const [label, setLabel] = useState("Your favorite framework/library");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+  const [radius, setRadius] = useState("sm" as Size);
+  const [size, setSize] = useState("sm" as Size);
   return (
     <DocPage
       title="Autocomplete"

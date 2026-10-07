@@ -1,10 +1,10 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { InputWrapper } from "./InputWrapper";
-export interface ColorPickerProps {
+
+export interface ColorPickerProps extends BaseComponentProps {
   id: string;
-  c?: string;
-  sx?: Record<string, any>;
   label?: string;
   description?: string;
   error?: string;
@@ -13,7 +13,8 @@ export interface ColorPickerProps {
   defaultValue?: string;
   onChange?: (e: any) => void;
 }
-export function ColorPicker(props: ColorPickerProps) {
+
+export function ColorPicker(props: ColorPickerProps): JSX.Element {
   return (
     <InputWrapper
       id={props.id}
@@ -25,7 +26,7 @@ export function ColorPicker(props: ColorPickerProps) {
       <div
         id={props.id}
         className={buildOpenLooksClassName("colorpicker", props.c)}
-        style={props.sx as React.CSSProperties | undefined}
+        style={props.sx}
       >
         <>
           {[
@@ -44,7 +45,7 @@ export function ColorPicker(props: ColorPickerProps) {
             "yellow",
             "orange",
           ].map((color) => (
-            <div>
+            <div key={color}>
               <input
                 type="radio"
                 id={`${props.id}-${color}`}

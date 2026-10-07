@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface MenuDividerProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function MenuDivider(props: MenuDividerProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface MenuDividerProps extends BaseComponentProps {}
+
+export function MenuDivider(props: MenuDividerProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("menu-divider", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

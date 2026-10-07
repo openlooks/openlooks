@@ -1,20 +1,22 @@
-import React from "react";
+import type { JSX } from "react";
+import { useEffect } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
+import type { BaseComponentProps } from "./BaseComponentProps";
 import { CloseButton } from "./CloseButton";
 import { Group } from "./Group";
 import { Overlay } from "./Overlay";
 import { Text } from "./Text";
-export interface DrawerProps {
-  id?: string;
-  c?: string;
+
+export interface DrawerProps extends BaseComponentProps {
   title?: string;
   width: string;
   visible?: boolean;
   onClose?: () => void;
   children?: any;
 }
-export function Drawer(props: DrawerProps) {
-  React.useEffect(() => {
+
+export function Drawer(props: DrawerProps): JSX.Element {
+  useEffect(() => {
     document.addEventListener("click", (event) => {
       if (
         (event.target as HTMLElement | undefined)?.classList.contains("overlay")

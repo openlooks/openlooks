@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface PaperProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Paper(props: PaperProps) {
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface PaperProps extends BaseComponentProps {}
+
+export function Paper(props: PaperProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("paper", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

@@ -1,17 +1,15 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface AffixProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
-  children?: any;
-}
-export function Affix(props: AffixProps) {
+import { BaseComponentProps } from "./BaseComponentProps";
+
+export interface AffixProps extends BaseComponentProps {}
+
+export function Affix(props: AffixProps): JSX.Element {
   return (
     <div
       id={props.id}
       className={buildOpenLooksClassName("affix", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
     >
       {props.children}
     </div>

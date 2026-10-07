@@ -1,18 +1,18 @@
-import React from "react";
+import type { JSX } from "react";
 import { buildOpenLooksClassName } from "../utils/classname";
-export interface ImageProps {
-  id?: string;
-  c?: string;
-  sx?: Record<string, any>;
+import type { BaseComponentProps } from "./BaseComponentProps";
+
+export interface ImageProps extends BaseComponentProps {
   src: string;
   alt: string;
 }
-export function Image(props: ImageProps) {
+
+export function Image(props: ImageProps): JSX.Element {
   return (
     <img
       id={props.id}
       className={buildOpenLooksClassName("image", props.c)}
-      style={props.sx as React.CSSProperties | undefined}
+      style={props.sx}
       src={props.src}
       alt={props.alt}
     />

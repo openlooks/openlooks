@@ -1,23 +1,26 @@
-import React from "react";
 import type { Color, Size } from "@openlooks/react";
-import { Checkbox } from "@openlooks/react";
-import { ColorPicker } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { TextInput } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Checkbox,
+  ColorPicker,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  Stack,
+  TextInput,
+  Title,
+} from "@openlooks/react";
+import { JSX, useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function CheckboxPage() {
-  const [label, setLabel] = React.useState("I agree to sell my privacy");
-  const [description, setDescription] = React.useState("");
-  const [error, setError] = React.useState("");
-  const [size, setSize] = React.useState("sm" as Size);
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [color, setColor] = React.useState("blue" as Color);
+import { SizeInput } from "../components/SizeInput";
+
+export function CheckboxPage(): JSX.Element {
+  const [label, setLabel] = useState("I agree to sell my privacy");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+  const [size, setSize] = useState("sm" as Size);
+  const [radius, setRadius] = useState("sm" as Size);
+  const [color, setColor] = useState("blue" as Color);
   return (
     <DocPage title="Checkbox" description="Capture boolean input from user">
       <Title order={2}>Usage</Title>

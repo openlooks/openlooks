@@ -1,4 +1,3 @@
-import React from "react";
 import { Center } from "@openlooks/react";
 import { Image } from "@openlooks/react";
 import { Paper } from "@openlooks/react";

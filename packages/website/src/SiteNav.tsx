@@ -1,19 +1,22 @@
-import React from "react";
 import { Navbar } from "@openlooks/react";
+import type { JSX } from "react";
+import { Fragment, MouseEvent } from "react";
+import "./SiteNav.css";
 import { siteNavLinks } from "./SiteNav.links";
 import { SiteNavLink } from "./SiteNavLink";
-import "./SiteNav.css";
+
 export interface SiteNavProps {
   forceOpen: boolean;
-  onLinkClick: (event: React.MouseEvent) => void;
+  onLinkClick: (event: MouseEvent) => void;
 }
-export function SiteNav(props: SiteNavProps) {
+
+export function SiteNav(props: SiteNavProps): JSX.Element {
   return (
     <Navbar c={props.forceOpen ? "open" : undefined}>
       <div className="navlinks">
         <>
           {siteNavLinks.map((section) => (
-            <>
+            <Fragment key={section.title}>
               <div className="section">{section.title}</div>
               <>
                 {section.links.map((link) => (
@@ -27,7 +30,7 @@ export function SiteNav(props: SiteNavProps) {
                   </SiteNavLink>
                 ))}
               </>
-            </>
+            </Fragment>
           ))}
         </>
       </div>

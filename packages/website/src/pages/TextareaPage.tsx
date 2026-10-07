@@ -1,22 +1,25 @@
-import React from "react";
 import type { Size } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { TextInput } from "@openlooks/react";
-import { Textarea } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import {
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  Stack,
+  Textarea,
+  TextInput,
+  Title,
+} from "@openlooks/react";
+import { JSX, useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { SizeInput } from "../components/SizeInput";
 import { Prism } from "../components/Prism";
-export function TextareaPage() {
-  const [placeholder, setPlaceholder] = React.useState("Your comment");
-  const [label, setLabel] = React.useState("Your comment");
-  const [description, setDescription] = React.useState("");
-  const [error, setError] = React.useState("");
-  const [radius, setRadius] = React.useState("sm" as Size);
-  const [size, setSize] = React.useState("sm" as Size);
+import { SizeInput } from "../components/SizeInput";
+
+export function TextareaPage(): JSX.Element {
+  const [placeholder, setPlaceholder] = useState("Your comment");
+  const [label, setLabel] = useState("Your comment");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+  const [radius, setRadius] = useState("sm" as Size);
+  const [size, setSize] = useState("sm" as Size);
   return (
     <DocPage
       title="Textarea"

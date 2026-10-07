@@ -1,13 +1,11 @@
-import React from "react";
-import { Button } from "@openlooks/react";
-import { Center } from "@openlooks/react";
-import { Drawer } from "@openlooks/react";
-import { Paper } from "@openlooks/react";
-import { Title } from "@openlooks/react";
+import { Button, Center, Drawer, Paper, Title } from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
+import { AuthenticationForm } from "../components/AuthenticationForm";
 import { DocPage } from "../components/DocPage";
-import { Prism } from "../components/Prism";
-export function DrawerPage() {
-  const [visible, setVisible] = React.useState(false);
+
+export function DrawerPage(): JSX.Element {
+  const [visible, setVisible] = useState(false);
   return (
     <DocPage
       title="Drawer"

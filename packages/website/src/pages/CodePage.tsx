@@ -1,4 +1,3 @@
-import React from "react";
 import { Code } from "@openlooks/react";
 import { Group } from "@openlooks/react";
 import { Paper } from "@openlooks/react";
@@ -17,14 +16,14 @@ export function CodePage() {
         By default, Code component renders inline code html element:
       </Text>
       <Paper c="p-md withBorder">
-        <Code>React.createElement()</Code>
+        <Code>createElement()</Code>
       </Paper>
       <Prism
         language="jsx"
         code={`import { Code } from '@openlooks/react';
 
 function Demo() {
-  return <Code>React.createElement()</Code>;
+  return <Code>createElement()</Code>;
 }`}
       />
       <Title order={2}>Block code</Title>
@@ -36,7 +35,7 @@ function Demo() {
 import { Code } from '@mantine/core';
 
 function Demo() {
-  return <Code>React.createElement()</Code>;
+  return <Code>createElement()</Code>;
 }`}</Code>
       </Paper>
       <Prism
@@ -47,7 +46,7 @@ const codeForPreviousDemo = \`import React from 'react';
 import { Code } from '@mantine/core';
 
 function Demo() {
-  return <Code>React.createElement()</Code>;
+  return <Code>createElement()</Code>;
 }\`;
 
 function Demo() {
@@ -61,9 +60,9 @@ function Demo() {
       </Text>
       <Paper c="p-md withBorder">
         <Group>
-          <Code c="color-red">React.createElement()</Code>
-          <Code c="color-teal">React.createElement()</Code>
-          <Code c="color-blue">React.createElement()</Code>
+          <Code c="color-red">createElement()</Code>
+          <Code c="color-teal">createElement()</Code>
+          <Code c="color-blue">createElement()</Code>
         </Group>
       </Paper>
       <Prism
@@ -73,9 +72,9 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <Code c="color-red">React.createElement()</Code>
-      <Code c="color-teal">React.createElement()</Code>
-      <Code c="color-blue">React.createElement()</Code>
+      <Code c="color-red">createElement()</Code>
+      <Code c="color-teal">createElement()</Code>
+      <Code c="color-blue">createElement()</Code>
     </>
   );
 }`}

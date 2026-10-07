@@ -1,29 +1,33 @@
-import React from "react";
 import type { Color, Size } from "@openlooks/react";
-import { ColorPicker } from "@openlooks/react";
-import { Configurator } from "@openlooks/react";
-import { ConfiguratorControls } from "@openlooks/react";
-import { ConfiguratorStage } from "@openlooks/react";
-import { NativeSelect } from "@openlooks/react";
-import { Stack } from "@openlooks/react";
-import { Tab } from "@openlooks/react";
-import { TabIcon } from "@openlooks/react";
-import { TabLabel } from "@openlooks/react";
-import { TabList } from "@openlooks/react";
-import { TabPanel } from "@openlooks/react";
-import { Tabs } from "@openlooks/react";
-import { Title } from "@openlooks/react";
-import { IconMessageCircle } from "@openlooks/react";
-import { IconPhoto } from "@openlooks/react";
-import { IconSettings } from "@openlooks/react";
+import {
+  ColorPicker,
+  Configurator,
+  ConfiguratorControls,
+  ConfiguratorStage,
+  IconMessageCircle,
+  IconPhoto,
+  IconSettings,
+  NativeSelect,
+  Stack,
+  Tab,
+  TabIcon,
+  TabLabel,
+  TabList,
+  TabPanel,
+  Tabs,
+  Title,
+} from "@openlooks/react";
+import type { JSX } from "react";
+import { useState } from "react";
 import { DocPage } from "../components/DocPage";
-import { Prism } from "../components/Prism";
-export function TabsPage() {
-  const [variant, setVariant] = React.useState(
+import { SizeInput } from "../components/SizeInput";
+
+export function TabsPage(): JSX.Element {
+  const [variant, setVariant] = useState(
     "filled" as "filled" | "light" | "outline" | "subtle",
   );
-  const [color, setColor] = React.useState("blue" as Color);
-  const [radius, setRadius] = React.useState("sm" as Size);
+  const [color, setColor] = useState("blue" as Color);
+  const [radius, setRadius] = useState("sm" as Size);
   return (
     <DocPage title="Tabs" description="Switch between different views">
       <Title order={2}>Usage</Title>
