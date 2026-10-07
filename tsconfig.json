@@ -1,10 +1,38 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "newLine": "lf",
     "strict": true,
-    "target": "ESNext",
-    "jsx": "preserve",
+    "declaration": true,
+    "declarationMap": true,
+    "erasableSyntaxOnly": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "**/dist",
+    "packages/docs/build"
+  ]
 }

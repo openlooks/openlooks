@@ -1,19 +1,25 @@
-import React from "react";
-import Context from "./Tabs.context";
+import { useState } from "react";
+import { TabsContext } from "./Tabs.context";
+
 export interface TabsProps {
-    defaultValue?: string;
-    children?: any;
+  defaultValue?: string;
+  children?: any;
 }
-export default function Tabs(props: TabsProps) {
-    const [currentValue, setCurrentValue] = React.useState(props.defaultValue || '');
-    return (<Context.Provider value={{
-            currentTab: () => {
-                return currentValue;
-            },
-            setCurrentTab: (newTab) => {
-                setCurrentValue(newTab);
-            },
-        }}>
+
+export function Tabs(props: TabsProps) {
+  const [currentValue, setCurrentValue] = useState(props.defaultValue || "");
+  return (
+    <TabsContext.Provider
+      value={{
+        currentTab: () => {
+          return currentValue;
+        },
+        setCurrentTab: (newTab) => {
+          setCurrentValue(newTab);
+        },
+      }}
+    >
       {props.children}
-    </Context.Provider>);
+    </TabsContext.Provider>
+  );
 }

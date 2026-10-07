@@ -5,10 +5,18 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: './dist/site',
     target: 'esnext',
     modulePreload: {
       polyfill: false,
+    },
+    copyPublicDir: false,
+    lib: {
+      entry: 'src/index.ts',
+      fileName: () => 'index.mjs',
+      formats: ['es'],
+    },
+    rollupOptions: {
+      external: ['react', 'react/jsx-runtime', 'react-dom'],
     },
   },
 });

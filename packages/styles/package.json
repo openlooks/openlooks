@@ -1,26 +1,26 @@
 {
   "name": "@openlooks/styles",
   "version": "0.0.1",
-  "type": "module",
   "description": "OpenLooks Styles",
   "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
+  "type": "module",
+  "main": "dist/index.css",
   "files": [
     "dist/index.css"
   ],
-  "main": "dist/index.css",
   "scripts": {
     "build": "postcss src/index.css -o dist/index.css",
     "dev": "postcss src --dir dist --watch"
   },
   "devDependencies": {
-    "autoprefixer": "10.4.21",
-    "cssnano": "7.0.6",
-    "postcss": "8.5.3",
-    "postcss-cli": "11.0.1",
+    "autoprefixer": "10.6.1",
+    "cssnano": "9.3.2",
+    "postcss": "8.5.29",
+    "postcss-cli": "12.0.0",
     "postcss-each": "1.1.0",
-    "postcss-import": "16.1.0"
+    "postcss-import": "17.0.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

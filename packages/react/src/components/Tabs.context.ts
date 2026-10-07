@@ -1,5 +1,6 @@
-import React from "react";
-export default React.createContext({
+import { createContext } from "react";
+
+export const TabsContext = createContext({
     currentTab(): string {
         return '';
     },

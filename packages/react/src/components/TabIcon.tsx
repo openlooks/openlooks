@@ -1,13 +1,19 @@
 import React from "react";
-import { buildOpenLooksClassName } from '../utils/classname';
+import { buildOpenLooksClassName } from "../utils/classname";
 export interface TabIconProps {
-    id?: string;
-    c?: string;
-    sx?: Record<string, any>;
-    children?: any;
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
+  children?: any;
 }
-export default function TabIcon(props: TabIconProps) {
-    return (<span id={props.id} className={buildOpenLooksClassName('tab-icon', props.c)} style={props.sx as React.CSSProperties | undefined}>
+export function TabIcon(props: TabIconProps) {
+  return (
+    <span
+      id={props.id}
+      className={buildOpenLooksClassName("tab-icon", props.c)}
+      style={props.sx as React.CSSProperties | undefined}
+    >
       {props.children}
-    </span>);
+    </span>
+  );
 }

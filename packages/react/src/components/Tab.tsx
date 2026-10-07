@@ -1,12 +1,22 @@
-import React from "react";
-import Context from "./Tabs.context";
+import { useContext } from "react";
+import { TabsContext } from "./Tabs.context";
+
 export interface TabProps {
-    value: string;
-    children: any;
+  value: string;
+  children: any;
 }
-export default function Tab(props: TabProps) {
-    const ctx = React.useContext(Context);
-    return (<button className="openlooks tab" role="tab" aria-controls={`${props.value}-panel`} aria-selected={ctx.currentTab() === props.value} onClick={() => ctx.setCurrentTab(props.value)}>
+
+export function Tab(props: TabProps) {
+  const ctx = useContext(TabsContext);
+  return (
+    <button
+      className="openlooks tab"
+      role="tab"
+      aria-controls={`${props.value}-panel`}
+      aria-selected={ctx.currentTab() === props.value}
+      onClick={() => ctx.setCurrentTab(props.value)}
+    >
       {props.children}
-    </button>);
+    </button>
+  );
 }

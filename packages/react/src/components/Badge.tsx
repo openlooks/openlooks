@@ -1,13 +1,24 @@
 import React from "react";
-import { buildOpenLooksClassName } from '../utils/classname';
+import { buildOpenLooksClassName } from "../utils/classname";
 export interface BadgeProps {
-    id?: string;
-    c?: string;
-    sx?: Record<string, any>;
-    children?: any;
+  id?: string;
+  c?: string;
+  sx?: Record<string, any>;
+  children?: any;
 }
-export default function Badge(props: BadgeProps) {
-    return (<div id={props.id} className={buildOpenLooksClassName('badge', props.c, { variant: 'light', color: 'blue', size: 'md', radius: 'xl' })} style={props.sx as React.CSSProperties | undefined}>
+export function Badge(props: BadgeProps) {
+  return (
+    <div
+      id={props.id}
+      className={buildOpenLooksClassName("badge", props.c, {
+        variant: "light",
+        color: "blue",
+        size: "md",
+        radius: "xl",
+      })}
+      style={props.sx as React.CSSProperties | undefined}
+    >
       {props.children}
-    </div>);
+    </div>
+  );
 }
